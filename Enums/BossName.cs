@@ -14,6 +14,7 @@ namespace tellahs_library.Enums
         Octomamm,
         [Description("Antlion")]
         Antlion,
+        [Description("Waterhag")] Waterhag,
         [Description("MomBomb")]
         MomBomb,
         [Description("Fabul Gauntlet")]
