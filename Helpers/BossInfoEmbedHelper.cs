@@ -127,11 +127,11 @@ Bombs have 4% the spot's hp total, and they get both mdef and mevade
 Grey Bombs have 8% the spot's hp total, and get neither mdef nor mevade
 
 ")
-                        .AddField("Damage Types", "Physical, Fire (explode, Mombomb), Untyped Magic (explode, baby bombs)")
-                        .AddField("Resist", "Mombomb: None, Baby bombs: Poison, Pig, Mini, Frog")
-                        .AddField("Weakness", "Mombomb: Dark, Baby bombs: none")
-                        .AddField("Boss Bit", "Yes (Mombomb), No (baby bombs)")
-                        .AddField("Additional Links",@"[GrayBomb](<https://wiki.ff4fe.com/doku.php?id=graybomb>), [Bomb](<https://wiki.ff4fe.com/doku.php?id=bomb>)");
+                        .AddField("Damage Types", "Physical, Fire (explode, Mombomb), Untyped Magic (explode, baby bombs)", inline: true)
+                        .AddField("Resist", "Mombomb: None, Baby bombs: Poison, Pig, Mini, Frog", inline: true)
+                        .AddField("Weakness", "Mombomb: Dark, Baby bombs: none", inline: true)
+                        .AddField("Boss Bit", "Yes (Mombomb), No (baby bombs)", inline: true)
+                        .AddField("Additional Links",@"[GrayBomb](<https://wiki.ff4fe.com/doku.php?id=graybomb>), [Bomb](<https://wiki.ff4fe.com/doku.php?id=bomb>)", inline: true);
                     break;
 
                 case BossName.FabulGauntlet:
@@ -178,10 +178,11 @@ Often you’ll approach the fight by using AoE to clear the Ghasts, and relying 
 At high physical damage spots, tossing an hourglass to stop the Ghasts, and then focus firing down Milon can result in a very clean fight. If you do this, be very aware of how hard the Ghasts will punch if the hourglass effect wears off.
 
 ")
-                        .AddField("Damage Types", "Milon:Physical, Bolt. Ghasts: Physical, Magic")
-                        .AddField("Resist", "Ghasts: Dark Immune, Poison, Blind, Mute, Pig, Mini, Frog, KO, Calcify 1, Calcify 2, Berserk, Charm, Sleep, Stun, Float, Curse")
-                        .AddField("Weakness", "Ghast: Fire, Holy")
-                        .AddField("Boss Bit", "Yes (Milon), No (Ghasts)");
+                        .AddField("Damage Types", "Milon:Physical, Bolt. Ghasts: Physical, Magic", inline: true)
+                        .AddField("Resist", "Ghasts: Dark Immune, Poison, Blind, Mute, Pig, Mini, Frog, KO, Calcify 1, Calcify 2, Berserk, Charm, Sleep, Stun, Float, Curse", inline: true)
+                        .AddField("Weakness", "Ghast: Fire, Holy", inline: true)
+                        .AddField("Boss Bit", "Yes (Milon), No (Ghasts)", inline: true)
+                        .AddField("Additional Links", "[Ghast](<https://wiki.ff4fe.com/doku.php?id=Ghast>)", inline: true);
                     break;
 
                 case BossName.MilonZ:
@@ -251,9 +252,9 @@ At high XP spots, life glitches, or even a life two grind, can be very welcome i
                         .WithDescription(
 @"### Fight Flow
 Karate alternates between using Fight and Kick. After Karate queues the second kick, any Paladin Cecil using Fight will cause Karate to say “Ouch” and perish.
-###Strats
+### Strats
 Generally normal strategies for dealing damage and handling incoming physical attacks apply.  Cover strats don’t often work to keep the whole party alive, since Kick will deal AoE damage that ignores barrier/blink status and can do enough to kill party members that have low hp.
-###Additional Notes
+### Additional Notes
 Bunsafe removes the Ouch reaction, so you’ll have to fight the fight straight up.
 
 ")
@@ -277,7 +278,7 @@ As the fight goes on and Baigan reflects a wall onto your party, you can use tha
 Making good use of Cover in this fight can be a little difficult, since Cecil can’t cover the Vampire from the Right Arm. Keeping that enemy dead is a high priority if Cover is your best defensive plan, so you might consider single/manually targeting spells and attacks. This kind of strategy is more useful at high physical attack locations where you don’t have the AoE to clear the arms, and have good physical attackers that can reach to back row enemies without penalty (Jump, Aim, Dart, characters equipped with long range weapons, or characters that have the back row glitch applied
 
 ")
-                        .AddField("Additional Links", "[Left Arm](<https://wiki.ff4fe.com/doku.php?id=left_arm>) [Right Arm](https://wiki.ff4fe.com/doku.php?id=rightarm)", inline: true)
+                        .AddField("Additional Links", "[Left Arm](<https://wiki.ff4fe.com/doku.php?id=left_arm>), [Right Arm](https://wiki.ff4fe.com/doku.php?id=rightarm)", inline: true)
                         .AddField("Damage Types", "Physical, Magic (Right Arm - Vampire)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
@@ -296,16 +297,16 @@ This is a fight where location significantly dictates tactics. At spots where yo
 At high HP spots, or if your damage is low for the location, you can find yourself in loop where the Remedy action outpaces your ability to do damage
 
 ")
-                        .AddField("Damage Types", "Physical, Untyped Magic (Wave)")
-                        .AddField("Weakness", "Ice (water down) \r\nBolt (gathered water)")
-                        .AddField("Boss Bit", "Yes");
+                        .AddField("Damage Types", "Physical, Untyped Magic (Wave)", inline: true)
+                        .AddField("Weakness", "Ice (water down) \r\nBolt (gathered water)", inline: true)
+                        .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
                 case BossName.DarkElf:
                     embedBuilder
                         .WithTitle("Dark Elf")
                         .WithUrl("https://wiki.ff4fe.com/doku.php?id=dark_elf_post-harp")
-                        .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Delf.png")
+                        .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/DElf.png")
                         .WithDescription(
 @"### Fight Flow
 The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 attacks, then Weak is used, followed by Piggy, before starting back at the top.  When the Dark Elf takes damage below a certain threshold, he’ll transform to the Dark Dragon form, where the script alternates between using Fight and DBreath.
@@ -314,11 +315,12 @@ Get some damage going (preferably with someone doing Holy damage), try to make s
 ### Additional Notes
 To cut some time from the pre-fight cutscene, having your party each equipped with metal will automatically end the fight part of the cutscene. Alternatively, a party-wide stone cast can do wonders. Also, this is a great place to use a Kamikaze or two. As a quirk of the cutscene, no inventory changes actually stick, so items used will be returned.
 ")
-                        .AddField("Damage Types", "Dark Elf: Fire, Ice, Lit\r\nDragon form: Physical, Fire (D.Breath)")
-                        .AddField("Resist", "Dragon form: Holy Absorb Blind Mute Pig Mini Frog Petrify KO Calcify 1 Calcify 2 Berserk Charm Sleep Stun Float Curse")
-                        .AddField("Weakness", "Holy")
-                        .AddField("Boss Bit", "Dark Elf: Yes, Dragon form: No")
-                        .AddField("Race", "Dragon form: Dragon");
+                        .AddField("Damage Types", "Dark Elf: Fire, Ice, Lit\r\nDragon form: Physical, Fire (D.Breath)", inline: true)
+                        .AddField("Resist", "Dragon form: Holy Absorb Blind Mute Pig Mini Frog Petrify KO Calcify 1 Calcify 2 Berserk Charm Sleep Stun Float Curse", inline: true)
+                        .AddField("Weakness", "Holy", inline: true)
+                        .AddField("Boss Bit", "Dark Elf: Yes, Dragon form: No", inline: true)
+                        .AddField("Race", "Dragon form: Dragon", inline: true)
+                        .AddField("Additional Links", "[Dragon form](<https://wiki.ff4fe.com/doku.php?id=dark_elf_dragon_form>)", inline: true);
                     break;
 
                 case BossName.MagusSisters:
@@ -338,9 +340,9 @@ While Cindy has more HP than her sisters in the fight, each sister awards one-th
 
 Lower level parties might want to avoid using berserk, since it can spread out damage too much, and leave you taking both punches from Cindy, and reflected spells from Mindy. The Dragoon armor set provides good elemental protection for those that can wear it, as does the Crystal Helm and Protect rings. Also don’t discount the Lit resistance from Diamond Rings or Sorcerer robes. When you’re under leveled for the fight, making any of the spells be less dangerous is really helpful. Having a Headband for Charm resistance can also save you when Cindy’s gone and Sandy starts slinging spells at the party. 
 ")
-                        .AddField("Damage Types", "Cindy: Physical\r\nMindy: Lit, Ice, Fire, Untyped Magic")
-                        .AddField("Race", "Mage")
-                        .AddField("Boss Bit", "Yes")
+                        .AddField("Damage Types", "Cindy: Physical\r\nMindy: Lit, Ice, Fire, Untyped Magic", inline: true)
+                        .AddField("Race", "Mage", inline: true)
+                        .AddField("Boss Bit", "Yes", inline: true)
                         .AddField("Additional Links", "[Sandy](<https://wiki.ff4fe.com/doku.php?id=Sandy>), [Mindy](<https://wiki.ff4fe.com/doku.php?id=Mindy>)", inline: true);
                     break;
 
@@ -361,9 +363,9 @@ It can be a good idea to carry some extra Heal potions for this fight when you h
 
 Aim, Kick, Dark, Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock her out.
 ")
-                        .AddField("Damage Types", "Physical")
-                        .AddField("Additional Links", "[Tornado Defense](<https://docs.google.com/spreadsheets/d/1tVQFvlQ_4oWCn0EE9d7QAGrYW3w2IbZzuO2MWuUC8ww>)")
-                        .AddField("Boss Bit", "Yes");
+                        .AddField("Damage Types", "Physical", inline: true)
+                        .AddField("Additional Links", "[Tornado Defense](<https://docs.google.com/spreadsheets/d/1tVQFvlQ_4oWCn0EE9d7QAGrYW3w2IbZzuO2MWuUC8ww>)", inline: true)
+                        .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
                 case BossName.Calbrena:
@@ -380,9 +382,9 @@ Quake is fantastic against the dolls at many spots, and Meteo can be too, althou
 Each Cal has about 12% of the spot’s hp, A Brena has about 4%, and Calbrena has about 54%.
 
 ")
-                        .AddField("Damage Types", "Physical, Fire, Ice, Bolt")
-                        .AddField("Boss Bit", "Yes (Brena, Calbrena) No (Cal)")
-                        .AddField("Additional Links", "[Cal](https://wiki.ff4fe.com/doku.php?id=cal) [Brena](https://wiki.ff4fe.com/doku.php?id=brena)");
+                        .AddField("Damage Types", "Physical, Fire, Ice, Bolt", inline: true)
+                        .AddField("Boss Bit", "Yes (Brena, Calbrena) No (Cal)", inline: true)
+                        .AddField("Additional Links", "[Cal](https://wiki.ff4fe.com/doku.php?id=cal), [Brena](https://wiki.ff4fe.com/doku.php?id=brena)", inline: true);
                     break;
 
                 case BossName.Golbez:
@@ -405,9 +407,10 @@ Depending on your damage output, you can sometimes just let Golbez do the damage
 High magic spots might seem scary, but can be a great way to leverage some early XP, since Golbez will do most of the work. The Asura spot in the Feymarch, or the Ogopogo (Masamune altar) spot are two notable examples of this. Other spots, like the White Spear altar (Plague’s spot) or the top of Lower Babil (Lugae’s spot), that have very low magic damage means that you can often just forgo using any walls at all.
 
 ")
-                        .AddField("Damage Types", "Bolt, Fire, Untyped Magic")
-                        .AddField("Weakness", "Holy, Fire")
-                        .AddField("Boss Bit", "Yes");
+                        .AddField("Damage Types", "Bolt, Fire, Untyped Magic", inline: true)
+                        .AddField("Weakness", "Holy, Fire", inline: true)
+                        .AddField("Additional Links", "[Shadow](<https://wiki.ff4fe.com/doku.php?id=shadow>)", inline: true)
+                        .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
                 case BossName.DrLugae:
@@ -430,9 +433,10 @@ The robot race on both Balnab and the second Dr Lugae means that thunderclaws do
 Walls will reflect both Beam and Emission, and will block Laser, which makes it very handy at high hp spots, or if the party is underleveled.  Underleveled parties should also make liberal use of Heal if the Gas counters land. Limiting how many characters are dealing damage limits the Gas counters, as well as frees up characters for opportunistic potion (heal/cure/life) usage to keep the party up and going.
 
 ")
-                        .AddField("Damage Types", "Physical, Untyped Magic, Fire")
-                        .AddField("Weakness", "Robot (Balnab, Dr Lugae 2)")
-                        .AddField("Boss Bit", "Yes");
+                        .AddField("Damage Types", "Physical, Untyped Magic, Fire", inline: true)
+                        .AddField("Weakness", "Robot (Balnab, Dr Lugae 2)", inline: true)
+                        .AddField("Boss Bit", "Yes", inline: true)
+                        .AddField("Additional Links", "[Balnab](<https://wiki.ff4fe.com/doku.php?id=balnab>), [Balnab-Z](<https://wiki.ff4fe.com/doku.php?id=balnab-z>), [Lugae (2nd Fight)](<https://wiki.ff4fe.com/doku.php?id=dr.lugae_second>)", inline: true);
                     break;
 
                 case BossName.DarkImps:
@@ -470,7 +474,8 @@ The fire damage is generally only a threat while at base levels. Even when Bunsa
 
 ")
                         .AddField("Damage Types", "Fire", inline: true)
-                        .AddField("Boss Bit", "Yes", inline: true);
+                        .AddField("Boss Bit", "Yes", inline: true)
+                        .AddField("Additional Links", "[Q Eblan](<https://wiki.ff4fe.com/doku.php?id=q.eblan>)", inline: true);
                     break;
 
                 case BossName.Rubicant:
@@ -534,9 +539,9 @@ Since this fight is actually two separate HP pools (Milon/Rubi in one, Kainazzo/
                         .AddField("Damage Types", "Milon: Physical\r\nRubicant: Fire\r\nKainazzo: Physical, Untyped Magic (Big Wave)\r\nValvalis: Physical")
                         .AddField("Resist", "Milon: Absorbs Ice, Holy, Dark, Bolt, Air\r\nRubicant: Absorbs: Fire, Holy, Dark, Bolt, Air\r\nKainazzo: Absorbs: Fire, Ice, Dark, Holy, Air\r\nValvalis: None\r\n")
                         .AddField("Weakness", "Milon: Fire (4x)\r\nRubicant: Ice (4x)\r\nKainazzo: Thunder (4x)\r\nValvalis: Thunder (4x), Holy (4x)")
-                        .AddField("Additional Links", "[Kainazzo/Val](<https://wiki.ff4fe.com/doku.php?id=elements_kainazzo_val>)")
-                        .AddField("Race", "Milon: Zombie\r\nRubicant: Mage")
-                        .AddField("Boss Bit", "Yes");
+                        .AddField("Additional Links", "[Kainazzo/Val](<https://wiki.ff4fe.com/doku.php?id=elements_kainazzo_val>)", inline: true)
+                        .AddField("Race", "Milon: Zombie\r\nRubicant: Mage", inline: true)
+                        .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
                 case BossName.CPU:
@@ -556,6 +561,7 @@ The attacker and defender each get 10% of the spot’s HP, but award one-third o
 
 ")
                         .AddField("Damage Types", "Magic (Globe 199), Target HP Based (Maser)", inline: true)
+                        .AddField("Additional Links", "[Attacker](<https://wiki.ff4fe.com/doku.php?id=Attacker>), [Defender](<https://wiki.ff4fe.com/doku.php?id=Defender>)")
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -668,7 +674,8 @@ Cecil as a cover bot can be extremely strong for this fight. Give him a crystal 
                         .WithDescription(
 @"### Fight Flow
 Wyvern begins the fight with MegaNuke, takes two consecutive empty turns, then casts Wall on itself. While the Wall is active, Wyvern will bounce Nuke off of the wall. When the wall runs out, Wyvern will use Remedy, then re-cast the Wall, which will resume the Nuke barrage.
-### Wyvern’s opening Meganuke often requires agility setups that let you get Reflect status up on multiple characters right away, and also slowing down the battle speed to allow you the time to input the commands to do so; very practiced runners can substitute battle speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll want a slow anchor and fast first actors in order to have a solid setup
+### Strats
+Wyvern’s opening Meganuke often requires agility setups that let you get Reflect status up on multiple characters right away, and also slowing down the battle speed to allow you the time to input the commands to do so; very practiced runners can substitute battle speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll want a slow anchor and fast first actors in order to have a solid setup
 
 Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use life potions to keep on even-ish footing. 
 ### Additional Notes
@@ -721,8 +728,8 @@ At many locations, Crystal Sword users can change the calculus on whether or not
 Low level parties (and in locations with either high magic attack, high hp, or both) will consider Walls to reflect the Breath spell back on the enemies. A D. Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D. Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the wall reaction.  After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
 
 ")
-                        .AddField("Damage Types", "Physical, Fire")
-                        .AddField("Race", "Dragon, ZOmbie")
+                        .AddField("Damage Types", "Physical, Fire", inline: true)
+                        .AddField("Race", "Dragon, Zombie", inline: true)
                         .AddField("Weakness", "Fire", inline: true)
                         .AddField("Boss Bit", "yes", inline: true);
                     break;
@@ -742,8 +749,8 @@ The counters Ogopogo uses means that most strategies lean heavily on berserked c
 ### Additional Notes
 This is an extremely rude boss to see at either Hook location, due to how limited your preventative/healing resources are early on, and the HP based damage is difficult to outlevel. Definitely a boss where underleveled parties very much want to manipulate agility, and slow down the battle speed.
 ")
-                        .AddField("Damage Types", "Physical, Untyped Magic (Big Wave), Ice (Blaze)")
-                        .AddField("Boss Bit", "Yes");
+                        .AddField("Damage Types", "Physical, Untyped Magic (Big Wave), Ice (Blaze)", inline: true)
+                        .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
                 case BossName.Zeromus:
