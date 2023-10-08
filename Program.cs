@@ -12,6 +12,11 @@ var discord = new DiscordClient(new DiscordConfiguration
 });
 
 var slash = discord.UseSlashCommands();
+
+//Register test commands for the bot's server
+slash.RegisterCommands<Tournament>(1153453420649402438);
+
+//Register global commands
 slash.RegisterCommands<Recall>();
 slash.RegisterCommands<BossRecall>();
 
