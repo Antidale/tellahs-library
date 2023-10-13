@@ -141,9 +141,9 @@ Grey Bombs have 8% the spot's hp total, and get neither mdef nor mevade
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Gauntlet.png")
                         .WithDescription(
 @"### Fight Flow
-The standard Fabul Gauntlet consist of six consecutive fights. The first, third, and sixth fight are against a General/2x Fighter composition, the second and fifth have a Weeper, Waterhag, and Imp Captain, and the fourth fight is against a solo Gargoyle.
+The vanilla Fabul Gauntlet consist of six consecutive fights. The first, third, and sixth fight are against a General/2x Fighter composition, the second and fifth have a Weeper, Waterhag, and Imp Captain, and the fourth fight is against a solo Gargoyle.
 ### Strats
-The Fabul Gauntlet generally poses little threat, since the total HP of the location is spread out among all six fights. Likewise, it is not rewarding for experience as that is similarly split. AoE damage is fantastic in this fight, and the Tier 2 j-items carry pretty far into the game for this boss. Very high Physical damage spots can pose some trouble to low-level parties, but an HrGlass can bring you time to recover.
+A Vanilla Gauntlet generally poses little threat, since the total HP of the location is spread out among all six fights. Likewise, it is not rewarding for experience as that is similarly split. AoE damage is fantastic in this fight, and the Tier 2 j-items carry pretty far into the game for this boss. Very high Physical damage spots can pose some trouble to low-level parties, but an HrGlass can bring you time to recover.
 ### Additional Notes
 The `alt:gauntlet` flag replaces the fights outlined above with five fights drawn from the area around the boss location, or one of applicable power level (e.g. the Baron Basement boss draws from the same pool as the Leviatan or Asura spots). 
 
@@ -194,7 +194,7 @@ At high physical damage spots, tossing an hourglass to stop the Ghasts, and then
 @"### Fight Flow
 Milon Z’s only damage comes from Fight, but will use Curse during the fight
 ### Strats
-As standard for physical fights, blink/illusion/moonveil are all great defense options.  Milon Z’s Zombie race means that curative magic will harm him, so he can be a good target for excess cure2 items, or you might speed the fight up a lot by tossing a cure3 pot.  
+As standard for physical fights, blink/illusion/moonveil are all great defense options.  Milon Z’s Zombie race means that curative magic will harm him, so he can be a good target for excess cure2 items, or you might speed the fight up a lot by tossing cure3 potions.  
 ### Additional Notes
 Wizard hats, Sorcerer and White robes provide defense against Zombies, as do any part of Cecil’s Paladin or Crystal armor. Generally equipping any of those on a Cecil in the back row lets cover strats carry the day.  Also, the Crystal sword does extra damage against Zombies, as do White arrows.
 
@@ -314,6 +314,7 @@ The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 atta
 Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary mages get cured of piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk.
 ### Additional Notes
 To cut some time from the pre-fight cutscene, having your party each equipped with metal will automatically end the fight part of the cutscene. Alternatively, a party-wide stone cast can do wonders. Also, this is a great place to use a Kamikaze or two. As a quirk of the cutscene, no inventory changes actually stick, so items used will be returned.
+
 ")
                         .AddField("Damage Types", "Dark Elf: Fire, Ice, Lit\r\nDragon form: Physical, Fire (D.Breath)", inline: true)
                         .AddField("Resist", "Dragon form: Holy Absorb Blind Mute Pig Mini Frog Petrify KO Calcify 1 Calcify 2 Berserk Charm Sleep Stun Float Curse", inline: true)
