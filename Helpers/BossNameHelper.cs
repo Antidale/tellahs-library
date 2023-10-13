@@ -20,7 +20,8 @@ namespace tellahs_library.Helpers
                 || kaipo.Contains("package") => BossName.KaipoGuards,
 
             var octo when octo.Contains("octo")
-                || octo.Contains("mamm") => BossName.Octomamm,
+                || octo.Contains("mamm")
+                || octo.Contains("maam") => BossName.Octomamm,
 
             var antlion when antlion.Contains("antlion")
                 || antlion.StartsWith("ant")
@@ -36,14 +37,18 @@ namespace tellahs_library.Helpers
                 || gauntlet.Contains("gauntlet") => BossName.FabulGauntlet,
 
             var milon when milon.Equals("milon")
-                || milon.Contains("friends") => BossName.Milon,
+                || milon.Contains("friends") 
+                || milon.Contains("ordeals1") => BossName.Milon,
 
             var milonz when milonz.Contains("milonz")
-                || milonz.Contains("hades") => BossName.MilonZ,
+                || milonz.Contains("hades")
+                || milonz.Contains("back")
+                || milonz.Contains("ordeals2") => BossName.MilonZ,
 
             var dkc when dkc.Contains("cecil")
                 || dkc.Contains("dkc")
-                || dkc.Contains("mirror") => BossName.DarkKnightCecil,
+                || dkc.Contains("mirror") 
+                || dkc.Contains("ordeals3") => BossName.DarkKnightCecil,
 
             var baron when baron.Contains("baron") 
                 || baron.Contains("inn1") => BossName.BaronGuards,
@@ -57,6 +62,8 @@ namespace tellahs_library.Helpers
                 || baigan.Contains("arms") => BossName.Baigan,
 
             var kainazzo when kainazzo.Contains("turtle")
+                || kainazzo.StartsWith("cagn")
+                || kainazzo.Contains("kain")
                 || kainazzo.EndsWith("azzo") => BossName.Kainazzo,
 
             var darkElf when darkElf.Contains("elf") 
@@ -71,14 +78,17 @@ namespace tellahs_library.Helpers
                 || sisters.Contains("magus") => BossName.MagusSisters,
 
             var val when val.Contains("val")
+                || val.Contains("barb")
                 || val.Contains("iccia")
                 || val.Contains("tornado") => BossName.Valvalis,
 
             var dolls when dolls.Contains("dolls")
+                || dolls.Contains("cal")
                 || dolls.Contains("calbrena") => BossName.Calbrena,
 
             var golbez when golbez.EndsWith("bez")
                 || golbez.Contains("shadow")
+                || golbez.StartsWith("lol")
                 || golbez.Contains("haha") => BossName.Golbez,
 
             var dimps when dimps.Contains("imps") => BossName.DarkImps,
