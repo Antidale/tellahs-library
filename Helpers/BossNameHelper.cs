@@ -12,7 +12,8 @@ namespace tellahs_library.Helpers
                 .Replace("-", string.Empty)
                 .ToLower() switch
         {
-            var mist when mist.Contains("mist") => BossName.DMist,
+            var mist when mist.Contains("mist") 
+                || mist.Contains("derek") => BossName.DMist,
 
             var kaipo when kaipo.Contains("kaipo")
                 || kaipo.Contains("officer")
@@ -31,7 +32,8 @@ namespace tellahs_library.Helpers
             var waterhag when waterhag.Contains("water")
                 || waterhag.Contains("hag") => BossName.Waterhag,
 
-            var mombomb when mombomb.Contains("bomb") => BossName.MomBomb,
+            var mombomb when mombomb.Contains("bomb") 
+                || mombomb.Contains("mom") => BossName.MomBomb,
 
             var gauntlet when gauntlet.Contains("fabul")
                 || gauntlet.Contains("gauntlet") => BossName.FabulGauntlet,
@@ -96,7 +98,7 @@ namespace tellahs_library.Helpers
             var lugae when lugae.Contains("dr") 
                 || lugae.Contains("lugae")
                 || lugae.Contains("Balnab")
-                || lugae.Contains("My baby") => BossName.DrLugae,
+                || lugae.Contains("my baby") => BossName.DrLugae,
 
             var kqEbalan when kqEbalan.Contains("eblan")
                 || kqEbalan.Contains("parents")
@@ -111,7 +113,9 @@ namespace tellahs_library.Helpers
                 || cheater.Contains("evil")
                 || cheater.Contains("wall") => BossName.EvilWall,
 
-            var elements when elements.Contains("elements") => BossName.Elements,
+            var elements when elements.Contains("elements") 
+                || elements.Contains("four")
+                || elements.Contains("fiends") => BossName.Elements,
 
             var cpu when cpu.Contains("cpu")
                 || cpu.Contains("orbs")
@@ -130,7 +134,7 @@ namespace tellahs_library.Helpers
                 || bahamut.Contains("value") => BossName.Bahamut,
 
             var paleDim when paleDim.Contains("pale") 
-                || paleDim.Contains("Mura")
+                || paleDim.Contains("mura")
                 || paleDim.Contains("dim") => BossName.PaleDim,
 
             var vern when vern.Contains("blargh")
@@ -150,12 +154,13 @@ namespace tellahs_library.Helpers
             var ogopogo when ogopogo.Contains("ogo")
                 || ogopogo.Contains("noperope")
                 || ogopogo.Contains("pogo") 
-                || ogopogo.Contains("Masa") => BossName.Ogopogo,
+                || ogopogo.Contains("masa") => BossName.Ogopogo,
 
             var zeromus when zeromus.Contains("cosplay")
                 || zeromus.Equals("z")
                 || zeromus.Contains("z?")
-                || zeromus.Contains("zero") => BossName.Zeromus,
+                || zeromus.Contains("zero") 
+                || zeromus.Contains("butt") => BossName.Zeromus,
 
             _ => BossName.Unknown
         };

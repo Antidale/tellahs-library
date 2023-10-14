@@ -85,12 +85,13 @@ Antlion just Fights on their own turn, and will react with Counter on any charac
 ### Strats
 Blink/Illusion/Moonveil are the standard defensive package here, with a smattering of healing items or spells. Since Antlion will counter that command, which includes berserked characters, using other commands (e.g. Jump, Power, Aim) or magic to deal damage is generally preferred.
 ### Additional Notes
-The Counter reaction bases it's damage from the Physical stat at a location, and is stopped by neither Reflect nor Barrier status, so Moonveils/Blink/Illusion are useless against it
+The Counter reaction bases it's damage from the Physical stat at a location, and is stopped by neither Reflect nor Barrier status, so Moonveils/Blink/Illusion are useless against it.
+
 ")
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
-                
+
                 case BossName.Waterhag:
                     embedBuilder
                         .WithTitle("Waterhag")
@@ -100,11 +101,11 @@ The Counter reaction bases it's damage from the Physical stat at a location, and
 ### Fight Flow
 Waterhag only does normal Fight commands, and unless Bnofree is turned on, will die by any three instances of damage from the party.
 ### Strats
-Do fast attacks. Zerkers, especially people starting the fight with an avenger equipped, are great for helping end the fight quickly.
+Opt for fast attacks/spells. Zerkers are great, although prefer Avenger or Bacchus over casting the spell where possible. This is a great fight to use excess j-items that don't pack any punch anymore.
 ### Additional Notes
-When Bnofree is on, Waterhag only dies to damage, and never to the script. You can save some time by killing Waterhag with big damage at early spots, since you’ll be skipping some/most of the interactions with Anna.  Alternatively, you can get a lot of menu time to rearrange your inventory while Anna is talking to you.
+When Bnofree is on, Waterhag only dies to damage, never to the script. You can save some time by killing Waterhag with big damage at early spots, since you’ll be skipping some/most of the interactions with Anna.  Alternatively, you can get a lot of menu time to rearrange your inventory while Anna is talking to you.
 
-As with any fight that only does physical/Fight damage, moonveil will fully solve this encounter.
+As with any fight that only does physical/Fight damage, moonveil will fully solve this encounter.  Alternatively, RA1 parties at slow battle speeds can get all their actions in before waterhag takes a turn, which can help you take out Waterhag at high damage spots when you're at low level.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -132,7 +133,7 @@ None of the baby bombs have the boss bit, unless Bnofree is turned on.
                         .AddField("Resist", "Mombomb: None, Baby bombs: Poison, Pig, Mini, Frog", inline: true)
                         .AddField("Weakness", "Mombomb: Dark, Baby bombs: none", inline: true)
                         .AddField("Boss Bit", "Yes (Mombomb), No (baby bombs)", inline: true)
-                        .AddField("Additional Links",@"[GrayBomb](<https://wiki.ff4fe.com/doku.php?id=graybomb>), [Bomb](<https://wiki.ff4fe.com/doku.php?id=bomb>)", inline: true);
+                        .AddField("Additional Links", @"[GrayBomb](<https://wiki.ff4fe.com/doku.php?id=graybomb>), [Bomb](<https://wiki.ff4fe.com/doku.php?id=bomb>)", inline: true);
                     break;
 
                 case BossName.FabulGauntlet:
@@ -364,7 +365,7 @@ In a mage heavy composition, using Kain’s jump and timing the magical onslaugh
 It can be a good idea to carry some extra Heal potions for this fight when you have a limited party size, to help prevent your characters from fully becoming stone. You can also kill a character before they fully turn to stone and resurrect them to clear any partial calcification.
 
 Aim, Kick, Dark, Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock her out.
-Wyvern will not gate intended underground access unless Bunsafe is on
+Valvalis will not gate intended underground access unless Bunsafe is on.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -383,7 +384,7 @@ The small dolls will all attack, unless they’re down to one type (either Cal o
 ### Strats
 Quake is fantastic against the dolls at many spots, and Meteo can be too, although you’ll eat a lot of attack animations waiting for rocks to fall. The back dolls (Cals) don’t get the boss bit, so a common tactic is to toss an HrGlass, clean up the Brenas, then finish off the stopped enemies.  The main thing you mostly want to avoid in this fight is seeing the Big doll, so if you don’t have any way of Stopping the Cals, nor AoE damage to clear all of them together, you’ll want to kill off the dolls so that you can take out the last of each type at roughly the same time.
 ### Additional Notes
-Each Cal has about 12% of the spot’s hp, A Brena has about 4%, and Calbrena has about 54%.
+Each Cal has about 12% of the spot’s hp, each Brena has about 4%, and Calbrena has about 54%.
 
 ")
                         .AddField("Damage Types", "Physical, Fire, Ice, Bolt", inline: true)
@@ -685,7 +686,7 @@ Wyvern’s opening Meganuke often requires agility setups that let you get Refle
 Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use life potions to keep on even-ish footing. 
 ### Additional Notes
 Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). If you have Sylph, you can use that to help reflect more MegaNuke damage back at Wyvern.
-Wyvern will not gate intended underground access unless Bunsafe is on
+Wyvern will not gate intended underground access unless Bunsafe is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another randome enemy attack, with some protections to keep the opener milder than MegaNuke. Bunsafe removes those protections.
 
 ")
                         .AddField("Damage Types", "Magic", inline: true)
@@ -782,9 +783,8 @@ See the links below for some videos
                         .AddField("Damage Types", "Magic (Untyped, Holy)")
                         .AddField("Additional Links", "[Script Detail](<https://wiki.ff4fe.com/doku.php?id=zeromus_script>), [Eddy Strats](<https://docs.google.com/document/d/1Xw1vsN-OROShv4ZxPcStwJ1LsmFlPcZr3IIjOBSNEww/edit#heading=h.dvcyslrwgp71>), [Full party 1200 strats](<https://www.twitch.tv/videos/1051386268>), [2 character 1200 strats](<https://www.twitch.tv/videos/1051391891>)")
                         .AddField("Boss Bit", "Yes");
-
                     break;
-                    
+
                 case BossName.Unknown:
                 default:
                     embedBuilder.WithTitle("Interlibrary Loan Requested")
