@@ -8,10 +8,15 @@ var discord = new DiscordClient(new DiscordConfiguration
 {
     Token = token,
     TokenType = TokenType.Bot,
-    Intents = DiscordIntents.AllUnprivileged
+    Intents = DiscordIntents.AllUnprivileged,
 });
 
 var slash = discord.UseSlashCommands();
+
+//Register test commands for the bot's server
+slash.RegisterCommands<Tournament>(1153453420649402438);
+
+//Register global commands
 slash.RegisterCommands<Recall>();
 slash.RegisterCommands<BossRecall>();
 
