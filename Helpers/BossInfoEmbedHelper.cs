@@ -63,9 +63,9 @@ Octomamm only uses physical attacks. After the third time you deal damage to her
 ### Strats
 Overall a pretty basic fight. The more you hit Octomamm, the slower she gets. Berserk status and fast spells are all very helpful in slowing the squid. Once you’ve gotten a few tentacles removed, mages with Lit3 and no nuke probably really like switching from Virus to Lit3.
 ### Additional Notes
-A moonveil used against Octomamm means the fight is entirely free. This fight has a bit more value than normal to slowing down the battle speed, since it’s pretty easy to get more commands in before each time Octomamm attacks on slower speeds, which then makes Octo slower.  Blink and Illusion can be huge in helping set up/stabilize in underleveled fights
+A moonveil used against Octomamm means the fight is entirely free. If the fight's in a challenging spot, a SilkWeb or a double slow helps out in this fight, since the slow effect from those gets amplified by the tentacle loss. If you're having trouble getting started slowing down the battle speed a notch or two can help get in extra early attacks, which'll have some cascading benefits.  Blink and Illusion can be huge in helping set up/stabilize in underleveled fights.
 
-Yang really loves equipping a thunder claw here, and the more unequal Edge’s equips are, the more he wants to, too.
+Yang really loves equipping a thunder claw here, and the more unequal Edge’s equips are, the more he wants one, too.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -292,11 +292,13 @@ Making good use of Cover in this fight can be a little difficult, since Cecil ca
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Kainazzo.png")
                         .WithDescription(
 @"### Fight Flow
-Kainazzo begins the fight with a punch, then enters a cycle where he gathers water, uses Wave, and then self-targets a Fast cast. Using lightning based magic will cause the water to dispel, and Kainazzo queue a punch the next time he queues an action. When damaged, but not killed, at low HP, Kainazzo will retreat into his shell, dispelling the water. On his turn in hiding, he’ll use 
+Kainazzo begins the fight with a punch, then enters a cycle where he gathers water, uses Wave, and then self-targets a Fast cast. Using lightning based magic will cause the water to dispel, and Kainazzo queue a punch the next time he queues an action. When damaged, but not killed, at low HP, Kainazzo will retreat into his shell, dispelling the water. On his turn in hiding, he’ll use Remedy to heal, and set himself up to gather water again.
 ### Strats
 This is a fight where location significantly dictates tactics. At spots where your party can’t ever reasonably survive the first Wave (often the 2nd boss on the hook route, or the first spot in the Giant), your first turns should be working towards both setting up long term goals (getting a berserker online, getting blink up, tossing a silkweb), and making sure that the water is dispelled before the Wave usage gets queued.
 ### Additional Notes
-At high HP spots, or if your damage is low for the location, you can find yourself in loop where the Remedy action outpaces your ability to do damage
+At high HP spots, or if your damage is low for the location, you can find yourself in a loop where the Remedy action outpaces your ability to do damage. If that’s happening while you only have zerked characters, you should probably reset and either try again to have more people up and fighting at the end, or come back after getting a few more levels.
+
+Timing to dissipate the water before a Wave can be queued can be tricky, so slower battle speeds might be necessary. You can also time queuing up an item toss with the punch so that the item gets used just after the water is gathered.
 
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic (Wave)", inline: true)
@@ -315,7 +317,7 @@ The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 atta
 ### Strats
 Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary mages get cured of piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk.
 ### Additional Notes
-To cut some time from the pre-fight cutscene, having your party each equipped with metal will automatically end the fight part of the cutscene. Alternatively, a party-wide stone cast can do wonders. Also, this is a great place to use a Kamikaze or two. As a quirk of the cutscene, no inventory changes actually stick, so items used will be returned.
+To cut some time from the pre-fight cutscene, having your party each equipped with metal will automatically end the fight part of the cutscene. Alternatively, a party-wide stone cast can do wonders. Also, this is a great place to use a Kamikaze or two to help in eliminating your party as fast as possible (and remember that you can Kamikaze into another one of your party members!). As a quirk of the cutscene, no inventory changes actually stick, so items used will be returned.
 
 ")
                         .AddField("Damage Types", "Dark Elf: Fire, Ice, Lit\r\nDragon form: Physical, Fire (D.Breath)", inline: true)
@@ -364,7 +366,7 @@ In a mage heavy composition, using Kain’s jump and timing the magical onslaugh
 ### Additional Notes
 It can be a good idea to carry some extra Heal potions for this fight when you have a limited party size, to help prevent your characters from fully becoming stone. You can also kill a character before they fully turn to stone and resurrect them to clear any partial calcification.
 
-Aim, Kick, Dark, Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock her out.
+Aim, Kick, Dark, Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock her out of tornado form.
 Valvalis will not gate intended underground access unless Bunsafe is on.
 
 ")
@@ -432,9 +434,9 @@ After the first fight ends, a second begins, with another Dr Lugae form. This fi
 ### Strats
 The first fight gives you a decent bit of setup time, and also has fairly limited damage potential. You do want to decide early on if you think you’re able to take down both Lugae and Balnab, or if you want to focus fire on one and just accept Balnab-Z into your life. Having good AoE (Quake, Levi, Baham) should lean you towards taking out both in the first fight, where having only one strong damage source might indicate that Balnab-Z is a good option.
 
-Once into the second fight, lean on your big damage dealers pretty heavily. With RA1 setups, you’re unlikely to get a berserk cast off before the Poison blocks it, so don’t count on that landing. Laser can be a major issue at high HP spots. For the most part, though, even the second fight isn’t too scary if you take your time and manage resources well.
+Once into the second fight, lean on your big damage dealers pretty heavily. With RA1 setups, you’re unlikely to get a berserk cast off before the Poison blocks it, so don’t count on that landing. Lugae’s Laser ability can be a major issue at high HP spots. For the most part, though, even the second fight isn’t too scary if you take your time and manage resources well.
 
-The robot race on both Balnab and the second Dr Lugae means that thunderclaws do great work, and also that Cid can do some really heavy lifting in the fights.  
+The robot race on both Balnab and the second Dr Lugae means that Thunder claws do great work, and also that Cid can do some really heavy lifting in the fights.  
 ### Additional Notes
 Walls will reflect both Beam and Emission, and will block Laser, which makes it very handy at high hp spots, or if the party is underleveled.  Underleveled parties should also make liberal use of Heal if the Gas counters land. Limiting how many characters are dealing damage limits the Gas counters, as well as frees up characters for opportunistic potion (heal/cure/life) usage to keep the party up and going.
 
@@ -474,9 +476,9 @@ If Bnofree is enabled, Cover strats can become one of the best helpers for the f
 @"### Fight Flow
 K Eblan will cast Fire 2 three times before switching the music and then dying on his next turn. Q Eblan will cast Fire1 until she's alone, and then queues Vanish the next time she is able to queue an action.
 ### Strats
-If you can deal enough damage to kill the king, you can save both time and minor amounts of healing. Otherwise
+Wait out the damage from the spells, healing if necessary and watch them disappear. 
 ### Additional Notes
-The fire damage is generally only a threat while at base levels. Even when Bnofree is turned on, you only need minor amounts of healing to get through the fight. 
+Since the Queen will disappear after the King does, you can sometimes speed up the fight by killing him. If Bnofree is on, they’ll skip their initial dialog at the beginning of the fight, which can be a handy tell in a mystery seed.
 
 ")
                         .AddField("Damage Types", "Fire", inline: true)
@@ -514,13 +516,13 @@ On his own, Rubicant generally uses single-target damage, so underleveled partie
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/EvilWall.png")
                         .WithDescription(
 @"### Fight Flow
-Evil wall will punch 16 times, then switch to using Crush. Since the punching phase uses chained commands to keep the “advance, punch” combination together, Evil Wall effectively acts as though it’s berserked during this phase. No atb cheating shenanigans happen during the Crush phase.
+EvilWall will punch 16 times, then switch to using Crush. Since the punching phase uses chained commands to keep the “advance, punch” combination together, Evil Wall effectively acts as though it’s berserked during this phase. No atb cheating shenanigans happen during the Crush phase.
 
-Evil wall will counter any magic usage with a Petrify counter, so mage heavy compositions can run into some trouble with the Stone condition if they’re reliant on low damage per cast spells. 
+EvilWall will counter any magic usage affecting it with a Petrify counter, so mage heavy compositions can run into some trouble with the Stone condition if they’re reliant on low damage per cast spells. 
 ### Strats
-Berserk status does wonders for helping mitigate Evil Wall’s ATB shenanigans with using a chain for its actions. Good defensive gear and using the backrow glitch will help keep party members alive, and using blink/illusion helps a lot too. If you’ve a moonveil and instant death protection, one character can be immune from any of Evil Wall’s actions.
+Berserk status does wonders for helping mitigate EvilWall’s ATB shenanigans with using a chain for its actions. Good defensive gear and using the backrow glitch will help keep party members alive, and using blink/illusion helps a lot too. If you’ve a moonveil and instant death protection, one character can be immune from any of EvilWall’s actions.
 ### Additional Notes
-Evil Wall will punch itself if there are no valid PC targets to hit. In some places you can use this along with Eddy’s hide command to let Evil Wall kill itself, or with the aid of a Ribbon or Adamant armor to prevent the instant death effect from Crush, let Eddy come out of hiding once the fight is in Crush phase to finish the job.
+EvilWall will punch itself if there are no valid PC targets to hit. In some places you can use this along with Eddy’s hide command to let Evil Wall kill itself, or with the aid of a Ribbon or Adamant armor to prevent the instant death effect from Crush, let Eddy come out of hiding once the fight is in Crush phase to finish the job.
 ")
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Additional Links", "[Eddy Vs EvilWall](<https://docs.google.com/spreadsheets/d/1TQY6hGjqkC1NQGDv_M0pzPQa2xZZlAT7rzCzCNLyX1g>)", inline: true)
