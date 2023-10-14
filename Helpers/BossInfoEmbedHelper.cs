@@ -43,7 +43,7 @@ The officer will command the soldiers to fight, causing them to react to the com
 ### Strats
 By default, no enemies in this fight have the boss bit, and so the fight can be easily one with either a coffin targeting the officer, or an hourglass.
 ### Additional Notes
-Each soldier has roughly 9% of the location's total hp. When *Bunsafe* is turned on, all the enemies will have a boss bit.
+Each soldier has roughly 9% of the location's total hp. When *Bnofree* is turned on, all the enemies will have a boss bit.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -98,11 +98,11 @@ The Counter reaction bases it's damage from the Physical stat at a location, and
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/waterhag.png")
                         .WithDescription(@"
 ### Fight Flow
-Waterhag only does normal Fight commands, and unless Bunsafe is turned on, will die by any three instances of damage from the party.
+Waterhag only does normal Fight commands, and unless Bnofree is turned on, will die by any three instances of damage from the party.
 ### Strats
 Do fast attacks. Zerkers, especially people starting the fight with an avenger equipped, are great for helping end the fight quickly.
 ### Additional Notes
-When Bunsafe is on, Waterhag only dies to damage, and never to the script. You can save some time by killing Waterhag with big damage at early spots, since you’ll be skipping some/most of the interactions with Anna.  Alternatively, you can get a lot of menu time to rearrange your inventory while Anna is talking to you.
+When Bnofree is on, Waterhag only dies to damage, and never to the script. You can save some time by killing Waterhag with big damage at early spots, since you’ll be skipping some/most of the interactions with Anna.  Alternatively, you can get a lot of menu time to rearrange your inventory while Anna is talking to you.
 
 As with any fight that only does physical/Fight damage, moonveil will fully solve this encounter.
 
@@ -125,6 +125,7 @@ Deal damage quickly, and when Mombomb starts the explode sequence, either stop d
 Mombomb has 64% the spot's hp total, plus an additional 10,000 hp. 
 Bombs have 4% the spot's hp total, and they get both mdef and mevade
 Grey Bombs have 8% the spot's hp total, and get neither mdef nor mevade
+None of the baby bombs have the boss bit, unless Bnofree is turned on.
 
 ")
                         .AddField("Damage Types", "Physical, Fire (explode, Mombomb), Untyped Magic (explode, baby bombs)", inline: true)
@@ -217,7 +218,7 @@ Dark Knight Cecil will use Dark Wave on the whole party three times, give a shor
 ### Strats
 Sit back and accept a little damage. In places where the damage outpaces your hp, fast healing goes a long way.  Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. 
 ### Additional Notes
-When Bunsafe is on, you have to kill DKC, he’ll never stop waving.  
+When Bnofree is on, you have to kill DKC, and DKC cannot gate intended underground access unless Bunsafe is also on.
 
 ")
                         .AddField("Damage Types", "Untyped, based on Physical stat", inline: true)
@@ -255,7 +256,7 @@ Karate alternates between using Fight and Kick. After Karate queues the second k
 ### Strats
 Generally normal strategies for dealing damage and handling incoming physical attacks apply.  Cover strats don’t often work to keep the whole party alive, since Kick will deal AoE damage that ignores barrier/blink status and can do enough to kill party members that have low hp.
 ### Additional Notes
-Bunsafe removes the Ouch reaction, so you’ll have to fight the fight straight up.
+Bnofree removes the Ouch reaction, so you’ll have to fight the fight straight up.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -363,6 +364,8 @@ In a mage heavy composition, using Kain’s jump and timing the magical onslaugh
 It can be a good idea to carry some extra Heal potions for this fight when you have a limited party size, to help prevent your characters from fully becoming stone. You can also kill a character before they fully turn to stone and resurrect them to clear any partial calcification.
 
 Aim, Kick, Dark, Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock her out.
+Wyvern will not gate intended underground access unless Bunsafe is on
+
 ")
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Additional Links", "[Tornado Defense](<https://docs.google.com/spreadsheets/d/1tVQFvlQ_4oWCn0EE9d7QAGrYW3w2IbZzuO2MWuUC8ww>)", inline: true)
@@ -406,6 +409,7 @@ Characters wearing a Ribbon or Adamant armor are immune to Shadow’s demolish, 
 Depending on your damage output, you can sometimes just let Golbez do the damage to himself and have anyone trigger the finishing script. Cecil with a Holy weapon often speeds up finishing out the fight very quickly.
 ### Additional Notes
 High magic spots might seem scary, but can be a great way to leverage some early XP, since Golbez will do most of the work. The Asura spot in the Feymarch, or the Ogopogo (Masamune altar) spot are two notable examples of this. Other spots, like the White Spear altar (Plague’s spot) or the top of Lower Babil (Lugae’s spot), that have very low magic damage means that you can often just forgo using any walls at all.
+Goblez will not gate intended underground access unless Bunsafe is turned on.
 
 ")
                         .AddField("Damage Types", "Bolt, Fire, Untyped Magic", inline: true)
@@ -451,9 +455,9 @@ The dark imps fight. That’s it.
 ### Strats
 At many spots, Quake is a very effective spell since it does not have any damage split for hitting multiple enemies. Berserk is generally a great ability, but sometimes you might have a need to focus fire in order to reduce incoming damage by killing one imp ASAP. For defense, the standard blink/illusion/moonveil are always applicable for this fight.
 ### Additional Notes
-An HrGlass, or landing a Stone, Size or Toad spell will win (or effectively win) the fight with the Dark Imps while Bunsafe is off. Since Size and Toad do persist when Life2 is used, when the fight is at high XP spots (ribbon room or either giant location especially) you can do an extended, d.machine like grind if you have access to that spell.
+An HrGlass, or landing a Stone, Size or Toad spell will win (or effectively win) the fight with the Dark Imps while Bnofree is off. Since Size and Toad do persist when Life2 is used, when the fight is at high XP spots (ribbon room or either giant location especially) you can do an extended, d.machine like grind if you have access to that spell.
 
-If Bunsafe is enabled, Cover strats can become one of the best helpers for the fight when your party is underleveled.
+If Bnofree is enabled, Cover strats can become one of the best helpers for the fight when your party is underleveled.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -462,7 +466,7 @@ If Bunsafe is enabled, Cover strats can become one of the best helpers for the f
 
                 case BossName.KingQueenEblan:
                     embedBuilder
-                        .WithTitle("King/Quen Eblan")
+                        .WithTitle("King/Queen Eblan")
                         .WithUrl("https://wiki.ff4fe.com/doku.php?id=k.eblan")
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Eblan.png")
                         .WithDescription(
@@ -471,7 +475,7 @@ K Eblan will cast Fire 2 three times before switching the music and then dying o
 ### Strats
 If you can deal enough damage to kill the king, you can save both time and minor amounts of healing. Otherwise
 ### Additional Notes
-The fire damage is generally only a threat while at base levels. Even when Bunsafe is turned on, you only need minor amounts of healing to get through the fight. 
+The fire damage is generally only a threat while at base levels. Even when Bnofree is turned on, you only need minor amounts of healing to get through the fight. 
 
 ")
                         .AddField("Damage Types", "Fire", inline: true)
@@ -681,6 +685,8 @@ Wyvern’s opening Meganuke often requires agility setups that let you get Refle
 Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use life potions to keep on even-ish footing. 
 ### Additional Notes
 Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). If you have Sylph, you can use that to help reflect more MegaNuke damage back at Wyvern.
+Wyvern will not gate intended underground access unless Bunsafe is on
+
 ")
                         .AddField("Damage Types", "Magic", inline: true)
                         .AddField("Race", "Dragon", inline: true)
