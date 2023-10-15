@@ -317,7 +317,7 @@ The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 atta
 ### Strats
 Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary mages get cured of piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk.
 ### Additional Notes
-To cut some time from the pre-fight cutscene, having your party each equipped with metal will automatically end the fight part of the cutscene. Alternatively, a party-wide stone cast can do wonders. Also, this is a great place to use a Kamikaze or two to help in eliminating your party as fast as possible (and remember that you can Kamikaze into another one of your party members!). As a quirk of the cutscene, no inventory changes actually stick, so items used will be returned.
+The dragon form lacks the boss bit, and while it does have some status resistances, it won't resist Stop (or an HrGlass), or the weak spell. The fight can be really sped up with a properly timed Weak cast.
 
 ")
                         .AddField("Damage Types", "Dark Elf: Fire, Ice, Lit\r\nDragon form: Physical, Fire (D.Breath)", inline: true)
