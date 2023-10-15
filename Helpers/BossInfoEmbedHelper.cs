@@ -298,7 +298,7 @@ This is a fight where location significantly dictates tactics. At spots where yo
 ### Additional Notes
 At high HP spots, or if your damage is low for the location, you can find yourself in a loop where the Remedy action outpaces your ability to do damage. If that’s happening while you only have zerked characters, you should probably reset and either try again to have more people up and fighting at the end, or come back after getting a few more levels.
 
-Timing to dissipate the water before a Wave can be queued can be tricky, so slower battle speeds might be necessary. You can also time queuing up an item toss with the punch so that the item gets used just after the water is gathered.
+The timing to dissipate the water before a Wave can be queued can be tricky, so slower battle speeds might be necessary. You can also time queuing up an item toss with the punch so that the item gets used just after the water is gathered.
 
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic (Wave)", inline: true)
@@ -688,7 +688,7 @@ Wyvern’s opening Meganuke often requires agility setups that let you get Refle
 Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use life potions to keep on even-ish footing. 
 ### Additional Notes
 Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). If you have Sylph, you can use that to help reflect more MegaNuke damage back at Wyvern.
-Wyvern will not gate intended underground access unless Bunsafe is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another randome enemy attack, with some protections to keep the opener milder than MegaNuke. Bunsafe removes those protections.
+Wyvern will not gate intended underground access unless Bunsafe is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another random enemy attack, with some protections to keep the opener milder than MegaNuke. Bunsafe removes those protections.
 
 ")
                         .AddField("Damage Types", "Magic", inline: true)
