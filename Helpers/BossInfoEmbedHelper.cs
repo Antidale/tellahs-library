@@ -149,7 +149,7 @@ A Vanilla Gauntlet generally poses little threat, since the total HP of the loca
 ### Additional Notes
 The `alt:gauntlet` flag replaces the fights outlined above with five fights drawn from the area around the boss location, or one of applicable power level (e.g. the Baron Basement boss draws from the same pool as the Leviatan or Asura spots). 
 
-Moon locations are great xp for the Alt Gauntlet, but also can be large time sinks or highly challenging. The Super Cannon gauntlet is very rude compared to normal bosses there, and for that location as well as either boss in Zot, you'll want to bring some source of magic damage to handle pudding type enemies.
+Moon locations are great XP for the Alt Gauntlet, but also can be large time sinks or highly challenging. The Super Cannon gauntlet is very rude compared to normal bosses there, and for that location as well as either boss in Zot, you'll want to bring some source of magic damage to handle pudding type enemies.
 
 See [Alt Gauntlets](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>) for specifics on each location. 
 
@@ -341,7 +341,7 @@ Quake, Meteo, and most of Rydia’s summons do pretty well here, since they all 
 
 Parties with a Nuke caster can, with proper anchoring and party order, can sometimes kill Sandy first, preventing a wall from going on Cindy, which can help make the start of the fight more manageable.
 ### Additional Notes
-While Cindy has more HP than her sisters in the fight, each sister awards one-third of the spot’s xp, which can make the sisters a good grind. And since they have a mage weakness, there can be a leeway where it’s a reasonable mini-grind. 
+While Cindy has more HP than her sisters in the fight, each sister awards one-third of the spot’s XP, which can make the sisters a good grind. And since they have a mage weakness, there can be a leeway where it’s a reasonable mini-grind.
 
 Lower level parties might want to avoid using berserk, since it can spread out damage too much, and leave you taking both punches from Cindy, and reflected spells from Mindy. The Dragoon armor set provides good elemental protection for those that can wear it, as does the Crystal Helm and Protect rings. Also don’t discount the Lit resistance from Diamond Rings or Sorcerer robes. When you’re under leveled for the fight, making any of the spells be less dangerous is really helpful. Having a Headband for Charm resistance can also save you when Cindy’s gone and Sandy starts slinging spells at the party.
 ")
