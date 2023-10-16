@@ -458,7 +458,7 @@ The dark imps fight. That’s it.
 ### Strats
 At many spots, Quake is a very effective spell since it does not have any damage split for hitting multiple enemies. Berserk is generally a great ability, but sometimes you might have a need to focus fire in order to reduce incoming damage by killing one imp ASAP. For defense, the standard Blink/Illusion/MoonVeil are always applicable for this fight.
 ### Additional Notes
-An HrGlass, or landing a Stone, Size or Toad spell will win (or effectively win) the fight with the Dark Imps while `Bnofree` is off. Since Size and Toad do persist when Life2 is used, when the fight is at high XP spots (ribbon room or either giant location especially) you can do an extended, d.machine like grind if you have access to that spell.
+An HrGlass, or landing a Stone, Size or Toad spell will win (or effectively win) the fight with the Dark Imps while `Bnofree` is off. Since Size and Toad do persist when Life2 is used, when the fight is at high XP spots (ribbon room or either giant location especially) you can do an extended, D.Machin-like grind if you have access to those spells.
 
 If `Bnofree` is enabled, Cover strats can become one of the best helpers for the fight when your party is underleveled.
 
