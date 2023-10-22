@@ -43,7 +43,7 @@ The Officer will command the Soldiers, causing them to react to the command and 
 ### Strats
 By default, no enemies in this fight have the boss bit, and so the fight can be easily won with either a Coffin targeting the Officer, an HrGlass, or quick AoE to clear the Soldiers.
 ### Additional Notes
-Each soldier has roughly 9% of the location's total hp. When `Bnofree` is turned on, all the enemies will have a boss bit.
+Each soldier has roughly 9% of the location's total HP. When `Bnofree` is turned on, all the enemies will have a boss bit.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -119,7 +119,7 @@ When `Bnofree` is on you can save some time by killing WaterHag with big damage 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Mombomb.png")
                         .WithDescription(@"
 ### Fight Flow
-MomBomb starts the fight just doing physical damage. When below 10,000 HP (see Additional Notes for details), MomBomb begins a sequence where the next turns are an empty turn with a battle message, and then using Explode, dealing damage to the party and being replaced with 3 Bombs and 3 Grey Bombs. After they each attack twice, the baby bombs will explode for their current HP to a targeted party member.
+MomBomb starts the fight just doing physical damage. When below an HP threshold (see Additional Notes for details), MomBomb begins a sequence where the next turns are an empty turn with a battle message, and then using Explode, dealing damage to the party and being replaced with 3 Bombs and 3 Grey Bombs. After they each attack twice, the baby bombs will explode for their current HP to a targeted party member.
 ### Strats
 Deal damage quickly, and when MomBomb starts the explode sequence, either stop dealing damage and set up for killing the baby bombs, or try to push through the extra HP and skip the explode/baby bomb phase of the fight entirely. For lower level strats, you’ll focus on dealing damage and surviving MomBomb’s attacks, then heal up and prep your handling of the baby bombs, which is often an HrGlass or a source of AoE damage.
 ### Additional Notes
@@ -217,7 +217,7 @@ Wizard hats, Sorcerer and White robes provide defense against Zombies, as does a
 @"### Fight Flow
 Dark Knight Cecil will use Dark Wave on the whole party three times, give a short speech, and then disappear. If you use Fight (Avenger/Berserk counts), the “three times” count resets. 
 ### Strats
-Sit back and accept a little damage. In places where the damage outpaces your hp, fast healing goes a long way. Cure3/Elixir can be fight-savers, and slowing the battle speed an let you get more healing in between Dark Waves. Also consider who's going to survive a wave to target with healing so you can assure victory or maybe get another character XP. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. Finally, Jump can help evade a round of damage, since characters in the air won't be hit by Dark Wave, and the command doesn't count as Fight
+Sit back and accept a little damage. In places where the damage outpaces your HP, fast healing goes a long way. Cure3/Elixir can be fight-savers, and slowing the battle speed can let you get more healing in between Dark Waves. Also consider who's going to survive a wave to target with healing so you can assure victory or maybe get another character XP. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. Finally, Jump can help evade a round of damage, since characters in the air won't be hit by Dark Wave, and the command doesn't count as Fight
 ### Additional Notes
 When `Bnofree` is on, you have to kill DKC, and DKC cannot gate intended underground access unless `Bunsafe` is also on.
 
@@ -255,7 +255,7 @@ At high XP spots, Life glitches, or even a Life2 grind, can be very welcome infu
 @"### Fight Flow
 Karate alternates between using Fight and Kick. After Karate queues the second kick, any Paladin Cecil using Fight will cause Karate to say “Ouch” and perish.
 ### Strats
-Generally normal strategies for dealing damage and handling incoming physical attacks apply. Cover strats don’t often work to keep the whole party alive, since Kick will deal AoE damage that ignores Barrier/Blink status and can do enough to kill party members that have low hp.
+Generally normal strategies for dealing damage and handling incoming physical attacks apply. Cover strats don’t often work to keep the whole party alive, since Kick will deal AoE damage that ignores Barrier/Blink status and can do enough to kill party members that have low HP.
 ### Additional Notes
 `Bnofree` removes the Ouch reaction, so you’ll have to fight the fight straight up.
 
@@ -382,11 +382,11 @@ Valvalis will not gate intended underground access unless `Bunsafe` is on.
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Calcabrina.png")
                         .WithDescription(
 @"### Fight Flow
-The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. At very low hp, if Calbrena takes damage, the big doll will revert back to the 3 Cal/3 Brena formation. 
+The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. At very low HP, if Calbrena takes damage, the big doll will revert back to the 3 Cal/3 Brena formation. 
 ### Strats
 Quake is fantastic against the dolls at many spots, and Meteo can be too, although you’ll eat a lot of attack animations waiting for rocks to fall. The back dolls (Cals) don’t get the boss bit, so a common tactic is to toss an HrGlass, clean up the Brenas, then finish off the stopped enemies. The main thing you mostly want to avoid in this fight is seeing the Big doll, so if you don’t have any way of Stopping the Cals, nor AoE damage to clear all of them together, you’ll want to kill off the dolls so that you can take out the last of each type at roughly the same time.
 ### Additional Notes
-Each Cal has about 12% of the spot’s hp, each Brena has about 4%, and Calbrena has about 54%.
+Each Cal has about 12% of the spot’s HP, each Brena has about 4%, and Calbrena has about 54%.
 
 ")
                         .AddField("Damage Types", "Physical, Fire, Ice, Bolt", inline: true)
@@ -497,7 +497,7 @@ Rubicant cycles through actions of opening his cloak (which gives an Ice weaknes
 
 Rubicant reacts to all times a character uses Fight with a party-wide Fire2 counter. If he’s below 4% of the spot’s health and gets hit with Fight, instead of that Fire2 counter, he’ll give a small speech and disappear. He’ll also react to usage of fire magic with using Life1 on the whole party. 
 ### Strats
-Equipping melee characters with ice weapons (IceBrand, Ice Claw, Blizzard spear, Ice arrows, &etc) will hit a script-induced 4x weakness throughout the fight once Rubi opens his cloak. Depending on the spot’s magic power and your party hp/fire resists, you might opt to just use berserk on a physical fighter equipped with an ice weapon and either tank or heal through the counters, or you can make use of the Fight alternatives (Power, Jump, Aim) in order to not draw the counters.
+Equipping melee characters with ice weapons (IceBrand, Ice Claw, Blizzard spear, Ice arrows, &etc) will hit a script-induced 4x weakness throughout the fight once Rubi opens his cloak. Depending on the spot’s magic power and your party's HP/amount of Fire resistance gear equipped, you might opt to just use berserk on a physical fighter equipped with an ice weapon and either tank or heal through the counters, or you can make use of the Fight alternatives (Power, Jump, Aim) in order to not draw the counters.
 
 Casters should generally lean towards using fast spells, like Virus, Quake, and Nuke most of the fight, but timing Ice3 to land when the cloak is open is definitely a skill to learn. Boreas and Blizzard items are great to toss and land while the cloak is open, especially with high HP characters who might not have ice element weapons equipped.
 ### Additional Notes
@@ -735,7 +735,7 @@ Using Fight alternatives (Power, Jump, Aim, Dart) for melee-heavy parties is sta
 
 At many locations, Crystal Sword users can change the calculus on whether or not to use the berserk status, but this can be a highly RNG dependent strategy. Supplementing that damage with Quake, or starting off with other sources of damage to reduce the amount of Virus spells your party might face. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
 ### Additional Notes
-Low level parties (and in locations with either high magic attack, high hp, or both) will consider Walls to reflect the Breath spell back on the enemies. A D. Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D. Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
+Low level parties (and in locations with either high Magic attack, high HP, or both) will consider Walls to reflect the Breath spell back on the enemies. A D. Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D. Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
 
 ")
                         .AddField("Damage Types", "Physical, Fire", inline: true)
