@@ -119,9 +119,9 @@ When `Bnofree` is on you can save some time by killing WaterHag with big damage 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Mombomb.png")
                         .WithDescription(@"
 ### Fight Flow
-MomBomb starts the fight just doing physical damage. When below 10,000 HP, MomBomb begins a sequence where the next turns are an empty turn with a battle message, and then using Explode, dealing damage to the party and being replaced with 3 Bombs and 3 Grey Bombs. After they each attack twice, the baby bombs will explode for their current HP to a targeted party member.
+MomBomb starts the fight just doing physical damage. When below 10,000 HP (see Additional Notes for details), MomBomb begins a sequence where the next turns are an empty turn with a battle message, and then using Explode, dealing damage to the party and being replaced with 3 Bombs and 3 Grey Bombs. After they each attack twice, the baby bombs will explode for their current HP to a targeted party member.
 ### Strats
-Deal damage quickly, and when MomBomb starts the explode sequence, either stop dealing damage and set up for killing the baby bombs, or try to push through the extra HP and skip the explode/baby bomb phase of the fight entirely. For lower level strats, you’ll focus on dealing damage and surviving MomBomb’s attacks, then heal up and prep your handling of the baby bombs, which is often an hourglass or a source of AoE damage.
+Deal damage quickly, and when MomBomb starts the explode sequence, either stop dealing damage and set up for killing the baby bombs, or try to push through the extra HP and skip the explode/baby bomb phase of the fight entirely. For lower level strats, you’ll focus on dealing damage and surviving MomBomb’s attacks, then heal up and prep your handling of the baby bombs, which is often an HrGlass or a source of AoE damage.
 ### Additional Notes
 MomBomb has 64% the spot's HP total, plus an additional 10,000 HP (up to a max of 65,000 HP). 
 Bombs have 4% the spot's HP total.
@@ -143,15 +143,15 @@ None of the baby bombs have the boss bit, unless `Bnofree` is turned on.
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Gauntlet.png")
                         .WithDescription(
 @"### Fight Flow
-The vanilla Fabul Gauntlet consist of six consecutive fights. The first, third, and sixth fight are against a General/2x Fighter composition, the second and fifth have a Weeper, WaterHag, and Imp Captain, and the fourth fight is against a solo Gargoyle.
+The vanilla Fabul Gauntlet consists of six consecutive fights. The first, third, and sixth fights are against a General/2x Fighter composition, the second and fifth have a Weeper, WaterHag, and Imp Captain, and the fourth fight is against a solo Gargoyle.
 ### Strats
-A Vanilla Gauntlet generally poses little threat, since the total HP of the location is spread out among all six fights. Likewise, it is not rewarding to use the Life glitch for extra experience as XP is similarly split. AoE damage is fantastic in this fight, and the Tier 2 j-items carry pretty far into the game for this boss. Very high Physical damage spots can pose some trouble to low-level parties, but an HrGlass can bring you time to recover. Cover is also solid.
+A vanilla Gauntlet generally poses little threat, since the total HP of the location is spread out among all six fights. Likewise, it is not rewarding to use the Life glitch for extra experience as XP is similarly split. AoE damage is fantastic in this fight, and the Tier 2 j-items carry pretty far into the game for this boss. Very high Physical damage spots can pose some trouble to low-level parties, but an HrGlass can bring you time to recover. Cover is also solid.
 ### Additional Notes
-The `alt:gauntlet` flag replaces the fights outlined above with five fights drawn from the area around the boss location, or one of applicable power level (e.g. the Baron Basement boss draws from the same pool as the Leviatan or Asura spots). 
+The `alt:gauntlet` flag replaces the fights outlined above with five fights drawn from the area around the boss location, or one of applicable power level (e.g. the Baron Basement boss draws from the Land of Summoned Monsters, like both Feymarch boss fights).
 
-Moon locations are great XP for the Alt Gauntlet, but also can be large time sinks or highly challenging. The Super Cannon gauntlet is very rude compared to normal bosses there, and for that location as well as either boss in Zot, you'll want to bring some source of magic damage to handle pudding type enemies.
+Moon locations are great XP for the Alt Gauntlet, but also can be large time sinks or highly challenging. The Super Cannon gauntlet is very rude compared to normal bosses there, and for all fights in Lower Babil and the Tower of Zot, you'll want to bring some source of magic damage to handle pudding type enemies.
 
-See [Alt Gauntlets](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>) for specifics on each location. 
+See [Alt Gauntlets](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>) for specifics on each location.
 
 ")
                         .AddField("Additional Links",
@@ -217,7 +217,7 @@ Wizard hats, Sorcerer and White robes provide defense against Zombies, as does a
 @"### Fight Flow
 Dark Knight Cecil will use Dark Wave on the whole party three times, give a short speech, and then disappear. If you use Fight (Avenger/Berserk counts), the “three times” count resets. 
 ### Strats
-Sit back and accept a little damage. In places where the damage outpaces your hp, fast healing goes a long way. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. 
+Sit back and accept a little damage. In places where the damage outpaces your hp, fast healing goes a long way. Cure3/Elixir can be fight-savers, and slowing the battle speed an let you get more healing in between Dark Waves. Also consider who's going to survive a wave to target with healing so you can assure victory or maybe get another character XP. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. Finally, Jump can help evade a round of damage, since characters in the air won't be hit by Dark Wave, and the command doesn't count as Fight
 ### Additional Notes
 When `Bnofree` is on, you have to kill DKC, and DKC cannot gate intended underground access unless `Bunsafe` is also on.
 
