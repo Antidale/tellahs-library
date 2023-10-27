@@ -1,10 +1,13 @@
 ﻿using DSharpPlus.SlashCommands;
 using tellahs_library.Enums;
+using tellahs_library.Services;
 
 namespace tellahs_library.Commands
 {
     public class Tournament : ApplicationCommandModule
     {
+        public RandomService RandomService { get; set; }
+
         [SlashCommand("SelectPB2JFlagset", "stuff")]
         public async Task SelectPB2JFlagsetAsync(InteractionContext ctx,
             [Option("VetoChoice", "Flagset that's vetoed")]Pb2jFlagetChoices pb2JFlagsetChoice)
@@ -12,9 +15,9 @@ namespace tellahs_library.Commands
             Pb2jFlagetChoices[] flagsets = { Pb2jFlagetChoices.Ladder, Pb2jFlagetChoices.HopTillYouShop, Pb2jFlagetChoices.Pro };
 
             flagsets = flagsets.Where(x => x != pb2JFlagsetChoice).ToArray();
-            var rand = new Random();
-            var selectedFlagset = flagsets[rand.Next(flagsets.Length)];
+            var selectedFlagset = flagsets[RandomService.Next(flagsets.Length)];
             var flagsetDetails = string.Empty;
+
             switch (selectedFlagset) 
             {
                 case Pb2jFlagetChoices.Ladder:

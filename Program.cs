@@ -1,6 +1,8 @@
 ﻿using DSharpPlus;
 using DSharpPlus.SlashCommands;
+using Microsoft.Extensions.DependencyInjection;
 using tellahs_library.Commands;
+using tellahs_library.Services;
 
 var token = Environment.GetEnvironmentVariable("DiscordBotToken");
 
@@ -11,7 +13,10 @@ var discord = new DiscordClient(new DiscordConfiguration
     Intents = DiscordIntents.AllUnprivileged,
 });
 
-var slash = discord.UseSlashCommands();
+var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
+{
+    Services = new ServiceCollection().AddSingleton<RandomService>().BuildServiceProvider()
+});
 
 //Register test commands for the bot's server
 slash.RegisterCommands<Tournament>(1153453420649402438);
