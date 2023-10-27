@@ -15,7 +15,7 @@ var discord = new DiscordClient(new DiscordConfiguration
 
 var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
 {
-    Services = new ServiceCollection().AddSingleton<RandomService>().BuildServiceProvider()
+    Services = new ServiceCollection().AddTransient<RandomService>().BuildServiceProvider()
 });
 
 //Register test commands for the bot's server
