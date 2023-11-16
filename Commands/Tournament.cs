@@ -10,8 +10,10 @@ namespace tellahs_library.Commands
         public RandomService RandomService { get; set; }
 
         [SlashCommand("SelectPB2JFlagset", "Selects one non-vetoed PB2J flagset at Random")]
-        public async Task SelectPB2JFlagsetAsync(InteractionContext ctx,
-            [Option("VetoChoice", "Flagset that's vetoed")]Pb2jFlagsetChoices pb2JFlagsetChoice)
+        public async Task SelectPB2JFlagsetAsync(
+            InteractionContext ctx,
+            [Option("VetoChoice", "Flagset that's vetoed")]Pb2jFlagsetChoices pb2JFlagsetChoice
+        )
         {
             var (flagsetDetails, selectedFlagset) = GetFlagset(pb2JFlagsetChoice, RandomService);
 
