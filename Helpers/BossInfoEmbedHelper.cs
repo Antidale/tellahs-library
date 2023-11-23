@@ -217,7 +217,7 @@ Wizard hats, Sorcerer and White robes provide defense against Zombies, as does a
 @"### Fight Flow
 Dark Knight Cecil will use Dark Wave on the whole party three times, give a short speech, and then disappear. If you use Fight (Avenger/Berserk counts), the “three times” count resets. 
 ### Strats
-Sit back and accept a little damage. In places where the damage outpaces your HP, fast healing goes a long way. Cure3/Elixir can be fight-savers, and slowing the battle speed can let you get more healing in between Dark Waves. Also consider who's going to survive a wave to target with healing so you can assure victory or maybe get another character XP. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. Finally, Jump can help evade a round of damage, since characters in the air won't be hit by Dark Wave, and the command doesn't count as Fight
+Sit back and accept a little damage. In places where the damage outpaces your HP, fast healing goes a long way. Cure3/Elixir can be fight-savers, and slowing the battle speed can let you get more healing in between Dark Waves. Also consider who's going to survive a wave to target with healing so you can assure victory or maybe get another character XP. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. Finally, Jump can help evade a round of damage, since characters in the air won't be hit by Dark Wave, and the command doesn't count as Fight.
 ### Additional Notes
 When `Bnofree` is on, you have to kill DKC, and DKC cannot gate intended underground access unless `Bunsafe` is also on.
 
@@ -235,9 +235,10 @@ When `Bnofree` is on, you have to kill DKC, and DKC cannot gate intended undergr
 @"### Fight Flow
 The Guards only Fight on their turns. They’ll react to magic cast on them with a single target Piggy, and react to Fight with a single target Size.
 ### Strats
-Since the guards don’t normally have the boss bit, an HrGlass, Coffin, or successful use of the Stone spell (or multiple casts of Stop) fully control the fight. Mute, or using a mutebell, removes their ability to cast. Rune Axe, Mute Knife, Mute Arrows, and Elven Bows do extra damage, and properly timed, an Assassin dagger is just as effective as a Coffin. Should Rydia have learned Cockatrice or Mage, both of them can be very useful in the fight as well. Size and Toad also negate any threat the fight has.
+Since the guards don’t normally have the boss bit, an HrGlass, Coffin, or successful use of the Stone spell (or multiple casts of Stop) fully control the fight. Mute, or using a mutebell, removes their ability to cast. Rune Axe, Mute Knife, Mute Arrows, and Elven Bows do extra damage, and properly timed, an Assassin dagger is just as effective as a Coffin. Should Rydia have learned Cockatrice or Mage, both of them can be very useful in the fight as well. Size and Toad also negate this fight’s threat.
 ### Additional Notes
 Equipping a Rune Ring, Ribbon, or an Aegis Shield will give a character mage defense, giving great protection from a Guard’s attack. Ribbons also block both status effect counters from the Guards, Zeus Gauntlets and Crystal Armor protect against Size, and a Ruby Ring protects against Piggy
+
 At high XP spots, Life glitches, or even a Life2 grind, can be very welcome infusions of experience. 
 
 With `Bnofree` on, this fight becomes much more dangerous. A focus on minimizing incoming damage and handling the Size/Piggy counters will help greatly. Equip anti-Mage defensive equipment to reduce incoming damage, and give any status protection to the most important character(s) in the party for the fight. Getting Wall status on characters is also great as a form of status prevention, just make sure you have curative potions to help handle damage. If your party relies on physical damage to clear fights, equip anti-Mage weapons (Rune Axe, Mute Knife, Mute Arrows, Elven Bow) and try to only have one or two very strong attackers dealing damage. Parties that can bring Magic damage should bounce damage spells off of a Wall.
@@ -369,6 +370,7 @@ In a mage heavy composition, using Jump and timing the magical onslaught will li
 It can be a good idea to carry some extra Heal potions for this fight when you have a limited party size, to help prevent your characters from fully becoming stone. You can also kill a character before they fully turn to stone and resurrect them to clear any partial calcification.
 
 Aim, Kick, Dark, and Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock Valvalis out of tornado form.
+
 Valvalis will not gate intended underground access unless `Bunsafe` is on.
 
 ")
@@ -600,7 +602,7 @@ Both Edward and Kain can avoid the Odin attack by being not on screen during it,
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Asura.png")
                         .WithDescription(
 @"### Fight Flow
-On each of Asura's turn, Asura will self-target a spell based on the current active face, and whether or not a reaction script was triggered in between Asura's turns. If a reaction was triggered, no face cycling occurs. If not, she’ll cycle to the next face before casting. The orange face casts Cure4, the cream face casts Cure3, and the gray face casts Life1. When rotating the active face, the rotation goes orange => cream => gray => orange
+On each of Asura's turns, Asura will self-target a spell based on the current active face, and whether or not a reaction script was triggered in between Asura's turns. If a reaction was triggered, no face cycling occurs. If not, she’ll cycle to the next face before casting. The orange face casts Cure4, the cream face casts Cure3, and the gray face casts Life1. When rotating the active face, the rotation goes orange => cream => gray => orange
 
 When Asura is dealt damage, the face change pattern goes backwards (should the face change at all), so hitting Asura on while the cream face is active will make it cycle back to the orange face.
 ### Strats
@@ -646,7 +648,7 @@ The lightning weakness being 2x means that Yang’ll get a bigger increase over 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Bahamut.png")
                         .WithDescription(
 @"### Fight Flow
-Bahamut starts counting down from 5 to 1, and then casts MegaNuke on the party
+Bahamut starts counting down from 5 to 1, and then casts MegaNuke on the party.
 ### Strats
 Methods of handling range from an all out assault, often using the berserk status, to patiently reflecting all the MegaNuke damage back at Bahamut, with a large range of a hybrid approach in-between. When the part is underleveled, you’re more likely going to be successful trending toward reflecting back the damage. Good use of timing in using the item and agility anchoring can make starveils last for up to three cycles. It can also be a great idea to stagger out the veil usage by not protecting some characters and having them be revived by those with protection. This can help save some veils in your inventory, and not waste excess damage on what’s reflected, since a full party with reflect up generally easily exceeds the 9999 damage cap.
 ### Additional Notes
@@ -663,7 +665,7 @@ You get less time in between the 1 count and the casting of MegaNuke because Bah
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/PaleDim.png")
                         .WithDescription(
 @"### Fight Flow
-On its turn, Pale Dim only fights. In reaction to Fight, Pale Dim will cast Slow. In reaction to fire magic, Pale Dim uses Glare. In reaction to ice magic, Pale Dim uses Blizzard. In reaction to Bolt magic, Pale Dim uses Blitz. In reaction to the Call ability, Pale Dim uses Quake
+On its turn, Pale Dim only fights. In reaction to Fight, Pale Dim will cast Slow. In reaction to fire magic, Pale Dim uses Glare. In reaction to ice magic, Pale Dim uses Blizzard. In reaction to Bolt magic, Pale Dim uses Blitz. In reaction to the Call ability, Pale Dim uses Quake.
 ### Strats
 Another fight where Blink/Illusion/MoonVeil do so much to protect the party and be very efficient in doing so. The Slow counters from Pale Dim can vary from being a nuisance to something that makes the fight a little risky if you fall behind in preventative measures. Black Mages should use untyped magic (Virus, Quake, Nuke) here to avoid both healing Pale Dim and suffering the counter attack. Zerkers are fine, but if you have someone equipped with dragon killing gear (dragoon spear, dragon whip, artemis arrows), you’ll want to lean on them as possibly the only attacker.
 ### Additional Notes
@@ -685,11 +687,12 @@ Cecil as a cover bot can be extremely strong for this fight and be essentially i
 @"### Fight Flow
 Wyvern begins the fight with MegaNuke, takes two consecutive empty turns, then casts a self-targeted Wall. While the Wall is active, Wyvern will bounce Nuke off of the wall. When the wall runs out, Wyvern will use Remedy, then re-cast the Wall, which will resume the Nuke barrage.
 ### Strats
-Wyvern’s opening Meganuke often requires agility setups that let you get Reflect status up on multiple characters right away, and also slowing down the battle speed to allow you the time to input the commands to do so; very practiced runners can substitute battle speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll want a slow anchor and fast first actors in order to have a solid setup
+Wyvern’s opening Meganuke often requires agility setups that let you get Reflect status up on multiple characters right away, and also slowing down the battle speed to allow you the time to input the commands to do so; very practiced runners can substitute battle speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll want a slow anchor and fast first actors in order to have a solid setup.
 
 Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use Life potions or spells to keep on even-ish footing. 
 ### Additional Notes
 Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). If you have Sylph, you can use that to help reflect more MegaNuke damage back at Wyvern.
+
 Wyvern will not gate intended underground access unless `Bunsafe` is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another random enemy attack, with some protections to keep the opener milder than MegaNuke. `Bunsafe` removes those protections.
 
 ")
@@ -782,7 +785,7 @@ Reflect strats have the first character post-Crystal tossing get a wall up on th
 
 Fu and Friends, Eddy and 1200 Strats are all variants relying on the same tactic: getting Reflect up on necessary party members, and using j-items, directly cast spells, or the Crystal to trigger Zeromus’ counter Nuke to bounce off of a wall and reflect back. All of these strategies will stop dealing direct damage at/before 45k total damage to prevent the refill.
 ### Additional Notes
-See the links below for some videos 
+See the links below for some videos.
 ")
                         .AddField("Damage Types", "Magic (Untyped, Holy)")
                         .AddField("Additional Links", "[Script Detail](<https://wiki.ff4fe.com/doku.php?id=zeromus_script>), [Eddy Strats](<https://docs.google.com/document/d/1Xw1vsN-OROShv4ZxPcStwJ1LsmFlPcZr3IIjOBSNEww/edit#heading=h.dvcyslrwgp71>), [Full party 1200 strats](<https://www.twitch.tv/videos/1051386268>), [2 character 1200 strats](<https://www.twitch.tv/videos/1051391891>)")
