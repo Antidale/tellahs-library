@@ -237,8 +237,10 @@ The Guards only Fight on their turns. They’ll react to magic cast on them with
 ### Strats
 Since the guards don’t normally have the boss bit, an HrGlass, Coffin, or successful use of the Stone spell (or multiple casts of Stop) fully control the fight. Mute, or using a mutebell, removes their ability to cast. Rune Axe, Mute Knife, Mute Arrows, and Elven Bows do extra damage, and properly timed, an Assassin dagger is just as effective as a Coffin. Should Rydia have learned Cockatrice or Mage, both of them can be very useful in the fight as well. Size and Toad also negate any threat the fight has.
 ### Additional Notes
-Equipping a Rune Ring, Ribbon, or an Aegis Shield will give a character mage defense, giving great protection from a guard’s attack.
+Equipping a Rune Ring, Ribbon, or an Aegis Shield will give a character mage defense, giving great protection from a Guard’s attack. Ribbons also block both status effect counters from the Guards, Zeus Gauntlets and Crystal Armor protect against Size, and a Ruby Ring protects against Piggy
 At high XP spots, Life glitches, or even a Life2 grind, can be very welcome infusions of experience. 
+
+With `Bnofree` on, this fight becomes much more dangerous. A focus on minimizing incoming damage and handling the Size/Piggy counters will help greatly. Equip anti-Mage defensive equipment to reduce incoming damage, and give any status protection to the most important character(s) in the party for the fight. Getting Wall status on characters is also great as a form of status prevention, just make sure you have curative potions to help handle damage. If your party relies on physical damage to clear fights, equip anti-Mage weapons (Rune Axe, Mute Knife, Mute Arrows, Elven Bow) and try to only have one or two very strong attackers dealing damage. Parties that can bring Magic damage should bounce damage spells off of a Wall.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -271,13 +273,13 @@ Generally normal strategies for dealing damage and handling incoming physical at
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Baigan.png")
                         .WithDescription(
 @"### Fight Flow
-The left arm (the one closest the party) will cycle a sequence of Fight, Entangle, Fight for its actions. The right arm will alternate between Fight and Vampire. If Baigan dies before the arms do, they’ll use Explode the next time they get to queue an action. Baigan will Fight wil any arms are alive, and will use Recover when both arms are dead. In reaction to a magic cast, Baigan casts a self-targeted Wall.
+The left arm (the one closest to the party) will cycle a sequence of Fight, Entangle, Fight for its actions. The right arm will alternate between Fight and Vampire. If Baigan dies before the arms do, they’ll use Explode the next time they get to queue an action. Baigan's script has a cycle of five consecutive Fight turns, then casts Fast on all enemies, and then does another Fight while any arms are alive. When both arms are dead, Baigan will use Recover. In reaction to a magic cast, Baigan casts a self-targeted Wall.
 ### Strats
-If your party has access to Quake, or to a summon that will clear the arms, making sure to queue up a cast of those can keep damaging the main body while also clearing the arms, thereby preventing the arms or Baigan from dealing damage to the party. Most of the damage from the enemies is from Fight, so Blink/Illusion/MoonVeil are all very useful as ways to prevent damage. Berserk, which is so often a main strategy, is a little less powerful in this fight due to the random targeting. It’s still useful, especially as a way to keep damage flowing and helping other party members get an effective speed boost.
+Sweeping spells that also pierce Wall (e.g. Quake, Summons) are a great action, preventing the arms or Baigan from dealing damage to the party; just make sure to only queue the cast when you can see that the arms are being targeted as well. Most of the damage from the enemies is from Fight, so Blink/Illusion/MoonVeil are all very useful as ways to prevent damage. Berserk, which is so often a main strategy, is a little less powerful in this fight due to the random targeting. It’s still useful, especially as a way to keep damage flowing and helping other party members get an effective speed boost.
 
 As the fight goes on and Baigan reflects a wall onto your party, you can use that to bounce spells back. Timed well, you can get spells to mainly hit Baigan and not the arms. The walls do make it more difficult to keep Blink/Illusion up on characters, or do mass heals. This is not a bad fight to dip into the Cure3 potion supply.
 ### Additional Notes
-Making good use of Cover in this fight can be a little difficult, since Cecil can’t cover the Vampire from the Right Arm. Keeping that enemy dead is a high priority if Cover is your best defensive plan, so you might consider single/manually targeting spells and attacks. This kind of strategy is more useful at high physical attack locations where you don’t have the AoE to clear the arms, and have good physical attackers that can reach to back row enemies without penalty (Jump, Aim, Dart, characters equipped with long range weapons, or characters that have the back row glitch applied
+Making good use of Cover in this fight can be a little difficult, since Cecil can’t cover the Vampire from the Right Arm. Keeping that enemy dead is a high priority if Cover is your best defensive plan, so you might consider single/manually targeting spells and attacks. This kind of strategy is more useful at high physical attack locations where you don’t have the AoE to clear the arms, and have good physical attackers that can reach to back row enemies without penalty (Jump, Aim, Dart, characters equipped with long range weapons, or characters that have the back row glitch applied).
 
 ")
                         .AddField("Additional Links", "[Left Arm](<https://wiki.ff4fe.com/doku.php?id=left_arm>), [Right Arm](https://wiki.ff4fe.com/doku.php?id=rightarm)", inline: true)
@@ -292,13 +294,13 @@ Making good use of Cover in this fight can be a little difficult, since Cecil ca
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Kainazzo.png")
                         .WithDescription(
 @"### Fight Flow
-Kainazzo begins the fight with a punch, then enters a cycle of gathering water, using Wave, and then self-targeting a Fast cast. Using lightning based magic will cause the water to dispel, and set Kainazzo up to queue a punch on the next opportunity to queue an action. When damaged, but not killed, at low HP, Kainazzo will retreat into his shell, dispelling the water. On the next turn hiding, Kainazzo’ll use Remedy to heal, and reset back to the start of the basic script.
+Kainazzo begins the fight with a punch, then enters a cycle of gathering water, using Wave, and then self-targeting a Fast cast. Using lightning based magic will cause the water to dispel, and set Kainazzo up to queue a punch on the next opportunity to queue an action. When damaged at low HP (17.5% of max or less), Kainazzo will retreat into his shell, dispelling any gathered water. After hiding, Kainazzo’ll use Remedy to heal, take a turn to bot set defenses and prepare to gather water.
 ### Strats
 This is a fight where location significantly dictates tactics. At spots where your party can’t ever reasonably survive the first Wave (often the 2nd boss on the hook route, or the first spot in the Giant), your first turns should be working towards both setting up long term goals (getting a berserker online, getting Blink up, tossing a silkweb), and making sure that the water is dispelled before the Wave usage gets queued.
 ### Additional Notes
 At high HP spots, or if your damage is low for the location, you can find yourself in a loop where the Remedy action outpaces your ability to do damage. If that’s happening while you only have zerked characters, you should probably reset and either try again to have more people up and fighting at the end, or come back after getting a few more levels.
 
-The timing to dissipate the water before a Wave can be queued can be tricky, so slower battle speeds might be necessary. You can also time queuing up an item toss with the punch so that the item gets used just after the water is gathered.
+The timing to dissipate the water before a Wave can be queued can be tricky, so slower battle speeds might be necessary. Given an RA1 setup, you can also time queuing up an item toss with the punch so that the item gets used just after the water is gathered.
 
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic (Wave)", inline: true)
@@ -313,9 +315,9 @@ The timing to dissipate the water before a Wave can be queued can be tricky, so 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/DElf.png")
                         .WithDescription(
 @"### Fight Flow
-The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 attacks, then uses Weak and Piggy on consecutive turns, before starting back at the top. When the Dark Elf takes damage below a certain threshold, he’ll transform to the Dark Dragon form, where the script alternates between using Fight and DBreath.
+The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 attacks, then using Weak and Piggy on consecutive turns, before starting back at the top. After taking damage below a certain threshold, Dark Elf transform to the Dark Dragon form, where the script alternates between using Fight and DBreath.
 ### Strats
-Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary mages get healed of Piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk.
+Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary mages get healed of Piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk. Casting Holy elemental spells at the Dragon form is a bad idea, since the transformation includes an addition of Holy absorb (physical attacks are still fine). 
 ### Additional Notes
 The dragon form lacks the boss bit, and while it does have some status resistances, it won't resist Stop, an HrGlass, or the weak spell. The fight can be really sped up with a properly timed Weak cast.
 
@@ -335,7 +337,7 @@ The dragon form lacks the boss bit, and while it does have some status resistanc
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/MagusSis.png")
                         .WithDescription(
 @"### Fight Flow
-While Cindy is alive, Sandy will cast Wall on her and Mindy will target Cindy with a spell (cycling through Fire2, Lit2, Ice2, and Virus) intending to bounce it off of the wall Sandy provides. Cindy will punch while both her sisters are alive, if any combination of her sisters are dead, will punch once more then use Remedy to revive her dead sisters
+While Cindy is alive, Sandy will cast Wall on her and Mindy will target Cindy with a spell (cycling through Fire2, Lit2, Ice2, and Virus) intending to bounce it off of the wall Sandy provides. Cindy will punch while both her sisters are alive, if any combination of her sisters are dead, will punch once more then use Remedy to revive her dead sisters.
 ### Strats
 Quake, Meteo, and most of Rydia’s summons do pretty well here, since they all bypass the wall that gets put on Cindy. Physical fighters generally prefer to have some sort of mage-killing weapon equipped, and be back-row glitched. Different parties might have different priorities, but if the fight is dangerous for your party, killing Cindy or Mindy first can help ease the fight along. Removing Cindy removes the possibility of Mindy/Sandy being revived, and removing Mindy reduces the magic damage coming at the party (while making Cindy no longer in a back row, so the physical damage portion of the fight does increase for a bit)
 
@@ -358,15 +360,15 @@ Lower level parties might want to avoid using berserk, since it can spread out d
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Valvalis.png")
                         .WithDescription(
 @"### Fight Flow
-At the start of the fight, Val will pull herself into her tornado form, changing defensive values. While in tornado form, she’ll alternate between chaining single targets of Weak and Ray, and using Fight. If a character uses Jump on her (hit or miss), she’ll fall out of tornado form, reset her defenses and punch as a reaction, and then  take a turn to use Fight again, take an empty turn and set up getting back to tornado form.
+At the start of the fight, Val will assume tornado form, changing defensive values (See Tornado Defense for details, as different locations have vastly different stats). While in tornado form, Val will alternate between chaining single targets of Weak and Ray, and using Fight. If a character uses Jump (hit or miss), Val fall out of tornado form, reset defenses and punch as a reaction, and then take a turn to use Fight again, take an empty turn and set up getting back to tornado form.
 ### Strats
 The location really dictates some of your choices in the fight, and the fight in general is one that should guide party choices if you’re mage heavy. Generally, the fight relies on physical attacks hitting through the defenses Val spins up. Blink/Illusion are most of the defense you need in the fight, along with some ways of clearing the calcify/stone status.
 
-In a mage heavy composition, using Kain’s jump and timing the magical onslaught will likely be the fastest/easiest way through, although swapping one character over to a bow/arrow and stacking +Str gear can be an alternative path if Kain’s not available.
+In a mage heavy composition, using Jump and timing the magical onslaught will likely be the fastest/easiest way through, although swapping one character over to a bow/arrow and stacking +Str gear can be an alternative path if the Jump command's not available.
 ### Additional Notes
 It can be a good idea to carry some extra Heal potions for this fight when you have a limited party size, to help prevent your characters from fully becoming stone. You can also kill a character before they fully turn to stone and resurrect them to clear any partial calcification.
 
-Aim, Kick, Dark, Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock her out of tornado form.
+Aim, Kick, Dark, and Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock Valvalis out of tornado form.
 Valvalis will not gate intended underground access unless `Bunsafe` is on.
 
 ")
