@@ -6,7 +6,7 @@ using tellahs_library.Constants;
 using tellahs_library.Services;
 
 var token = Environment.GetEnvironmentVariable("DiscordBotToken");
-var apiKey = Environment.GetEnvironmentVariable("ApiKey");
+var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
 
 var discord = new DiscordClient(new DiscordConfiguration
 {
@@ -15,7 +15,8 @@ var discord = new DiscordClient(new DiscordConfiguration
     Intents = DiscordIntents.AllUnprivileged,
 });
 
-var httpClient = new HttpClient { BaseAddress = new Uri("https://https://free-enterprise-info-api.herokuapp.com/api") };
+//var httpClient = new HttpClient { BaseAddress = new Uri("https://https://free-enterprise-info-api.herokuapp.com/api") };
+var httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
 httpClient.DefaultRequestHeaders.Add("X-API-Key", apiKey);
 
 var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
@@ -26,13 +27,14 @@ var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
 });
 
 //Register test commands for the bot's server
-slash.RegisterCommands<Tournament>(GuildIds.TestServer);
-slash.RegisterCommands<TournamentRegistration>(GuildIds.AntiServer);
+//slash.RegisterCommands<FlagsetChoice>(GuildIds.TestServer);
+slash.RegisterCommands<Tournament>(GuildIds.AntiServer);
 
 //Register global commands
-slash.RegisterCommands<Recall>();
-slash.RegisterCommands<BossRecall>();
+//slash.RegisterCommands<Recall>();
+//slash.RegisterCommands<BossRecall>();
 
 await discord.ConnectAsync();
+
 //check csharp fritz's discord bot vod for a better method of this
 await Task.Delay(-1);
