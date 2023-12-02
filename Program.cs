@@ -26,13 +26,14 @@ var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
                                       .BuildServiceProvider()
 });
 
-//Register test commands for the bot's server
-//slash.RegisterCommands<FlagsetChoice>(GuildIds.TestServer);
+//Register test commands for the specific servers
 slash.RegisterCommands<Tournament>(GuildIds.AntiServer);
+//slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
 
 //Register global commands
-//slash.RegisterCommands<Recall>();
-//slash.RegisterCommands<BossRecall>();
+slash.RegisterCommands<Recall>();
+slash.RegisterCommands<BossRecall>();
+slash.RegisterCommands<FlagsetChoice>();
 
 await discord.ConnectAsync();
 
