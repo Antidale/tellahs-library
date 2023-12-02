@@ -10,7 +10,7 @@ namespace tellahs_library.Enums
         Ladder,
         [ChoiceName("Hop 'Til You Shop")]
         HopTillYouShop,
-        [ChoiceName("Pro")]
-        Pro
+        [ChoiceName("Pro B-otics")]
+        ProBotics
     }
 }
