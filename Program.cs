@@ -17,7 +17,7 @@ var discord = new DiscordClient(new DiscordConfiguration
 
 //var httpClient = new HttpClient { BaseAddress = new Uri("https://https://free-enterprise-info-api.herokuapp.com/api") };
 var httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
-httpClient.DefaultRequestHeaders.Add("X-API-Key", apiKey);
+httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
 
 var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
 {

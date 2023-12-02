@@ -16,6 +16,7 @@ namespace tellahs_library.Commands
             if (httpClient == null)
             {
                 await ctx.CreateResponseAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this", ephemeral: true);
+                await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member.Username}");
                 return false;
             }
 
@@ -57,43 +58,56 @@ namespace tellahs_library.Commands
 
             private async Task CreateTournament(InteractionContext ctx, string tournamentName, string roleName, string startDateTimeOffsetString, string endDateTimeOffsetString, string rulesLink)
             {
-                if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
-
-                await ctx.DeferAsync();
-
-                var message = await ctx.EditResponseAsync("Creating Tournament");
-                if (message == null)
+                try
                 {
-                    await ctx.EditResponseAsync("Something went really poorly, contact Antidale");
-                    return;
+                    await ctx.DeferAsync();
+
+                    tournamentName = tournamentName.Trim();
+                    roleName = roleName.Trim();
+                    startDateTimeOffsetString = startDateTimeOffsetString.Trim();
+                    endDateTimeOffsetString = endDateTimeOffsetString.Trim();
+                    rulesLink = rulesLink.Trim();
+
+                    if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
+
+                    var message = await ctx.EditResponseAsync("Creating Tournament");
+                    if (message == null)
+                    {
+                        await ctx.LogErrorAsync("Something went really poorly, contact Antidale", $"Creating tournament failed for {ctx.Guild.Name}");
+                        return;
+                    }
+
+                    var user = ctx.Member;
+                    var role = ctx.Guild.Roles.FirstOrDefault(x => x.Value.Name.Equals(roleName, StringComparison.InvariantCultureIgnoreCase));
+
+                    var startParsed = DateTimeOffset.TryParse(startDateTimeOffsetString, out var startRegistration);
+
+                    var endParsed = DateTimeOffset.TryParse(endDateTimeOffsetString, out var endRegistration);
+
+                    var createRequest = new CreateTournament(ctx.Guild.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.Value?.Id ?? 0, startRegistration, endRegistration);
+
+                    var response = await HttpClient!.PostAsJsonAsync("tournament", createRequest);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var tournamentDocString = string.IsNullOrWhiteSpace(rulesLink) || !Uri.IsWellFormedUriString(rulesLink, UriKind.Absolute)
+                            ? null
+                            : $"([Rules Document](<{rulesLink}>))";
+
+                        await message.ModifyAsync(string.Join("\r\n",
+                            string.Join(" ", $"**{tournamentName}**", tournamentDocString),
+                            startParsed ? "Registration Opens: " + DSharpPlus.Formatter.Timestamp(startRegistration, DSharpPlus.TimestampFormat.LongDateTime) : null,
+                            endParsed ? "Registration Closes: " + DSharpPlus.Formatter.Timestamp(endRegistration, DSharpPlus.TimestampFormat.LongDateTime) : null)); ;
+
+                        await message.PinAsync();
+                    }
+                    else
+                    {
+                        await message.ModifyAsync("Unable to create tournament, server error");
+                    }
                 }
-
-                var user = ctx.Member;
-                var role = ctx.Guild.Roles.FirstOrDefault(x => x.Value.Name.Equals(roleName, StringComparison.InvariantCultureIgnoreCase));
-
-                var startParsed = DateTimeOffset.TryParse(startDateTimeOffsetString, out var startRegistration);
-
-                var endParsed = DateTimeOffset.TryParse(endDateTimeOffsetString, out var endRegistration);
-
-                var createRequest = new CreateTournament(ctx.Guild.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.Value?.Id ?? 0, startRegistration, endRegistration);
-
-                var response = await HttpClient!.PostAsJsonAsync("tournament", createRequest);
-                if (response.IsSuccessStatusCode)
+                catch (Exception ex)
                 {
-                    var tournamentDocString = string.IsNullOrWhiteSpace(rulesLink) || !Uri.IsWellFormedUriString(rulesLink, UriKind.Absolute)
-                        ? null
-                        : $"([Rules Document](<{rulesLink}>))";
-
-                    await message.ModifyAsync(string.Join("\r\n",
-                        string.Join(" ", $"**{tournamentName}**", tournamentDocString),
-                        startParsed ? "Registration Opens: " + DSharpPlus.Formatter.Timestamp(startRegistration, DSharpPlus.TimestampFormat.LongDateTime) : null,
-                        endParsed ? "Registration Closes: " + DSharpPlus.Formatter.Timestamp(endRegistration, DSharpPlus.TimestampFormat.LongDateTime) : null)); ;
-
-                    await message.PinAsync();
-                }
-                else
-                {
-                    await message.ModifyAsync("Unable to create tournament, server error");
+                    await ctx.LogErrorAsync(ex.Message);
                 }
             }
 
@@ -120,17 +134,15 @@ namespace tellahs_library.Commands
 
             private async Task UpdateRegistrationWindow(InteractionContext ctx, RegistrationPeriodStatus newStatus, string tournamentName)
             {
-                if (HttpClient == null)
-                {
-                    await ctx.CreateResponseAsync("Unable to communicate with remote.");
-                    return;
-                }
-
                 await ctx.DeferAsync(ephemeral: true);
+
+                if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
+
+                tournamentName = tournamentName.Trim();
 
                 var changeRequest = new ChangeRegistrationPeriod(ctx.Guild.Id, tournamentName, newStatus);
 
-                var response = await HttpClient.PatchAsJsonAsync("tournament/UpdateRegistrationWindow", changeRequest);
+                var response = await HttpClient!.PatchAsJsonAsync("tournament/UpdateRegistrationWindow", changeRequest);
                 if (response.IsSuccessStatusCode)
                 {
                     var responseResult = await response.Content.ReadFromJsonAsync<ChangeRegistrationPeriodResponse>();
@@ -166,7 +178,7 @@ namespace tellahs_library.Commands
                 else
                 {
                     var errorMessage = await response.Content.ReadAsStringAsync();
-                    await ctx.EditResponseAsync($"Update failed: {errorMessage}");
+                    await ctx.LogErrorAsync($"Update failed: {errorMessage}", $"Update failed: {errorMessage}");
                 }
             }
         }
@@ -180,38 +192,68 @@ namespace tellahs_library.Commands
             [SlashRequireGuild]
             public async Task RegisterAsync(
                 InteractionContext ctx,
-                [Option("tournament_name", "Only needed if a server has multiple tournaments with open registration")] string tournamentName = "",
+                [Option("pronouns", "Preferred pronouns for any restreams/tournament information that displays pronouns")] string pronouns = "",
                 [Option("alias", "Preferred name for this tournament. Leave blank to use your discord username")] string desiredAlias = "",
-                [Option("pronouns", "Preferred pronouns for any restreams/tournament information that displays pronouns")] string pronouns = "")
+                [Option("tournament_name", "Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
+            )
             {
-                if (HttpClient == null)
+                try
                 {
-                    await ctx.CreateResponseAsync("Unable to communicate with remote.");
-                    return;
-                }
+                    await ctx.DeferAsync(ephemeral: true);
 
-                await ctx.DeferAsync(ephemeral: true);
+                    if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
-                var user = ctx.Member;
+                    pronouns = pronouns.Trim();
+                    desiredAlias = desiredAlias.Trim();
+                    tournamentName = tournamentName.Trim();
 
-                var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild.Id, tournamentName, desiredAlias, pronouns);
+                    var message = await ctx.EditResponseAsync("Registration process starting");
 
-                var response = await HttpClient.PostAsJsonAsync("Tournament/Register", registration);
+                    var user = ctx.Member;
 
+                    var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild.Id, tournamentName, desiredAlias, pronouns);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseDto = await response.Content.ReadFromJsonAsync<ChangeRegistrationResponse>();
-                    if (responseDto == null)
+                    var response = await HttpClient!.PostAsJsonAsync("Tournament/Register", registration);
+
+                    if (!response.IsSuccessStatusCode)
                     {
-                        await ctx.EditResponseAsync("Registrataion failed: could not read response from server");
+                        var errorMessage = await response.Content.ReadAsStringAsync();
+                        await ctx.LogErrorAsync($"registration failed: {errorMessage}", errorMessage);
                         return;
                     }
 
-                    var message = await ctx.GetMessageAsync(responseDto.TrackingChannelId, responseDto.TrackingMessageId);
-                    if (message != null)
+                    var responseDto = await response.Content.ReadFromJsonAsync<ChangeRegistrationResponse>();
+                    if (responseDto == null)
                     {
-                        await message.ModifyAsync("updated message");
+                        await ctx.LogErrorAsync("Registrataion failed", "Could not read response from server");
+                        return;
+                    }
+
+                    var trackingMessage = await ctx.GetMessageAsync(responseDto.TrackingChannelId, responseDto.TrackingMessageId);
+
+                    if (trackingMessage != null)
+                    {
+                        var contents = trackingMessage.Content.Split("\r\n").ToList();
+                        if (!contents.Any(x => x.StartsWith("Entrants:")))
+                        {
+                            contents.Add("Entrants:");
+                        }
+
+                        for (int i = 0; i < contents.Count; i++)
+                        {
+                            if (contents[i].StartsWith("Registation Opens:") || contents[i] == "Registration is open!")
+                            {
+                                contents[i] = string.Empty;
+                            }
+
+                            if (contents[i].StartsWith("Entrants:"))
+                            {
+                                contents[i] = $"Entrants: {responseDto.RegistrantCount}";
+                            }
+                        }
+
+                        var newMessage = string.Join("\r\n", [.. contents.Where(x => !string.IsNullOrWhiteSpace(x))]);
+                        await trackingMessage.ModifyAsync(newMessage);
                     }
 
                     var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
@@ -221,55 +263,68 @@ namespace tellahs_library.Commands
                     }
 
                     await ctx.EditResponseAsync("registration complete, have fun!");
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    var errorMessage = await response.Content.ReadAsStringAsync();
-                    await ctx.EditResponseAsync($"registration failed: {errorMessage}");
+                    await ctx.LogErrorAsync(ex.Message, ex);
                 }
             }
 
             [SlashCommand("Drop", "Drop from a tournament")]
             [SlashRequireGuild]
-            public async Task DropAsync(InteractionContext ctx)
+            public async Task DropAsync(
+                InteractionContext ctx,
+                [Option("tournament_name", "Only needed you're registered in multiple tournaments in this server")] string tournamentName = ""
+            )
             {
-                if (HttpClient == null)
+                try
                 {
-                    await ctx.CreateResponseAsync("Unable to communicate with remote. Contact Antidale since you shouldn't see this", ephemeral: true);
+                    await ctx.CreateResponseAsync("Dropping not fully implmented yet. Let a tournament organizer know you want to drop");
                     return;
-                }
+                    await ctx.DeferAsync();
 
-                var user = ctx.User;
+                    if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
-                var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild.Id);
+                    var user = ctx.User;
 
-                var response = await HttpClient.PostAsJsonAsync("/tournament/Drop", registration);
-                var responseDto = (await response.Content.ReadFromJsonAsync<ChangeRegistrationResponse>()) ?? new ChangeRegistrationResponse(0, 0, 0, 0);
-                if (response.IsSuccessStatusCode)
-                {
-                    //respond to the user
-                    await ctx.CreateResponseAsync("you're no longer registered", ephemeral: true);
+                    var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild.Id, TournamentName: tournamentName);
 
-                    //update "x registrants" message for this tournament
-                    var message = await ctx.GetMessageAsync(responseDto.TrackingChannelId, responseDto.TrackingMessageId);
-                    if (message != null)
+                    var response = await HttpClient!.PostAsJsonAsync("/tournament/Drop", registration);
+                    var responseDto = (await response.Content.ReadFromJsonAsync<ChangeRegistrationResponse>()) ?? new ChangeRegistrationResponse(0, 0, 0, 0, "");
+                    if (response.IsSuccessStatusCode)
                     {
-                        await message.ModifyAsync("updated message");
-                    }
+                        //respond to the user
+                        await ctx.CreateResponseAsync(
+                            string.Join(" ", "You're no longer registered", string.IsNullOrEmpty(tournamentName)
+                                                                            ? null
+                                                                            : $"from {tournamentName}"),
+                            ephemeral: true);
 
-                    var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
-                    if (role != null)
+                        //update "x registrants" message for this tournament
+                        var message = await ctx.GetMessageAsync(responseDto.TrackingChannelId, responseDto.TrackingMessageId);
+                        if (message != null)
+                        {
+                            await message.ModifyAsync("updated message");
+                        }
+
+                        var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
+                        if (role != null)
+                        {
+                            await ctx.Member.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament");
+                        }
+                    }
+                    else
                     {
-                        await ctx.Member.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament");
+                        var errorMessage = await response.Content.ReadAsStringAsync();
+                        await ctx.EditResponseAsync($"drop failed");
+                        await ctx.LogErrorAsync(errorMessage);
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    var errorMessage = await response.Content.ReadAsStringAsync();
-                    await ctx.EditResponseAsync($"drop failed: {errorMessage}");
+                    await ctx.LogErrorAsync("Something MegaNuked the library, many apologies", ex.Message, ex);
                 }
-
-                return;
             }
         }
     }
