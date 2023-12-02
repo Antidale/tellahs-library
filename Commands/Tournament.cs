@@ -102,7 +102,8 @@ namespace tellahs_library.Commands
                     }
                     else
                     {
-                        await message.ModifyAsync("Unable to create tournament, server error");
+                        var errorMessage = await response.Content.ReadAsStringAsync();
+                        await message.ModifyAsync($"Tournament Creation Failed: {errorMessage}");
                     }
                 }
                 catch (Exception ex)

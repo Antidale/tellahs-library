@@ -15,8 +15,8 @@ var discord = new DiscordClient(new DiscordConfiguration
     Intents = DiscordIntents.AllUnprivileged,
 });
 
-//var httpClient = new HttpClient { BaseAddress = new Uri("https://https://free-enterprise-info-api.herokuapp.com/api") };
-var httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
+var httpClient = new HttpClient { BaseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/") };
+//var httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
 httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
 
 var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
@@ -31,9 +31,9 @@ slash.RegisterCommands<Tournament>(GuildIds.AntiServer);
 //slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
 
 //Register global commands
+slash.RegisterCommands<FlagsetChooser>();
 slash.RegisterCommands<Recall>();
 slash.RegisterCommands<BossRecall>();
-slash.RegisterCommands<FlagsetChoice>();
 
 await discord.ConnectAsync();
 
