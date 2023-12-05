@@ -5,6 +5,7 @@ using FeInfo.Common.Requests;
 using FeInfo.Common.Responses;
 using System.Net.Http.Json;
 using tellahs_library.Extensions;
+using DSharpPlus;
 
 namespace tellahs_library.Commands
 {
@@ -33,9 +34,10 @@ namespace tellahs_library.Commands
             [SlashRequireGuild]
             public async Task CreateTournamentAsync(InteractionContext ctx,
                 [Option("tournament_name", "The name of your tournament")] string tournamentName,
+                [Option("registration_start", "full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
+                [Option("registration_end", "full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString,
                 [Option("role_name", "the name of the role to assign to registrants")] string roleName = "",
-                [Option("registration_start", "full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString = "",
-                [Option("registration_end", "full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString = "",
+
                 [Option("rules_link", "a link to the rules document")] string rulesLink = ""
             )
             {
@@ -47,9 +49,9 @@ namespace tellahs_library.Commands
             [SlashRequireGuild]
             public async Task CreateTournamentOverrideAsync(InteractionContext ctx,
                 [Option("tournament_name", "The name of your tournament")] string tournamentName,
+                [Option("registration_start", "full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
+                [Option("registration_end", "full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString,
                 [Option("role_name", "the name of the role to assign to registrants")] string roleName = "",
-                [Option("registration_start", "full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString = "",
-                [Option("registration_end", "full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString = "",
                 [Option("rules_link", "a link to the rules document")] string rulesLink = ""
             )
             {
@@ -81,8 +83,20 @@ namespace tellahs_library.Commands
                     var role = ctx.Guild.Roles.FirstOrDefault(x => x.Value.Name.Equals(roleName, StringComparison.InvariantCultureIgnoreCase));
 
                     var startParsed = DateTimeOffset.TryParse(startDateTimeOffsetString, out var startRegistration);
+                    if (!startParsed)
+                    {
+                        await message.DeleteAsync();
+                        await ctx.CreateResponseAsync("Registration start must be formatted correctly", ephemeral: true);
+                        return;
+                    }
 
                     var endParsed = DateTimeOffset.TryParse(endDateTimeOffsetString, out var endRegistration);
+                    if (!startParsed)
+                    {
+                        await message.DeleteAsync();
+                        await ctx.CreateResponseAsync("Registration end must be formatted correctly", ephemeral: true);
+                        return;
+                    }
 
                     var createRequest = new CreateTournament(ctx.Guild.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.Value?.Id ?? 0, startRegistration, endRegistration);
 
@@ -95,8 +109,9 @@ namespace tellahs_library.Commands
 
                         await message.ModifyAsync(string.Join("\r\n",
                             string.Join(" ", $"**{tournamentName}**", tournamentDocString),
-                            startParsed ? "Registration Opens: " + DSharpPlus.Formatter.Timestamp(startRegistration, DSharpPlus.TimestampFormat.LongDateTime) : null,
-                            endParsed ? "Registration Closes: " + DSharpPlus.Formatter.Timestamp(endRegistration, DSharpPlus.TimestampFormat.LongDateTime) : null)); ;
+                            "Registration Opens: " + Formatter.Timestamp(startRegistration, TimestampFormat.LongDateTime),
+                            "Registration Closes: " + Formatter.Timestamp(endRegistration, TimestampFormat.LongDateTime)
+                        ));
 
                         await message.PinAsync();
                     }
@@ -113,7 +128,17 @@ namespace tellahs_library.Commands
             }
 
             [SlashCommand("OpenRegistration", "Opens registration for a tournament")]
-            [SlashRequireUserPermissions(DSharpPlus.Permissions.Administrator)]
+            [SlashRequireOwner]
+            [SlashRequireGuild]
+            public async Task OpenRegistrationOverrideAsync(
+                InteractionContext ctx,
+                [Option("tournament_name", "Only needed if a server has multiple tournaments in Announced status")] string tournamentName = "")
+            {
+                await UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName);
+            }
+
+            [SlashCommand("OpenRegistration", "Opens registration for a tournament")]
+            [SlashRequireUserPermissions(Permissions.Administrator)]
             [SlashRequireGuild]
             public async Task OpenRegistrationAsync(
                 InteractionContext ctx,
@@ -123,7 +148,18 @@ namespace tellahs_library.Commands
             }
 
             [SlashCommand("CloseRegistration", "Closes registration for a tournament")]
-            [SlashRequireUserPermissions(DSharpPlus.Permissions.Administrator)]
+            [SlashRequireOwner]
+            [SlashRequireGuild]
+            public async Task CloseRegistrationOverrideAsync(
+                InteractionContext ctx,
+                [Option("tournament_name", "Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
+            )
+            {
+                await UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Closed, tournamentName);
+            }
+
+            [SlashCommand("CloseRegistration", "Closes registration for a tournament")]
+            [SlashRequireUserPermissions(Permissions.Administrator)]
             [SlashRequireGuild]
             public async Task CloseRegistrationAsync(
                 InteractionContext ctx,
