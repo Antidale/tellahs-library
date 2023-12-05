@@ -28,7 +28,7 @@ var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
 
 //Register test commands for the specific servers
 slash.RegisterCommands<Tournament>(GuildIds.AntiServer);
-//slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
+slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
 
 //Register global commands
 slash.RegisterCommands<FlagsetChooser>();
