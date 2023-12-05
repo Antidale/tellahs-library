@@ -30,7 +30,7 @@ namespace tellahs_library.Commands
             public HttpClient? HttpClient { private get; set; }
 
             [SlashCommand("CreateTournament", "Create A Tournament")]
-            [SlashRequireUserPermissions(DSharpPlus.Permissions.Administrator)]
+            [SlashRequireUserPermissions(Permissions.Administrator)]
             [SlashRequireGuild]
             public async Task CreateTournamentAsync(InteractionContext ctx,
                 [Option("tournament_name", "The name of your tournament")] string tournamentName,
@@ -127,7 +127,7 @@ namespace tellahs_library.Commands
                 }
             }
 
-            [SlashCommand("OpenRegistration", "Opens registration for a tournament")]
+            [SlashCommand("OpenRegistrationOverride", "Opens registration for a tournament")]
             [SlashRequireOwner]
             [SlashRequireGuild]
             public async Task OpenRegistrationOverrideAsync(
@@ -147,7 +147,7 @@ namespace tellahs_library.Commands
                 await UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName);
             }
 
-            [SlashCommand("CloseRegistration", "Closes registration for a tournament")]
+            [SlashCommand("CloseRegistrationOverride", "Closes registration for a tournament")]
             [SlashRequireOwner]
             [SlashRequireGuild]
             public async Task CloseRegistrationOverrideAsync(
