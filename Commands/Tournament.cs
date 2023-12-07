@@ -317,8 +317,6 @@ namespace tellahs_library.Commands
             {
                 try
                 {
-                    await ctx.CreateResponseAsync("Dropping not fully implmented yet. Let a tournament organizer know you want to drop");
-                    return;
                     await ctx.DeferAsync();
 
                     if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }

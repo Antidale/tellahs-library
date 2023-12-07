@@ -6,6 +6,11 @@ using tellahs_library.Constants;
 using tellahs_library.Services;
 
 var token = Environment.GetEnvironmentVariable("DiscordBotToken");
+
+#if DEBUG 
+token = Environment.GetEnvironmentVariable("TestBotToken");
+#endif
+
 var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
 
 var discord = new DiscordClient(new DiscordConfiguration
