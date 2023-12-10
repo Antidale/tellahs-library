@@ -1,6 +1,6 @@
 ﻿using DSharpPlus.SlashCommands;
 using DSharpPlus.SlashCommands.Attributes;
-using FeInfo.Common.Emums;
+using FeInfo.Common.Enums;
 using FeInfo.Common.Requests;
 using FeInfo.Common.Responses;
 using System.Net.Http.Json;
