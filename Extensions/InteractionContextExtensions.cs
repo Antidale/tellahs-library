@@ -39,12 +39,13 @@ namespace tellahs_library.Extensions
             var channel = guild.Channels[ChannelIds.BotLogsChannelId];
             if (channel == null) { return; }
 
-            if (message.Length > 2000)
+            //Odds are good we don't need the whole message here, and this feels like a good enough arbitrary number to know what's going on.
+            if (message.Length > 1700)
             {
-                message = message[..2000];
+                message = message[..1700];
             }
 
-            await channel.SendMessageAsync(string.Join("\r\n", message, ex?.GetType()));
+            await channel.SendMessageAsync(string.Join("\r\n", ctx.User.Username, message, ex?.GetType()));
         }
 
         public static async Task LogErrorAsync(this InteractionContext ctx, string responseMessage, string errorMessage, Exception? ex = null)
