@@ -576,7 +576,7 @@ The Attacker and Defender each get 10% of the spot’s HP, but award one-third o
 
 ")
                         .AddField("Damage Types", "Untyped Magic", inline: true)
-                        .AddField("Additional Links", "[Attacker](<https://wiki.ff4fe.com/doku.php?id=Attacker>), [Defender](<https://wiki.ff4fe.com/doku.php?id=Defender>)")
+                        .AddField("Additional Links", "[Attacker](<https://wiki.ff4fe.com/doku.php?id=Attacker>), [Defender](<https://wiki.ff4fe.com/doku.php?id=Defender>)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
