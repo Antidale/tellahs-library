@@ -23,7 +23,7 @@ While in the attack phase, mages should prefer casting fast spells (e.g. Virus) 
 
 Be careful about deciding when to berserk characters. Miscalculating on if you’ll kill in the cycle can be really costly in both time and damage, as each berserked swing will trigger ColdMist.
 ### Additional Notes
-Depending on the level disparity, Cover strats will have some variable utility, but can be a huge help if you have solid defensive gear (Glass Hat, Crystal Ring, Adamant Armor, etc). Spending time using cure spells is often not advised for underleveled fights, since D.Mist might just be one-shotting characters even if they had full health.
+Depending on the level disparity, Cover strats will have some variable utility, but can be a huge help if you have solid defensive gear (Glass hat, Crystal ring, Adamant armor, etc). Spending time using cure spells is often not advised for underleveled fights, since D.Mist might just be one-shotting characters even if they had full health.
 
 ")
                         .AddField("Damage Types", "Physical, Ice (ColdMist)", inline: true)
@@ -63,9 +63,9 @@ Octomamm only uses physical attacks. After the third time you deal direct damage
 ### Strats
 Overall a pretty basic fight. Berserk status and fast spells are all very helpful in slowing the squid. Once you’ve gotten a few tentacles removed, mages with Lit3 and no nuke probably really like switching from Virus to Lit3 when the fight is at a high HP location.
 ### Additional Notes
-A MoonVeil used against Octomamm means the fight is entirely free, and Cover strats can really help out, especially for underleveled parties. If the fight's in a challenging spot, a SilkWeb or a double slow helps out in this fight, since the slow effect from those gets amplified by the tentacle loss. If you're having trouble getting started slowing down the battle speed a notch or two can help get in extra early attacks, which'll have some cascading benefits. Blink and Illusion can be huge in helping set up/stabilize in underleveled fights.
+A MoonVeil used against Octomamm means the fight is entirely free, and Cover strats can really help out, especially for underleveled parties. If the fight's in a challenging spot, a SilkWeb or a double slow helps out in this fight, since the slow effect from those gets amplified by the tentacle loss. Slowing down the battle speed a notch or two can help get in extra early attacks, which'll have some cascading benefits. Blink and Illusion can be huge in helping set up/stabilize in underleveled fights.
 
-Yang really loves equipping a Thunder Claw here, and the more unequal Edge’s equips are, the more he wants one, too.
+Yang really loves equipping a Thunder claw here, and the more unequal Edge’s equips are, the more he wants one, too.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -129,7 +129,7 @@ Grey Bombs have 8% the spot's HP total, and get no magic defenses.
 None of the baby bombs have the boss bit, unless `Bnofree` is turned on.
 
 ")
-                        .AddField("Damage Types", "Physical, Fire (explode, MomBomb), Untyped Magic (explode, baby bombs)", inline: true)
+                        .AddField("Damage Types", "Physical, Fire (explode, MomBomb), Untyped Magic (Explode, baby bombs)", inline: true)
                         .AddField("Resist", "MomBomb: None, Baby bombs: Poison, Pig, Mini, Frog", inline: true)
                         .AddField("Weakness", "MomBomb: Dark, Baby bombs: none", inline: true)
                         .AddField("Boss Bit", "Yes (MomBomb), No (baby bombs)", inline: true)
@@ -198,7 +198,7 @@ Milon Z’s only damage comes from Fight, which can proc the Curse status effect
 ### Strats
 As standard for physical fights, Blink/Illusion/MoonVeil are all great defense options. Milon Z’s Zombie race means that Cure magic/potions cause harm. At low HP spots, Cure2 pots possibly do better damage than your party's normal attacks, and a Cure3 or two can really speed up the fight. Don't toss Elixirs.
 ### Additional Notes
-Wizard hats, Sorcerer and White robes provide defense against Zombies, as does any part of Cecil’s Paladin or Crystal defensive gear. Generally equipping any of those on a Cecil in the back row lets Cover strats carry the day. Also, the Crystal Sword does extra damage against Zombies, as do White arrows.
+Wizard hats, Sorcerer and White robes provide defense against Zombies, as does any part of Cecil’s Paladin or Crystal defensive gear. Generally equipping any of those on a Cecil in the back row lets Cover strats carry the day. Also, the Crystal sword does extra damage against Zombies, as do White arrows.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -237,7 +237,7 @@ The Guards only Fight on their turns. They’ll react to magic cast on them with
 ### Strats
 Since the Guards don’t normally have the boss bit, an HrGlass, Coffin, or successful use of the Stone spell (or multiple casts of Stop) fully control the fight. Mute, or using a MuteBell, removes their ability to cast. Rune Axe, Mute Knife, Mute Arrows, and Elven Bows do extra damage, and properly timed, an Assassin dagger is just as effective as a Coffin. Should Rydia have learned Cockatrice or Mage, both of them can be very useful in the fight as well. Size and Toad also negate this fight’s threat.
 ### Additional Notes
-Equipping a Rune Ring, Ribbon, or an Aegis Shield will give a character mage defense, giving great protection from a Guard’s attack. Ribbons and Crystal armor also block both status effect counters from the Guards, Zeus Gauntlets against Size, and a Ruby Ring protects against Piggy.
+Equipping a Rune ring, Ribbon, or an Aegis shield will give a character mage defense, giving great protection from a Guard’s attack. Ribbons and Crystal armor also block both status effect counters from the Guards, Zeus Gauntlets against Size, and a Ruby ring protects against Piggy.
 
 At high XP spots, Life glitches, or even a Life2 grind, can be very welcome infusions of experience. 
 
@@ -256,7 +256,7 @@ With `Bnofree` on, this fight becomes much more dangerous. A focus on minimizing
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Yang.png")
                         .WithDescription(
 @"### Fight Flow
-Karate alternates between using Fight and Kick. After Karate queues the second kick, any Paladin Cecil using Fight will cause Karate to say “Ouch” and perish.
+Karate alternates between using Fight and Kick. After Karate queues the second Kick, any Paladin Cecil using Fight will cause Karate to say “Ouch” and perish.
 ### Strats
 Generally normal strategies for dealing damage and handling incoming physical attacks apply. Cover strats don’t often work to keep the whole party alive, since Kick will deal AoE damage that ignores Barrier/Blink status and can do enough to kill party members that have low HP.
 ### Additional Notes
@@ -278,7 +278,7 @@ The left arm (the one closest to the party) will cycle a sequence of Fight, Enta
 ### Strats
 Sweeping spells that also pierce Wall (e.g. Quake, Summons) are a great action, preventing the arms or Baigan from dealing damage to the party; just make sure to only queue the cast when you can see that the arms are being targeted as well. Most of the damage from the enemies is from Fight, so Blink/Illusion/MoonVeil are all very useful as ways to prevent damage. Berserk, which is so often a main strategy, is a little less powerful in this fight due to the random targeting. It’s still useful, especially as a way to keep damage flowing and helping other party members get an effective speed boost.
 
-As the fight goes on and Baigan reflects a wall onto your party, you can use that to bounce spells back. Timed well, you can get spells to mainly hit Baigan and not the arms. The walls do make it more difficult to keep Blink/Illusion up on characters, or do mass heals. This is not a bad fight to dip into the Cure3 potion supply.
+As the fight goes on and Baigan reflects a Wall onto your party, you can use that to bounce spells back. Timed well, you can get spells to mainly hit Baigan and not the arms. The Walls do make it more difficult to keep Blink/Illusion up on characters, or do mass heals. This is not a bad fight to dip into the Cure3 potion supply.
 ### Additional Notes
 Making good use of Cover in this fight can be a little difficult, since Cecil can’t cover the Vampire from the Right Arm. Keeping that enemy dead is a high priority if Cover is your best defensive plan, so you might consider single/manually targeting spells and attacks. This kind of strategy is more useful at high physical attack locations where you don’t have the AoE to clear the arms, and have good physical attackers that can reach to back row enemies without penalty (Jump, Aim, Dart, characters equipped with long range weapons, or characters that have the back row glitch applied).
 
@@ -297,9 +297,9 @@ Making good use of Cover in this fight can be a little difficult, since Cecil ca
 @"### Fight Flow
 Kainazzo begins the fight with a punch, then enters a cycle of gathering water, using Wave, and then self-targeting a Fast cast. Using lightning based magic will cause the water to dispel, and set Kainazzo up to queue a punch on the next opportunity to queue an action. When damaged at low HP (17.5% of max or less), Kainazzo will retreat into the shell, dispelling any gathered water. After hiding, Kainazzo’ll use Remedy to heal, then take a single turn to both set defenses and prepare to gather water.
 ### Strats
-This is a fight where location significantly dictates tactics. At spots where your party can’t ever reasonably survive the first Wave (often the 2nd boss on the hook route, or the first spot in the Giant), your first turns should be working towards both setting up long term goals (getting a berserker online, getting Blink up, tossing a silkweb), and making sure that the water is dispelled before the Wave usage gets queued.
+This is a fight where location significantly dictates tactics. At spots where your party can’t ever reasonably survive the first Wave (often the 2nd boss on the Hook route, or the first spot in the Giant), your first turns should be working towards both setting up long term goals (getting a berserker online, getting Blink up, tossing a SilkWeb), and making sure that the water is dispelled before the Wave usage gets queued.
 ### Additional Notes
-At high HP spots, or if your damage is low for the location, you can find yourself in a loop where the Remedy action outpaces your ability to do damage. If that’s happening while you only have zerked characters, you should probably reset and either try again to have more people up and fighting at the end, or come back after getting a few more levels.
+At high HP spots, or if your damage is low for the location, you can find yourself in a loop where the Remedy action outpaces your ability to do damage. If that’s happening while you only have berserked characters, you should probably reset and either try again to have more people up and fighting at the end, or come back after getting a few more levels.
 
 The timing to dissipate the water before a Wave can be queued can be tricky, so slower battle speeds might be necessary. Given an RA1 setup, you can also time queuing up an item toss with the punch so that the item gets used just after the water is gathered.
 
@@ -338,15 +338,15 @@ The dragon form lacks the boss bit, and while it does have some status resistanc
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/MagusSis.png")
                         .WithDescription(
 @"### Fight Flow
-While Cindy is alive, Sandy will cast Wall on her and Mindy will target Cindy with a spell (cycling through Fire2, Lit2, Ice2, and Virus) intending to bounce it off of the wall Sandy provides. Cindy's script has her punch while both her sisters are alive. If either of her sisters are dead she'll punch once more, and then use Remedy to revive her dead sisters.
+While Cindy is alive, Sandy will cast Wall on her and Mindy will target Cindy with a spell (cycling through Fire2, Lit2, Ice2, and Virus) intending to bounce it off of the Wall Sandy provides. Cindy's script has her punch while both her sisters are alive. If either of her sisters are dead she'll punch once more, and then use Remedy to revive her dead sisters.
 ### Strats
-Quake, Meteo, and most of Rydia’s summons do pretty well here, since they all bypass the wall that gets put on Cindy. Physical fighters generally prefer to have some sort of mage-killing weapon equipped, and be back-row glitched. Different parties might have different priorities, but if the fight is dangerous for your party, killing Cindy or Mindy first can help ease the fight along. Removing Cindy removes the possibility of Mindy/Sandy being revived, and removing Mindy reduces the magic damage coming at the party (while making Cindy no longer in a back row, so the physical damage portion of the fight does increase for a bit).
+Quake, Meteo, and most of Rydia’s summons do pretty well here, since they all bypass the Wall that gets put on Cindy. Physical fighters generally prefer to have some sort of mage-killing weapon equipped, and be back-row glitched. Different parties might have different priorities, but if the fight is dangerous for your party, killing Cindy or Mindy first can help ease the fight along. Removing Cindy removes the possibility of Mindy/Sandy being revived, and removing Mindy reduces the magic damage coming at the party (while making Cindy no longer in a back row, so the physical damage portion of the fight does increase for a bit).
 
-Parties with a Nuke caster can, with proper anchoring and party order, can sometimes kill Sandy first, preventing a wall from going on Cindy, which can help make the start of the fight more manageable.
+Parties with a Nuke caster can, with proper anchoring and party order, can sometimes kill Sandy first, preventing a Wall from going on Cindy, which can help make the start of the fight more manageable.
 ### Additional Notes
 While Cindy has more HP than her sisters in the fight, each sister awards one-third of the spot’s XP, which can make the sisters a good grind. And since they have a mage weakness, there can be a leeway where it’s a reasonable mini-grind.
 
-Lower level parties might want to avoid using berserk, since it can spread out damage too much, and leave you taking both punches from Cindy, and reflected spells from Mindy. The Dragoon armor set provides good elemental protection for those that can wear it, as does the Crystal Helm and Protect rings. Also don’t discount the Lit resistance from Diamond Rings or Sorcerer robes. When you’re under leveled for the fight, making any of the spells be less dangerous is really helpful. Having a Headband for Charm resistance can also save you when Cindy’s gone and Sandy starts slinging spells at the party.
+Lower level parties might want to avoid using berserk, since it can spread out damage too much, and leave you taking both punches from Cindy, and reflected spells from Mindy. The Dragoon armor set provides good elemental protection for those that can wear it, as does the Crystal Helm and Protect rings. Also don’t discount the Lit resistance from Diamond rings or Sorcerer robes. When you’re under leveled for the fight, making any of the spells be less dangerous is really helpful. Having a Headband for Charm resistance can also save you when Cindy’s gone and Sandy starts slinging spells at the party.
 
 ")
                         .AddField("Damage Types", "Cindy: Physical\r\nMindy: Lit, Ice, Fire, Untyped Magic", inline: true)
@@ -387,9 +387,9 @@ Valvalis will not gate intended underground access unless `Bunsafe` is on.
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Calcabrina.png")
                         .WithDescription(
 @"### Fight Flow
-The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. At very low HP, if Calbrena takes damage, the big doll will revert back to the 3 Cal/3 Brena formation. 
+The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. Calbrena can revert back to all the small dolls if hit while at very low HP and not killed.
 ### Strats
-Quake is fantastic against the dolls at many spots, and Meteo can be too, although you’ll eat a lot of attack animations waiting for rocks to fall. The back dolls (Cals) don’t get the boss bit, so a common tactic is to toss an HrGlass, clean up the Brenas, then finish off the stopped enemies. The main thing you mostly want to avoid in this fight is seeing the Big doll, so if you don’t have any way of Stopping the Cals, nor AoE damage to clear all of them together, you’ll want to kill off the dolls so that you can take out the last of each type at roughly the same time.
+Quake is fantastic against the dolls at many spots, and Meteo can be too, although you’ll eat a lot of attack animations waiting for rocks to fall. The back dolls (Cals) don’t get the boss bit, so a common tactic is to toss an HrGlass, clean up the Brenas, then finish off the stopped enemies. The main thing you mostly want to avoid in this fight is seeing Calbrena, so if you don’t have any way of Stopping the Cals, nor AoE damage to clear all of them together, you’ll want to kill off the dolls so that you can take out the last of each type at roughly the same time.
 ### Additional Notes
 Each Cal has just under 12% of the spot’s HP, each Brena has just under 4%, and Calbrena has just over 54%.
 
@@ -410,9 +410,9 @@ The fight opens with Golbez casting HoldGas on the party, then summoning Shadow.
 
 Golbez will react to unreflected damage, when under an HP threshold for the location, with a plaintive “Why?” before dying.
 ### Strats
-If you can, take advantage of the status effect system by using Size or Piggy before the battle when you know you’re facing Golbez. This will prevent the HoldGas from paralyzing the party, making it easy to get StarVeils up on whoever is left. You can also self-target Venom from a well-placed/anchored Black Mage for the same effect. If you lack the ability for any of that, consider getting into a random encounter and killing off all but your two most important characters for the upcoming fight, and then taking on Golbez. Alternatively, a trip to Mysidia can turn your whole party to pigs. 
+If you can, take advantage of the status effect system by using Size or Piggy before the battle when you know you’re facing Golbez. This will prevent the HoldGas from paralyzing the party, making it easy to get StarVeils up on whoever is left. You can also self-target Venom from a well-placed/anchored Black Mage for the same effect. If you lack the ability for any of that, consider getting into a random encounter and killing off all but your two most important characters for the upcoming fight, and then taking on Golbez. Alternatively, a trip to the dancer in the Mysidia inn can turn your whole party to pigs.
 
-Characters wearing a Ribbon or Adamant Armor are immune to Shadow’s Demolish, and Adamant Armor, Crystal Rings and Heroine Robes prevent being paralyzed.
+Characters wearing a Ribbon or Adamant armor are immune to Shadow’s Demolish, and Adamant armor, Crystal rings and Heroine robes prevent being paralyzed.
 
 Depending on your damage output, you can sometimes just let Golbez do the damage to himself and have anyone trigger the finishing script. Cecil with a Holy weapon often speeds up finishing out the fight very quickly.
 ### Additional Notes
@@ -442,7 +442,7 @@ The first fight gives you a decent bit of setup time and has fairly limited dama
 
 Once into the second fight, lean on your big damage dealers pretty heavily. With RA1 setups, you’re unlikely to get a Bersk cast off before the Poison blocks it, so don’t count on that landing. Lugae’s Laser ability can be a major issue at high HP spots. For the most part, though, even the second fight isn’t too scary if you take your time and manage resources well.
 
-The robot race on both Balnab and the second Dr. Lugae means that Thunder Claws do great work, and also that Cid can do some really heavy lifting in the fights. 
+The robot race on both Balnab and the second Dr. Lugae means that Thunder claws do great work, and also that Cid can do some really heavy lifting in the fights. 
 ### Additional Notes
 Walls will reflect both Beam and Emission, and will block Laser, which makes it very handy at high HP spots, or if the party is underleveled. Underleveled parties should also make liberal use of Heal if the Gas counters land. Limiting how many characters are dealing damage limits the Gas counters, as well as frees up characters for opportunistic potion (Heal/Cure/Life) usage to keep the party up and going.
 
@@ -503,11 +503,11 @@ Rubicant cycles through actions of cloak opening (which gives an Ice weakness), 
 
 Rubicant reacts to Fight with a party-wide Fire2 counter. When below 4% of the spot’s health and is hit with Fight, instead of that Fire2 counter Rubicant’ll give a small speech and disappear. Using fire magic causes a Life1 reaction targeting the whole party. 
 ### Strats
-Equipping melee characters with ice weapons (IceBrand, Ice Claw, Blizzard spear, Ice arrows, etc) will hit a script-induced 4x weakness throughout the fight once Rubi's; cloak opens the first time. Depending on the spot’s magic power and your party's HP/amount of Fire resistance gear equipped, you might opt to just use berserk on a physical fighter equipped with an ice weapon and either tank or heal through the counters, or you can make use of the Fight alternatives (Power, Jump, Aim) in order to not draw the counters.
+Equipping melee characters with ice weapons (IceBrand, Ice claw, Blizzard spear, Ice arrows, etc) will hit a script-induced 4x weakness throughout the fight once Rubi's cloak opens the first time. Depending on the spot’s magic power and your party's HP/amount of Fire resistance gear equipped, you might opt to just use berserk on a physical fighter equipped with an ice weapon and either tank or heal through the counters, or you can make use of the Fight alternatives (Power, Jump, Aim) in order to not draw the counters.
 
 Casters should generally lean towards using fast spells, like Virus, Quake, and Nuke most of the fight, but timing Ice3 to land when the cloak is open is definitely a skill to learn. Boreas and Blizzard items are great to toss and land while the cloak is open, especially with high HP characters who might not have ice element weapons equipped.
 ### Additional Notes
-Rubicant generally uses single-target damage, so underleveled parties can look to strategies that don’t involve the Fight command, and making liberal use of Life spells/potions and Blink/Illusion to keep party members up and active, and generally not risking a wipe. This strategy takes more time to execute, but if you’re in a low level situation can get you through a fight that’d otherwise not be possible to win.
+Rubicant generally uses single-target damage, so underleveled parties can look to strategies that don’t involve the Fight command, and making liberal use of Life spells/potions and Blink/Illusion to keep party members up and active, and generally not risking a wipe. These strategy takes more time to execute, but if you’re in a low level situation they can get you through a fight that’d otherwise not be possible to win.
 
 ")
                         .AddField("Damage Types", "Physical, Fire (Glare, Fire2)")
@@ -523,13 +523,13 @@ Rubicant generally uses single-target damage, so underleveled parties can look t
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/EvilWall.png")
                         .WithDescription(
 @"### Fight Flow
-EvilWall will punch 16 times, then switch to using Crush. Since the punching phase uses chained commands to keep the “advance, punch” combination together, EvilWall effectively acts as though it’s berserked during this phase. No atb cheating shenanigans happen during the Crush phase.
+EvilWall will punch 16 times, then switch to using Crush. Since the punching phase uses chained commands to keep the “advance, punch” combination together, EvilWall effectively acts as though it’s berserked during this phase. No ATB cheating shenanigans happen during the Crush phase.
 
-EvilWall will counter any magic usage affecting it with a Petrify counter, so mage heavy compositions can run into some trouble with the Stone condition if they’re reliant on low damage spells. 
+EvilWall will counter any magic usage affecting it with a Petrify counter, so mage heavy compositions can run into some trouble with the Stone condition if they’re reliant on low damage spells. Call and Twin do not trigger that reaction.
 ### Strats
-Berserk status does wonders for helping mitigate EvilWall’s ATB shenanigans. Good defensive gear and using the backrow glitch will help keep party members alive, and using Blink/Illusion helps a lot too. If you’ve a MoonVeil and instant death protection, one character can be immune from any of EvilWall’s actions.
+Berserk status does wonders for helping mitigate EvilWall’s ATB shenanigans. Some parties might prefer using a fast agility anchor as a different mitigation strategy, and a SilkWeb can provide some solid additional benefit. Good defensive gear and using the backrow glitch will help keep party members alive, and using Blink/Illusion helps a lot too. With a MoonVeil and Crush protection, one character can be immune from any of EvilWall’s actions.
 ### Additional Notes
-EvilWall will punch itself if there are no valid PC targets to hit. In some places you can use this along with Eddy’s hide command to let EvilWall kill itself, or with the aid of a Ribbon or Adamant armor to prevent the instant death effect from Crush, let Eddy come out of hiding once the fight is in Crush phase to finish the job.
+EvilWall will punch itself if there are no valid PC targets to hit. In some places you can use this along with Edward’s Hide command to let EvilWall kill itself, or with the aid of a Ribbon or Adamant armor to prevent the instant death effect from Crush, let Edward come out of hiding once the fight is in Crush phase to finish the job.
 ")
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Additional Links", "[Eddy Vs EvilWall](<https://docs.google.com/spreadsheets/d/1TQY6hGjqkC1NQGDv_M0pzPQa2xZZlAT7rzCzCNLyX1g>)", inline: true)
@@ -543,11 +543,11 @@ EvilWall will punch itself if there are no valid PC targets to hit. In some plac
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Fiends.png")
                         .WithDescription(
 @"### Fight Flow
-The Milon form will Fight on four consecutive turns, and then use Curse. Rubicant will cycle through Fire2, Fire3, and Glare. Kainazzo uses Fight four consecutive turns, then uses Big Wave. Valvalis alternates between Fight and Ray for two instances each, then uses Storm. Each boss has an HP threshold where they’ll use their reaction to transform into the next form in the cycle. 
+The Milon form will Fight on four consecutive turns, and then use Curse. Rubicant will cycle through Fire2, Fire3, and Glare. Kainazzo uses Fight four consecutive turns, then uses Big Wave. Valvalis alternates between Fight and Ray for two instances each, then one sequence of Fight and Storm. Each boss has an HP threshold where they’ll use their reaction to transform into the next form in the cycle.
 ### Strats
-Generally, this is a straightforward damage race, with Rubicant’s Fire3/Glare targets being the main concerns throughout. Take advantage of elemental (or racial) weaknesses where you can to speed up the fight and reduce the threat of the encounter. 
+Generally, this is a straightforward damage race, with Rubicant’s Fire3 and Glare casts being the main concern. Take advantage of elemental (or racial) weaknesses where you can to speed up the fight and reduce the threat of the encounter.
 
-Often the fastest path through is to reflect spells onto the Milon form and never see any other of the Fiends. Placing the wall on someone with Zombie protection (a Wizard hat, Sorcerer robe, or a part of Cecil’s Crystal armor set are common ways of getting this) means that Milon’s attacks will deal reduced damage to that character, making healing them often not required.
+Often the fastest path through is to reflect spells onto the Milon form and never see any other of the Fiends. Placing the Wall on someone with Zombie protection (a Wizard hat, Sorcerer robe, or a part of Cecil’s Crystal armor set are common ways of getting this) means that Milon’s attacks will deal reduced damage to that character, making healing them often not required. Another quick way through the fight is to target Rubicant's defenses. Edge with Mute knife and a decent katana, or an archer with Ice arrows and an Elven bow can generally skip over the Kainazzo/Valvalis portion of the fight.
 ### Additional Notes
 Since this fight is actually two separate HP pools (Milon/Rubi in one, Kainazzo/Val in another), if you can kill the first fight without hitting the HP threshold for it to transform into the other, you’ll never face the Kainazzo/Valvalis fight. Typically this happens with using a Wall and bouncing spells onto the Milon form. Since reflected spells don’t trigger reactions, you’ll never see any other shape.
 ")
@@ -566,16 +566,16 @@ Since this fight is actually two separate HP pools (Milon/Rubi in one, Kainazzo/
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/CPU.png")//;
                         .WithDescription(
 @"### Fight Flow
-The attacker always uses Maser, a full party targeted effect dealing 10% of each person’s HP in damage. The Defender always uses Remedy on the CPU, which heals it for 10% of the CPU’s total health. The CPU will cast Wall when it doesn’t have a wall up. If both the Attacker and Defender are dead, the CPU will use Globe 199 twice, then resurrect the Attacker and Defender.
+The Attacker always uses Maser, which deals 10% of each target's HP in damage. The Defender always uses Remedy on the CPU, which heals it for 10% of the CPU’s total health. The CPU will cast Wall when it doesn’t have a Wall up. If both the Attacker and Defender are dead, the CPU will use Globe 199 twice, then resurrect the Attacker and Defender.
 ### Strats
-Most strategies start with killing the Defender, since it can be extremely hard to keep up with the healing that it does. Teams with Jump, Aim, Dart, and backrow-glitched characters will be able to attack the CPU at full damage, and often rely on manual targeting to avoid having to deal with Globe 199 and resurrected Attacker/Defender nodes. Berserk and Blink can be, RNG willing, a good pairing when Zerk is used on one party member and you can quickly (re)apply Blink on the Attacker node. And once enough damage has been dealt, going all in on damage (e.g. stop using Blink, berzerk more, use Meteo/Quake) can help shorten the time it takes to get through this fight. Setting up Nuke/White casters with a wall on a party member and letting them be part of the barrage is also a good play
+Most strategies start with killing the Defender, since it can be extremely hard to keep up with the healing that it does. Teams with Jump, Aim, Dart, and backrow-glitched characters will be able to attack the CPU at full damage, and often rely on manual targeting to avoid having to deal with Globe 199 and resurrected Attacker/Defender nodes. Berserk and Blink can be, RNG willing, a good pairing when the berserk is used on just one party member and you can quickly (re)apply Blink on the Attacker node. And once enough damage has been dealt, going all in on damage (e.g. stop using Blink, berserk more, use Meteo/Quake) can help shorten the time it takes to get through this fight. Setting up Nuke/White casters with a Wall on a party member and letting them be part of the barrage is also a good play.
 
-Float strats, where you get a wall up on one character, then try to reflect the float on the Attacker orb can also be very helpful, as long as the float doesn’t reflect back on the CPU. Once float is on the Attacker, you’re free to use Quake, which will really help mages get in on the damage without the RNG of reflecting single target spells and hoping they land on CPU
+Float strats, where you get a Wall up on one character and try to reflect the Float on the Attacker orb, can also be very helpful as long as the Float doesn’t reflect back on the CPU. Quake can be safely cast once Float is on the Attacker, and Black mages can get in on the damage party without reflecting single target spells and hoping they land on CPU.
 ### Additional Notes
-The attacker and defender each get 10% of the spot’s HP, but award one-third of the spot’s XP. With a combination of location and team composition, you can set up a pretty effective grind by forcing resummons of the orbs, but you’ll also have two Globe 199s per cycle, so Life potions/spells and party-wide healing will be important for an orb grind.
+The Attacker and Defender each get 10% of the spot’s HP, but award one-third of the spot’s XP. With a combination of location and team composition, you can set up a pretty effective grind by forcing resummons of the orbs, but you’ll also have two Globe 199s per cycle, so Life potions/spells, especially Life2, and party-wide healing will be important for an orb grind.
 
 ")
-                        .AddField("Damage Types", "Magic (Globe 199), Target HP Based (Maser)", inline: true)
+                        .AddField("Damage Types", "Untyped Magic", inline: true)
                         .AddField("Additional Links", "[Attacker](<https://wiki.ff4fe.com/doku.php?id=Attacker>), [Defender](<https://wiki.ff4fe.com/doku.php?id=Defender>)")
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
@@ -589,7 +589,7 @@ The attacker and defender each get 10% of the spot’s HP, but award one-third o
 @"### Fight Flow
 Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin. He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll fight once, raise his sword, take an empty turn, and use Odin. Then repeat from the top.
 ### Strats
-Getting a berserker going early is a strong start to the fight. The lightning weakness makes Thunder Claw users really shine, and Lit Arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. If you can’t thunderstruck (see below), this can be a damage race to the first time Odin is used, sweeping forward in a party-wide attack.
+Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. If you can’t thunderstruck (see below), this can be a damage race to the first time Odin is used, sweeping forward in a party-wide attack.
 ### Additional Notes
 Both Edward and Kain can avoid the Odin attack by being not on screen during it, enabling the Thunderstruck strats at locations and levels where the fight might not normally be possible. The trigger for Thunderstruck requires Odin to be in the third part of the cycle (single punch, Odin attack), and is only active for a short time while the sword is raised. This generally requires your party member to survive the punch and then immediately use a lightning-based item to land the damage when the trigger is in effect.
 ")
@@ -611,9 +611,9 @@ When Asura is dealt damage, the face change pattern goes backwards (should the f
 ### Strats
 Asura never attacks your party except as a reaction, so you have plenty of setup time to get Blink/Illusion/MoonVeil on party members before actually being attacked. 
 
-Giving Asura the Reflect status will bounce those self-targeted spells, which then means this becomes like fights that just have physical attacks to deal with. Because those physical attacks come from a reaction to direct damage, if the location’s damage is deadly to your party, you’ll often want to have a single source of damage throughout the fight. And even if the damage isn’t high, if your party is doing lots of low damage attacks, you’ll spend a lot of time in animations in battle that aren’t necessary. Edge with a Mute knife and a decent katana is great in this fight, as is anyone swinging a Rune Axe. For bows and arrows, both mute arrows and the elven bow hit the Mage race, mix/match your best combination for maximum damage. Defensively, equipping a Ribbon, Rune Ring, or Aegis Shield gives protection from mages, reducing the threat of Asura’s counters.
+Giving Asura the Reflect status will bounce those self-targeted spells, which then means this becomes like fights that just have physical attacks to deal with. Because those physical attacks come from a reaction to direct damage, if the location’s damage is deadly to your party, you’ll often want to have a single source of damage throughout the fight. And even if the damage isn’t high, if your party is doing lots of low damage attacks, you’ll spend a lot of time in animations in battle that aren’t necessary. Edge with a Mute knife and a decent katana is great in this fight, as is anyone swinging a Rune Axe. For bows and arrows, both Mute arrows and the Elven bow hit the Mage race, mix/match your best combination for maximum damage. Defensively, equipping a Ribbon, Rune ring, or Aegis shield gives protection from mages, reducing the threat of Asura’s counters.
 
-Parties without much physical firepower will look to bouncing spells off of a wall to both be able to cast Virus/Nuke during the fight, and also not require any healing/preventative measures.
+Parties without much physical firepower will prefer bouncing spells off of a Wall to both be able to cast Virus/Nuke during the fight, and also not require any healing/preventative measures.
 
 Lastly, the Lifelock strategy of keeping Asura on continually casting Life1 is something generally best used in the overworld. Using quick actions (Fight, Virus, Nuke, damaging j-items, Dancing Dagger, etc) just as the Life1 is cast from Asura will cycle back to that face and cast Life1 on when acting next. Depending on party speed, you might have to have every member contribute with some damage, so inaccurate characters will want to rely on item usage to do their part. This strategy is not something to do when Asura is at fast RA numbers (RA1, probably RA2 as well), since you might lose the correct ATB timing to have Asura remain on the correct face.
 ### Additional Notes
@@ -634,9 +634,9 @@ The description in Fight Flow for the reactions is limited, since getting into t
 @"### Fight Flow
 Levitan goes through a cycle of changing form and using Big Wave, then taking a turn to change form back, then casting Ice 2 either twice (odd times through the cycle), or once, before starting the cycle again.
 ### Strats
-This fight is generally not much to worry about if you have decent healing. Zerkers are happy to zerk, mages can cast the standard array of spells (best of Virus, Quake, Nuke) or also choose to add in their lightning spells. At high magic locations those Ice2s can really hurt, so using a starveil is definitely a solid choice to help get through a fight. 
+This fight is generally not much to worry about if you have decent healing. Zerkers are happy to zerk, Black mages can cast the standard array of spells (best of Virus, Quake, Nuke) or also choose to add in their lightning spells. At high magic locations those Ice2s can really hurt, so using a StarVeil is definitely a solid choice to help get through a fight.
 ### Additional Notes
-The lightning weakness being 2x means that Yang’ll get a bigger increase over Edge in equipping a Thunder Claw. If you have both on your team, the other equipment will decide who should get it. Edge with pretty mismatched katanas, think Masa/Long or Ninja/Short, will be very happy to replace the weaker blade with a Thunder Claw.
+The Lightning weakness being 2x means that Yang’ll get a bigger increase over Edge in equipping a Thunder claw. If you have both on your team, the other equipment will decide who should get it. Edge with pretty mismatched katanas, think Masa/Long or Ninja/Short, will be very happy to replace the weaker blade with a Thunder claw.
 
 ")
                         .AddField("Damage Types", "Untyped Magic, Ice", inline: true)
@@ -651,11 +651,11 @@ The lightning weakness being 2x means that Yang’ll get a bigger increase over 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Bahamut.png")
                         .WithDescription(
 @"### Fight Flow
-Bahamut starts counting down from 5 to 1, and then casts MegaNuke on the party.
+Bahamut takes turns counting down from 5 to 1, and casts MegaNuke on the next turn. Repeat until dead.
 ### Strats
-Methods of handling range from an all out assault, often using the berserk status, to patiently reflecting all the MegaNuke damage back at Bahamut, with a large range of a hybrid approach in-between. When the part is underleveled, you’re more likely going to be successful trending toward reflecting back the damage. Good use of timing in using the item and agility anchoring can make starveils last for up to three cycles. It can also be a great idea to stagger out the veil usage by not protecting some characters and having them be revived by those with protection. This can help save some veils in your inventory, and not waste excess damage on what’s reflected, since a full party with reflect up generally easily exceeds the 9999 damage cap.
+Methods of handling range from an all out assault, often using the berserk status, to patiently reflecting all the MegaNuke damage back at Bahamut, with a large range of a hybrid approach in-between. When the party is underleveled, you’re more likely going to be successful with reflecting MegaNuke as most of your damage. A small delay in applying Wall and using RA1 agility anchoring can make StarVeils last for up to three cycles. It can also be a great idea to stagger out the Veil usage by not protecting some characters and having them be revived by those with protection.
 ### Additional Notes
-You get less time in between the 1 count and the casting of MegaNuke because Bahamut makes use of the Chain command to chain together sprite animations and the spell cast all as one action. A side effect of Chain is that the enemy essentially skips a wait in line.
+You get less time in between the 1 count and the casting of MegaNuke because Bahamut makes use of the Chain command to chain together sprite animations and the spell cast all as one action.
 ")
                         .AddField("Damage Types", "Magic", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
@@ -672,7 +672,7 @@ On its turn, Pale Dim only fights. In reaction to Fight, Pale Dim will cast Slow
 ### Strats
 Another fight where Blink/Illusion/MoonVeil do so much to protect the party and be very efficient in doing so. The Slow counters from Pale Dim can vary from being a nuisance to something that makes the fight a little risky if you fall behind in preventative measures. Black Mages should use untyped magic (Virus, Quake, Nuke) here to avoid both healing Pale Dim and suffering the counter attack. Zerkers are fine, but if you have someone equipped with dragon killing gear (dragoon spear, dragon whip, artemis arrows), you’ll want to lean on them as possibly the only attacker.
 ### Additional Notes
-Cecil as a cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal Ring, or any Dragoon defensive gear to pick up dragon defense (Glass headgear and Adamant Armor also do wonders). 
+Cecil as a cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring, or any Dragoon defensive gear to pick up dragon defense (Glass headgear and Adamant armor also do wonders). 
 
 ")
                         .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Bolt, Untyped Magic")
@@ -688,7 +688,7 @@ Cecil as a cover bot can be extremely strong for this fight and be essentially i
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Wyvern.png")
                         .WithDescription(
 @"### Fight Flow
-Wyvern begins the fight with MegaNuke, takes two consecutive empty turns, then casts a self-targeted Wall. While the Wall is active, Wyvern will bounce Nuke off of the wall. When the wall runs out, Wyvern will use Remedy, then re-cast the Wall, which will resume the Nuke barrage.
+Wyvern begins the fight with MegaNuke, takes two consecutive empty turns, then casts a self-targeted Wall. While the Wall is active, Wyvern will bounce Nuke off of the Wall. When the Wall runs out, Wyvern will use Remedy, then re-cast the Wall, which will resume the Nuke barrage.
 ### Strats
 Wyvern’s opening Meganuke often requires agility setups that let you get Reflect status up on multiple characters right away, and also slowing down the battle speed to allow you the time to input the commands to do so; very practiced runners can substitute battle speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll want a slow anchor and fast first actors in order to have a solid setup.
 
@@ -717,7 +717,7 @@ Plague’s flying status means that spears, boomerangs, and bows/arrows deal ext
 
 Count is an effect that can be manipulated in a couple of ways. Most basically, killing and resurrecting a character will trigger Plague to re-apply the status on all party members, which resets everyone’s counter to 10, buying you more time (functionally unlimited, as long as your Life potions hold out). Alternatively, because of how the game handles conditions, using berserk, fast spells, holding A, or a combination, you can make it so the character’s action prevents a count timer at 00 from activating.
 ### Additional Notes
-Plague is susceptible to Count, which means that reflecting it back and having the count expire can be an efficient way to handle this fight. Generally you’ll need to use a wall on one character, kill another, use Life on the swooned character, let the Count reflect back on plague, either killing or letting the walled character die, resurrecting them, and waiting for the Count (which isn’t visible) to reach 00 for Plague, and then taking any action. Plague will not die to Count while at RA1 (or if enough actions are happening that makes Plague effectively function at that speed), so you might need to use Slow/Silkweb to change RA to that value. 
+Plague is susceptible to Count, which means that reflecting it back and having the count expire can be an efficient way to handle this fight. Generally you’ll need to use a Wall on one character, kill another, use Life on the swooned character, let the Count reflect back on plague, either killing or letting the Walled character die, resurrecting them, and waiting for the Count (which isn’t visible) to reach 00 for Plague, and then taking any action. Plague will not die to Count while at RA1 (or if enough actions are happening that makes Plague effectively function at that speed), so you might need to use Slow/SilkWeb to change RA to that value.
 ")
                         .AddField("Resist", "Poison Blind Mute Pig Mini Frog Charm Sleep Stun")
                         .AddField("Weakness", "Air", inline: true)
@@ -741,9 +741,9 @@ D. Lunars counter Call with Remedy.
 ### Strats
 Using Fight alternatives (Power, Jump, Aim, Dart) for melee-heavy parties is standard practice. For parties with heavy magic damage, Fire3, Nuke, and Quake are good spells to use to either exploit the Fire weakness, or generally deal above average damage for the turn usage. Blink/Illusion are great for preventative damage, although some recovery is good to have on hand for the Fire casts.
 
-At many locations, Crystal Sword users can change the calculus on whether or not to use the berserk status, but this can be a highly RNG dependent strategy. Supplementing that damage with Quake, or starting off with other sources of damage to reduce the amount of Virus spells your party might face. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
+At many locations, Crystal sword users can change the calculus on whether or not to use the berserk status, but this can be a highly RNG dependent strategy. Supplementing that damage with Quake, or starting off with other sources of damage to reduce the amount of Virus spells your party might face. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
 ### Additional Notes
-Low level parties (and in locations with either high Magic attack, high HP, or both) will consider Walls to reflect the Breath spell back on the enemies. A D. Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D. Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
+Low level parties (and in locations with either high Magic attack, high HP, or both) will consider Walls to reflect the Breath spell back on the enemies. A D. Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D. Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the Wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
 
 ")
                         .AddField("Damage Types", "Physical, Fire", inline: true)
@@ -763,7 +763,7 @@ The fight begins with two Big Waves chained together, taking doing 50% of the pa
 
 Ogopogo will counter most uses of magic with Blaze, a ice-based attack that deals 20% Max HP damage to the party. The exception is lightning-based magic, which elicits a single-target Weak cast.
 ### Strats
-The counters Ogopogo uses means that most strategies lean heavily on berserked characters. Mages should look to bouncing spells off of a wall, and Rydia generally will avoid using the Call ability. Blink/Illusion is important to get going early, but you will need some healing as well if the fight goes long enough that the script rolls back around to the start of the script. You’ll also want to keep an idea of where the fight is in the script if you are thinking of using non-Life2 resurrection, since a Big Wave is almost certain to render anything less useless, unless you’ve timed other healing on the target.
+The counters Ogopogo uses means that most strategies lean heavily on berserked characters. Mages should look to bouncing spells off of a Wall, and Rydia generally will avoid using the Call ability. Blink/Illusion is important to get going early, but you will need some healing as well if the fight goes long enough that the script rolls back around to the start of the script. You’ll also want to keep an idea of where the fight is in the script if you are thinking of using non-Life2 resurrection, since a Big Wave is almost certain to render anything less useless, unless you’ve timed other healing on the target.
 ### Additional Notes
 This is an extremely rude boss to see at either Hook location, due to how limited your preventative/healing resources are early on, and the HP based damage is difficult to outlevel. Definitely a boss where underleveled parties very much want to manipulate agility, and slow down the battle speed.
 ")
@@ -778,27 +778,31 @@ This is an extremely rude boss to see at either Hook location, due to how limite
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Zeromus.png")
                         .WithDescription(
 @"### Fight Flow
-The fight begins with Zeromus untransformed, invulnerable, and the only action taken is to remove speed modifiers and most statuses from the party. After the Crystal is removed, Z’s first action is to remove the invulnerability, shake, and use Big Bang. After that, the Zeromus goes through a cycle of visible actions: Shake, Big Bang, Black Hole, Shake, Big Bang, Virus, Black Hole, Shake, Big Bang, Black Hole, until the party does enough damage to switch to the Nuke Phase, where the pattern changes to Shake, Big Bang, Black Hole, Nuke, Shake, Big Bang. Both of these phases have extra “Do Nothing” turns not listed here. In the last phase, Zeromus switches to alternating between using Meteo and a “Do Nothing” turn.
+The fight begins with Zeromus untransformed, invulnerable, and the only action taken is to remove speed modifiers and most statuses from the party.
+
+After the Crystal is used, Z’s first actions are to remove the invulnerability, shake, and use Big Bang. Zeromus then goes through a cycle of visible actions: Shake, Big Bang, Black Hole, Shake, Big Bang, Virus, Black Hole, Shake, Big Bang, Black Hole, until the party does enough damage to push into Nuke Phase. Zeromus will refill HP and the cycle changes to Shake, Big Bang, Black Hole, Nuke, Shake, Big Bang. Both of these phases have extra “Do Nothing” turns not listed here. After enough damage is dealt, Zeromus switches to alternating between using Meteo and a “Do Nothing” turn.
+
+See [Script Detail](<https://wiki.ff4fe.com/doku.php?id=zeromus_script>) for a full breakdown of all actions, as well as all the reactions and triggers in the fight.
 ### Strats
-There are a few main strategies for handling this fight: zerkers, reflect, hybrid, eddy strats, Fu and Friends, and 1200 strats. 
+There are a few main strategies for handling this fight: zerkers, reflect, hybrid, Edward strats, Fu and Friends, and 1200 strats.
 
-Zerkers relies on getting berserk up on your physical fighters, and letting their damage carry the fight. White mages heal, revive, or cast zerk, and black mages might either nerf incoming Big Bangs, bounce a spell off of a wall (which they probably set up on themselves, or play chemist while they’re alive. 
+Zerkers relies on getting berserk up on your physical fighters, and letting their damage carry the fight. White mages heal, revive, or cast zerk, and black mages might either nerf incoming Big Bangs, bounce a spell off of a Wall (which they probably set up on themselves), or play chemist while they’re alive.
 
-Reflect strats have the first character post-Crystal tossing get a wall up on themselves, and then the spell casters bounce their fast damage spells off of that wall. Either a silkweb or a direct cast of something (not White) as soon as Z is vulnerable will nerf the first Big Bang, which is often essential to make sure that the party survives the first Big Bang. If any physical fighters chip in, make sure that they don’t do any damage to Zeromus that puts your total damage at or above 45k, since that triggers the refill script.
+Reflect strats have the first character post-Crystal-toss Wall themselves, and then the spell casters bounce their fast damage spells off of that Wall. Either a SilkWeb or a direct cast of something (not White) as soon as Z is vulnerable will nerf the first Big Bang, which is often essential to make sure that the party survives the first Big Bang. If any physical fighters chip in, make sure that they don’t do any damage to Zeromus that puts your total damage at or above 45k, since that triggers the refill script.
 
-Fu and Friends, Eddy and 1200 Strats are all variants relying on the same tactic: getting Reflect up on necessary party members, and using j-items, directly cast spells, or the Crystal to trigger Zeromus’ counter Nuke to bounce off of a wall and reflect back. All of these strategies will stop dealing direct damage at/before 45k total damage to prevent the refill.
+Fu and Friends, Edward and 1200 Strats are all variants relying on the same tactic: getting Wall up on necessary party members, and using J-items, direct cast spells, or the Crystal to trigger Zeromus’ counter Nuke to bounce off of a Wall and reflect back. All of these strategies will stop dealing direct damage at/before 45k total damage to prevent the refill.
 ### Additional Notes
 See the links below for some videos.
 ")
                         .AddField("Damage Types", "Magic (Untyped, Holy)")
-                        .AddField("Additional Links", "[Script Detail](<https://wiki.ff4fe.com/doku.php?id=zeromus_script>), [Eddy Strats](<https://docs.google.com/document/d/1Xw1vsN-OROShv4ZxPcStwJ1LsmFlPcZr3IIjOBSNEww/edit#heading=h.dvcyslrwgp71>), [Full party 1200 strats](<https://www.twitch.tv/videos/1051386268>), [2 character 1200 strats](<https://www.twitch.tv/videos/1051391891>)")
+                        .AddField("Additional Links", "[Script Detail](<https://wiki.ff4fe.com/doku.php?id=zeromus_script>), [Edward Strats](<https://docs.google.com/document/d/1Xw1vsN-OROShv4ZxPcStwJ1LsmFlPcZr3IIjOBSNEww/edit#heading=h.dvcyslrwgp71>), [Full party 1200 strats](<https://www.twitch.tv/videos/1051386268>), [2 character 1200 strats](<https://www.twitch.tv/videos/1051391891>)")
                         .AddField("Boss Bit", "Yes");
                     break;
 
                 case BossName.Unknown:
                 default:
-                    embedBuilder.WithTitle("Interlibrary Loan Requested")
-                                .WithDescription("We're waiting on getting that information from another library. Hold tight!");
+                    embedBuilder.WithTitle("Boss Not Found")
+                                .WithDescription("We couldn't find the info for a boss by that name, maybe try another phrasing?");
                     break;
 
             }
