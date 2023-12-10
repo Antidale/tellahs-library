@@ -387,7 +387,7 @@ Valvalis will not gate intended underground access unless `Bunsafe` is on.
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Calcabrina.png")
                         .WithDescription(
 @"### Fight Flow
-The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. Calbrena can revert back to all the small dolls if hit while at very low HP and not killed.
+The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. Calbrena can revert back to all the small dolls if hit while at very low HP (2.16% of max HP) and not killed.
 ### Strats
 Quake is fantastic against the dolls at many spots, and Meteo can be too, although you’ll eat a lot of attack animations waiting for rocks to fall. The back dolls (Cals) don’t get the boss bit, so a common tactic is to toss an HrGlass, clean up the Brenas, then finish off the stopped enemies. The main thing you mostly want to avoid in this fight is seeing Calbrena, so if you don’t have any way of Stopping the Cals, nor AoE damage to clear all of them together, you’ll want to kill off the dolls so that you can take out the last of each type at roughly the same time.
 ### Additional Notes
@@ -446,6 +446,11 @@ The robot race on both Balnab and the second Dr. Lugae means that Thunder claws 
 ### Additional Notes
 Walls will reflect both Beam and Emission, and will block Laser, which makes it very handy at high HP spots, or if the party is underleveled. Underleveled parties should also make liberal use of Heal if the Gas counters land. Limiting how many characters are dealing damage limits the Gas counters, as well as frees up characters for opportunistic potion (Heal/Cure/Life) usage to keep the party up and going.
 
+Relative HP breakdown (rounded to nearest percent):
+Dr Lugae 1: 23%
+Balnab: 20%
+Balnab-Z: 21%
+Dr Lugae 2: 35%
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic, Fire", inline: true)
                         .AddField("Weakness", "Robot (Balnab, Dr. Lugae 2)", inline: true)
