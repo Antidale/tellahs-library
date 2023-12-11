@@ -448,7 +448,7 @@ Walls will reflect both Beam and Emission, and will block Laser, which makes it 
 
 Relative HP breakdown (rounded to nearest percent):
 Dr Lugae 1: 23%
-Balnab: 20%
+Balnab: 21%
 Balnab-Z: 21%
 Dr Lugae 2: 35%
 ")
