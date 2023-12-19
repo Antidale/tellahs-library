@@ -660,9 +660,9 @@ Bahamut takes turns counting down from 5 to 1, and casts MegaNuke on the next tu
 ### Strats
 Methods of handling range from an all out assault, often using the berserk status, to patiently reflecting all the MegaNuke damage back at Bahamut, with a large range of a hybrid approach in-between. When the party is underleveled, you’re more likely going to be successful with reflecting MegaNuke as most of your damage. A small delay in applying Wall and using RA1 agility anchoring can make StarVeils last for up to three cycles. It can also be a great idea to stagger out the Veil usage by not protecting some characters and having them be revived by those with protection.
 ### Additional Notes
-You get less time in between the 1 count and the casting of MegaNuke because Bahamut makes use of the Chain command to chain together sprite animations and the spell cast all as one action.
+You get less time in between the 1 count and the casting of MegaNuke because Bahamut chains together sprite animations and the spell cast all as one turn.
 ")
-                        .AddField("Damage Types", "Magic", inline: true)
+                        .AddField("Damage Types", "Untyped Magic", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
