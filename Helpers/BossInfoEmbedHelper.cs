@@ -295,7 +295,7 @@ Making good use of Cover in this fight can be a little difficult, since Cecil ca
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Kainazzo.png")
                         .WithDescription(
 @"### Fight Flow
-Kainazzo begins the fight with a punch, then enters a cycle of gathering water, using Wave, and then self-targeting a Fast cast. Using lightning based magic will cause the water to dispel, and set Kainazzo up to queue a punch on the next opportunity to queue an action. When damaged at low HP (17.5% of max or less), Kainazzo will retreat into the shell, dispelling any gathered water. After hiding, Kainazzo’ll use Remedy to heal, then take a single turn to both set defenses and prepare to gather water.
+Kainazzo begins the fight with a punch, then enters a cycle of gathering water, using Wave, and then self-targeting a Fast cast. Using Lightning based magic will cause the water to dispel, and set Kainazzo up to queue a punch on the next opportunity to queue an action. When damaged at low HP (17.5% of max or less), Kainazzo will retreat into the shell, dispelling any gathered water. After hiding, Kainazzo’ll use Remedy to heal, then take a single turn to both set defenses and prepare to gather water.
 ### Strats
 This is a fight where location significantly dictates tactics. At spots where your party can’t ever reasonably survive the first Wave (often the 2nd boss on the Hook route, or the first spot in the Giant), your first turns should be working towards both setting up long term goals (getting a berserker online, getting Blink up, tossing a SilkWeb), and making sure that the water is dispelled before the Wave usage gets queued.
 ### Additional Notes
@@ -637,7 +637,7 @@ The description in Fight Flow for the reactions is limited, since getting into t
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Leviath.png")
                         .WithDescription(
 @"### Fight Flow
-Levitan goes through a cycle of changing form and using Big Wave, then taking a turn to change form back, then casting Ice 2 either once (even times through the cycle) or twice (odd times through the cycle).
+Leviatan goes through a cycle of chaining together changing form and using Big Wave, then taking a turn to change form back. After that, Leviatan casts Ice 2 either once (even times through the cycle) or twice (odd times through the cycle), and then takes an empty turn. That empty turn gets eaten into a bit since the chained actions come right after.
 ### Strats
 This fight is generally not much to worry about if you have decent healing. Zerkers are happy to zerk, Black mages can cast the standard array of spells (best of Virus, Quake, Nuke) or also choose to add in their Lit spells. At high magic locations those Ice2s can really hurt, so using a StarVeil is definitely a solid choice to help get through a fight.
 ### Additional Notes
