@@ -19,7 +19,7 @@ namespace tellahs_library.Helpers
 @"### Fight Flow
 D.Mist alternates between two phases: Attack and Mist. In the Attack phase, D.Mist punches once a turn for three turns. In Mist phase D.Mist is immune to everything and reacts to the Fight action with party-wide ice damage.
 ### Strats
-While in the attack phase, mages should prefer casting fast spells (e.g. Virus) so that they don't land during mist phase. During mist phase, resurrect swooned party members, apply Blink/Illusion, and if you have a feel for the timing, queue up spells with a longer delay so that they land as D.Mist re-forms. MoonVeils are very strong in this fight. Since the player can control whether or not ColdMist comes out, Blink/Illusion and Life potion usage can often be the main way a party gets through the fight if they’re having trouble dealing with the punch damage.
+While in the attack phase, Mages should prefer casting fast spells (e.g. Virus) so that they don't land during mist phase. During mist phase, resurrect swooned party members, apply Blink/Illusion, and if you have a feel for the timing, queue up spells with a longer delay so that they land as D.Mist re-forms. MoonVeils are very strong in this fight. Since the player can control whether or not ColdMist comes out, Blink/Illusion and Life potion usage can often be the main way a party gets through the fight if they’re having trouble dealing with the punch damage.
 
 Be careful about deciding when to berserk characters. Miscalculating on if you’ll kill in the cycle can be really costly in both time and damage, as each berserked swing will trigger ColdMist.
 ### Additional Notes
@@ -61,7 +61,7 @@ Each soldier has roughly 9% of the location's total HP. When `Bnofree` is turned
 @"### Fight Flow
 Octomamm only uses physical attacks. After the third time you deal direct damage to Octo a tentacle is removed. After the first tentacle loss, every other time you deal direct damage another tentacle is lost. Each tentacle loss slows Octomamm's speed.
 ### Strats
-Overall a pretty basic fight. Berserk status and fast spells are all very helpful in slowing the squid. Once you’ve gotten a few tentacles removed, mages with Lit3 and no nuke probably really like switching from Virus to Lit3 when the fight is at a high HP location.
+Overall a pretty basic fight. Berserk status and fast spells are all very helpful in slowing the squid. Once you’ve gotten a few tentacles removed, Mages with Lit3 but not Nuke probably really like switching from Virus to Lit3 when the fight is at a high HP location.
 ### Additional Notes
 A MoonVeil used against Octomamm means the fight is entirely free, and Cover strats can really help out, especially for underleveled parties. If the fight's in a challenging spot, a SilkWeb or a double slow helps out in this fight, since the slow effect from those gets amplified by the tentacle loss. Slowing down the battle speed a notch or two can help get in extra early attacks, which'll have some cascading benefits. Blink and Illusion can be huge in helping set up/stabilize in underleveled fights.
 
@@ -295,7 +295,7 @@ Making good use of Cover in this fight can be a little difficult, since Cecil ca
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Kainazzo.png")
                         .WithDescription(
 @"### Fight Flow
-Kainazzo begins the fight with a punch, then enters a cycle of gathering water, using Wave, and then self-targeting a Fast cast. Using lightning based magic will cause the water to dispel, and set Kainazzo up to queue a punch on the next opportunity to queue an action. When damaged at low HP (17.5% of max or less), Kainazzo will retreat into the shell, dispelling any gathered water. After hiding, Kainazzo’ll use Remedy to heal, then take a single turn to both set defenses and prepare to gather water.
+Kainazzo begins the fight with a punch, then enters a cycle of gathering water, using Wave, and then self-targeting a Fast cast. Using Lightning based magic will cause the water to dispel, and set Kainazzo up to queue a punch on the next opportunity to queue an action. When damaged at low HP (17.5% of max or less), Kainazzo will retreat into the shell, dispelling any gathered water. After hiding, Kainazzo’ll use Remedy to heal, then take a single turn to both set defenses and prepare to gather water.
 ### Strats
 This is a fight where location significantly dictates tactics. At spots where your party can’t ever reasonably survive the first Wave (often the 2nd boss on the Hook route, or the first spot in the Giant), your first turns should be working towards both setting up long term goals (getting a berserker online, getting Blink up, tossing a SilkWeb), and making sure that the water is dispelled before the Wave usage gets queued.
 ### Additional Notes
@@ -318,7 +318,7 @@ The timing to dissipate the water before a Wave can be queued can be tricky, so 
 @"### Fight Flow
 The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 attacks, then using Weak and Piggy on consecutive turns, before starting back at the top. After taking damage below a certain threshold, Dark Elf transform to the Dark Dragon form, where the script alternates between using Fight and DBreath.
 ### Strats
-Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary mages get healed of Piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk. Casting Holy elemental spells at the Dragon form is a bad idea, since the transformation includes an addition of Holy absorb (physical attacks are still fine). 
+Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary Mages get healed of Piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk. Casting Holy elemental spells at the Dragon form is a bad idea, since the transformation includes an addition of Holy absorb (physical attacks are still fine). 
 ### Additional Notes
 The dragon form lacks the boss bit, and while it does have some status resistances, it won't resist Stop, an HrGlass, or the Weak spell. The fight can be really sped up with a properly timed Weak cast.
 
@@ -387,7 +387,7 @@ Valvalis will not gate intended underground access unless `Bunsafe` is on.
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Calcabrina.png")
                         .WithDescription(
 @"### Fight Flow
-The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. Calbrena can revert back to all the small dolls if hit while at very low HP and not killed.
+The small dolls will all attack, unless they’re down to one type (either Cal or Brena) left, when they’ll summon Calbrena on their next action. Calbrena will Fight, use Glance, Fight on two consecutive turns, use Hold, and Fight again before restarting at the top. The Big Doll also will counter elemental Fire, Ice, or Lit magic with Fire, Wave, and Thunder, respectively. Calbrena can revert back to all the small dolls if damaged while at very low HP (2.16% of max HP) and not killed.
 ### Strats
 Quake is fantastic against the dolls at many spots, and Meteo can be too, although you’ll eat a lot of attack animations waiting for rocks to fall. The back dolls (Cals) don’t get the boss bit, so a common tactic is to toss an HrGlass, clean up the Brenas, then finish off the stopped enemies. The main thing you mostly want to avoid in this fight is seeing Calbrena, so if you don’t have any way of Stopping the Cals, nor AoE damage to clear all of them together, you’ll want to kill off the dolls so that you can take out the last of each type at roughly the same time.
 ### Additional Notes
@@ -446,6 +446,11 @@ The robot race on both Balnab and the second Dr. Lugae means that Thunder claws 
 ### Additional Notes
 Walls will reflect both Beam and Emission, and will block Laser, which makes it very handy at high HP spots, or if the party is underleveled. Underleveled parties should also make liberal use of Heal if the Gas counters land. Limiting how many characters are dealing damage limits the Gas counters, as well as frees up characters for opportunistic potion (Heal/Cure/Life) usage to keep the party up and going.
 
+Relative HP breakdown (rounded to nearest percent):
+Dr Lugae 1: 23%
+Balnab: 21%
+Balnab-Z: 21%
+Dr Lugae 2: 35%
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic, Fire", inline: true)
                         .AddField("Weakness", "Robot (Balnab, Dr. Lugae 2)", inline: true)
@@ -570,13 +575,13 @@ The Attacker always uses Maser, which deals 10% of each target's HP in damage. T
 ### Strats
 Most strategies start with killing the Defender, since it can be extremely hard to keep up with the healing that it does. Teams with Jump, Aim, Dart, and backrow-glitched characters will be able to attack the CPU at full damage, and often rely on manual targeting to avoid having to deal with Globe 199 and resurrected Attacker/Defender nodes. Berserk and Blink can be, RNG willing, a good pairing when the berserk is used on just one party member and you can quickly (re)apply Blink on the Attacker node. And once enough damage has been dealt, going all in on damage (e.g. stop using Blink, berserk more, use Meteo/Quake) can help shorten the time it takes to get through this fight. Setting up Nuke/White casters with a Wall on a party member and letting them be part of the barrage is also a good play.
 
-Float strats, where you get a Wall up on one character and try to reflect the Float on the Attacker orb, can also be very helpful as long as the Float doesn’t reflect back on the CPU. Quake can be safely cast once Float is on the Attacker, and Black mages can get in on the damage party without reflecting single target spells and hoping they land on CPU.
+Float strats, where you get a Wall up on one character and try to reflect the Float on the Attacker orb, can also be very helpful as long as the Float doesn’t reflect back on the CPU. Quake can be safely cast once Float is on the Attacker, and Black Mages can get in on the damage party without reflecting single target spells and hoping they land on CPU.
 ### Additional Notes
 The Attacker and Defender each get 10% of the spot’s HP, but award one-third of the spot’s XP. With a combination of location and team composition, you can set up a pretty effective grind by forcing resummons of the orbs, but you’ll also have two Globe 199s per cycle, so Life potions/spells, especially Life2, and party-wide healing will be important for an orb grind.
 
 ")
                         .AddField("Damage Types", "Untyped Magic", inline: true)
-                        .AddField("Additional Links", "[Attacker](<https://wiki.ff4fe.com/doku.php?id=Attacker>), [Defender](<https://wiki.ff4fe.com/doku.php?id=Defender>)")
+                        .AddField("Additional Links", "[Attacker](<https://wiki.ff4fe.com/doku.php?id=Attacker>), [Defender](<https://wiki.ff4fe.com/doku.php?id=Defender>)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -587,11 +592,13 @@ The Attacker and Defender each get 10% of the spot’s HP, but award one-third o
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Odin.png")
                         .WithDescription(
 @"### Fight Flow
-Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin. He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll fight once, raise his sword, take an empty turn, and use Odin. Then repeat from the top.
+Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin (a party-wide attack). He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll fight once, start a chain to raise his sword and set a flag to allow Thunderstruck, then unset the flag while queueing Odin. Repeat from the top if both sides are alive.
 ### Strats
-Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. If you can’t thunderstruck (see below), this can be a damage race to the first time Odin is used, sweeping forward in a party-wide attack.
+Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you race to kill Odin before the the first Odin attack comes out.
+
+In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and the when Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order correctly time the Thunderstruck attempt.
 ### Additional Notes
-Both Edward and Kain can avoid the Odin attack by being not on screen during it, enabling the Thunderstruck strats at locations and levels where the fight might not normally be possible. The trigger for Thunderstruck requires Odin to be in the third part of the cycle (single punch, Odin attack), and is only active for a short time while the sword is raised. This generally requires your party member to survive the punch and then immediately use a lightning-based item to land the damage when the trigger is in effect.
+`Bnofree` has no effect on Odin's script.
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic", inline: true)
                         .AddField("Weakness", "Bolt (4x)", inline: true)
@@ -605,19 +612,17 @@ Both Edward and Kain can avoid the Odin attack by being not on screen during it,
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Asura.png")
                         .WithDescription(
 @"### Fight Flow
-On each of Asura's turns, Asura will self-target a spell based on the current active face, and whether or not a reaction script was triggered in between Asura's turns. If a reaction was triggered, no face cycling occurs. If not, she’ll cycle to the next face before casting. The orange face casts Cure4, the cream face casts Cure3, and the gray face casts Life1. When rotating the active face, the rotation goes orange => cream => gray => orange
+On each of Asura's turns, Asura will self-target a spell based on the current active face, and whether or not a reaction script was triggered in between Asura's turns. If a reaction was triggered, no face cycling occurs. If not, she’ll cycle to the next face before casting. The orange face casts Cure4, the cream face casts Cure3, and the gray face casts Life1. When rotating the active face, the rotation goes orange => cream => gray => orange.
 
-When Asura is dealt damage, the face change pattern goes backwards (should the face change at all), so hitting Asura on while the cream face is active will make it cycle back to the orange face.
+When Asura is dealt damage, the face rotation is reversed, so you'll see the faces go from orange => gray => cream => orange. If you deal damage to Asura and the active face doesn't change from where it was before the damage was dealt, that means Asura just queued the spell that corresponds with that face.
 ### Strats
 Asura never attacks your party except as a reaction, so you have plenty of setup time to get Blink/Illusion/MoonVeil on party members before actually being attacked. 
 
-Giving Asura the Reflect status will bounce those self-targeted spells, which then means this becomes like fights that just have physical attacks to deal with. Because those physical attacks come from a reaction to direct damage, if the location’s damage is deadly to your party, you’ll often want to have a single source of damage throughout the fight. And even if the damage isn’t high, if your party is doing lots of low damage attacks, you’ll spend a lot of time in animations in battle that aren’t necessary. Edge with a Mute knife and a decent katana is great in this fight, as is anyone swinging a Rune Axe. For bows and arrows, both Mute arrows and the Elven bow hit the Mage race, mix/match your best combination for maximum damage. Defensively, equipping a Ribbon, Rune ring, or Aegis shield gives protection from mages, reducing the threat of Asura’s counters.
+Giving Asura the Reflect status will bounce those self-targeted spells, which then means this becomes like fights that just have physical attacks to deal with. Because those physical attacks come from a reaction to direct damage, if the location’s damage is deadly to your party, you’ll often want to have a single source of damage throughout the fight. And even if the damage isn’t high, if your party is doing lots of low damage attacks, you’ll spend a lot of time in animations in battle that aren’t necessary. Edge with a Mute knife and a decent katana is great in this fight, as is anyone swinging a Rune Axe. For bows and arrows, both Mute arrows and the Elven bow hit the Mage race, so mix/match your best combination for maximum damage. Defensively, equipping a Ribbon, Rune ring, or Aegis shield gives protection from Mages, reducing the threat of Asura’s counters.
 
 Parties without much physical firepower will prefer bouncing spells off of a Wall to both be able to cast Virus/Nuke during the fight, and also not require any healing/preventative measures.
 
 Lastly, the Lifelock strategy of keeping Asura on continually casting Life1 is something generally best used in the overworld. Using quick actions (Fight, Virus, Nuke, damaging j-items, Dancing Dagger, etc) just as the Life1 is cast from Asura will cycle back to that face and cast Life1 on when acting next. Depending on party speed, you might have to have every member contribute with some damage, so inaccurate characters will want to rely on item usage to do their part. This strategy is not something to do when Asura is at fast RA numbers (RA1, probably RA2 as well), since you might lose the correct ATB timing to have Asura remain on the correct face.
-### Additional Notes
-The description in Fight Flow for the reactions is limited, since getting into the details of how/when faces change precisely, as well as writing out examples for it, are a little beyond the scope/character limit of this application. You may well see slightly different behavior as you introduce elements in a battle that go beyond a very simple setup. Perhaps someone will write out a concise, but sufficiently detailed description and this note gets replaced. Someday!
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -632,9 +637,9 @@ The description in Fight Flow for the reactions is limited, since getting into t
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Leviath.png")
                         .WithDescription(
 @"### Fight Flow
-Levitan goes through a cycle of changing form and using Big Wave, then taking a turn to change form back, then casting Ice 2 either once (even times through the cycle) or twice (odd times through the cycle).
+Leviatan goes through a cycle of chaining together changing form and using Big Wave, then taking a turn to change form back. After that, Leviatan casts Ice 2 either twice (odd times through the cycle) or once (even times through the cycle), and then takes an empty turn. That empty turn gets eaten into a bit since the chained actions come right after.
 ### Strats
-This fight is generally not much to worry about if you have decent healing. Zerkers are happy to zerk, Black mages can cast the standard array of spells (best of Virus, Quake, Nuke) or also choose to add in their Lit spells. At high magic locations those Ice2s can really hurt, so using a StarVeil is definitely a solid choice to help get through a fight.
+This fight is generally not much to worry about if you have decent healing. Zerkers are happy to zerk, Black Mages can cast the standard array of spells (best of Virus, Quake, Nuke) or also choose to add in their Lit spells. At high magic locations those Ice2s can really hurt, so using a StarVeil is definitely a solid choice to help get through a fight.
 ### Additional Notes
 The Lightning weakness being 2x means that Yang’ll get a bigger increase over Edge in equipping a Thunder claw. If you have both on your team, the other equipment will decide who should get it. Edge with pretty mismatched katanas, think Masa/Long or Ninja/Short, will be very happy to replace the weaker blade with a Thunder claw.
 
@@ -655,9 +660,9 @@ Bahamut takes turns counting down from 5 to 1, and casts MegaNuke on the next tu
 ### Strats
 Methods of handling range from an all out assault, often using the berserk status, to patiently reflecting all the MegaNuke damage back at Bahamut, with a large range of a hybrid approach in-between. When the party is underleveled, you’re more likely going to be successful with reflecting MegaNuke as most of your damage. A small delay in applying Wall and using RA1 agility anchoring can make StarVeils last for up to three cycles. It can also be a great idea to stagger out the Veil usage by not protecting some characters and having them be revived by those with protection.
 ### Additional Notes
-You get less time in between the 1 count and the casting of MegaNuke because Bahamut makes use of the Chain command to chain together sprite animations and the spell cast all as one action.
+You get less time in between the 1 count and the casting of MegaNuke because Bahamut chains together sprite animations and the spell cast all as one turn.
 ")
-                        .AddField("Damage Types", "Magic", inline: true)
+                        .AddField("Damage Types", "Untyped Magic", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -675,7 +680,7 @@ Another fight where Blink/Illusion/MoonVeil do so much to protect the party. The
 Cecil as a cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders. 
 
 ")
-                        .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Bolt, Untyped Magic")
+                        .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Bolt, or Untyped Magic")
                         .AddField("Resist", "Absorbs: Fire, Ice, Bolt\r\nStatuses: Poison Blind Mute Pig Mini Frog Petrify KO Sleep Stun ")
                         .AddField("Race", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
@@ -699,7 +704,7 @@ Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduce
 Wyvern will not gate intended underground access unless `Bunsafe` is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another random enemy attack, with some protections to keep the opener milder than MegaNuke; `Bunsafe` removes those protections.
 
 ")
-                        .AddField("Damage Types", "Magic", inline: true)
+                        .AddField("Damage Types", "Untyped Magic", inline: true)
                         .AddField("Race", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
@@ -739,14 +744,14 @@ If there is only one D.Lunar left, it will react to everything with a Fire count
 
 D.Lunars counter Call with Remedy.
 ### Strats
-Using Fight alternatives (Power, Jump, Aim, Dart) for melee-heavy parties is standard practice. For parties with heavy magic damage, Fire3, Nuke, and Quake are good spells to use. White mages can use Cure3 or Cure4 to good effect on the D.Lunars. Blink/Illusion are great for preventative damage, although some recovery is good to have on hand for the Fire casts. Cure3 potions can also be a good move, especially early.
+Using Fight alternatives (Power, Jump, Aim, Dart) for melee-heavy parties is standard practice. For parties with heavy magic damage, Fire3, Nuke, and Quake are good spells to use. White Mages can use Cure3 or Cure4 to good effect on the D.Lunars. Blink/Illusion are great for preventative damage, although some recovery is good to have on hand for the Fire casts. Cure3 potions can also be a good move, especially early.
 
 At many locations, Crystal sword users can change the calculus on whether or not to use the berserk status, but this can be a highly RNG dependent strategy. Supplementing that damage with Quake, or starting off with other sources of damage to reduce the amount of Virus spells your party might face. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
 ### Additional Notes
 Low level parties (and in locations with either high Magic attack, high HP, or both) will consider Walls to reflect the Breath spell back on the enemies. A D.Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D.Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the Wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
 
 ")
-                        .AddField("Damage Types", "Physical, Fire", inline: true)
+                        .AddField("Damage Types", "Physical, Fire Magic", inline: true)
                         .AddField("Race", "Dragon, Zombie", inline: true)
                         .AddField("Weakness", "Fire", inline: true)
                         .AddField("Boss Bit", "yes", inline: true);
@@ -767,7 +772,7 @@ The counters Ogopogo uses means that most strategies lean heavily on berserked c
 ### Additional Notes
 This is an extremely rude boss to see at either Hook location, due to how limited your preventative/healing resources are early on, and the HP based damage is difficult to outlevel. Definitely a boss where underleveled parties very much want to manipulate agility, and slow down the battle speed.
 ")
-                        .AddField("Damage Types", "Physical, Untyped Magic (Big Wave), Ice (Blaze)", inline: true)
+                        .AddField("Damage Types", "Physical, Untyped Magic (Big Wave), Ice Magic (Blaze)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -786,7 +791,7 @@ See [Script Detail](<https://wiki.ff4fe.com/doku.php?id=zeromus_script>) for a f
 ### Strats
 There are a few main strategies for handling this fight: zerkers, reflect, hybrid, Edward strats, Fu and Friends, and 1200 strats.
 
-Zerkers relies on getting berserk up on your physical fighters, and letting their damage carry the fight. White mages heal, revive, or cast zerk, and black mages might either nerf incoming Big Bangs, bounce a spell off of a Wall (which they probably set up on themselves), or play chemist while they’re alive.
+Zerker strats rely on getting berserk up on your physical fighters, and letting their damage carry the fight. White Mages heal, revive, or cast zerk, and Black Mages might either nerf incoming Big Bangs, bounce a spell off of a Wall (which they probably set up on themselves), or play chemist while they’re alive.
 
 Reflect strats have the first character post-Crystal-toss Wall themselves, and then the spell casters bounce their fast damage spells off of that Wall. Either a SilkWeb or a direct cast of something (not White) as soon as Z is vulnerable will nerf the first Big Bang, which is often essential to make sure that the party survives the first Big Bang. If any physical fighters chip in, make sure that they don’t do any damage to Zeromus that puts your total damage at or above 45k, since that triggers the refill script.
 
