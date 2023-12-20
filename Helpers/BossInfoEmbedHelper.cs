@@ -623,7 +623,8 @@ Giving Asura the Reflect status will bounce those self-targeted spells, which th
 Parties without much physical firepower will prefer bouncing spells off of a Wall to both be able to cast Virus/Nuke during the fight, and also not require any healing/preventative measures.
 
 Lastly, the Lifelock strategy of keeping Asura on continually casting Life1 is something generally best used in the overworld. Using quick actions (Fight, Virus, Nuke, damaging j-items, Dancing Dagger, etc) just as the Life1 is cast from Asura will cycle back to that face and cast Life1 on when acting next. Depending on party speed, you might have to have every member contribute with some damage, so inaccurate characters will want to rely on item usage to do their part. This strategy is not something to do when Asura is at fast RA numbers (RA1, probably RA2 as well), since you might lose the correct ATB timing to have Asura remain on the correct face.
-
+### Additional Notes
+When Cure4 would heal between 16,384 and 32,767 HP it actually will heal for nothing regardless of the amount displayed on screen. See the [wiki](<https://wiki.ff4fe.com/doku.php?id=bugs#asura_cure4_bug>) for other scenarios and more detail.
 ")
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Race", "Mage", inline: true)
