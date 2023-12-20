@@ -680,7 +680,7 @@ Another fight where Blink/Illusion/MoonVeil do so much to protect the party. The
 Cecil as a cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders. 
 
 ")
-                        .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Bolt, Untyped Magic")
+                        .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Bolt, or Untyped Magic")
                         .AddField("Resist", "Absorbs: Fire, Ice, Bolt\r\nStatuses: Poison Blind Mute Pig Mini Frog Petrify KO Sleep Stun ")
                         .AddField("Race", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
@@ -704,7 +704,7 @@ Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduce
 Wyvern will not gate intended underground access unless `Bunsafe` is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another random enemy attack, with some protections to keep the opener milder than MegaNuke; `Bunsafe` removes those protections.
 
 ")
-                        .AddField("Damage Types", "Magic", inline: true)
+                        .AddField("Damage Types", "Untyped Magic", inline: true)
                         .AddField("Race", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
@@ -751,7 +751,7 @@ At many locations, Crystal sword users can change the calculus on whether or not
 Low level parties (and in locations with either high Magic attack, high HP, or both) will consider Walls to reflect the Breath spell back on the enemies. A D.Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D.Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the Wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
 
 ")
-                        .AddField("Damage Types", "Physical, Fire", inline: true)
+                        .AddField("Damage Types", "Physical, Fire Magic", inline: true)
                         .AddField("Race", "Dragon, Zombie", inline: true)
                         .AddField("Weakness", "Fire", inline: true)
                         .AddField("Boss Bit", "yes", inline: true);
@@ -772,7 +772,7 @@ The counters Ogopogo uses means that most strategies lean heavily on berserked c
 ### Additional Notes
 This is an extremely rude boss to see at either Hook location, due to how limited your preventative/healing resources are early on, and the HP based damage is difficult to outlevel. Definitely a boss where underleveled parties very much want to manipulate agility, and slow down the battle speed.
 ")
-                        .AddField("Damage Types", "Physical, Untyped Magic (Big Wave), Ice (Blaze)", inline: true)
+                        .AddField("Damage Types", "Physical, Untyped Magic (Big Wave), Ice Magic (Blaze)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
