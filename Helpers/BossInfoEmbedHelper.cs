@@ -592,11 +592,13 @@ The Attacker and Defender each get 10% of the spot’s HP, but award one-third o
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Odin.png")
                         .WithDescription(
 @"### Fight Flow
-Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin. He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll fight once, raise his sword, take an empty turn, and use Odin. Then repeat from the top.
+Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin (a party-wide attack). He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll fight once, start a chain to raise his sword and set a flag to allow Thunderstruck, then unset the flag while queueing Odin. Repeat from the top if both sides are alive.
 ### Strats
-Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. If you can’t thunderstruck (see below), this can be a damage race to the first time Odin is used, sweeping forward in a party-wide attack.
+Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you race to kill Odin before the the first Odin attack comes out.
+
+In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and the when Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order correctly time the Thunderstruck attempt.
 ### Additional Notes
-Both Edward and Kain can avoid the Odin attack by being not on screen during it, enabling the Thunderstruck strats at locations and levels where the fight might not normally be possible. The trigger for Thunderstruck requires Odin to be in the third part of the cycle (single punch, Odin attack), and is only active for a short time while the sword is raised. This generally requires your party member to survive the punch and then immediately use a lightning-based item to land the damage when the trigger is in effect.
+`Bnofree` has no effect on Odin's script.
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic", inline: true)
                         .AddField("Weakness", "Bolt (4x)", inline: true)
