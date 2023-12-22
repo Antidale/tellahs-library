@@ -338,7 +338,7 @@ The dragon form lacks the boss bit, and while it does have some status resistanc
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/MagusSis.png")
                         .WithDescription(
 @"### Fight Flow
-While Cindy is alive, Sandy will cast Wall on her and Mindy will target Cindy with a spell (cycling through Fire2, Lit2, Ice2, and Virus) intending to bounce it off of the Wall Sandy provides. Cindy's script has her punch while both her sisters are alive. If either of her sisters are dead she'll punch once more, and then use Remedy to revive her dead sisters.
+While Cindy is alive, Sandy will cast Wall on her and Mindy will target Cindy with a spell (cycling through Fire2, Lit2, Ice2, and Virus) intending to bounce it off of the Wall Sandy provides. Cindy's script has her punch while both her sisters are alive. If either of her sisters are gone she'll punch once more, and then use Remedy to revive her missing sisters.
 ### Strats
 Quake, Meteo, and most of Rydia’s summons do pretty well here, since they all bypass the Wall that gets put on Cindy. Physical fighters generally prefer to have some sort of mage-killing weapon equipped, and be back-row glitched. Different parties might have different priorities, but if the fight is dangerous for your party, killing Cindy or Mindy first can help ease the fight along. Removing Cindy removes the possibility of Mindy/Sandy being revived, and removing Mindy reduces the magic damage coming at the party (while making Cindy no longer in a back row, so the physical damage portion of the fight does increase for a bit).
 
@@ -657,7 +657,7 @@ The Lightning weakness being 2x means that Yang’ll get a bigger increase over 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Bahamut.png")
                         .WithDescription(
 @"### Fight Flow
-Bahamut takes turns counting down from 5 to 1, and casts MegaNuke on the next turn. Repeat until dead.
+Bahamut takes turns counting down from 5 to 1, and casts MegaNuke on the next turn. Repeat from the top.
 ### Strats
 Methods of handling range from an all out assault, often using the berserk status, to patiently reflecting all the MegaNuke damage back at Bahamut, with a large range of a hybrid approach in-between. When the party is underleveled, you’re more likely going to be successful with reflecting MegaNuke as most of your damage. A small delay in applying Wall and using RA1 agility anchoring can make StarVeils last for up to three cycles. It can also be a great idea to stagger out the Veil usage by not protecting some characters and having them be revived by those with protection.
 ### Additional Notes
@@ -674,15 +674,15 @@ You get less time in between the 1 count and the casting of MegaNuke because Bah
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/PaleDim.png")
                         .WithDescription(
 @"### Fight Flow
-On its turn, Pale Dim only fights. In reaction to Fight, Pale Dim will cast Slow. In reaction to fire magic, Pale Dim uses Glare. In reaction to ice magic, Pale Dim uses Blizzard. In reaction to Bolt magic, Pale Dim uses Blitz. In reaction to the Call ability, Pale Dim uses Quake.
+On its turn, Pale Dim only Fights. In reaction to Fight, Pale Dim will cast Slow. In reaction to fire magic, Pale Dim uses Glare. In reaction to ice magic, Pale Dim uses Blizzard. In reaction to Bolt magic, Pale Dim uses Blitz. In reaction to the Call ability, Pale Dim uses Quake.
 ### Strats
 Another fight where Blink/Illusion/MoonVeil do so much to protect the party. The Slow counters from Pale Dim can vary from being a nuisance to something that makes the fight a little risky if you fall behind in preventative measures. Black Mages should use untyped magic (Virus, Quake, Nuke) here to avoid both healing Pale Dim and suffering the counter attack. Zerkers are fine, but if you have someone equipped with dragon killing gear (Dragoon spear, Dragon whip, Artemis arrows), you’ll want to lean on them as possibly the only attacker.
 ### Additional Notes
-Cecil as a cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders. 
+Cecil as a Cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders. 
 
 ")
                         .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Bolt, or Untyped Magic")
-                        .AddField("Resist", "Absorbs: Fire, Ice, Bolt\r\nStatuses: Poison Blind Mute Pig Mini Frog Petrify KO Sleep Stun ")
+                        .AddField("Resist", "Absorbs: Fire, Ice, Lightning\r\nStatuses: Poison Blind Mute Pig Mini Frog Petrify KO Sleep Stun ")
                         .AddField("Race", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
@@ -696,11 +696,11 @@ Cecil as a cover bot can be extremely strong for this fight and be essentially i
 @"### Fight Flow
 Wyvern begins the fight with MegaNuke, takes two consecutive empty turns, then casts a self-targeted Wall. While the Wall is active, Wyvern will bounce Nuke off of the Wall. When the Wall runs out, Wyvern will use Remedy, then re-cast the Wall, then resume the Nuke barrage.
 ### Strats
-Wyvern’s opening Meganuke often requires agility setups that let you get Wall status up right away. Slowing down the battle speed can allow you the time to input the commands to get Wall going; very practiced runners can substitute Battle Speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll generally want a slow anchor and fast first actors in order to have a solid setup.
+Wyvern’s opening MegaNuke often requires agility setups that let you get Wall status up right away. Slowing down the battle speed can allow you the time to input the commands to get Wall going; very practiced runners can substitute Battle Speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll generally want a slow anchor and fast first actors in order to have a solid setup.
 
 Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use Life potions or spells to keep on even-ish footing. 
 ### Additional Notes
-Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). Sylph, Imp, and Mage are all fast-casting to help reflect more MegaNuke damage back at Wyvern.
+Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). Sylph is a great fast-casting Call to help reflect more MegaNuke damage back at Wyvern.
 
 Wyvern will not gate intended underground access unless `Bunsafe` is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another random enemy attack, with some protections to keep the opener milder than MegaNuke; `Bunsafe` removes those protections.
 
@@ -717,13 +717,13 @@ Wyvern will not gate intended underground access unless `Bunsafe` is on. The `wh
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Plague.png")
                         .WithDescription(
 @"### Fight Flow
-While any living, on-screen character lacks a Doom counter, Plage will cast Count on the party, which also resets the counter on everyone hit by it. Otherwise, Plague casts Fast on the party.
+While any living, on-screen character lacks Count status, Plauge will cast Count on the party, which also resets the counter on everyone hit by it. Otherwise, Plague casts Fast on the party.
 ### Strats
-Plague’s flying status means that spears, boomerangs, and bows/arrows deal extra damage, and makes Quake completely ineffective. In the Milon Z location (back attack on Mt Ordeals) location, you might consider starting the fight with a party member dead so that you can easily reset the counter. It’s also strongly recommended you use as slow of an agility anchor as possible, since you start the fight at significant ATB disadvantage from the forced Back Attack.
+Plague’s flying status means that spears, boomerangs, and bows/arrows deal extra damage, and makes Quake completely ineffective. In the Milon Z location (Back Attack on Mt. Ordeals) location, you might consider starting the fight with a party member Swooned so that you can easily reset the counter. It’s also strongly recommended you use as slow an agility anchor as possible, since you start the fight at significant ATB disadvantage from the forced Back Attack.
 
-Count is an effect that can be manipulated in a couple of ways. Most basically, killing and resurrecting a character will trigger Plague to re-apply the status on all party members, which resets everyone’s counter to 10, buying you more time (functionally unlimited, as long as your Life potions hold out). Alternatively, because of how the game handles conditions, using berserk, fast spells, holding A, or a combination thereof, you can make it so the character’s action prevents a count timer at 00 from activating.
+Count is an status that can be manipulated in a couple of ways. For one, Swooning and resurrecting a character will trigger Plague to re-apply the status on all party members, which resets everyone’s counter to 10, buying you more time (functionally unlimited, as long as your Life potions hold out). Alternatively, because of how the game handles conditions, using berserk, fast spells, holding A, or a combination thereof, you can make it so the character’s action prevents a count timer at 00 from resolving.
 ### Additional Notes
-Plague is susceptible to Count, which means that reflecting it back and having the count expire can be an efficient way to handle this fight. Generally you’ll need to use a Wall on one character, kill another, use Life on the swooned character, let the Count reflect back on plague, either killing or letting the Walled character die, resurrecting them, and waiting for the Count (which isn’t visible) to reach 00 for Plague, and then taking any action. Plague will not die to Count while at RA1 (or if enough actions are happening that makes Plague effectively function at that speed), so you might need to use Slow/SilkWeb to change RA to that value.
+Plague is susceptible to Count, which means that reflecting it back and having the counter expire can be an efficient way to handle this fight. Generally you’ll need to use a Wall on one character, kill another, use Life on the Swooned character, let the Count reflect back on plague, either Swooning or letting the Walled character die, resurrecting them, and waiting for the Count (which isn’t visible) to reach 00 for Plague, and then taking any action. Plague will not die to Count while at RA1 (or if enough actions are happening that makes Plague effectively function at that speed), so you might need to use Slow/SilkWeb to slow Plague to RA2. Reflected Fasts can require extra applications of Slow.
 ")
                         .AddField("Resist", "Poison Blind Mute Pig Mini Frog Charm Sleep Stun")
                         .AddField("Weakness", "Air", inline: true)
@@ -739,7 +739,7 @@ Plague is susceptible to Count, which means that reflecting it back and having t
 @"### Fight Flow
 The D.Lunar’s basic script is for each dragon to use Fight, then Fire, then Fight on four consecutive turns, then use Breath, then repeat the cycle. 
 
-If a character uses Fight against them, the attacked monster reacts by casting Wall on both of them, and their script changes to targeting a Virus on the other D.Lunar, to reflect the spell back on the party.
+If a character uses Fight against them, the attacked monster reacts by casting Wall on both of them, and their script changes to have their only action be to target a Virus on the other D.Lunar, to reflect the spell back on the party.
 
 If there is only one D.Lunar left, it will react to everything with a Fire counter.
 
@@ -747,7 +747,7 @@ D.Lunars counter Call with Remedy.
 ### Strats
 Using Fight alternatives (Power, Jump, Aim, Dart) for melee-heavy parties is standard practice. For parties with heavy magic damage, Fire3, Nuke, and Quake are good spells to use. White Mages can use Cure3 or Cure4 to good effect on the D.Lunars. Blink/Illusion are great for preventative damage, although some recovery is good to have on hand for the Fire casts. Cure3 potions can also be a good move, especially early.
 
-At many locations, Crystal sword users can change the calculus on whether or not to use the berserk status, but this can be a highly RNG dependent strategy. Supplementing that damage with Quake, or starting off with other sources of damage to reduce the amount of Virus spells your party might face. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
+At many locations, Crystal sword users can change the calculus on whether or not to use the berserk status, but this can be a highly RNG dependent strategy. Before applying the angry juice, consider your party's ability to supplement that damage, or perhaps only berserk after some other foundational non-Fight damage has been applied; you're looking to reduce the amount of Virus or Flame damage directed your way to a survivable amount. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
 ### Additional Notes
 Low level parties (and in locations with either high Magic attack, high HP, or both) will consider Walls to reflect the Breath spell back on the enemies. A D.Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D.Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the Wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
 
@@ -755,7 +755,7 @@ Low level parties (and in locations with either high Magic attack, high HP, or b
                         .AddField("Damage Types", "Physical, Fire Magic", inline: true)
                         .AddField("Race", "Dragon, Zombie", inline: true)
                         .AddField("Weakness", "Fire", inline: true)
-                        .AddField("Boss Bit", "yes", inline: true);
+                        .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
                 case BossName.Ogopogo:
