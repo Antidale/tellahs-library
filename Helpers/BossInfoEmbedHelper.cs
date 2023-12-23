@@ -680,6 +680,7 @@ Another fight where Blink/Illusion/MoonVeil do so much to protect the party. The
 ### Additional Notes
 Cecil as a Cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders. 
 
+Call fans rejoice at having Float status, since that nullifies the Quake counter.
 ")
                         .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Lightning, or Untyped Magic")
                         .AddField("Resist", "Absorbs: Fire, Ice, Lightning\r\nStatuses: Poison Blind Mute Pig Mini Frog Petrify KO Sleep Stun ")
