@@ -6,13 +6,16 @@ using tellahs_library.Constants;
 using tellahs_library.Services;
 
 var token = Environment.GetEnvironmentVariable("DiscordBotToken");
-
+var httpClient = new HttpClient { BaseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/") };
 var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
 
 #if DEBUG
 token = Environment.GetEnvironmentVariable("TestBotToken");
 apiKey = "test";
+httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
 #endif
+
+httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
 
 var discord = new DiscordClient(new DiscordConfiguration
 {
@@ -20,10 +23,6 @@ var discord = new DiscordClient(new DiscordConfiguration
     TokenType = TokenType.Bot,
     Intents = DiscordIntents.AllUnprivileged,
 });
-
-//var httpClient = new HttpClient { BaseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/") };
-var httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
-httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
 
 var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
 {
