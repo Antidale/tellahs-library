@@ -266,41 +266,14 @@ namespace tellahs_library.Commands
                         return;
                     }
 
-                    var trackingMessage = await ctx.GetMessageAsync(responseDto.TrackingChannelId, responseDto.TrackingMessageId);
-
-                    if (trackingMessage != null)
-                    {
-                        var contents = trackingMessage.Content.Split("\r\n").ToList();
-                        if (!contents.Any(x => x.StartsWith("Entrants:")))
-                        {
-                            contents.Add("Entrants:");
-                        }
-
-                        for (int i = 0; i < contents.Count; i++)
-                        {
-                            if (contents[i].StartsWith("Registation Opens:") || contents[i] == "Registration is open!")
-                            {
-                                contents[i] = string.Empty;
-                            }
-
-                            if (contents[i].StartsWith("Entrants:"))
-                            {
-                                contents[i] = $"Entrants: {responseDto.RegistrantCount}";
-                            }
-                        }
-
-                        var newMessage = string.Join("\r\n", [.. contents.Where(x => !string.IsNullOrWhiteSpace(x))]);
-                        await trackingMessage.ModifyAsync(newMessage);
-                    }
+                    await UpdateEntrantCount(ctx, responseDto.TrackingChannelId, responseDto.TrackingMessageId, responseDto.RegistrantCount);
+                    await ctx.EditResponseAsync("registration complete, have fun!");
 
                     var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
                     if (role != null)
                     {
                         await user.GrantRoleAsync(role, $"{user.Username} registered for a tournament");
                     }
-
-                    await ctx.EditResponseAsync("registration complete, have fun!");
-
                 }
                 catch (Exception ex)
                 {
@@ -317,10 +290,7 @@ namespace tellahs_library.Commands
             {
                 try
                 {
-                    await ctx.CreateResponseAsync("Dropping not fully implmented yet. Let a tournament organizer know you want to drop");
-                    return;
-
-                    await ctx.DeferAsync();
+                    await ctx.DeferAsync(ephemeral: true);
 
                     if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
@@ -328,29 +298,24 @@ namespace tellahs_library.Commands
 
                     var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild.Id, TournamentName: tournamentName);
 
-                    var response = await HttpClient!.PostAsJsonAsync("/tournament/Drop", registration);
-                    var responseDto = (await response.Content.ReadFromJsonAsync<ChangeRegistrationResponse>()) ?? new ChangeRegistrationResponse(0, 0, 0, 0, "");
+                    var response = await HttpClient!.PostAsJsonAsync("Tournament/Drop", registration);
+
                     if (response.IsSuccessStatusCode)
                     {
+                        var responseDto = (await response.Content.ReadFromJsonAsync<ChangeRegistrationResponse>()) ?? new ChangeRegistrationResponse(0, 0, 0, 0, "");
                         //respond to the user
-                        await ctx.CreateResponseAsync(
+                        await ctx.EditResponseAsync(
                             string.Join(" ", "You're no longer registered", string.IsNullOrEmpty(tournamentName)
                                                                             ? null
-                                                                            : $"from {tournamentName}"),
-                            ephemeral: true);
-
-                        //update "x registrants" message for this tournament
-                        var message = await ctx.GetMessageAsync(responseDto.TrackingChannelId, responseDto.TrackingMessageId);
-                        if (message != null)
-                        {
-                            await message.ModifyAsync("updated message");
-                        }
+                                                                            : $"in {tournamentName}"));
 
                         var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
                         if (role != null)
                         {
-                            await ctx.Member.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament");
+                            await ctx.Member.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament {tournamentName}");
                         }
+
+                        await UpdateEntrantCount(ctx, responseDto.TrackingChannelId, responseDto.TrackingMessageId, responseDto.RegistrantCount);
                     }
                     else
                     {
@@ -363,6 +328,37 @@ namespace tellahs_library.Commands
                 {
                     await ctx.LogErrorAsync("Something MegaNuked the library, many apologies", ex.Message, ex);
                 }
+            }
+
+            private async Task UpdateEntrantCount(InteractionContext ctx, ulong channelId, ulong messageId, int registrantCount)
+            {
+                var trackingMessage = await ctx.GetMessageAsync(channelId, messageId);
+                if (trackingMessage is null) { return; }
+
+                var contents = trackingMessage.Content.Split("\r\n").ToList();
+                if (!contents.Any(x => x.StartsWith("Entrants:")))
+                {
+                    contents.Add("Entrants:");
+                }
+
+                for (int i = 0; i < contents.Count; i++)
+                {
+                    if (contents[i].StartsWith("Entrants:"))
+                    {
+                        contents[i] = $"Entrants: {registrantCount}";
+                    }
+                }
+
+                var newMessage = string.Join("\r\n", [.. contents.Where(x => !string.IsNullOrWhiteSpace(x))]);
+                try
+                {
+                    await trackingMessage.ModifyAsync(newMessage);
+                }
+                catch (Exception ex)
+                {
+                    await ctx.LogErrorAsync("Something MegaNuked the library while updated entrant count, many apologies", ex.Message, ex);
+                }
+
             }
         }
     }
