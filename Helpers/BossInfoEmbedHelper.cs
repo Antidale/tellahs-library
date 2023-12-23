@@ -173,14 +173,14 @@ See [Alt Gauntlets](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>) for speci
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Milon.png")
                         .WithDescription(
 @"### Fight Flow
-While both Milon and any Ghasts are on the field, Milon will command them to use Drain. If Milon is alone, he’ll alternate between casting single target Lit1 and using Fight. When only Ghasts are left, they’ll use Fight. Milon always reacts to damage with a Lit1 counter
+While both Milon and any Ghasts are on the field, Milon will command them to use Drain. If Milon is alone, he’ll alternate between casting single target Lit1 and using Fight. When only Ghasts are left, they’ll use Fight. Milon always reacts to damage with a Lit1 counter.
 ### Strats
 Often you’ll approach the fight by using AoE to clear the Ghasts, and relying on one/two damage dealers to kill Milon. Only having a couple of people attacking Milon results in fewer Lit1 counters, which will generally speed things up. At high physical damage spots, Blink/Illusion takes the threat out of Milon fairly well, as would Cover.
 ### Additional Notes
 At high physical damage spots, tossing an HrGlass to stop the Ghasts, and then focus firing down Milon can result in a very clean fight. If you do this, be very aware of how hard the Ghasts will punch if the stop effect wears off.
 
 ")
-                        .AddField("Damage Types", "Milon:Physical, Bolt. Ghasts: Physical, Magic", inline: true)
+                        .AddField("Damage Types", "Milon:Physical, Lightning. Ghasts: Physical, Magic", inline: true)
                         .AddField("Resist", "Ghasts: Dark Immune, Poison, Blind, Mute, Pig, Mini, Frog, KO, Calcify 1, Calcify 2, Berserk, Charm, Sleep, Stun, Float, Curse", inline: true)
                         .AddField("Weakness", "Ghast: Fire, Holy", inline: true)
                         .AddField("Boss Bit", "Yes (Milon), No (Ghasts)", inline: true)
@@ -215,11 +215,11 @@ Wizard hats, Sorcerer and White robes provide defense against Zombies, as does a
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/DKCecil.png")
                         .WithDescription(
 @"### Fight Flow
-Dark Knight Cecil will use Dark Wave on the whole party three times, give a short speech, and then disappear. If you use Fight (Avenger/Berserk counts), the “three times” count resets. 
+Dark Knight Cecil will use Dark Wave on the whole party three times, give a short speech, and then disappear. If you use Fight (Avenger/Berserk counts), the “three times” count resets.
 ### Strats
 Sit back and accept a little damage. In places where the damage outpaces your HP, fast healing goes a long way. Cure3/Elixir can be fight-savers, and slowing the battle speed can let you get more healing in between Dark Waves. Also consider who's going to survive a wave to target with healing so you can assure victory or maybe get another character XP. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. Finally, Jump can help evade a round of damage, since characters in the air won't be hit by Dark Wave, and the command doesn't count as Fight.
 ### Additional Notes
-When `Bnofree` is on, you have to kill DKC, and DKC cannot gate intended underground access unless `Bunsafe` is also on.
+When `Bnofree` is on, you have to kill DKC; additionally with `Bnofree`, DKC cannot gate intended underground access unless `Bunsafe` is also on.
 
 ")
                         .AddField("Damage Types", "Untyped, based on Physical stat", inline: true)
@@ -235,13 +235,13 @@ When `Bnofree` is on, you have to kill DKC, and DKC cannot gate intended undergr
 @"### Fight Flow
 The Guards only Fight on their turns. They’ll react to magic cast on them with a single target Piggy, and react to Fight with a single target Size.
 ### Strats
-Since the Guards don’t normally have the boss bit, an HrGlass, Coffin, or successful use of the Stone spell (or multiple casts of Stop) fully control the fight. Mute, or using a MuteBell, removes their ability to cast. Rune Axe, Mute Knife, Mute Arrows, and Elven Bows do extra damage, and properly timed, an Assassin dagger is just as effective as a Coffin. Should Rydia have learned Cockatrice or Mage, both of them can be very useful in the fight as well. Size and Toad also negate this fight’s threat.
+Since the Guards don’t normally have the boss bit, an HrGlass, Coffin, or successful use of the Stone spell (or multiple casts of Stop) fully control the fight. Mute, or using a MuteBell, removes their ability to cast. Rune axe, Mute knife, Mute arrows, and Elven bows do extra damage, and properly timed, an Assassin dagger is just as effective as a Coffin. Should Rydia have learned Cockatrice or Mage, both of them can be very useful in the fight as well. Size and Toad also negate this fight’s threat.
 ### Additional Notes
 Equipping a Rune ring, Ribbon, or an Aegis shield will give a character mage defense, giving great protection from a Guard’s attack. Ribbons and Crystal armor also block both status effect counters from the Guards, Zeus Gauntlets against Size, and a Ruby ring protects against Piggy.
 
-At high XP spots, Life glitches, or even a Life2 grind, can be very welcome infusions of experience. 
+At high XP spots, Life glitches, or even a Life2 grind, can be very welcome infusions of experience.
 
-With `Bnofree` on, this fight becomes much more dangerous. A focus on minimizing incoming damage and handling the Size/Piggy counters will help greatly. Equip anti-Mage defensive equipment to reduce incoming damage, and give any status protection to the most important character(s) in the party for the fight. Getting Wall status on characters is also great as a form of status prevention; just make sure you have curative potions to help handle damage. If your party relies on physical damage to clear fights, equip anti-Mage weapons (Rune Axe, Mute Knife, Mute Arrows, Elven Bow) and try to only have one or two very strong attackers dealing damage. Parties that can bring Magic damage should bounce damage spells off of a Wall.
+With `Bnofree` on, this fight becomes much more dangerous. A focus on minimizing incoming damage and handling the Size/Piggy counters will help greatly. Equip anti-Mage defensive equipment to reduce incoming damage, and give any status protection to the most important character(s) in the party for the fight. Getting Wall status on characters is also great as a form of status prevention; just make sure you have curative potions to help handle damage. If your party relies on physical damage to clear fights, equip anti-Mage weapons (Rune axe, Mute knife, Mute arrows, Elven bow) and try to only have one or two very strong attackers dealing damage. Parties that can bring Magic damage should bounce damage spells off of a Wall.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -305,7 +305,7 @@ The timing to dissipate the water before a Wave can be queued can be tricky, so 
 
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic (Wave)", inline: true)
-                        .AddField("Weakness", "Ice (water down) \r\nBolt (gathered water)", inline: true)
+                        .AddField("Weakness", "Ice (water down) \r\nLightning (gathered water)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -316,9 +316,9 @@ The timing to dissipate the water before a Wave can be queued can be tricky, so 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/DElf.png")
                         .WithDescription(
 @"### Fight Flow
-The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 attacks, then using Weak and Piggy on consecutive turns, before starting back at the top. After taking damage below a certain threshold, Dark Elf transform to the Dark Dragon form, where the script alternates between using Fight and DBreath.
+The fight begins with Dark Elf chaining together party-wide Fire2/Ice2/Lit2 attacks, then using Weak and Piggy on consecutive turns, before starting back at the top. After taking damage below a certain threshold, Dark Elf transforms to the Dark Dragon form, where the script alternates between using Fight and DBreath.
 ### Strats
-Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary Mages get healed of Piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk. Casting Holy elemental spells at the Dragon form is a bad idea, since the transformation includes an addition of Holy absorb (physical attacks are still fine). 
+Get some damage going (preferably with someone doing Holy damage), try to make sure any necessary Mages get healed of Piggy if they’re hit by it, and restore hit points to people who get hit by Weak. Once you transition to the dragon phase, Stop, Weak, or an HrGlass really solves the fight from there. If you don’t have access to that, just continue restoring HP, and get anyone with dragon-killing gear going with some Bersk. Casting Holy elemental spells at the Dragon form is a bad idea, since the transformation includes an addition of Holy absorb (physical attacks are still fine).
 ### Additional Notes
 The dragon form lacks the boss bit, and while it does have some status resistances, it won't resist Stop, an HrGlass, or the Weak spell. The fight can be really sped up with a properly timed Weak cast.
 
@@ -362,11 +362,11 @@ Lower level parties might want to avoid using berserk, since it can spread out d
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Valvalis.png")
                         .WithDescription(
 @"### Fight Flow
-At the start of the fight, Val will assume tornado form, changing defensive values (See Tornado Defense for details, as different locations have vastly different stats). While in tornado form, Val will alternate between chaining single targets of Weak and Ray, and using Fight. If a character uses Jump (hit or miss), Val fall out of tornado form, reset defenses and punch as a reaction, and then take a turn to use Fight again, take an empty turn and set up getting back to tornado form.
+At the start of the fight, Val will assume tornado form, changing defensive values (See Tornado Defense for details, as different locations have vastly different stats). While in tornado form, Val will alternate between chaining single targets of Weak and Ray, and using Fight. If a character uses Jump (hit or miss), Val will fall out of tornado form, reset defenses and punch as a reaction, and then take a turn to use Fight again, take an empty turn and set up getting back to tornado form.
 ### Strats
 The location really dictates some of your choices in the fight, and the fight in general is one that should guide party choices if you’re mage heavy. Generally, the fight relies on physical attacks hitting through the defenses Val spins up. Blink/Illusion are most of the defense you need in the fight, along with some ways of clearing the calcify/stone status.
 
-In a mage heavy composition, using Jump and timing the magical onslaught will likely be the fastest/easiest way through, although swapping one character over to a bow/arrow and stacking +Str gear can be an alternative path if the Jump command's not available.
+In a mage heavy composition, using Jump and timing the magical onslaught will likely be the fastest/easiest way through, although swapping one character over to a bow/arrow and stacking +Str gear can be an alternative path if the Jump command is not available.
 ### Additional Notes
 It can be a good idea to carry some extra Heal potions for this fight when you have a limited party size, to help prevent your characters from fully becoming stone. You can also kill a character before they fully turn to stone and resurrect them to clear any partial calcification.
 
@@ -394,7 +394,7 @@ Quake is fantastic against the dolls at many spots, and Meteo can be too, althou
 Each Cal has just under 12% of the spot’s HP, each Brena has just under 4%, and Calbrena has just over 54%.
 
 ")
-                        .AddField("Damage Types", "Physical, Fire, Ice, Bolt", inline: true)
+                        .AddField("Damage Types", "Physical, Fire, Ice, Lightning", inline: true)
                         .AddField("Boss Bit", "Yes (Brena, Calbrena) No (Cal)", inline: true)
                         .AddField("Additional Links", "[Cal](https://wiki.ff4fe.com/doku.php?id=cal), [Brena](https://wiki.ff4fe.com/doku.php?id=brena)", inline: true);
                     break;
@@ -421,7 +421,7 @@ High magic spots might seem scary, but can be a great way to leverage some early
 Goblez will not gate intended underground access unless `Bunsafe` is turned on.
 
 ")
-                        .AddField("Damage Types", "Bolt, Fire, Untyped Magic", inline: true)
+                        .AddField("Damage Types", "Lightning, Fire, Untyped Magic", inline: true)
                         .AddField("Weakness", "Holy, Fire", inline: true)
                         .AddField("Additional Links", "[Shadow](<https://wiki.ff4fe.com/doku.php?id=shadow>)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
@@ -487,7 +487,7 @@ If `Bnofree` is enabled, Cover strats can become one of the best helpers for the
 @"### Fight Flow
 K.Eblan will cast Fire 2 three times before switching the music and then using Vanish. Q.Eblan will cast Fire1 until alone, and then queues Vanish once the King is gone.
 ### Strats
-Wait out the damage from the spells, healing if necessary, and watch them disappear. 
+Wait out the damage from the spells, healing if necessary, and watch them disappear.
 ### Additional Notes
 Since the Queen will disappear after the King does, you can sometimes speed up the fight by killing the King first. If `Bnofree` is on you must kill both, and they’ll skip their initial dialog at the beginning of the fight, which can be a handy tell in a mystery seed.
 
@@ -506,13 +506,13 @@ Since the Queen will disappear after the King does, you can sometimes speed up t
 @"### Fight Flow
 Rubicant cycles through actions of cloak opening (which gives an Ice weakness), casting Glare, closing the cloak (changing the ice weakness to an ice absorb), and then alternating between a single punch or a double punch. The first cycle will be a single punch, the second a double, then back to single etc.
 
-Rubicant reacts to Fight with a party-wide Fire2 counter. When below 4% of the spot’s health and is hit with Fight, instead of that Fire2 counter Rubicant’ll give a small speech and disappear. Using fire magic causes a Life1 reaction targeting the whole party. 
+Rubicant reacts to Fight with a party-wide Fire2 counter. When below 4% of the spot’s health and is hit with Fight, instead of that Fire2 counter Rubicant’ll give a small speech and disappear. Using fire magic causes a Life1 reaction targeting the whole party.
 ### Strats
 Equipping melee characters with ice weapons (IceBrand, Ice claw, Blizzard spear, Ice arrows, etc) will hit a script-induced 4x weakness throughout the fight once Rubi's cloak opens the first time. Depending on the spot’s magic power and your party's HP/amount of Fire resistance gear equipped, you might opt to just use berserk on a physical fighter equipped with an ice weapon and either tank or heal through the counters, or you can make use of the Fight alternatives (Power, Jump, Aim) in order to not draw the counters.
 
 Casters should generally lean towards using fast spells, like Virus, Quake, and Nuke most of the fight, but timing Ice3 to land when the cloak is open is definitely a skill to learn. Boreas and Blizzard items are great to toss and land while the cloak is open, especially with high HP characters who might not have ice element weapons equipped.
 ### Additional Notes
-Rubicant generally uses single-target damage, so underleveled parties can look to strategies that don’t involve the Fight command, and making liberal use of Life spells/potions and Blink/Illusion to keep party members up and active, and generally not risking a wipe. These strategy takes more time to execute, but if you’re in a low level situation they can get you through a fight that’d otherwise not be possible to win.
+Rubicant generally uses single-target damage, so underleveled parties can look to strategies that don’t involve the Fight command, and making liberal use of Life spells/potions and Blink/Illusion to keep party members up and active, and generally not risking a wipe. This strategy takes more time to execute, but if you’re in a low level situation they can get you through a fight that’d otherwise not be possible to win.
 
 ")
                         .AddField("Damage Types", "Physical, Fire (Glare, Fire2)")
@@ -557,7 +557,7 @@ Often the fastest path through is to reflect spells onto the Milon form and neve
 Since this fight is actually two separate HP pools (Milon/Rubi in one, Kainazzo/Val in another), if you can kill the first fight without hitting the HP threshold for it to transform into the other, you’ll never face the Kainazzo/Valvalis fight. Typically this happens with using a Wall and bouncing spells onto the Milon form. Since reflected spells don’t trigger reactions, you’ll never see any other shape.
 ")
                         .AddField("Damage Types", "Milon: Physical\r\nRubicant: Fire\r\nKainazzo: Physical, Untyped Magic (Big Wave)\r\nValvalis: Physical")
-                        .AddField("Resist", "Milon: Absorbs Ice, Holy, Dark, Bolt, Air\r\nRubicant: Absorbs: Fire, Holy, Dark, Bolt, Air\r\nKainazzo: Absorbs: Fire, Ice, Dark, Holy, Air\r\nValvalis: None\r\n")
+                        .AddField("Resist", "Milon: Absorbs Ice, Holy, Dark, Lightning, Air\r\nRubicant: Absorbs: Fire, Holy, Dark, Lightning, Air\r\nKainazzo: Absorbs: Fire, Ice, Dark, Holy, Air\r\nValvalis: None\r\n")
                         .AddField("Weakness", "Milon: Fire (4x)\r\nRubicant: Ice (4x)\r\nKainazzo: Thunder (4x)\r\nValvalis: Thunder (4x), Holy (4x)")
                         .AddField("Additional Links", "[Kainazzo/Val](<https://wiki.ff4fe.com/doku.php?id=elements_kainazzo_val>)", inline: true)
                         .AddField("Race", "Milon: Zombie\r\nRubicant: Mage", inline: true)
@@ -594,14 +594,14 @@ The Attacker and Defender each get 10% of the spot’s HP, but award one-third o
 @"### Fight Flow
 Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin (a party-wide attack). He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll Fight once, start a chain to raise his sword and set a flag to allow Thunderstruck, then unset the flag while queueing Odin. Repeat from the top if both sides are alive.
 ### Strats
-Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you race to kill Odin before the the first Odin attack comes out.
+Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you race to kill Odin before the first Odin attack comes out.
 
 In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and the when Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order to correctly time the Thunderstruck attempt.
 ### Additional Notes
 `Bnofree` has no effect on Odin's script.
 ")
                         .AddField("Damage Types", "Physical, Untyped Magic", inline: true)
-                        .AddField("Weakness", "Bolt (4x)", inline: true)
+                        .AddField("Weakness", "Lightning (4x)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -646,7 +646,7 @@ The Lightning weakness being 2x means that Yang’ll get a bigger increase over 
 
 ")
                         .AddField("Damage Types", "Untyped Magic, Ice", inline: true)
-                        .AddField("Weakness", "Bolt", inline: true)
+                        .AddField("Weakness", "Lightning", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -678,7 +678,7 @@ On its turn, Pale Dim only Fights. In reaction to Fight, Pale Dim will cast Slow
 ### Strats
 Another fight where Blink/Illusion/MoonVeil do so much to protect the party. The Slow counters from Pale Dim can vary from being a nuisance to something that makes the fight a little risky if you fall behind in preventative measures. Black Mages should use untyped magic (Virus, Quake, Nuke) here to avoid both healing Pale Dim and suffering the counter attack. Zerkers are fine, but if you have someone equipped with dragon killing gear (Dragoon spear, Dragon whip, Artemis arrows), you’ll want to lean on them as possibly the only attacker.
 ### Additional Notes
-Cecil as a Cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders. 
+Cecil as a Cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders.
 
 ")
                         .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Lightning, or Untyped Magic")
@@ -698,7 +698,7 @@ Wyvern begins the fight with MegaNuke, takes two consecutive empty turns, then c
 ### Strats
 Wyvern’s opening MegaNuke often requires agility setups that let you get Wall status up right away. Slowing down the battle speed can allow you the time to input the commands to get Wall going; very practiced runners can substitute Battle Speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll generally want a slow anchor and fast first actors in order to have a solid setup.
 
-Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use Life potions or spells to keep on even-ish footing. 
+Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use Life potions or spells to keep on even-ish footing.
 ### Additional Notes
 Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). Sylph is a great fast-casting Call to help reflect more MegaNuke damage back at Wyvern.
 
@@ -767,7 +767,7 @@ Low level parties (and in locations with either high Magic attack, high HP, or b
 @"### Fight Flow
 The fight begins with two Big Waves chained together, taking away 50% of the party’s max HP right away. Ogopogo will then Fight on three consecutive turns, use Big Wave a single time, and then fight on two more turns, and then returns to the beginning of the fight (the double Big Wave).
 
-Ogopogo will counter most uses of magic and all Calls with Blaze, a Ice-based attack that deals 20% Max HP damage to the party. The exception is Lightning-based magic, which elicits a single-target Weak cast. Twin has no reactions.
+Ogopogo will counter most uses of magic and all Calls with Blaze, a Ice-based attack that deals 20% Max HP damage to the party. The exception is Lightning-based magic, which elicits a single-target Weak cast. Twin causes no reactions.
 ### Strats
 The counters Ogopogo uses means that most strategies lean heavily on berserked characters. Mages should look to bouncing spells off of a Wall, and Rydia generally will avoid using the Call ability. Blink/Illusion is important to get going early, but you will need some healing as well if the fight goes long enough that the script rolls back around to the start of the script. You’ll also want to keep an idea of where the fight is in the script if you are thinking of using non-Life2 resurrection, since a Big Wave is almost certain to render Life1/Life potions useless, unless you’ve timed other healing on the target.
 ### Additional Notes
