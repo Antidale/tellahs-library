@@ -596,7 +596,7 @@ Odin will use Fight three times, then raise his sword and take an empty turn, th
 ### Strats
 Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you race to kill Odin before the first Odin attack comes out.
 
-In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and the when Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order to correctly time the Thunderstruck attempt.
+In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and when the Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order to correctly time the Thunderstruck attempt. The window to land the Lightning damage is so small that you generally need an RA2 or slower Odin and have to react to the punch, not the sword raise for a successful attempt.
 ### Additional Notes
 `Bnofree` has no effect on Odin's script.
 ")
