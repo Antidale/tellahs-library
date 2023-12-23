@@ -717,7 +717,7 @@ Wyvern will not gate intended underground access unless `Bunsafe` is on. The `wh
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Plague.png")
                         .WithDescription(
 @"### Fight Flow
-While any living, on-screen character lacks Count status, Plauge will cast Count on the party, which also resets the counter on everyone hit by it. Otherwise, Plague casts Fast on the party.
+While any living, on-screen character lacks Count status, Plague will cast Count on the party, which also resets the counter on everyone hit by it. Otherwise, Plague casts Fast on the party.
 ### Strats
 Plague’s flying status means that spears, boomerangs, and bows/arrows deal extra damage, and makes Quake completely ineffective. In the Milon Z location (Back Attack on Mt. Ordeals) location, you might consider starting the fight with a party member Swooned so that you can easily reset the counter. It’s also strongly recommended you use as slow an agility anchor as possible, since you start the fight at significant ATB disadvantage from the forced Back Attack.
 
