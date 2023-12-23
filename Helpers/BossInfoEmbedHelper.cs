@@ -592,11 +592,11 @@ The Attacker and Defender each get 10% of the spot’s HP, but award one-third o
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Odin.png")
                         .WithDescription(
 @"### Fight Flow
-Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin (a party-wide attack). He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll fight once, start a chain to raise his sword and set a flag to allow Thunderstruck, then unset the flag while queueing Odin. Repeat from the top if both sides are alive.
+Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin (a party-wide attack). He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll Fight once, start a chain to raise his sword and set a flag to allow Thunderstruck, then unset the flag while queueing Odin. Repeat from the top if both sides are alive.
 ### Strats
 Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you race to kill Odin before the the first Odin attack comes out.
 
-In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and the when Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order correctly time the Thunderstruck attempt.
+In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and the when Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order to correctly time the Thunderstruck attempt.
 ### Additional Notes
 `Bnofree` has no effect on Odin's script.
 ")
@@ -674,14 +674,14 @@ You get less time in between the 1 count and the casting of MegaNuke because Bah
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/PaleDim.png")
                         .WithDescription(
 @"### Fight Flow
-On its turn, Pale Dim only Fights. In reaction to Fight, Pale Dim will cast Slow. In reaction to fire magic, Pale Dim uses Glare. In reaction to ice magic, Pale Dim uses Blizzard. In reaction to Bolt magic, Pale Dim uses Blitz. In reaction to the Call ability, Pale Dim uses Quake.
+On its turn, Pale Dim only Fights. In reaction to Fight, Pale Dim will cast Slow. In reaction to Fire magic, Pale Dim uses Glare. In reaction to Ice magic, Pale Dim uses Blizzard. In reaction to LIghtning magic, Pale Dim uses Blitz. In reaction to the Call ability, Pale Dim uses Quake.
 ### Strats
 Another fight where Blink/Illusion/MoonVeil do so much to protect the party. The Slow counters from Pale Dim can vary from being a nuisance to something that makes the fight a little risky if you fall behind in preventative measures. Black Mages should use untyped magic (Virus, Quake, Nuke) here to avoid both healing Pale Dim and suffering the counter attack. Zerkers are fine, but if you have someone equipped with dragon killing gear (Dragoon spear, Dragon whip, Artemis arrows), you’ll want to lean on them as possibly the only attacker.
 ### Additional Notes
 Cecil as a Cover bot can be extremely strong for this fight and be essentially invulnerable when placed in the backrow and given a Crystal ring or any Dragoon defensive gear to pick up dragon defense. Glass headgear and Adamant armor also do wonders. 
 
 ")
-                        .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Bolt, or Untyped Magic")
+                        .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Lightning, or Untyped Magic")
                         .AddField("Resist", "Absorbs: Fire, Ice, Lightning\r\nStatuses: Poison Blind Mute Pig Mini Frog Petrify KO Sleep Stun ")
                         .AddField("Race", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
@@ -747,7 +747,7 @@ D.Lunars counter Call with Remedy.
 ### Strats
 Using Fight alternatives (Power, Jump, Aim, Dart) for melee-heavy parties is standard practice. For parties with heavy magic damage, Fire3, Nuke, and Quake are good spells to use. White Mages can use Cure3 or Cure4 to good effect on the D.Lunars. Blink/Illusion are great for preventative damage, although some recovery is good to have on hand for the Fire casts. Cure3 potions can also be a good move, especially early.
 
-At many locations, Crystal sword users can change the calculus on whether or not to use the berserk status, but this can be a highly RNG dependent strategy. Before applying the angry juice, consider your party's ability to supplement that damage, or perhaps only berserk after some other foundational non-Fight damage has been applied; you're looking to reduce the amount of Virus or Flame damage directed your way to a survivable amount. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
+At many locations, using berserk status can be a highly RNG dependent strategy, even when wielding a Crystal sword or Dragon-killing weaponry. Before applying the angry juice, consider your party's ability to supplement that damage, or perhaps only berserk after some other foundational non-Fight damage has been applied; you're looking to reduce the amount of Virus or Flame damage directed your way to a survivable amount. Dragoon Spears, Artemis Arrows, and the Dragon whip also can change the calculation, although do so to a lesser degree.
 ### Additional Notes
 Low level parties (and in locations with either high Magic attack, high HP, or both) will consider Walls to reflect the Breath spell back on the enemies. A D.Lunar who has been hit by the Breath cannot use magic, will do at most 1 point of damage with physical attacks, and suffers great defensive penalties. Should the reflected Breath only attack one of the D.Lunars, you can still take great advantage of Frog Strats by Fighting the frog, since the attacked enemy is the one that uses the Wall reaction. After that initial triggering of the Virus script, any focus fire should be done to the non-frog enemy first.
 
@@ -765,7 +765,7 @@ Low level parties (and in locations with either high Magic attack, high HP, or b
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Ogopogo.png")
                         .WithDescription(
 @"### Fight Flow
-The fight begins with two Big Waves chained together, taking doing 50% of the party’s max HP right away, then will Fight on three consecutive turns, use Big Wave a single time, and then fight on two more turns, and then returns to the beginning of the fight (the double Big Wave).
+The fight begins with two Big Waves chained together, taking away 50% of the party’s max HP right away. Ogopogo will then Fight on three consecutive turns, use Big Wave a single time, and then fight on two more turns, and then returns to the beginning of the fight (the double Big Wave).
 
 Ogopogo will counter most uses of magic and all Calls with Blaze, a Ice-based attack that deals 20% Max HP damage to the party. The exception is Lightning-based magic, which elicits a single-target Weak cast. Twin has no reactions.
 ### Strats
