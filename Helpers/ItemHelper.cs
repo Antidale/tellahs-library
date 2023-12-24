@@ -16,7 +16,7 @@ namespace tellahs_library.Helpers
             {
                 ItemRecallOptions.Cure3 => builder
                     .WithDescription(
-@"Useful as a replacement for Cure3 and Cure4 spells, Cure3 potions can appear in any non-Smithy item shop on `Sstandard`; `Spro` restricts availability to Gated shops.
+@"Useful as a replacement for Cure3 and Cure4 spells, Cure3 potions can appear in any non-Smithy item shop on `Sstandard`; `Spro` restricts availability to Gated item shops.
 
 If there are no White Mages in a seed, Cure3 potions will be guaranteed to be in a Gated item shop. This guarantee is void if `Sunsafe` is enabled.
 
@@ -49,7 +49,7 @@ The `Loaded` kit comes with three Ether2 potions
                     .WithDescription(
 @"Exits repicate the Exit spell, and can appear in any non-Smithy item shop under both `Sstandard` and `Spro`. There are no availability guarantees unless `Swild` is enabled.
 
-The `Loaded kit comes with five Exits, and the `Better` kit can have up to three.")
+The `Loaded` kit comes with five Exits, and the `Better` kit can have up to three.")
                     .AddField("Tier", "2", inline: true)
                     .AddField("Price", "2000", inline: true)
                     .Build(),
@@ -105,18 +105,15 @@ The `Freedom` kit contains ten ThorRages, and the `Better` kit can have up to th
 
                 ItemRecallOptions.Vampire => builder
                     .WithDescription(
-@"Vampires are a solid damage alternative early on, and can appear in any item shop with `Sstandard`, but under `Spro` only Gated item shops might have them. There are no availability guarantees unless `Swild` is enabled. `Sno:j` removes any possibility of finding them in shops.
+@"Vampires are a solid damage alternative early on, and can appear in any item shop with `Sstandard`. Under `Spro` only Gated item shops might have them. There are no availability guarantees unless `Swild` is enabled. `Sno:j` removes any possibility of finding them in shops.
 
 The `Better` and `Loaded` kits each can have up to two Vampires contained within.")
-
                     .AddField("Tier", "4", inline: true)
                     .AddField("Price", "4000", inline: true)
                     .Build(),
 
                 _ => new DiscordEmbedBuilder().WithTitle("Selected item is not yet included in this library's catalog")
             };
-
-            
         }
     }
 }
