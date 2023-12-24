@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace tellahs_library.Helpers
+namespace tellahs_library.Extensions
 {
-    public static class EnumHelper
+    public static class EnumExtensions
     {
         public static string GetDescription(this Enum enumVal)
         {
@@ -12,7 +12,7 @@ namespace tellahs_library.Helpers
                 return string.Empty;
 
             var attributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return (attributes.Length > 0) ? ((DescriptionAttribute)attributes[0])?.ToString() ?? string.Empty : enumVal?.ToString() ?? string.Empty;
+            return attributes.Length > 0 ? ((DescriptionAttribute)attributes[0])?.ToString() ?? string.Empty : enumVal?.ToString() ?? string.Empty;
         }
     }
 }
