@@ -418,7 +418,7 @@ Depending on your damage output, you can sometimes just let Golbez do the damage
 ### Additional Notes
 High magic spots might seem scary, but can be a great way to leverage some early XP, since Golbez will do most of the work. The Asura spot in the Feymarch, or the Ogopogo (Masamune altar) spot are two notable examples of this 'Stop Hitting Yourself' approach. Other spots have very low magic damage, like the White Spear altar (Plague’s spot) or the top of Lower Babil (Lugae’s spot), which means that you can often just forgo using any Wall status at all.
 
-Goblez will not gate intended underground access unless `Bunsafe` is turned on.
+Golbez will not gate intended underground access unless `Bunsafe` is turned on.
 
 ")
                         .AddField("Damage Types", "Lightning, Fire, Untyped Magic", inline: true)
