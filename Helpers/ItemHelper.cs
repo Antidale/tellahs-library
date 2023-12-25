@@ -47,7 +47,7 @@ The `Loaded` kit comes with three Ether2 potions
 
                 ItemRecallOptions.Exit => builder
                     .WithDescription(
-@"Exits repicate the Exit spell, and can appear in any non-Smithy item shop under both `Sstandard` and `Spro`. There are no availability guarantees unless `Swild` is enabled.
+@"Exits replicate the Exit spell, and can appear in any non-Smithy item shop under both `Sstandard` and `Spro`. There are no availability guarantees unless `Swild` is enabled.
 
 The `Loaded` kit comes with five Exits, and the `Better` kit can have up to three.")
                     .AddField("Tier", "2", inline: true)
