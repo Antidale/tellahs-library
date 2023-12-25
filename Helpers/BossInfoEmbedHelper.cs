@@ -408,7 +408,7 @@ Each Cal has just under 12% of the spot’s HP, each Brena has just under 4%, an
 @"### Fight Flow
 The fight opens with Golbez casting HoldGas on the party, then summoning Shadow. Shadow will use Demolish either three times, or until the party is down to two on-screen characters, whichever happens first. Golbez then dismisses Shadow, releases the HoldGas, and becomes vulnerable. Then Golbez will cycle through single targets of Virus, Lit3, and Fire2.
 
-Golbez will react to unreflected damage, when under an HP threshold for the location, with a plaintive “Why?” before dying.
+Dealing direct damage when Golbez has 19,000 HP or fewer will cause him to react with a plaintive “Why?” and then Vanish.
 ### Strats
 If you can, take advantage of the status effect system by using Size or Piggy before the battle when you know you’re facing Golbez. This will prevent the HoldGas from paralyzing the party, making it easy to get StarVeils up on whoever is left. You can also self-target Venom from a well-placed/anchored Black Mage for the same effect. If you lack the ability for any of that, consider getting into a random encounter and killing off all but your two most important characters for the upcoming fight, and then taking on Golbez. Alternatively, a trip to the dancer in the Mysidia inn can turn your whole party to pigs.
 
@@ -418,7 +418,9 @@ Depending on your damage output, you can sometimes just let Golbez do the damage
 ### Additional Notes
 High magic spots might seem scary, but can be a great way to leverage some early XP, since Golbez will do most of the work. The Asura spot in the Feymarch, or the Ogopogo (Masamune altar) spot are two notable examples of this 'Stop Hitting Yourself' approach. Other spots have very low magic damage, like the White Spear altar (Plague’s spot) or the top of Lower Babil (Lugae’s spot), which means that you can often just forgo using any Wall status at all.
 
-Goblez will not gate intended underground access unless `Bunsafe` is turned on.
+At locations other than the first Giant boss location (the vanilla Elements fight), Golbez gets an additional 19,000 HP which generally forces the “Why?” script as the way you defeat Golbez.
+
+Golbez will not gate intended underground access unless `Bunsafe` is turned on.
 
 ")
                         .AddField("Damage Types", "Lightning, Fire, Untyped Magic", inline: true)
