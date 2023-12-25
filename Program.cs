@@ -42,10 +42,8 @@ slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
 #endif
 
 //Register global commands
-slash.RegisterCommands<ItemRecall>();
-slash.RegisterCommands<FlagsetChooser>();
 slash.RegisterCommands<Recall>();
-slash.RegisterCommands<BossRecall>();
+slash.RegisterCommands<FlagsetChooser>();
 
 await discord.ConnectAsync();
 
