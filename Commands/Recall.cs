@@ -1,14 +1,32 @@
 ﻿using DSharpPlus.SlashCommands;
+using tellahs_library.Enums;
+using static tellahs_library.Helpers.BossInfoEmbedHelper;
+using static tellahs_library.Helpers.BossNameHelper;
+using static tellahs_library.Helpers.ItemHelper;
 
 namespace tellahs_library.Commands
 {
-    public class Recall : ApplicationCommandModule
+    [SlashCommandGroup("recall", "command group for FE information")]
+    public partial class Recall : ApplicationCommandModule
     {
-
-        [SlashCommand("recall", "search the library for information")]
-        public async Task RecallAsync(InteractionContext ctx)
+        [SlashCommand("boss", "Get boss info")]
+        public async Task BossRecallAsync(InteractionContext ctx,
+            [Option("BossName", "the boss you want info on")] string bossName,
+            [Option("justme", "makes the response only visible to you")] bool isEphemeral = false)
         {
-            await ctx.CreateResponseAsync("No library attendants are available to help you yet. For now, check <https://wiki.ff4fe.com>");
+            var bossEnum = GetBossName(bossName);
+            var embed = GetBossInfoEmbed(bossEnum);
+            await ctx.CreateResponseAsync(embed, isEphemeral);
+        }
+
+        [SlashCommand("item", "provides some information about select consumable items")]
+        public async Task ItemRecallAsync(InteractionContext ctx,
+                [Option("item", "get information about important consumable items")] ItemRecallOptions selectedItem,
+                [Option("justme", "only show for yourself")] bool isEphemeral = true)
+        {
+            var embed = GetItemNotes(selectedItem);
+
+            await ctx.CreateResponseAsync(embed, isEphemeral);
         }
 
         [SlashCommand("racing", "get information about racing Free Enterprise")]
@@ -27,6 +45,14 @@ See [Fleury's site](<https://adaptable-rabbit.surge.sh/events>) for a listing of
 * dr-race-bot [commands](<https://gitlab.com/akw5013/discord-race-bot/blob/master/HELP.md>)
 ");
         }
+
+        //[SlashCommand("recall", "search the library for information")]
+        //public async Task RecallAsync(InteractionContext ctx)
+        //{
+        //    await ctx.CreateResponseAsync("No library attendants are available to help you yet. For now, check <https://wiki.ff4fe.com>");
+        //}
+
+
 
     }
 }
