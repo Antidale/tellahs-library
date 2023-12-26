@@ -436,7 +436,7 @@ Golbez will not gate intended underground access unless `Bunsafe` is turned on.
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Lugae.png")
                         .WithDescription(
 @"### Fight Flow
-This conversation-heavy fight starts with Balnab punching the doctor, who then Heals Balnab. Each will perform their one action (Fight for Balnab and Heal for Lugae) until they are the only monster left. A lone Balnab will Fight one more time and then Explode. When alone, the doctor will transform to Balnab-Z, who Fights twice and then uses Explode.
+This conversation-heavy fight starts with Balnab punching the doctor, who then Heals Balnab. Each will perform their one action (Fight for Balnab and Heal for Lugae) until they are the only monster left. A lone Balnab will Fight one more time and then Explode. When alone, the doctor will transform into Balnab-Z, who Fights twice and then uses Explode.
 
 After the first fight ends, a second begins, with another Dr. Lugae form. This fight starts with more dialog, and then Lugae transforms and uses Poison on the party, after which Lugae cycles through Beam, Laser, Emission, and then a party-wide Heal. Lugae will react with any damage the party inflicts with a single target Gas counter.
 ### Strats
