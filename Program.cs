@@ -31,7 +31,6 @@ var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
                                       .BuildServiceProvider()
 });
 
-
 //Register test commands for the specific servers
 
 #if DEBUG
