@@ -3,7 +3,7 @@
     public enum FlagInteractionChoices
     {
         Agility_vs_Hero,
-        Kmiab_UndergroundAccess,
+        Kmiab_UnderworldAccess,
         ForceMagma_DMist,
         BVanilla_OdinSpot,
     }
