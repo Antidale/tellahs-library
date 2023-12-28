@@ -25,6 +25,11 @@ namespace tellahs_library.Extensions
             return await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent(updatedMessage));
         }
 
+        public static async Task<DiscordMessage?> EditResponseAsync(this InteractionContext ctx, DiscordEmbed embed)
+        {
+            return await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+        }
+
         [SuppressMessage("Usage", "CA2254:Template should be a static expression", Justification = "No structured logging use")]
         public static async Task LogErrorAsync(this InteractionContext ctx, string message, Exception? ex = null)
         {
