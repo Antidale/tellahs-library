@@ -53,5 +53,24 @@ namespace tellahs_library.Extensions
             await ctx.EditResponseAsync(responseMessage);
             await LogErrorAsync(ctx, errorMessage, ex);
         }
+
+        public static async Task LogUsageAsync(this InteractionContext ctx)
+        {
+            var guild = ctx.Client.Guilds[GuildIds.BotHome];
+            if (guild == null) { return; }
+
+            var channel = guild.Channels[ChannelIds.BotUsageChannelId];
+            if (channel == null) { return; }
+
+            var invokingGuild = ctx.Guild;
+
+            var guildString = invokingGuild is null
+                ? "a DM"
+                : $"{invokingGuild!.Name}";
+
+            var message = $"{ctx.QualifiedName} was invoked in {guildString}";
+
+            await channel.SendMessageAsync(message);
+        }
     }
 }

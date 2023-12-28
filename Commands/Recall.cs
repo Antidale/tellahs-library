@@ -1,5 +1,7 @@
-﻿using DSharpPlus.SlashCommands;
+﻿using DSharpPlus.Entities;
+using DSharpPlus.SlashCommands;
 using tellahs_library.Enums;
+using tellahs_library.Extensions;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
 using static tellahs_library.Helpers.BossNameHelper;
 using static tellahs_library.Helpers.ItemHelper;
@@ -14,19 +16,41 @@ namespace tellahs_library.Commands
             [Option("BossName", "the boss you want info on")] string bossName,
             [Option("justme", "makes the response only visible to you")] bool isEphemeral = false)
         {
+            await ctx.DeferAsync(isEphemeral);
+
             var bossEnum = GetBossName(bossName);
             var embed = GetBossInfoEmbed(bossEnum);
-            await ctx.CreateResponseAsync(embed, isEphemeral);
+
+            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+            await ctx.LogUsageAsync();
         }
+
+        //[SlashCommand("flag_interaction", "provides information about some flag interactions")]
+        //public async Task FlagInteractionAsync(InteractionContext ctx,
+        //    [Option("interaction", "flagset interaction to learn more about")]FlagInteractionChoices choice,
+        //    [Option("justme", "only show for yourself")] bool isEphemeral = true)
+        //{
+        //    await ctx.DeferAsync(isEphemeral);
+
+        //    var response = GetFlagInteractionAsync(choice);
+        //    var messageBuilder = new DiscordMessageBuilder().WithContent(response.message);
+
+        //    var builder = ctx.EditResponseAsync(response.message);
+
+        //    await ctx.LogUsageAsync();
+        //}
 
         [SlashCommand("item", "provides some information about select consumable items")]
         public async Task ItemRecallAsync(InteractionContext ctx,
                 [Option("item", "get information about important consumable items")] ItemRecallOptions selectedItem,
                 [Option("justme", "only show for yourself")] bool isEphemeral = true)
         {
+            await ctx.DeferAsync(isEphemeral);
+
             var embed = GetItemNotes(selectedItem);
 
-            await ctx.CreateResponseAsync(embed, isEphemeral);
+            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+            await ctx.LogUsageAsync();
         }
 
         [SlashCommand("racing", "get information about racing Free Enterprise")]
@@ -46,13 +70,13 @@ See [Fleury's site](<https://adaptable-rabbit.surge.sh/events>) for a listing of
 ");
         }
 
+
+
         //[SlashCommand("recall", "search the library for information")]
         //public async Task RecallAsync(InteractionContext ctx)
         //{
         //    await ctx.CreateResponseAsync("No library attendants are available to help you yet. For now, check <https://wiki.ff4fe.com>");
         //}
-
-
 
     }
 }
