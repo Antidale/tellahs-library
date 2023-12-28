@@ -219,7 +219,7 @@ Dark Knight Cecil will use Dark Wave on the whole party three times, give a shor
 ### Strats
 Sit back and accept a little damage. In places where the damage outpaces your HP, fast healing goes a long way. Cure3/Elixir can be fight-savers, and slowing the battle speed can let you get more healing in between Dark Waves. Also consider who's going to survive a wave to target with healing so you can assure victory or maybe get another character XP. Properly anchored, Edward can hide before the first Dark Wave comes out and can earn you a free win. Finally, Jump can help evade a round of damage, since characters in the air won't be hit by Dark Wave, and the command doesn't count as Fight.
 ### Additional Notes
-When `Bnofree` is on, you have to kill DKC; additionally with `Bnofree`, DKC cannot gate intended underground access unless `Bunsafe` is also on.
+When `Bnofree` is on, you have to kill DKC; additionally with `Bnofree`, DKC cannot gate intended Underworld access unless `Bunsafe` is also on.
 
 ")
                         .AddField("Damage Types", "Untyped, based on Physical stat", inline: true)
@@ -372,7 +372,7 @@ It can be a good idea to carry some extra Heal potions for this fight when you h
 
 Aim, Kick, Dark, and Dart all are able to hit Valvalis in tornado form, so you can lean on them if you don’t have the multipliers to get through the defenses and also don’t have Kain to knock Valvalis out of tornado form.
 
-Valvalis will not gate intended underground access unless `Bunsafe` is on.
+Valvalis will not gate intended Underworld access unless `Bunsafe` is on.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
@@ -420,7 +420,7 @@ High magic spots might seem scary, but can be a great way to leverage some early
 
 At locations other than the first Giant boss location (the vanilla Elements fight), Golbez gets an additional 19,000 HP which generally forces the “Why?” script as the way you defeat Golbez.
 
-Golbez will not gate intended underground access unless `Bunsafe` is turned on.
+Golbez will not gate intended Underworld access unless `Bunsafe` is turned on.
 
 ")
                         .AddField("Damage Types", "Lightning, Fire, Untyped Magic", inline: true)
@@ -436,7 +436,7 @@ Golbez will not gate intended underground access unless `Bunsafe` is turned on.
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Lugae.png")
                         .WithDescription(
 @"### Fight Flow
-This conversation-heavy fight starts with Balnab punching the doctor, who then Heals Balnab. Each will perform their one action (Fight for Balnab and Heal for Lugae) until they are the only monster left. A lone Balnab will Fight one more time and then Explode. When alone, the doctor will transform to Balnab-Z, who Fights twice and then uses Explode.
+This conversation-heavy fight starts with Balnab punching the doctor, who then Heals Balnab. Each will perform their one action (Fight for Balnab and Heal for Lugae) until they are the only monster left. A lone Balnab will Fight one more time and then Explode. When alone, the doctor will transform into Balnab-Z, who Fights twice and then uses Explode.
 
 After the first fight ends, a second begins, with another Dr. Lugae form. This fight starts with more dialog, and then Lugae transforms and uses Poison on the party, after which Lugae cycles through Beam, Laser, Emission, and then a party-wide Heal. Lugae will react with any damage the party inflicts with a single target Gas counter.
 ### Strats
@@ -705,7 +705,7 @@ Once you’ve managed to survive the opening salvo, get people back up and let t
 ### Additional Notes
 Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). Sylph is a great fast-casting Call to help reflect more MegaNuke damage back at Wyvern.
 
-Wyvern will not gate intended underground access unless `Bunsafe` is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another random enemy attack, with some protections to keep the opener milder than MegaNuke; `Bunsafe` removes those protections.
+Wyvern will not gate intended Underworld access unless `Bunsafe` is on. The `whyburn` flag jumps straight to the Wall cast, skipping the MegaNuke and empty turns after it at the start of the fight. The `whichburn` flag changes the opening attack to another random enemy attack, with some protections to keep the opener milder than MegaNuke; `Bunsafe` removes those protections.
 
 ")
                         .AddField("Damage Types", "Untyped Magic", inline: true)

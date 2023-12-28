@@ -25,6 +25,11 @@ namespace tellahs_library.Extensions
             return await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent(updatedMessage));
         }
 
+        public static async Task<DiscordMessage?> EditResponseAsync(this InteractionContext ctx, DiscordEmbed embed)
+        {
+            return await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+        }
+
         [SuppressMessage("Usage", "CA2254:Template should be a static expression", Justification = "No structured logging use")]
         public static async Task LogErrorAsync(this InteractionContext ctx, string message, Exception? ex = null)
         {
@@ -52,6 +57,25 @@ namespace tellahs_library.Extensions
         {
             await ctx.EditResponseAsync(responseMessage);
             await LogErrorAsync(ctx, errorMessage, ex);
+        }
+
+        public static async Task LogUsageAsync(this InteractionContext ctx)
+        {
+            var guild = ctx.Client.Guilds[GuildIds.BotHome];
+            if (guild == null) { return; }
+
+            var channel = guild.Channels[ChannelIds.BotUsageChannelId];
+            if (channel == null) { return; }
+
+            var invokingGuild = ctx.Guild;
+
+            var guildString = invokingGuild is null
+                ? "a DM"
+                : $"{invokingGuild!.Name}";
+
+            var message = $"{ctx.QualifiedName} was invoked in {guildString}";
+
+            await channel.SendMessageAsync(message);
         }
     }
 }
