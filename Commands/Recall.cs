@@ -5,6 +5,7 @@ using tellahs_library.Extensions;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
 using static tellahs_library.Helpers.BossNameHelper;
 using static tellahs_library.Helpers.ItemHelper;
+using static tellahs_library.Helpers.FlagInteractionHelper;
 
 namespace tellahs_library.Commands
 {
@@ -25,20 +26,18 @@ namespace tellahs_library.Commands
             await ctx.LogUsageAsync();
         }
 
-        //[SlashCommand("flag_interaction", "provides information about some flag interactions")]
-        //public async Task FlagInteractionAsync(InteractionContext ctx,
-        //    [Option("interaction", "flagset interaction to learn more about")]FlagInteractionChoices choice,
-        //    [Option("justme", "only show for yourself")] bool isEphemeral = true)
-        //{
-        //    await ctx.DeferAsync(isEphemeral);
+        [SlashCommand("flag_interaction", "provides information about some flag interactions")]
+        public async Task FlagInteractionAsync(InteractionContext ctx,
+            [Option("interaction", "flagset interaction to learn more about")] FlagInteractionChoices choice,
+            [Option("justme", "only show for yourself")] bool isEphemeral = true)
+        {
+            await ctx.DeferAsync(isEphemeral);
 
-        //    var response = GetFlagInteractionAsync(choice);
-        //    var messageBuilder = new DiscordMessageBuilder().WithContent(response.message);
-
-        //    var builder = ctx.EditResponseAsync(response.message);
-
-        //    await ctx.LogUsageAsync();
-        //}
+            var response = GetFlagInteractionAsync(choice);
+            
+            var builder = ctx.EditResponseAsync(response);
+            await ctx.LogUsageAsync();
+        }
 
         [SlashCommand("item", "provides some information about select consumable items")]
         public async Task ItemRecallAsync(InteractionContext ctx,
@@ -49,7 +48,7 @@ namespace tellahs_library.Commands
 
             var embed = GetItemNotes(selectedItem);
 
-            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+            await ctx.EditResponseAsync(embed);
             await ctx.LogUsageAsync();
         }
 

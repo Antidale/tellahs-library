@@ -1,6 +1,8 @@
 ﻿using DSharpPlus;
+using DSharpPlus.EventArgs;
 using DSharpPlus.SlashCommands;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using tellahs_library.Commands;
 using tellahs_library.Constants;
 using tellahs_library.Services;
@@ -43,6 +45,9 @@ slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
 //Register global commands
 slash.RegisterCommands<Recall>();
 slash.RegisterCommands<FlagsetChooser>();
+
+discord.ClientErrored += (DiscordClient sender, ClientErrorEventArgs args) => { discord.Logger.LogError(args.ToString()); return Task.CompletedTask; };
+discord.SocketErrored += (DiscordClient sender, SocketErrorEventArgs args) => { discord.Logger.LogError(args.ToString()); return Task.CompletedTask; };
 
 await discord.ConnectAsync();
 
