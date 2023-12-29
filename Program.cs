@@ -17,6 +17,8 @@ apiKey = "test";
 httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
 #endif
 
+if (token == null) { throw new ArgumentNullException(nameof(token)); }
+
 httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
 
 var discord = new DiscordClient(new DiscordConfiguration
@@ -46,8 +48,8 @@ slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
 slash.RegisterCommands<Recall>();
 slash.RegisterCommands<FlagsetChooser>();
 
-discord.ClientErrored += (DiscordClient sender, ClientErrorEventArgs args) => { discord.Logger.LogError(args.ToString()); return Task.CompletedTask; };
-discord.SocketErrored += (DiscordClient sender, SocketErrorEventArgs args) => { discord.Logger.LogError(args.ToString()); return Task.CompletedTask; };
+discord.ClientErrored += (DiscordClient sender, ClientErrorEventArgs args) => { discord.Logger.LogError(args.Exception.Message); return Task.CompletedTask; };
+discord.SocketErrored += (DiscordClient sender, SocketErrorEventArgs args) => { discord.Logger.LogError(args.Exception.Message); return Task.CompletedTask; };
 
 await discord.ConnectAsync();
 

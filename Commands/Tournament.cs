@@ -73,7 +73,7 @@ namespace tellahs_library.Commands
                     if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
                     var message = await ctx.EditResponseAsync("Creating Tournament");
-                    if (message == null)
+                    if (message is null)
                     {
                         await ctx.LogErrorAsync("Something went really poorly, contact Antidale", $"Creating tournament failed for {ctx.Guild.Name}");
                         return;
@@ -183,14 +183,14 @@ namespace tellahs_library.Commands
                 if (response.IsSuccessStatusCode)
                 {
                     var responseResult = await response.Content.ReadFromJsonAsync<ChangeRegistrationPeriodResponse>();
-                    if (responseResult == null)
+                    if (responseResult is null)
                     {
                         await ctx.EditResponseAsync($"Update failed: cannot read response");
                         return;
                     }
 
                     var message = await ctx.GetMessageAsync(responseResult.TrackingChannelId, responseResult.TrackingMessageId);
-                    if (message == null)
+                    if (message is null)
                     {
                         await ctx.EditResponseAsync($"Registration {newStatus}");
                         return;
@@ -270,7 +270,7 @@ namespace tellahs_library.Commands
                     await ctx.EditResponseAsync("registration complete, have fun!");
 
                     var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
-                    if (role != null)
+                    if (role is not null)
                     {
                         await user.GrantRoleAsync(role, $"{user.Username} registered for a tournament");
                     }
@@ -310,7 +310,7 @@ namespace tellahs_library.Commands
                                                                             : $"in {tournamentName}"));
 
                         var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
-                        if (role != null)
+                        if (role is not null)
                         {
                             await ctx.Member.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament {tournamentName}");
                         }
