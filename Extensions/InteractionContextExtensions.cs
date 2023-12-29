@@ -39,10 +39,10 @@ namespace tellahs_library.Extensions
             }
 
             var guild = ctx.Client.Guilds[GuildIds.BotHome];
-            if (guild == null) { return; }
+            if (guild is null) { return; }
 
             var channel = guild.Channels[ChannelIds.BotLogsChannelId];
-            if (channel == null) { return; }
+            if (channel is null) { return; }
 
             //Odds are good we don't need the whole message here, and this feels like a good enough arbitrary number to know what's going on.
             if (message.Length > 1700)
@@ -62,10 +62,10 @@ namespace tellahs_library.Extensions
         public static async Task LogUsageAsync(this InteractionContext ctx)
         {
             var guild = ctx.Client.Guilds[GuildIds.BotHome];
-            if (guild == null) { return; }
+            if (guild is null) { return; }
 
             var channel = guild.Channels[ChannelIds.BotUsageChannelId];
-            if (channel == null) { return; }
+            if (channel is null) { return; }
 
             var invokingGuild = ctx.Guild;
 
