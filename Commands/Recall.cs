@@ -57,15 +57,20 @@ namespace tellahs_library.Commands
         {
             await ctx.CreateResponseAsync(@"
 ### Community Races
-Community races are held on Mondays at <t:1695168000:t> and Fridays at <t:1695175200:t>, with race rooms generally open about an hour before the race starts. Races are open to all
+Community races are held on Mondays at <t:1695168000:t> and Fridays at <t:1695175200:t>, with race rooms generally open about an hour before the race starts. Races are open to all.
 See [Community Races](<https://wiki.ff4fe.com/doku.php?id=community_races>) on the wiki for more info and links.
 ### Racing Clubs
+Racing Clubs, sometimes called Community Clubs, are kind of like the FE equivalent of a bowling league. Generally led by community member or two, they're generally open to all to sign up for and have a good time. Players can also jump into individual races without joining the club.
+
 See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>) page for links and details. Check out [Fleury's site](<https://adaptable-rabbit.surge.sh/events>) to see rankings and seeds of present and past clubs. Some listed clubs on Fleury's site won't be for FE, since DarkPaladin's racebot doesn't lock clubs to a single server.
 ### Racing Guides
 * [A general guide](<https://docs.google.com/document/d/18ab5ejhqr_iwQ0e6m04BB0Nf2dlFaO5mw6fpbWie3Q4/>) to dr-race-bot
 * [Another guide](<http://bit.ly/FF4FE-Bootcamp>) that also has some stream setup help. Normal/non-tournament races don't require stream delay, so skip that part of any instructions
 * [2v2 Racing](<https://docs.google.com/document/d/102eUr6DBE93AmXrIP7gZHhKHH22RXJz2KBc_aSQDITo>)
 * dr-race-bot [commands](<https://gitlab.com/akw5013/discord-race-bot/blob/master/HELP.md>)
+### Upcoming Races Links
+* [Upcoming Restreams](<https://docs.google.com/spreadsheets/d/1dTekGBPUl0Y_eEGtIj3Is_X5rBQpy8QcxDhoHCcRVf0>) spreadsheet - also includes information on non-tournament restreamed races
+* [Community Events Google Calendar](<https://calendar.google.com/calendar/u/0/embed?src=vmu93f6hqqbagatt78trjr0fgs@group.calendar.google.com&ctz=America/New_York>) (displays Eastern Time)
 ");
         }
 
