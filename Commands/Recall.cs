@@ -107,6 +107,12 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
                     text = string.Join("\r\n", response!.Select(x => $"[{x.Title}](<{x.Url}>)"));
                 }
 
+                //If we have only one result, and it's an image, just link to it
+                if (response?.Count == 1 && (response?.All(x => x.LinkType == FeInfo.Common.Enums.LinkType.Image) ?? false))
+                {
+                    text = $"[{response.First().Title}]({response.First().Url})";
+                }
+
                 await ctx.EditResponseAsync(text);
             }
             catch (Exception ex)
