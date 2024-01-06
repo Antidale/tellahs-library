@@ -4,14 +4,19 @@ using tellahs_library.Enums;
 using tellahs_library.Extensions;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
 using static tellahs_library.Helpers.BossNameHelper;
-using static tellahs_library.Helpers.ItemHelper;
 using static tellahs_library.Helpers.FlagInteractionHelper;
+using static tellahs_library.Helpers.ItemHelper;
+using System.Text.Json;
+using System.Net.Http.Json;
+using FeInfo.Common.DTOs;
 
 namespace tellahs_library.Commands
 {
     [SlashCommandGroup("recall", "command group for FE information")]
     public partial class Recall : ApplicationCommandModule
     {
+        public HttpClient? HttpClient { private get; set; }
+
         [SlashCommand("boss", "Get boss info")]
         public async Task BossRecallAsync(InteractionContext ctx,
             [Option("BossName", "the boss you want info on")] string bossName,
@@ -34,7 +39,7 @@ namespace tellahs_library.Commands
             await ctx.DeferAsync(isEphemeral);
 
             var response = GetFlagInteractionAsync(choice);
-            
+
             var builder = ctx.EditResponseAsync(response);
             await ctx.LogUsageAsync();
         }
@@ -75,12 +80,57 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         }
 
 
+        [SlashCommand("search", "search the library for information")]
+        public async Task SearchAsync(InteractionContext ctx,
+            [Option("search_text", "text to search for in title, descirption, or tags")]
+            [MinimumLength(1)]
+            [MaximumLength(100)]
+            string searchValue,
+            [Option("just_me", "send results as a standard message (false) or just yourself (true)")]
+            bool justMe = false)
+        {
+            await ctx.DeferAsync(ephemeral: justMe);
 
-        //[SlashCommand("recall", "search the library for information")]
-        //public async Task RecallAsync(InteractionContext ctx)
+            if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
+
+            try
+            {
+                var response = await HttpClient!.GetFromJsonAsync<List<Guide>>($"Guide?searchText={searchValue}");
+
+                var text = response is null || response.Count == 0
+                    ? "Sorry, we're unable to find anything that matches your search. If you'd like to suggest something, leave a request in the Library's discord."
+                    : string.Join("\r\n", response.Select(x => $"[{x.Title}](<{x.Url}>) - {x.Description}"));
+
+                await ctx.EditResponseAsync(text);
+            }
+            catch (Exception ex)
+            {
+                await ctx.LogErrorAsync("Sorry, something MegaNuked the library", ex.Message, ex);
+            }
+            
+            await ctx.LogUsageAsync();
+        }
+
+        //[SlashCommand("store", "store information in the Library")]
+        //[SlashRequirePermissions(DSharpPlus.Permissions.ManageMessages)]
+        //[SlashRequireGuild]
+        //public async Task StoreAsync(InteractionContext ctx,
+        //    [Option("title", "title")][MaximumLength(20)] string title)
         //{
-        //    await ctx.CreateResponseAsync("No library attendants are available to help you yet. For now, check <https://wiki.ff4fe.com>");
+        //    await ctx.CreateResponseAsync("No library attendants are available to record new entries. Drop a note in the Library discord for what you want to add", ephemeral: true);
+        //    await ctx.LogUsageAsync();
         //}
 
+        internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, InteractionContext ctx)
+        {
+            if (httpClient == null)
+            {
+                await ctx.CreateResponseAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this", ephemeral: true);
+                await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member.Username}");
+                return false;
+            }
+
+            return true;
+        }
     }
 }

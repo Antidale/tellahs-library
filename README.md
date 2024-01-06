@@ -3,8 +3,10 @@ Made to help supplement the information in [the wiki](https://wiki.ff4fe.com/dok
 
 # Commands
 ## Generally available commands
-* `/boss`: It requires a single parameter of the boss name, and has an optional parameter to make the message ephemeral (which means that it's only visible to the caller, can be dismissed, and does disappear after a time). The bossName parameter has some flexibility with what you can use, but allows for no ambiguity (e.g. King would be insufficient, since that could be referring to Odin (Baron King) , the K/Q Eblan fight, or the Leviatan spot, but orbs will get you information about the CPU fight). Available globally and in DMs.
-* `/racing` provides information and links for common racing questions. It is available globally, as well as in DMs.
+* `/recall boss`: It requires a single parameter of the boss name, and has an optional parameter to make the message ephemeral (which means that it's only visible to the caller, can be dismissed, and does disappear after a time). The bossName parameter has some flexibility with what you can use, but allows for no ambiguity (e.g. King would be insufficient, since that could be referring to Odin (Baron King) , the K/Q Eblan fight, or the Leviatan spot, but orbs will get you information about the CPU fight). Available globally and in DMs.
+* `/recall racing` Provides information and links for common racing questions. It is available globally, as well as in DMs.
+* `/recall search` Search a growing database for links to articles, images, and videos related to Free Enterprise. Available globally as well as in DMs.
+* `/recall flag_interactions` Provides some extra information about a few tricky/subtle flag interactions. Available globally as well as in DMs.
 * `/SelectPB2JFlagset` selects one of three possible choices for a Push B To Jump flagset. Used by the [Hap B Leap Year](https://docs.google.com/document/d/1uXWiiT6guhWD7DHNrujqH-UUVJVA_jEWY775w25l4qk) side tournament primarily.
 
 ## Tournament commands
