@@ -30,7 +30,7 @@ var discord = new DiscordClient(new DiscordConfiguration
 
 var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
 {
-    Services = new ServiceCollection().AddTransient<RandomService>()
+    Services = new ServiceCollection().AddSingleton<RandomService>()
                                       .AddSingleton(service => httpClient)
                                       .BuildServiceProvider()
 });
