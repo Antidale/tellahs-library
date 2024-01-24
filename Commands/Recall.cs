@@ -61,11 +61,7 @@ namespace tellahs_library.Commands
         public async Task RacingAsync(InteractionContext ctx)
         {
             await ctx.CreateResponseAsync(@"
-### Community Races
-Community races are held on Mondays at <t:1695168000:t> and Fridays at <t:1695175200:t>, with race rooms generally open about an hour before the race starts. Races are open to all.
-See [Community Races](<https://wiki.ff4fe.com/doku.php?id=community_races>) on the wiki for more info and links.
-### Racing Clubs
-Racing Clubs, sometimes called Community Clubs, are kind of like the FE equivalent of a bowling league. Generally led by community member or two, they're generally open to all to sign up for and have a good time. Players can also jump into individual races without joining the club.
+Non-tournament organized racing of Free Enterprise happens mainly in various Racing Clubs, sometimes called Community Clubs. These clubs are kind of like the FE equivalent of a bowling league. Generally led by community member or two, they're generally open to all to sign up for and have a good time. Players can also jump into individual races without joining the club.
 
 See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>) page for links and details. Check out [Fleury's site](<https://adaptable-rabbit.surge.sh/events>) to see rankings and seeds of present and past clubs. Some listed clubs on Fleury's site won't be for FE, since DarkPaladin's racebot doesn't lock clubs to a single server.
 ### Racing Guides
