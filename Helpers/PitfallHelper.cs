@@ -6,7 +6,7 @@
         {
             return
 """
-### Know Your `Knofree` Flag.
+### Know Your `Knofree` Flag
 If the `K` flags do not include `nofree`, NPC Edward in Troia has a Key Item for you. But if `Knofree` is enabled, Bedward has nothing for you; instead, defeat D.Mist and talk to Rydia's mom in Mist Village. If `Knofree` is enabled, consider making a note when you defeat D.Mist to help remind you to visit Rydia's mom for your reward.
 ### D.Mist Hiding Places
 When `Knofree` is on and D.Mist is the gate to a Key Item you might have to think a little outside the box to find your path to a Key Item. Especially tricky is a D.Mist taking the Magus Sisters spot in Zot. You can get there even without the Earth Crystal. Also, checking Mist Cave, the Waterfall, or the end of the Package sequence might be helpful.
