@@ -9,6 +9,7 @@ using static tellahs_library.Helpers.ItemHelper;
 using System.Text.Json;
 using System.Net.Http.Json;
 using FeInfo.Common.DTOs;
+using tellahs_library.Helpers;
 
 namespace tellahs_library.Commands
 {
@@ -119,15 +120,13 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             await ctx.LogUsageAsync();
         }
 
-        //[SlashCommand("store", "store information in the Library")]
-        //[SlashRequirePermissions(DSharpPlus.Permissions.ManageMessages)]
-        //[SlashRequireGuild]
-        //public async Task StoreAsync(InteractionContext ctx,
-        //    [Option("title", "title")][MaximumLength(20)] string title)
-        //{
-        //    await ctx.CreateResponseAsync("No library attendants are available to record new entries. Drop a note in the Library discord for what you want to add", ephemeral: true);
-        //    await ctx.LogUsageAsync();
-        //}
+        [SlashCommand("pitfalls", "learn some of the common pitfalls in playing Free Enterprise")]
+        public async Task PitfallsAsync(InteractionContext ctx, 
+            [Option("justme", "makes the response only visible to you")] bool isEphemeral = false)
+        {
+            await ctx.CreateResponseAsync(PitfallHelper.GetPitfallsText(), ephemeral: isEphemeral);
+            await ctx.LogUsageAsync();
+        }
 
         internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, InteractionContext ctx)
         {
