@@ -39,6 +39,7 @@ namespace tellahs_library.Helpers
 
             var milon when milon.Equals("milon")
                 || milon.Contains("friends") 
+                || milon.Contains("ghast")
                 || milon.Contains("ordeals1") => BossName.Milon,
 
             var milonz when milonz.Contains("milonz")
@@ -51,7 +52,8 @@ namespace tellahs_library.Helpers
                 || dkc.Contains("mirror") 
                 || dkc.Contains("ordeals3") => BossName.DarkKnightCecil,
 
-            var baron when baron.Contains("baron") 
+            var baron when baron.Contains("baron")
+                || baron.Contains("guards")
                 || baron.Contains("inn1") => BossName.BaronGuards,
 
             var karate when karate.Contains("karate")
