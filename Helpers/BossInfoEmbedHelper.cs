@@ -410,7 +410,7 @@ The fight opens with Golbez casting HoldGas on the party, then summoning Shadow.
 
 Dealing direct damage when Golbez has 19,000 HP or fewer will cause him to react with a plaintive “Why?” and then Vanish.
 ### Strats
-If you can, take advantage of the status effect system by using Size or Piggy before the battle when you know you’re facing Golbez. This will prevent the HoldGas from paralyzing the party, making it easy to get StarVeils up on whoever is left. You can also self-target Venom from a well-placed/anchored Black Mage for the same effect. If you lack the ability for any of that, consider getting into a random encounter and killing off all but your two most important characters for the upcoming fight, and then taking on Golbez. Alternatively, a trip to the dancer in the Mysidia inn can turn your whole party to pigs.
+If you can, take advantage of [status priorities](<https://wiki.ff4fe.com/doku.php?id=status_priority>) by using Mute, Size or Piggy before the battle when you know you’re facing Golbez. This will prevent the HoldGas from paralyzing the party, making it easy to get StarVeils up on whoever is left. You can also self-target Venom from a well-placed/anchored Black Mage for the same effect, or use the Silence staff's item effect of a Mute cast (single or party-wide). If you lack the ability for any of that, consider getting into a random encounter and killing off all but your two most important characters for the upcoming fight, and then taking on Golbez. Alternatively, a trip to the dancer in the Mysidia inn can turn your whole party to pigs.
 
 Characters wearing a Ribbon or Adamant armor are immune to Shadow’s Demolish, and Adamant armor, Crystal rings and Heroine robes prevent being paralyzed.
 
@@ -425,7 +425,7 @@ Golbez will not gate intended Underworld access unless `Bunsafe` is turned on.
 ")
                         .AddField("Damage Types", "Lightning, Fire, Untyped Magic", inline: true)
                         .AddField("Weakness", "Holy, Fire", inline: true)
-                        .AddField("Additional Links", "[Shadow](<https://wiki.ff4fe.com/doku.php?id=shadow>)", inline: true)
+                        .AddField("Additional Links", "[Shadow](<https://wiki.ff4fe.com/doku.php?id=shadow>) [Status Priority](<https://wiki.ff4fe.com/doku.php?id=status_priority>)", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
