@@ -6,5 +6,6 @@
         Kmiab_UnderworldAccess,
         ForceMagma_DMist,
         BVanilla_OdinSpot,
+        SafetyChecks
     }
 }

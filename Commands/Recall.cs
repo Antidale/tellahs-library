@@ -1,15 +1,14 @@
 ﻿using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
+using FeInfo.Common.DTOs;
+using System.Net.Http.Json;
 using tellahs_library.Enums;
 using tellahs_library.Extensions;
+using tellahs_library.Helpers;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
 using static tellahs_library.Helpers.BossNameHelper;
 using static tellahs_library.Helpers.FlagInteractionHelper;
 using static tellahs_library.Helpers.ItemHelper;
-using System.Text.Json;
-using System.Net.Http.Json;
-using FeInfo.Common.DTOs;
-using tellahs_library.Helpers;
 
 namespace tellahs_library.Commands
 {
