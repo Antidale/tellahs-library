@@ -49,6 +49,31 @@ As an example, this means that a D.Mist at the vanilla Rubicant position can pro
 See [this](<https://discord.com/channels/411615349579186178/411616251836628993/942203585486274570>) explanation in #bug-reports in the Free Enterprise Workshop for the official explanation")
                     .Build(),
 
+                FlagInteractionChoices.SafetyChecks => embedBuilder.WithTitle("Safety Checks")
+                .WithDescription(
+@"The randomizer guarantees that there will be a path to the underworld that does not require defeating any of these bosses:
+* Golbez
+* Wyvern
+* Valvalis
+* The boss in the vanilla Odin position (Baron Basement)
+* D.Knight (only if `Bnofree` is enabled)
+
+Additionally, under `Knofree`, if one of the above bosses is in the Karate position and D.Mist is in the Baron Guards position, then the reward for defeating D.Mist will not be part of the logical path to the underworld.
+
+If you are playing with `Bwhichburn`, the attack replacing Wyvern's MegaNuke will be less devastating than MegaNuke.
+
+The above safety checks can be disabled by applying the `Bunsafe` flag.
+
+Additionally, there will be a path to the underworld that does not require any checks gated by the Darkness Crystal. This check can be disabled using `Kunsafe`.
+
+To prevent unwinnable/painful roadblocks some items are forced to be available:
+* Cure2 and Life potions are guaranteed to be available in an ungated shop.
+* StarVeils and ThorRages are guaranteed to be available in an ungated shop (unless excluded with `Sno:j`).
+* Cure3 potions are guaranteed to be in a gated shop if there are no white mages available in the seed
+
+Setting `Sunsafe` will remove all of these guarantees. Setting `Bunsafe` will remove the ThorRage guarantee. Setting `Scabins` or `Sempty` also removes these guarantees.")
+                .AddField("Additional Links", "[KI Safeties](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#safety_checks>), [Boss Safeties](<https://wiki.ff4fe.com/doku.php?id=boss_randomization#safety_checks>), [Shop Guarantees](<https://wiki.ff4fe.com/doku.php?id=shop_randomization#safety_guarantees>)"),
+
                 _ => embedBuilder.WithTitle("Reference Material Missing")
                     .WithDescription("You've requested information not contained within the Library. Many apologies.")
                     .Build()
