@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using tellahs_library.Commands;
 using tellahs_library.Constants;
-using tellahs_library.Services;
 
 var token = Environment.GetEnvironmentVariable("DiscordBotToken");
 var httpClient = new HttpClient { BaseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/") };
@@ -30,8 +29,7 @@ var discord = new DiscordClient(new DiscordConfiguration
 
 var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
 {
-    Services = new ServiceCollection().AddSingleton<RandomService>()
-                                      .AddSingleton(service => httpClient)
+    Services = new ServiceCollection().AddSingleton(service => httpClient)
                                       .BuildServiceProvider()
 });
 
