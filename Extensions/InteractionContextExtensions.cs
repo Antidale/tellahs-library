@@ -1,18 +1,27 @@
 ﻿using DSharpPlus.Entities;
-using DSharpPlus.SlashCommands;
+using DSharpPlus.Commands;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 using tellahs_library.Constants;
 
 namespace tellahs_library.Extensions
 {
-    public static class InteractionContextExtensions
+    public static class CommandContextExtensions
     {
-        public static async Task<DiscordMessage?> GetMessageAsync(this InteractionContext ctx, ulong channelId, ulong messageId)
+        public static async Task<DiscordMessage?> GetMessageAsync(this CommandContext ctx, ulong channelId, ulong messageId)
         {
             try
             {
-                return await ctx.Guild.GetChannel(channelId).GetMessageAsync(messageId);
+                if(ctx.Guild is not null)
+                {
+                    var channel = await ctx.Guild.GetChannelAsync(channelId);
+                    return await channel.GetMessageAsync(messageId);
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
             catch (Exception)
             {
@@ -20,18 +29,18 @@ namespace tellahs_library.Extensions
             }
         }
 
-        public static async Task<DiscordMessage?> EditResponseAsync(this InteractionContext ctx, string updatedMessage)
+        public static async Task<DiscordMessage?> EditResponseAsync(this CommandContext ctx, string updatedMessage)
         {
             return await ctx.EditResponseAsync(new DiscordWebhookBuilder().WithContent(updatedMessage));
         }
 
-        public static async Task<DiscordMessage?> EditResponseAsync(this InteractionContext ctx, DiscordEmbed embed)
+        public static async Task<DiscordMessage?> EditResponseAsync(this CommandContext ctx, DiscordEmbed embed)
         {
             return await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
         }
 
         [SuppressMessage("Usage", "CA2254:Template should be a static expression", Justification = "No structured logging use")]
-        public static async Task LogErrorAsync(this InteractionContext ctx, string message, Exception? ex = null)
+        public static async Task LogErrorAsync(this CommandContext ctx, string message, Exception? ex = null)
         {
             if (ex != null)
             {
@@ -53,13 +62,13 @@ namespace tellahs_library.Extensions
             await channel.SendMessageAsync(string.Join("\r\n", ctx.User.Username, message, ex?.GetType()));
         }
 
-        public static async Task LogErrorAsync(this InteractionContext ctx, string responseMessage, string errorMessage, Exception? ex = null)
+        public static async Task LogErrorAsync(this CommandContext ctx, string responseMessage, string errorMessage, Exception? ex = null)
         {
             await ctx.EditResponseAsync(responseMessage);
             await LogErrorAsync(ctx, errorMessage, ex);
         }
 
-        public static async Task LogUsageAsync(this InteractionContext ctx)
+        public static async Task LogUsageAsync(this CommandContext ctx)
         {
             var guild = ctx.Client.Guilds[GuildIds.BotHome];
             if (guild is null) { return; }
@@ -73,7 +82,7 @@ namespace tellahs_library.Extensions
                 ? "a DM"
                 : $"{invokingGuild!.Name}";
 
-            var message = $"{ctx.QualifiedName} was invoked in {guildString}";
+            var message = $"{ctx.Command.Name} was invoked in {guildString}";
 
             await channel.SendMessageAsync(message);
         }

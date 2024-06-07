@@ -1,6 +1,6 @@
 ﻿using DSharpPlus;
-using DSharpPlus.EventArgs;
-using DSharpPlus.SlashCommands;
+using DSharpPlus.Commands;
+using DSharpPlus.Commands.Processors.SlashCommands;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using tellahs_library.Commands;
@@ -16,38 +16,34 @@ apiKey = "test";
 httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
 #endif
 
-if (token == null) { throw new ArgumentNullException(nameof(token)); }
+if (token is null) { throw new ArgumentNullException(nameof(token)); }
 
-httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
+httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);                         
 
-var discord = new DiscordClient(new DiscordConfiguration
+var discord = DiscordClientBuilder
+                .CreateDefault(token: token, intents: DiscordIntents.AllUnprivileged)
+                .ConfigureServices(a => a
+                    .AddLogging(log => log.AddConsole())
+                    .AddSingleton(service => httpClient))
+                .Build();
+
+var commandsExtensions = discord.UseCommands(new CommandsConfiguration
 {
-    Token = token,
-    TokenType = TokenType.Bot,
-    Intents = DiscordIntents.AllUnprivileged,
-});
-
-var slash = discord.UseSlashCommands(new SlashCommandsConfiguration
-{
-    Services = new ServiceCollection().AddSingleton(service => httpClient)
-                                      .BuildServiceProvider()
+    RegisterDefaultCommandProcessors = false
 });
 
 //Register test commands for the specific servers
+await commandsExtensions.AddProcessorAsync(new SlashCommandProcessor());
+
+commandsExtensions.AddCommands(typeof(FlagsetChooser));
+commandsExtensions.AddCommands(typeof(Recall));
 
 #if DEBUG
-slash.RegisterCommands<Tournament>(GuildIds.AntiServer);
+commandsExtensions.AddCommands(typeof(Tournament), GuildIds.AntiServer);
 #else
-slash.RegisterCommands<Tournament>(GuildIds.AntiServer);
-slash.RegisterCommands<Tournament>(GuildIds.SideTourneyServer);
+commandsExtensions.AddCommands(typeof(Tournament), GuildIds.AntiServer, GuildIds.SideTourneyServer);
 #endif
 
-//Register global commands
-slash.RegisterCommands<Recall>();
-slash.RegisterCommands<FlagsetChooser>();
-
-discord.ClientErrored += (DiscordClient sender, ClientErrorEventArgs args) => { discord.Logger.LogError(args.Exception.Message); return Task.CompletedTask; };
-discord.SocketErrored += (DiscordClient sender, SocketErrorEventArgs args) => { discord.Logger.LogError(args.Exception.Message); return Task.CompletedTask; };
 
 await discord.ConnectAsync();
 

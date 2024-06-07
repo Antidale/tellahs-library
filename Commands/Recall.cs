@@ -1,6 +1,7 @@
-﻿using DSharpPlus.Entities;
-using DSharpPlus.SlashCommands;
+﻿using DSharpPlus.Commands;
+using DSharpPlus.Commands.ArgumentModifiers;
 using FeInfo.Common.DTOs;
+using System.ComponentModel;
 using System.Net.Http.Json;
 using tellahs_library.Enums;
 using tellahs_library.Extensions;
@@ -12,44 +13,53 @@ using static tellahs_library.Helpers.ItemHelper;
 
 namespace tellahs_library.Commands
 {
-    [SlashCommandGroup("recall", "command group for FE information")]
-    public partial class Recall : ApplicationCommandModule
+    [Command("recall")]
+
+    public partial class Recall
     {
+        public Recall(HttpClient? httpClient) => HttpClient = httpClient;
+
         public HttpClient? HttpClient { private get; set; }
 
-        [SlashCommand("boss", "Get boss info")]
-        public async Task BossRecallAsync(InteractionContext ctx,
-            [Option("BossName", "the boss you want info on")] string bossName,
-            [Option("justme", "makes the response only visible to you")] bool isEphemeral = false)
+        [Command("boss")]
+        [Description("Get boss info")]
+        public async Task BossRecallAsync(CommandContext ctx,
+            [Parameter("BossName")] [Description("the boss you want info on")]
+            string bossName)
         {
-            await ctx.DeferAsync(isEphemeral);
+
+            await ctx.DeferResponseAsync();
 
             var bossEnum = GetBossName(bossName);
             var embed = GetBossInfoEmbed(bossEnum);
 
-            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+            await ctx.EditResponseAsync(embed);
             await ctx.LogUsageAsync();
         }
 
-        [SlashCommand("flag_interaction", "provides information about some flag interactions")]
-        public async Task FlagInteractionAsync(InteractionContext ctx,
-            [Option("interaction", "flagset interaction to learn more about")] FlagInteractionChoices choice,
-            [Option("justme", "only show for yourself")] bool isEphemeral = true)
+        [Command("flag_interaction")]
+        [Description("provides information about some flag interactions")]
+        public async Task FlagInteractionAsync(CommandContext ctx,
+            [Parameter("interaction")] [Description("flagset interaction to learn more about")]
+            FlagInteractionChoices choice
+        )
         {
-            await ctx.DeferAsync(isEphemeral);
+            await ctx.DeferResponseAsync();
 
             var response = GetFlagInteractionAsync(choice);
 
-            var builder = ctx.EditResponseAsync(response);
+            await ctx.EditResponseAsync(response);
             await ctx.LogUsageAsync();
         }
 
-        [SlashCommand("item", "provides some information about select consumable items")]
-        public async Task ItemRecallAsync(InteractionContext ctx,
-                [Option("item", "get information about important consumable items")] ItemRecallOptions selectedItem,
-                [Option("justme", "only show for yourself")] bool isEphemeral = true)
+        [Command("item")]
+        [Description("provides some information about select consumable items")]
+        public async Task ItemRecallAsync(CommandContext ctx,
+                [Parameter("item")] [Description("get information about important consumable items")]
+                ItemRecallOptions selectedItem
+        )
         {
-            await ctx.DeferAsync(isEphemeral);
+            await ctx.DeferResponseAsync();
 
             var embed = GetItemNotes(selectedItem);
 
@@ -57,10 +67,11 @@ namespace tellahs_library.Commands
             await ctx.LogUsageAsync();
         }
 
-        [SlashCommand("racing", "get information about racing Free Enterprise")]
-        public async Task RacingAsync(InteractionContext ctx)
+        [Command("racing")]
+        [Description("get information about racing Free Enterprise")]
+        public async Task RacingAsync(CommandContext ctx)
         {
-            await ctx.CreateResponseAsync(@"
+            await ctx.RespondAsync(@"
 Non-tournament organized racing of Free Enterprise happens mainly in various Racing Clubs, sometimes called Community Clubs. These clubs are kind of like the FE equivalent of a bowling league. Generally led by community member or two, they're generally open to all to sign up for and have a good time. Players can also jump into individual races without joining the club.
 
 See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>) page for links and details. Check out [Fleury's site](<https://adaptable-rabbit.surge.sh/events>) to see rankings and seeds of present and past clubs. Some listed clubs on Fleury's site won't be for FE, since DarkPaladin's racebot doesn't lock clubs to a single server.
@@ -76,16 +87,15 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         }
 
 
-        [SlashCommand("search", "search the library for information")]
-        public async Task SearchAsync(InteractionContext ctx,
-            [Option("search_text", "text to search for in title, descirption, or tags returns at most 10 entries.")]
-            [MinimumLength(1)]
-            [MaximumLength(100)]
-            string searchValue,
-            [Option("just_me", "send results as a standard message (false) or just yourself (true)")]
-            bool justMe = false)
+        [Command("search")]
+        [Description("search the library for information")]
+        public async Task SearchAsync(CommandContext ctx,
+            [Parameter("search_text")] [Description("text to search for in title, descirption, or tags returns at most 10 entries.")]
+            [MinMaxLength(1, 100)]
+            string searchValue
+        )
         {
-            await ctx.DeferAsync(ephemeral: justMe);
+            await ctx.DeferResponseAsync();
 
             if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
@@ -115,24 +125,24 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             {
                 await ctx.LogErrorAsync("Sorry, something MegaNuked the library", ex.Message, ex);
             }
-            
+
             await ctx.LogUsageAsync();
         }
 
-        [SlashCommand("pitfalls", "learn some of the common pitfalls in playing Free Enterprise")]
-        public async Task PitfallsAsync(InteractionContext ctx, 
-            [Option("justme", "makes the response only visible to you")] bool isEphemeral = false)
+        [Command("pitfalls")]
+        [Description("learn some of the common pitfalls in playing Free Enterprise")]
+        public async Task PitfallsAsync(CommandContext ctx)
         {
-            await ctx.CreateResponseAsync(PitfallHelper.GetPitfallsText(), ephemeral: isEphemeral);
+            await ctx.RespondAsync(PitfallHelper.GetPitfallsText());
             await ctx.LogUsageAsync();
         }
 
-        internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, InteractionContext ctx)
+        internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, CommandContext ctx)
         {
             if (httpClient == null)
             {
-                await ctx.CreateResponseAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this", ephemeral: true);
-                await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member.Username}");
+                await ctx.RespondAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this");
+                await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member?.Username ?? "unknown user"}");
                 return false;
             }
 

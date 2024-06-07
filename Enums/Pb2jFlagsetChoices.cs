@@ -1,16 +1,25 @@
-﻿using DSharpPlus.SlashCommands;
+﻿using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
+using DSharpPlus.Commands.Trees;
+using tellahs_library.Extensions;
 
 namespace tellahs_library.Enums
 {
     public enum Pb2jFlagsetChoices
     {
-        [ChoiceName("None")]
+        [ChoiceDisplayName("None")]
         None,
-        [ChoiceName("Ladder PB2J")]
+        [ChoiceDisplayName("Ladder PB2J")]
         Ladder,
-        [ChoiceName("Hop 'Til You Shop")]
+        [ChoiceDisplayName("Hop 'Til You Shop")]
         HopTillYouShop,
-        [ChoiceName("Pro B-otics")]
+        [ChoiceDisplayName("Pro B-otics")]
         ProBotics
+    }
+
+    public class Pb2jFlagsetChoiceProvider : IChoiceProvider
+    {
+        private static IReadOnlyDictionary<string, object> Options => (IReadOnlyDictionary<string, object>)Enum.GetValues<Pb2jFlagsetChoices>().ToDictionary(x => x.GetDescription(), x => x);
+
+        public ValueTask<IReadOnlyDictionary<string, object>> ProvideAsync(CommandParameter commandParameter) => ValueTask.FromResult(Options);
     }
 }
