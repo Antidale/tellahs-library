@@ -1,68 +1,76 @@
-﻿using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.Attributes;
+﻿using DSharpPlus;
+using DSharpPlus.Commands;
+using DSharpPlus.Commands.ContextChecks;
+using DSharpPlus.Commands.Processors.SlashCommands;
+using DSharpPlus.Entities;
 using FeInfo.Common.Enums;
 using FeInfo.Common.Requests;
 using FeInfo.Common.Responses;
+using System.ComponentModel;
 using System.Net.Http.Json;
 using tellahs_library.Extensions;
-using DSharpPlus;
 
 namespace tellahs_library.Commands
 {
-    [SlashCommandGroup("Tournament", "Commands related to tournaments")]
-    public class Tournament : ApplicationCommandModule
+    [Command("Tournament")]
+    [Description("Commands related to tournaments")]
+    public class Tournament
     {
-        internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, InteractionContext ctx)
+        internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, SlashCommandContext ctx)
         {
             if (httpClient == null)
             {
-                await ctx.CreateResponseAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this", ephemeral: true);
-                await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member.Username}");
+                await ctx.FollowupAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this", ephemeral: true);
+                await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member?.DisplayName ?? ctx.User.Username}");
                 return false;
             }
 
             return true;
         }
 
-        [SlashCommandGroup("Administration", "Commands related to tournament administration")]
-        public class TournamentAdministration : ApplicationCommandModule
+        [Command("Administration")]
+        [Description("Commands related to tournament administration")]
+        public class TournamentAdministration
         {
+            public TournamentAdministration(HttpClient client) => HttpClient = client;
+
             public HttpClient? HttpClient { private get; set; }
 
-            [SlashCommand("CreateTournament", "Create A Tournament")]
-            [SlashRequireUserPermissions(Permissions.Administrator)]
-            [SlashRequireGuild]
-            public async Task CreateTournamentAsync(InteractionContext ctx,
-                [Option("tournament_name", "The name of your tournament")] string tournamentName,
-                [Option("registration_start", "full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
-                [Option("registration_end", "full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString,
-                [Option("role_name", "the name of the role to assign to registrants")] string roleName = "",
-
-                [Option("rules_link", "a link to the rules document")] string rulesLink = ""
+            [Command("CreateTournament"),
+            Description("Create A Tournament"),
+            RequirePermissions(DiscordPermissions.SendMessages, DiscordPermissions.Administrator),
+            RequireGuild]
+            public async Task CreateTournamentAsync(SlashCommandContext ctx,
+                [Parameter("tournament_name")][Description("The name of your tournament")] string tournamentName,
+                [Parameter("registration_start")][Description("full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
+                [Parameter("registration_end")][Description("full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString,
+                [Parameter("role_name")][Description("the name of the role to assign to registrants")] string roleName = "",
+                [Parameter("rules_link")][Description("a link to the rules document")] string rulesLink = ""
             )
             {
                 await CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink);
             }
 
-            [SlashCommand("CreateTournamentOverride", "Create A Tournament")]
-            [SlashRequireOwner]
-            [SlashRequireGuild]
-            public async Task CreateTournamentOverrideAsync(InteractionContext ctx,
-                [Option("tournament_name", "The name of your tournament")] string tournamentName,
-                [Option("registration_start", "full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
-                [Option("registration_end", "full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString,
-                [Option("role_name", "the name of the role to assign to registrants")] string roleName = "",
-                [Option("rules_link", "a link to the rules document")] string rulesLink = ""
+            [Command("CreateTournamentOverride")]
+            [Description("Create A Tournament")]
+            [RequireApplicationOwner]
+            [RequireGuild]
+            public async Task CreateTournamentOverrideAsync(SlashCommandContext ctx,
+                [Parameter("tournament_name")][Description("The name of your tournament")] string tournamentName,
+                [Parameter("registration_start")][Description("full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
+                [Parameter("registration_end")][Description("full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString,
+                [Parameter("role_name")][Description("the name of the role to assign to registrants")] string roleName = "",
+                [Parameter("rules_link")][Description("a link to the rules document")] string rulesLink = ""
             )
             {
                 await CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink);
             }
 
-            private async Task CreateTournament(InteractionContext ctx, string tournamentName, string roleName, string startDateTimeOffsetString, string endDateTimeOffsetString, string rulesLink)
+            private async Task CreateTournament(SlashCommandContext ctx, string tournamentName, string roleName, string startDateTimeOffsetString, string endDateTimeOffsetString, string rulesLink)
             {
                 try
                 {
-                    await ctx.DeferAsync();
+                    await ctx.DeferResponseAsync();
 
                     tournamentName = tournamentName.Trim();
                     roleName = roleName.Trim();
@@ -75,18 +83,19 @@ namespace tellahs_library.Commands
                     var message = await ctx.EditResponseAsync("Creating Tournament");
                     if (message is null)
                     {
-                        await ctx.LogErrorAsync("Something went really poorly, contact Antidale", $"Creating tournament failed for {ctx.Guild.Name}");
+                        await ctx.LogErrorAsync("Something went really poorly, contact Antidale", $"Creating tournament failed for {ctx.Guild!.Name}");
                         return;
                     }
 
                     var user = ctx.Member;
-                    var role = ctx.Guild.Roles.FirstOrDefault(x => x.Value.Name.Equals(roleName, StringComparison.InvariantCultureIgnoreCase));
+                    var role = ctx.Guild?.Roles.FirstOrDefault(x => x.Value.Name.Equals(roleName, StringComparison.InvariantCultureIgnoreCase));
 
                     var startParsed = DateTimeOffset.TryParse(startDateTimeOffsetString, out var startRegistration);
                     if (!startParsed)
                     {
+                        var builder = new DiscordMessageBuilder().WithContent("Registration start must be formatted correctly");
                         await message.DeleteAsync();
-                        await ctx.CreateResponseAsync("Registration start must be formatted correctly", ephemeral: true);
+                        await ctx.FollowupAsync("Registration start must be formatted correctly", ephemeral: true);
                         return;
                     }
 
@@ -94,11 +103,11 @@ namespace tellahs_library.Commands
                     if (!startParsed)
                     {
                         await message.DeleteAsync();
-                        await ctx.CreateResponseAsync("Registration end must be formatted correctly", ephemeral: true);
+                        await ctx.FollowupAsync("Registration end must be formatted correctly", ephemeral: true);
                         return;
                     }
 
-                    var createRequest = new CreateTournament(ctx.Guild.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.Value?.Id ?? 0, startRegistration, endRegistration);
+                    var createRequest = new CreateTournament(ctx.Guild!.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.HasValue ? role.Value.Key : 0, startRegistration, endRegistration);
 
                     var response = await HttpClient!.PostAsJsonAsync("tournament", createRequest);
                     if (response.IsSuccessStatusCode)
@@ -127,57 +136,66 @@ namespace tellahs_library.Commands
                 }
             }
 
-            [SlashCommand("OpenRegistrationOverride", "Opens registration for a tournament")]
-            [SlashRequireOwner]
-            [SlashRequireGuild]
+            [Command("OpenRegistrationOverride")]
+            [Description("Opens registration for a tournament")]
+            [RequireApplicationOwner]
+            [RequireGuild]
             public async Task OpenRegistrationOverrideAsync(
-                InteractionContext ctx,
-                [Option("tournament_name", "Only needed if a server has multiple tournaments in Announced status")] string tournamentName = "")
+                SlashCommandContext ctx,
+                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments in Announced status")]
+                string tournamentName = ""
+            )
             {
                 await UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName);
             }
 
-            [SlashCommand("OpenRegistration", "Opens registration for a tournament")]
-            [SlashRequireUserPermissions(Permissions.Administrator)]
-            [SlashRequireGuild]
+            [Command("OpenRegistration")]
+            [Description("Opens registration for a tournament")]
+            [RequirePermissions(DiscordPermissions.SendMessages, DiscordPermissions.Administrator)]
+            [RequireGuild]
             public async Task OpenRegistrationAsync(
-                InteractionContext ctx,
-                [Option("tournament_name", "Only needed if a server has multiple tournaments in Announced status")] string tournamentName = "")
+                SlashCommandContext ctx,
+                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments in Announced status")] 
+                string tournamentName = ""
+            )
             {
                 await UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName);
             }
 
-            [SlashCommand("CloseRegistrationOverride", "Closes registration for a tournament")]
-            [SlashRequireOwner]
-            [SlashRequireGuild]
+            [Command("CloseRegistrationOverride")]
+            [Description("Closes registration for a tournament")]
+            [RequireApplicationOwner]
+            [RequireGuild]
             public async Task CloseRegistrationOverrideAsync(
-                InteractionContext ctx,
-                [Option("tournament_name", "Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
+                SlashCommandContext ctx,
+                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments with open registration")] 
+                string tournamentName = ""
             )
             {
                 await UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Closed, tournamentName);
             }
 
-            [SlashCommand("CloseRegistration", "Closes registration for a tournament")]
-            [SlashRequireUserPermissions(Permissions.Administrator)]
-            [SlashRequireGuild]
+            [Command("CloseRegistration")]
+            [Description("Closes registration for a tournament")]
+            [RequirePermissions(DiscordPermissions.SendMessages, DiscordPermissions.Administrator)]
+            [RequireGuild]
             public async Task CloseRegistrationAsync(
-                InteractionContext ctx,
-                [Option("tournament_name", "Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
+                SlashCommandContext ctx,
+                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
             )
             {
                 await UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Closed, tournamentName);
             }
 
-            private async Task UpdateRegistrationWindow(InteractionContext ctx, RegistrationPeriodStatus newStatus, string tournamentName)
+            private async Task UpdateRegistrationWindow(SlashCommandContext ctx, RegistrationPeriodStatus newStatus, string tournamentName)
             {
-                await ctx.DeferAsync(ephemeral: true);
+                await ctx.DeferResponseAsync();
 
                 if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
                 tournamentName = tournamentName.Trim();
 
-                var changeRequest = new ChangeRegistrationPeriod(ctx.Guild.Id, tournamentName, newStatus);
+                var changeRequest = new ChangeRegistrationPeriod(ctx.Guild!.Id, tournamentName, newStatus);
 
                 var response = await HttpClient!.PatchAsJsonAsync("tournament/UpdateRegistrationWindow", changeRequest);
                 if (response.IsSuccessStatusCode)
@@ -220,23 +238,25 @@ namespace tellahs_library.Commands
             }
         }
 
-        [SlashCommandGroup("Registration", "Commands related to registering for a tournament")]
-        public class TournamentRegistration : ApplicationCommandModule
+        [Command("Registration")]
+        [Description("Commands related to registering for a tournament")]
+        public class TournamentRegistration
         {
+            public TournamentRegistration(HttpClient client) => HttpClient = client;
             public HttpClient? HttpClient { private get; set; }
 
-            [SlashCommand("Register", "Register for a tournament")]
-            [SlashRequireGuild]
+            [Command("Register")][Description("Register for a tournament")]
+            [RequireGuild]
             public async Task RegisterAsync(
-                InteractionContext ctx,
-                [Option("pronouns", "Preferred pronouns for any restreams/tournament information that displays pronouns")] string pronouns = "",
-                [Option("alias", "Preferred name for this tournament. Leave blank to use your discord username")] string desiredAlias = "",
-                [Option("tournament_name", "Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
+                SlashCommandContext ctx,
+                [Parameter("pronouns")][Description("Preferred pronouns for any restreams/tournament information that displays pronouns")] string pronouns = "",
+                [Parameter("alias")][Description("Preferred name for this tournament. Leave blank to use your discord username")] string desiredAlias = "",
+                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
             )
             {
                 try
                 {
-                    await ctx.DeferAsync(ephemeral: true);
+                    await ctx.DeferResponseAsync(ephemeral: true);
 
                     if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
@@ -246,9 +266,9 @@ namespace tellahs_library.Commands
 
                     var message = await ctx.EditResponseAsync("Registration process starting");
 
-                    var user = ctx.Member;
+                    var member = ctx.Member;
 
-                    var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild.Id, tournamentName, desiredAlias, pronouns);
+                    var registration = new ChangeRegistration(member!.Id, member.Username, ctx.Guild!.Id, tournamentName, desiredAlias, pronouns);
 
                     var response = await HttpClient!.PostAsJsonAsync("Tournament/Register", registration);
 
@@ -272,7 +292,7 @@ namespace tellahs_library.Commands
                     var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
                     if (role is not null)
                     {
-                        await user.GrantRoleAsync(role, $"{user.Username} registered for a tournament");
+                        await member.GrantRoleAsync(role, $"{member.Username} registered for a tournament");
                     }
                 }
                 catch (Exception ex)
@@ -281,22 +301,23 @@ namespace tellahs_library.Commands
                 }
             }
 
-            [SlashCommand("Drop", "Drop from a tournament")]
-            [SlashRequireGuild]
+            [Command("Drop")]
+            [Description("Drop from a tournament")]
+            [RequireGuild]
             public async Task DropAsync(
-                InteractionContext ctx,
-                [Option("tournament_name", "Only needed you're registered in multiple tournaments in this server")] string tournamentName = ""
+                SlashCommandContext ctx,
+                [Parameter("tournament_name")][Description("Only needed you're registered in multiple tournaments in this server")] string tournamentName = ""
             )
             {
                 try
                 {
-                    await ctx.DeferAsync(ephemeral: true);
+                    await ctx.DeferResponseAsync(ephemeral: true);
 
                     if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
 
                     var user = ctx.User;
 
-                    var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild.Id, TournamentName: tournamentName);
+                    var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild!.Id, TournamentName: tournamentName);
 
                     var response = await HttpClient!.PostAsJsonAsync("Tournament/Drop", registration);
 
@@ -312,7 +333,7 @@ namespace tellahs_library.Commands
                         var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
                         if (role is not null)
                         {
-                            await ctx.Member.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament {tournamentName}");
+                            await ctx.Member!.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament {tournamentName}");
                         }
 
                         await UpdateEntrantCount(ctx, responseDto.TrackingChannelId, responseDto.TrackingMessageId, responseDto.RegistrantCount);
@@ -330,7 +351,7 @@ namespace tellahs_library.Commands
                 }
             }
 
-            private async Task UpdateEntrantCount(InteractionContext ctx, ulong channelId, ulong messageId, int registrantCount)
+            private async Task UpdateEntrantCount(CommandContext ctx, ulong channelId, ulong messageId, int registrantCount)
             {
                 var trackingMessage = await ctx.GetMessageAsync(channelId, messageId);
                 if (trackingMessage is null) { return; }
