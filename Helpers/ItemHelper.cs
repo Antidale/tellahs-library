@@ -61,7 +61,7 @@ The `Loaded` kit comes with five Exits, and the `Better` kit can have up to thre
 Life potions appear in the `Starter`, `Better`, `Loaded`, `Freedom`, `Mysidia`, and `Cata` kits.
 ")
                     .AddField("Tier", "2", inline: true)
-                    .AddField("Price", "150", inline: true)
+                    .AddField("Price", "600", inline: true)
                     .Build(),
 
                 ItemRecallOptions.SilkWeb => builder
