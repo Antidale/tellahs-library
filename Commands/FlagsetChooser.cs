@@ -1,6 +1,8 @@
 ﻿using DSharpPlus.Commands;
 using DSharpPlus.Commands.Processors.SlashCommands;
+using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
+using DSharpPlus.Entities;
 using System.ComponentModel;
 using tellahs_library.Enums;
 using tellahs_library.Extensions;
@@ -10,7 +12,7 @@ namespace tellahs_library.Commands
 {
     public class FlagsetChooser
     {
-        [Command("selectpb2jflagset"), Description("Selects one non-vetoed PB2J flagset at Random"), AllowDMUsage]
+        [Command("selectpb2jflagset"), Description("Selects one non-vetoed PB2J flagset at Random"), AllowDMUsage, InteractionInstallType(DiscordApplicationIntegrationType.GuildInstall, DiscordApplicationIntegrationType.UserInstall)]
         public async Task SelectPB2JFlagsetAsync(
             SlashCommandContext ctx,
             [Parameter("VetoChoice"), Description("Flagset to veto")]

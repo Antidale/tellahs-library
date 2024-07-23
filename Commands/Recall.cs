@@ -1,6 +1,8 @@
 ﻿using DSharpPlus.Commands;
 using DSharpPlus.Commands.ArgumentModifiers;
+using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
+using DSharpPlus.Entities;
 using FeInfo.Common.DTOs;
 using System.ComponentModel;
 using System.Net.Http.Json;
@@ -14,7 +16,7 @@ using static tellahs_library.Helpers.ItemHelper;
 
 namespace tellahs_library.Commands
 {
-    [Command("recall")]
+    [Command("recall"), InteractionInstallType(DiscordApplicationIntegrationType.GuildInstall, DiscordApplicationIntegrationType.UserInstall)]
     [AllowDMUsage]
 
     public partial class Recall
