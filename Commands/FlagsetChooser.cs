@@ -1,5 +1,6 @@
 ﻿using DSharpPlus.Commands;
 using DSharpPlus.Commands.Processors.SlashCommands;
+using DSharpPlus.Commands.Trees.Metadata;
 using System.ComponentModel;
 using tellahs_library.Enums;
 using tellahs_library.Extensions;
@@ -9,7 +10,7 @@ namespace tellahs_library.Commands
 {
     public class FlagsetChooser
     {
-        [Command("selectpb2jflagset"), Description("Selects one non-vetoed PB2J flagset at Random")]
+        [Command("selectpb2jflagset"), Description("Selects one non-vetoed PB2J flagset at Random"), AllowDMUsage]
         public async Task SelectPB2JFlagsetAsync(
             SlashCommandContext ctx,
             [Parameter("VetoChoice"), Description("Flagset to veto")]
