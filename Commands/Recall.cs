@@ -1,5 +1,6 @@
 ﻿using DSharpPlus.Commands;
 using DSharpPlus.Commands.ArgumentModifiers;
+using DSharpPlus.Commands.Trees.Metadata;
 using FeInfo.Common.DTOs;
 using System.ComponentModel;
 using System.Net.Http.Json;
@@ -14,6 +15,7 @@ using static tellahs_library.Helpers.ItemHelper;
 namespace tellahs_library.Commands
 {
     [Command("recall")]
+    [AllowDMUsage]
 
     public partial class Recall
     {
@@ -23,6 +25,7 @@ namespace tellahs_library.Commands
 
         [Command("boss")]
         [Description("Get boss info")]
+        [AllowDMUsage]
         public async Task BossRecallAsync(CommandContext ctx,
             [Parameter("BossName")] [Description("the boss you want info on")]
             string bossName)
@@ -39,6 +42,7 @@ namespace tellahs_library.Commands
 
         [Command("flag_interaction")]
         [Description("provides information about some flag interactions")]
+        [AllowDMUsage]
         public async Task FlagInteractionAsync(CommandContext ctx,
             [Parameter("interaction")] [Description("flagset interaction to learn more about")]
             FlagInteractionChoices choice
@@ -54,6 +58,7 @@ namespace tellahs_library.Commands
 
         [Command("item")]
         [Description("provides some information about select consumable items")]
+        [AllowDMUsage]
         public async Task ItemRecallAsync(CommandContext ctx,
                 [Parameter("item")] [Description("get information about important consumable items")]
                 ItemRecallOptions selectedItem
@@ -69,6 +74,7 @@ namespace tellahs_library.Commands
 
         [Command("racing")]
         [Description("get information about racing Free Enterprise")]
+        [AllowDMUsage]
         public async Task RacingAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(@"
@@ -89,6 +95,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
 
         [Command("search")]
         [Description("search the library for information")]
+        [AllowDMUsage]
         public async Task SearchAsync(CommandContext ctx,
             [Parameter("search_text")] [Description("text to search for in title, descirption, or tags returns at most 10 entries.")]
             [MinMaxLength(1, 100)]
@@ -131,6 +138,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
 
         [Command("pitfalls")]
         [Description("learn some of the common pitfalls in playing Free Enterprise")]
+        [AllowDMUsage]
         public async Task PitfallsAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(PitfallHelper.GetPitfallsText());
