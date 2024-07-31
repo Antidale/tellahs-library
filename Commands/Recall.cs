@@ -158,5 +158,14 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
 
             return true;
         }
+
+        [Command("suggested-flagsets")]
+        [Description("Some suggested flagsets for newer players")]
+        [AllowDMUsage]
+        public async Task SuggestedFlagsetsAsync(CommandContext ctx)
+        {
+            await ctx.RespondAsync(FlagsetHelper.GetSuggestedFlagsets());
+            await ctx.LogUsageAsync();
+        }
     }
 }
