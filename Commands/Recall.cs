@@ -90,7 +90,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
 * dr-race-bot [commands](<https://gitlab.com/akw5013/discord-race-bot/blob/master/HELP.md>)
 ### Upcoming Races Links
 * [Upcoming Restreams](<https://docs.google.com/spreadsheets/d/1dTekGBPUl0Y_eEGtIj3Is_X5rBQpy8QcxDhoHCcRVf0>) spreadsheet - also includes information on non-tournament restreamed races
-* [Community Events Google Calendar](<https://calendar.google.com/calendar/u/0/embed?src=vmu93f6hqqbagatt78trjr0fgs@group.calendar.google.com&ctz=America/New_York>) (displays Eastern Time)
 ");
         }
 
