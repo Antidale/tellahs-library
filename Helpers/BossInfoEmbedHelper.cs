@@ -557,13 +557,15 @@ Generally, this is a straightforward damage race, with Rubicant’s Fire3 and Gl
 Often the fastest path through is to reflect spells onto the Milon form and never see any other of the Fiends. Placing the Wall on someone with Zombie protection (a Wizard hat, Sorcerer robe, or a part of Cecil’s Crystal armor set are common ways of getting this) means that Milon’s attacks will deal reduced damage to that character, making healing them often not required. Another quick way through the fight is to target Rubicant's defenses. Edge with Mute knife and a decent katana, or an archer with Ice arrows and an Elven bow can generally skip over the Kainazzo/Valvalis portion of the fight.
 ### Additional Notes
 Since this fight is actually two separate HP pools (Milon/Rubi in one, Kainazzo/Val in another), if you can kill the first fight without hitting the HP threshold for it to transform into the other, you’ll never face the Kainazzo/Valvalis fight. Typically this happens with using a Wall and bouncing spells onto the Milon form. Since reflected spells don’t trigger reactions, you’ll never see any other shape.
+
+The Milon Z and Kainazzo forms both use a Chain to set their resists/weakness/race values as their first turns. Milon Z's defenses can be a little confusing here because while the script does set a Holy absorb, changing the race to Zombie effectively undoes this, as well as allows you to use Cure magics/items to deal damage. Be careful about using curatives for damage at the beginning of the fight, since you do need Milon Z's first turn to happen to set the Zombie race.
 ")
                         .AddField("Damage Types", "Milon: Physical\r\nRubicant: Fire\r\nKainazzo: Physical, Untyped Magic (Big Wave)\r\nValvalis: Physical")
-                        .AddField("Resist", "Milon: Absorbs Ice, Holy, Dark, Lightning, Air\r\nRubicant: Absorbs: Fire, Holy, Dark, Lightning, Air\r\nKainazzo: Absorbs: Fire, Ice, Dark, Holy, Air\r\nValvalis: None\r\n")
+                        .AddField("Resist", "Milon: Absorbs: Ice, Holy*, Dark, Lightning, Air\r\nRubicant: Absorbs: Fire, Holy, Dark, Lightning, Air\r\nKainazzo: Absorbs: Fire, Ice, Dark, Holy, Air\r\nValvalis: None\r\n")
                         .AddField("Weakness", "Milon: Fire (4x)\r\nRubicant: Ice (4x)\r\nKainazzo: Thunder (4x)\r\nValvalis: Thunder (4x), Holy (4x)")
-                        .AddField("Additional Links", "[Kainazzo/Val](<https://wiki.ff4fe.com/doku.php?id=elements_kainazzo_val>)", inline: true)
                         .AddField("Race", "Milon: Zombie\r\nRubicant: Mage", inline: true)
-                        .AddField("Boss Bit", "Yes", inline: true);
+                        .AddField("Boss Bit", "Yes", inline: true)
+                        .AddField("Additional Links", "[Kainazzo/Val](<https://wiki.ff4fe.com/doku.php?id=elements_kainazzo_val>)", inline: true);
                     break;
 
                 case BossName.CPU:
