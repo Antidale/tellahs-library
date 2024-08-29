@@ -146,6 +146,16 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             await ctx.LogUsageAsync();
         }
 
+        [Command("resistance")]
+        [Description("provides some details about resistance/weakness")]
+        public async Task ResistancesAsync(CommandContext ctx,
+        [Parameter("choice")] [Description("Select an option for specific advice/information")]
+        ResistanceChoices resistanceChoice = ResistanceChoices.Overview)
+        {
+            await ctx.RespondAsync(ResistanceHelper.GetResistanceInfo(resistanceChoice));
+            await ctx.LogUsageAsync();
+        }
+
         internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, CommandContext ctx)
         {
             if (httpClient == null)

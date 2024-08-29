@@ -161,7 +161,7 @@ See [Alt Gauntlets](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>) for speci
 [Alt Gauntlets](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>)")
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Boss Bit", "No", inline: true)
-                        .AddField("Race", "Gargoyle: Reptile, Weeper: Spirit", inline: true)
+                        .AddField("Trait", "Gargoyle: Reptile, Weeper: Spirit", inline: true)
                         .AddField("Resist", "Gargoyle: Pig, Mini, KO", inline: true)
                         .AddField("Weakness", "Gargoyle: Holy, Air (4x)", inline: true);
                     break;
@@ -196,7 +196,7 @@ At high physical damage spots, tossing an HrGlass to stop the Ghasts, and then f
 @"### Fight Flow
 Milon Z’s only damage comes from Fight, which can proc the Curse status effect.
 ### Strats
-As standard for physical fights, Blink/Illusion/MoonVeil are all great defense options. Milon Z’s Zombie race means that Cure magic/potions cause harm. At low HP spots, Cure2 pots possibly do better damage than your party's normal attacks, and a Cure3 or two can really speed up the fight. Don't toss Elixirs.
+As standard for physical fights, Blink/Illusion/MoonVeil are all great defense options. Milon Z’s Zombie trait means that Cure magic/potions cause harm. At low HP spots, Cure2 pots possibly do better damage than your party's normal attacks, and a Cure3 or two can really speed up the fight. Don't toss Elixirs.
 ### Additional Notes
 Wizard hats, Sorcerer and White robes provide defense against Zombies, as does any part of Cecil’s Paladin or Crystal defensive gear. Generally equipping any of those on a Cecil in the back row lets Cover strats carry the day. Also, the Crystal sword does extra damage against Zombies, as do White arrows.
 
@@ -204,7 +204,7 @@ Wizard hats, Sorcerer and White robes provide defense against Zombies, as does a
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Resist", "Ice Absorb", inline: true)
                         .AddField("Weakness", "Air, Holy, Fire", inline: true)
-                        .AddField("Race", "Zombie", inline: true)
+                        .AddField("Trait", "Zombie", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -245,7 +245,7 @@ With `Bnofree` on, this fight becomes much more dangerous. A focus on minimizing
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
-                        .AddField("Race", "Mage", inline: true)
+                        .AddField("Trait", "Mage", inline: true)
                         .AddField("Boss Bit", "No", inline: true);
                     break;
 
@@ -327,7 +327,7 @@ The dragon form lacks the boss bit, and while it does have some status resistanc
                         .AddField("Resist", "Dragon form: Holy Absorb Blind Mute Pig Mini Frog Petrify KO Calcify 1 Calcify 2 Berserk Charm Sleep Stun Float Curse", inline: true)
                         .AddField("Weakness", "Holy", inline: true)
                         .AddField("Boss Bit", "Dark Elf: Yes, Dragon form: No", inline: true)
-                        .AddField("Race", "Dragon form: Dragon", inline: true)
+                        .AddField("Trait", "Dragon form: Dragon", inline: true)
                         .AddField("Additional Links", "[Dragon form](<https://wiki.ff4fe.com/doku.php?id=dark_elf_dragon_form>)", inline: true);
                     break;
 
@@ -350,7 +350,7 @@ Lower level parties might want to avoid using berserk, since it can spread out d
 
 ")
                         .AddField("Damage Types", "Cindy: Physical\r\nMindy: Lit, Ice, Fire, Untyped Magic", inline: true)
-                        .AddField("Race", "Mage", inline: true)
+                        .AddField("Trait", "Mage", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true)
                         .AddField("Additional Links", "[Sandy](<https://wiki.ff4fe.com/doku.php?id=Sandy>), [Mindy](<https://wiki.ff4fe.com/doku.php?id=Mindy>)", inline: true);
                     break;
@@ -444,7 +444,7 @@ The first fight gives you a decent bit of setup time and has fairly limited dama
 
 Once into the second fight, lean on your big damage dealers pretty heavily. With RA1 setups, you’re unlikely to get a Bersk cast off before the Poison blocks it, so don’t count on that landing. Lugae’s Laser ability can be a major issue at high HP spots. For the most part, though, even the second fight isn’t too scary if you take your time and manage resources well.
 
-The robot race on both Balnab and the second Dr. Lugae means that Thunder claws do great work, and also that Cid can do some really heavy lifting in the fights. 
+The robot trait on both Balnab and the second Dr. Lugae means that Thunder claws do great work, and also that Cid can do some really heavy lifting in the fights. 
 ### Additional Notes
 Walls will reflect both Beam and Emission, and will block Laser, which makes it very handy at high HP spots, or if the party is underleveled. Underleveled parties should also make liberal use of Heal if the Gas counters land. Limiting how many characters are dealing damage limits the Gas counters, as well as frees up characters for opportunistic potion (Heal/Cure/Life) usage to keep the party up and going.
 
@@ -552,18 +552,18 @@ EvilWall will punch itself if there are no valid PC targets to hit. In some plac
 @"### Fight Flow
 The Milon form will Fight on four consecutive turns, and then use Curse. Rubicant will cycle through Fire2, Fire3, and Glare. Kainazzo uses Fight four consecutive turns, then uses Big Wave. Valvalis alternates between Fight and Ray for two instances each, then one sequence of Fight and Storm. Each boss has an HP threshold where they’ll use their reaction to transform into the next form in the cycle.
 ### Strats
-Generally, this is a straightforward damage race, with Rubicant’s Fire3 and Glare casts being the main concern. Take advantage of elemental (or racial) weaknesses where you can to speed up the fight and reduce the threat of the encounter.
+Generally, this is a straightforward damage trait, with Rubicant’s Fire3 and Glare casts being the main concern. Take advantage of elemental (or racial) weaknesses where you can to speed up the fight and reduce the threat of the encounter.
 
 Often the fastest path through is to reflect spells onto the Milon form and never see any other of the Fiends. Placing the Wall on someone with Zombie protection (a Wizard hat, Sorcerer robe, or a part of Cecil’s Crystal armor set are common ways of getting this) means that Milon’s attacks will deal reduced damage to that character, making healing them often not required. Another quick way through the fight is to target Rubicant's defenses. Edge with Mute knife and a decent katana, or an archer with Ice arrows and an Elven bow can generally skip over the Kainazzo/Valvalis portion of the fight.
 ### Additional Notes
 Since this fight is actually two separate HP pools (Milon/Rubi in one, Kainazzo/Val in another), if you can kill the first fight without hitting the HP threshold for it to transform into the other, you’ll never face the Kainazzo/Valvalis fight. Typically this happens with using a Wall and bouncing spells onto the Milon form. Since reflected spells don’t trigger reactions, you’ll never see any other shape.
 
-The Milon Z and Kainazzo forms both use a Chain to set their resists/weakness/race values as their first turns. Milon Z's defenses can be a little confusing because of the combination of a Holy absorb and setting the Zombie race. The Zombie race allows dealing damage with Cure spells and White, while Meteo still gets absorbed.
+The Milon Z and Kainazzo forms both use a Chain to set their resists/weakness/trait values as their first turns. Milon Z's defenses can be a little confusing because of the combination of a Holy absorb and setting the Zombie trait. The Zombie trait allows dealing damage with Cure spells and White, while Meteo still gets absorbed.
 ")
                         .AddField("Damage Types", "Milon: Physical\r\nRubicant: Fire\r\nKainazzo: Physical, Untyped Magic (Big Wave)\r\nValvalis: Physical")
                         .AddField("Resist", "Milon: Absorbs: Ice, Holy*, Dark, Lightning, Air\r\nRubicant: Absorbs: Fire, Holy, Dark, Lightning, Air\r\nKainazzo: Absorbs: Fire, Ice, Dark, Holy, Air\r\nValvalis: None\r\n")
                         .AddField("Weakness", "Milon: Fire (4x)\r\nRubicant: Ice (4x)\r\nKainazzo: Thunder (4x)\r\nValvalis: Thunder (4x), Holy (4x)")
-                        .AddField("Race", "Milon: Zombie\r\nRubicant: Mage", inline: true)
+                        .AddField("Trait", "Milon: Zombie\r\nRubicant: Mage", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true)
                         .AddField("Additional Links", "[Kainazzo/Val](<https://wiki.ff4fe.com/doku.php?id=elements_kainazzo_val>)", inline: true);
                     break;
@@ -598,7 +598,7 @@ The Attacker and Defender each get 10% of the spot’s HP, but award one-third o
 @"### Fight Flow
 Odin will use Fight three times, then raise his sword and take an empty turn, then use Odin (a party-wide attack). He’ll then Fight twice, then raise his sword, take an empty turn, then use Odin. Then he’ll Fight once, start a chain to raise his sword and set a flag to allow Thunderstruck, then unset the flag while queueing Odin. Repeat from the top if both sides are alive.
 ### Strats
-Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you race to kill Odin before the first Odin attack comes out.
+Getting a berserker going early is a strong start to the fight. The Lightning weakness makes Thunder claw users really shine, and Lit arrows do well too. Defensively, Blink/Illusion will help you handle the physical attacks. Many combinations of the fight location and party composition make you trait to kill Odin before the first Odin attack comes out.
 
 In order to get a 'Thunder struck Odin!' kill, you need to deal non-physical Lightning damage in the small window available between the third time the sword is raised and when the Odin attack is queued. Both Hide and Jump help get a character off-screen during an Odin swipe, and Blink or a MoonVeil will protect against any punches that would have to be absorbed in order to correctly time the Thunderstruck attempt. The window to land the Lightning damage is so small that you generally need an RA2 or slower Odin and have to react to the punch, not the sword raise for a successful attempt.
 ### Additional Notes
@@ -622,7 +622,7 @@ When Asura is dealt damage, the face rotation is reversed, so you'll see the fac
 ### Strats
 Asura never attacks your party except as a reaction, so you have plenty of setup time to get Blink/Illusion/MoonVeil on party members before actually being attacked. 
 
-Giving Asura the Reflect status will bounce those self-targeted spells, which then means this becomes like fights that just have physical attacks to deal with. Because those physical attacks come from a reaction to direct damage, if the location’s damage is deadly to your party, you’ll often want to have a single source of damage throughout the fight. And even if the damage isn’t high, if your party is doing lots of low damage attacks, you’ll spend a lot of time in animations in battle that aren’t necessary. Edge with a Mute knife and a decent katana is great in this fight, as is anyone swinging a Rune Axe. For bows and arrows, both Mute arrows and the Elven bow hit the Mage race, so mix/match your best combination for maximum damage. Defensively, equipping a Ribbon, Rune ring, or Aegis shield gives protection from Mages, reducing the threat of Asura’s counters.
+Giving Asura the Reflect status will bounce those self-targeted spells, which then means this becomes like fights that just have physical attacks to deal with. Because those physical attacks come from a reaction to direct damage, if the location’s damage is deadly to your party, you’ll often want to have a single source of damage throughout the fight. And even if the damage isn’t high, if your party is doing lots of low damage attacks, you’ll spend a lot of time in animations in battle that aren’t necessary. Edge with a Mute knife and a decent katana is great in this fight, as is anyone swinging a Rune Axe. For bows and arrows, both Mute arrows and the Elven bow hit the Mage trait, so mix/match your best combination for maximum damage. Defensively, equipping a Ribbon, Rune ring, or Aegis shield gives protection from Mages, reducing the threat of Asura’s counters.
 
 Parties without much physical firepower will prefer bouncing spells off of a Wall to both be able to cast Virus/Nuke during the fight, and also not require any healing/preventative measures.
 
@@ -631,7 +631,7 @@ Lastly, the Lifelock strategy of keeping Asura on continually casting Life1 is s
 When Cure4 would heal between 16,384 and 32,767 HP it actually will heal for nothing regardless of the amount displayed on screen. See the [wiki](<https://wiki.ff4fe.com/doku.php?id=bugs#asura_cure4_bug>) for other scenarios and more detail.
 ")
                         .AddField("Damage Types", "Physical", inline: true)
-                        .AddField("Race", "Mage", inline: true)
+                        .AddField("Trait", "Mage", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -688,7 +688,7 @@ Call fans rejoice at having Float status, since that nullifies the Quake counter
 ")
                         .AddField("Damage Types", "Physical\r\nReactions: Fire, Ice, Lightning, or Untyped Magic")
                         .AddField("Resist", "Absorbs: Fire, Ice, Lightning\r\nStatuses: Poison Blind Mute Pig Mini Frog Petrify KO Sleep Stun ")
-                        .AddField("Race", "Dragon", inline: true)
+                        .AddField("Trait", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -711,7 +711,7 @@ Wyvern will not gate intended Underworld access unless `Bunsafe` is on. The `why
 
 ")
                         .AddField("Damage Types", "Untyped Magic", inline: true)
-                        .AddField("Race", "Dragon", inline: true)
+                        .AddField("Trait", "Dragon", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -758,7 +758,7 @@ Low level parties (and in locations with either high Magic attack, high HP, or b
 
 ")
                         .AddField("Damage Types", "Physical, Fire Magic", inline: true)
-                        .AddField("Race", "Dragon, Zombie", inline: true)
+                        .AddField("Trait", "Dragon, Zombie", inline: true)
                         .AddField("Weakness", "Fire", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
