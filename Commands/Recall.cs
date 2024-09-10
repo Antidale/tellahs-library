@@ -173,5 +173,14 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             await ctx.RespondAsync(FlagsetHelper.GetSuggestedFlagsets());
             await ctx.LogUsageAsync();
         }
+
+        [Command("key-item-placement")]
+        [Description("Explains how FE places key items")]
+        [AllowDMUsage]
+        public async Task KeyItemPlacementAcync(CommandContext ctx)
+        {
+            await ctx.RespondAsync(KeyItemPlacementHelper.GetKeyItemPlacementDescrition());
+            await ctx.LogUsageAsync();
+        }
     }
 }
