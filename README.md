@@ -25,7 +25,7 @@ These commands are available for servers that have opted-in to having them on th
 * [Reference Google Doc](https://docs.google.com/document/d/1m_U90JG2t3Ze0fUFLMCzMSHZNYcdnIWrcr7RWAgtpBU/edit#heading=h.amzv5bujk9gc)
 
 # Credit and Thanks
-Many, many thanks to ScytheMarshall for the copyedit on the `/boss` command.
+Many, many thanks to ScytheMarshall for the copyedit on the `/boss` command, and continued invauable help.
 
 Thanks to SchalaKitty for the use of hir boss icons.
 
