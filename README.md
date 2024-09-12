@@ -7,6 +7,7 @@ Made to help supplement the information in [the wiki](https://wiki.ff4fe.com/dok
 * `/recall racing` Provides information and links for common racing questions. It is available globally, as well as in DMs.
 * `/recall search` Search a growing database for links to articles, images, and videos related to Free Enterprise. Available globally as well as in DMs.
 * `/recall flag_interactions` Provides some extra information about a few tricky/subtle flag interactions. Available globally as well as in DMs.
+* `recall resistance` Provides information about weakness/resistance math in FFIV. Has optional parameter to focused information about monster Traits.
 * `/SelectPB2JFlagset` selects one of three possible choices for a Push B To Jump flagset. Used by the [Hap B Leap Year](https://docs.google.com/document/d/1uXWiiT6guhWD7DHNrujqH-UUVJVA_jEWY775w25l4qk) side tournament primarily.
 
 ## Tournament commands
