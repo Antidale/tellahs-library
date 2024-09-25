@@ -1,6 +1,4 @@
 ﻿using DSharpPlus;
-using DSharpPlus.Commands;
-using DSharpPlus.Commands.Processors.SlashCommands;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using tellahs_library.Commands;
@@ -18,7 +16,7 @@ httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/
 
 if (token is null) { throw new ArgumentNullException(nameof(token)); }
 
-httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);                         
+httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
 
 var discord = DiscordClientBuilder
                 .CreateDefault(token: token, intents: DiscordIntents.AllUnprivileged)
@@ -40,8 +38,12 @@ commandsExtensions.AddCommands(typeof(Recall));
 
 #if DEBUG
 commandsExtensions.AddCommands(typeof(Tournament), GuildIds.AntiServer);
+commandsExtensions.AddCommands(typeof(TournamentAdministration), GuildIds.AntiServer);
+commandsExtensions.AddCommands(typeof(TournamentOverrides), GuildIds.AntiServer);
 #else
 commandsExtensions.AddCommands(typeof(Tournament), GuildIds.AntiServer, GuildIds.SideTourneyServer);
+commandsExtensions.AddCommands(typeof(TournamentAdministration), GuildIds.AntiServer, GuildIds.SideTourneyServer);
+commandsExtensions.AddCommands(typeof(TournamentOverrides), GuildIds.AntiServer, GuildIds.SideTourneyServer);
 #endif
 
 

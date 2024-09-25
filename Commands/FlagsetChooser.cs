@@ -1,11 +1,7 @@
-﻿using DSharpPlus.Commands;
-using DSharpPlus.Commands.Processors.SlashCommands;
-using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
+﻿using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
-using DSharpPlus.Entities;
 using System.ComponentModel;
 using tellahs_library.Enums;
-using tellahs_library.Extensions;
 using static tellahs_library.Helpers.Pb2jFlagsetHelper;
 
 namespace tellahs_library.Commands
