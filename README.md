@@ -18,8 +18,8 @@ These commands are available for servers that have opted-in to having them on th
 * `/tournament administration createtournament` Creates a tournament in the given server. Currently only accessible by people with the Admin permission in a server. Generally accessible by just typing `/createtournament`
 * `/tournament administration openregistration` Sets a tournament's registration period to Open, overriding time set at tournament creation. Generally accessible by just typing `/openregistration`
 * `/tournament administration closeregistration` Closes the registration period for a touirnament. Generally accessible by just typing `/closeregistration`
-* `/tournament registration register` Registers a user for a tournament in the server that has open registration. Users can provide desired pronouns as well as an alias. Generally accessible by just typing `/register`
-* `/tournament registration drop` Drops a user from a tournament in that server that they have entered. Generally accessible by just typing `/drop`
+* `/tournament registration register` Registers the calling user for a tournament in the server that has open registration. Users can provide desired pronouns as well as an alias. Generally accessible by just typing `/register`
+* `/tournament registration drop` Drops the calling user from a tournament in that server that they have entered. Generally accessible by just typing `/drop`
 
 # Invite links
 * [Discord Server](https://discord.gg/x95jN69Ggf)
