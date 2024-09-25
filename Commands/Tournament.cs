@@ -38,7 +38,6 @@ namespace tellahs_library.Commands
 
             [Command("CreateTournament"),
             Description("Create A Tournament"),
-            RequirePermissions(DiscordPermissions.SendMessages, DiscordPermissions.Administrator),
             RequireGuild]
             public async Task CreateTournamentAsync(SlashCommandContext ctx,
                 [Parameter("tournament_name")][Description("The name of your tournament")] string tournamentName,
@@ -155,7 +154,7 @@ namespace tellahs_library.Commands
             [RequireGuild]
             public async Task OpenRegistrationAsync(
                 SlashCommandContext ctx,
-                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments in Announced status")] 
+                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments in Announced status")]
                 string tournamentName = ""
             )
             {
@@ -168,7 +167,7 @@ namespace tellahs_library.Commands
             [RequireGuild]
             public async Task CloseRegistrationOverrideAsync(
                 SlashCommandContext ctx,
-                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments with open registration")] 
+                [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments with open registration")]
                 string tournamentName = ""
             )
             {
@@ -222,6 +221,11 @@ namespace tellahs_library.Commands
                         {
                             contents[i] = $"Registration is open!";
                         }
+
+                        if (newStatus == RegistrationPeriodStatus.Closed && contents[i].StartsWith("Rgistration Closes:"))
+                        {
+                            contents[i] = "Registration Closed";
+                        }
                     }
 
                     var newMessage = string.Join("\r\n", [.. contents]);
@@ -245,7 +249,8 @@ namespace tellahs_library.Commands
             public TournamentRegistration(HttpClient client) => HttpClient = client;
             public HttpClient? HttpClient { private get; set; }
 
-            [Command("Register")][Description("Register for a tournament")]
+            [Command("Register")]
+            [Description("Register for a tournament")]
             [RequireGuild]
             public async Task RegisterAsync(
                 SlashCommandContext ctx,
