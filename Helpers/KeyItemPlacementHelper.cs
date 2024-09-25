@@ -13,6 +13,7 @@ public class KeyItemPlacementHelper
 When randomizing Key Item (KI) placement, Free Enterprise has five different buckets of locations it can pull from: Main, Summon, Quest, Monsters! boxes (miabs) outside of the Lunar Subteranne (LST), and miabs in the LST. Anything other than Main checks will have a random amount of locations from their bucket added to the overall pool of checks that can have a KI. Main checks are always in the pool.
 ### Ksummon
 Enabling the `Ksummon` flag adds between 3 and 5 possible locations to where Key Items can go: Defeating the bosses at the vanilla Leviatan, Asura, Odin, and Bahamut locations, as well as bonking Yang with the Pan in the house in Sylph Cave.
+
 When `Kmoon` is also enabled, the two buckets are combined when adding locations to the pool, which makes it possible that no `Ksummon` locations are actually in the KI pool. The combined buckets add between 6 and 11 locations to the pool.
 ### Kmoon
 Enabling the `Kmoon` flag adds between 3 and 6 possible locations to where Key Items can be found: the Murasame altar (vanilla Pale Dim), Crystal Sword altar (vanilla Wyvern), White Spear altar (vanilla Plague), each chest in the Ribbon room (vanilla D.Lunars), and the Masamune altar (vanilla Ogopogo). 
@@ -21,7 +22,7 @@ When `Kmiab` is enabled with `Kmoon`, the combination allows the miabs in the LS
 
 When `Ksummon` is enabled with `Kmoon`, the two buckets are combined when adding locations to the pool, adding a total of between 6 and 11 locations to the pool. 
 ### Kmiab
-Enabling the `Kmiab` flag adds between 11 and 20 possible locations to where Key Items can be found (see [FF4 Miab Info](<https://docs.google.com/document/d/1F93iM_F73UW_uFIB7R_ioVHxJVvlpKmjG41dGLIBsnU/edit>) from xPankraz for detailed info). Also enabling either `Kmoon` or `Kunsafe` adds in the 9 miabs from the LST, for a total of between 13 and 29 possibilities.
+Enabling the `Kmiab` flag adds between 9 and 17 possible locations to where Key Items can be found (see [FF4 Miab Info](<https://docs.google.com/document/d/1F93iM_F73UW_uFIB7R_ioVHxJVvlpKmjG41dGLIBsnU/edit>) from xPankraz for detailed info). Also enabling either `Kmoon` or `Kunsafe` adds in the 9 miabs from the LST, for a total of between 11 and 26 possibilities.
 ## Placement Details
 When determining where Key Items will be placed, the randomizer constructs a pool of locations. `Kmain` locations are always on and always in the pool. `Kmoon`, `Ksummon`, and `Kmiab` locations will have some of their locations in that KI pool, where they have a chance of awarding a Key Item, and some locations that were never in the pool for a given seed.
 ### Ksummon & Kmoon
