@@ -111,7 +111,7 @@ Ribbon, Rune ring, Aegis shield
             [D.Machin](<https://wiki.ff4fe.com/doku.php?id=d.machin>), [D.Fossil](<https://wiki.ff4fe.com/doku.php?id=d.fossil>), [D.Bone](<https://wiki.ff4fe.com/doku.php?id=d.bone>), [Blue D.](<https://wiki.ff4fe.com/doku.php?id=blue_d>), [Green D.](<https://wiki.ff4fe.com/doku.php?id=Green_d>), [Red D.](<https://wiki.ff4fe.com/doku.php?id=red_d>), [Yellow D](<https://wiki.ff4fe.com/doku.php?id=yellow_d>), [King Ryu](<https://wiki.ff4fe.com/doku.php?id=king-ryu>), [Ging Ryu](<https://wiki.ff4fe.com/doku.php?id=ging-ryu>), [D. Lunar](<https://wiki.ff4fe.com/doku.php?id=d._lunar>), [Wyvern](<https://wiki.ff4fe.com/doku.php?id=wyvern>), [Pale Dim](<https://wiki.ff4fe.com/doku.php?id=pale_dim>), [Clapper](<https://wiki.ff4fe.com/doku.php?id=clapper>)
 
 **Weapons**
-Dragoon spear, Artemis arros, Dragon whip, Apollo harp, Loki lute, Dragon claw
+Dragoon spear, Artemis arrows, Dragon whip, Apollo harp, Loki lute, Dragon claw
 
 **Armor**
 Dragoon (all), Crystal ring, Tiara
