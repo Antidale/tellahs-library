@@ -1,13 +1,10 @@
-﻿using DSharpPlus.Commands;
-using DSharpPlus.Commands.ArgumentModifiers;
+﻿using DSharpPlus.Commands.ArgumentModifiers;
 using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
-using DSharpPlus.Entities;
 using FeInfo.Common.DTOs;
 using System.ComponentModel;
 using System.Net.Http.Json;
 using tellahs_library.Enums;
-using tellahs_library.Extensions;
 using tellahs_library.Helpers;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
 using static tellahs_library.Helpers.BossNameHelper;
