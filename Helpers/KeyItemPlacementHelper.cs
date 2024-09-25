@@ -28,7 +28,7 @@ When determining where Key Items will be placed, the randomizer constructs a poo
 When either/both of `Ksummon` and `Kmoon` are enabled, half of those locations (rounded up) are added to the pool to start with. So if only one of those flags is on, three of the locations from that group are added to the pool, and if both are on, six locations are added. Then to add some randomness, the randomizer uses a coinflip mechanism, described below.
 
 ### Kmiab
-When `Kmiab` is added, each [miab area](<https://wiki.ff4fe.com/doku.php?id=treasure_probability_curves#miabs>) gets two of the miab boxes added to the pool, with additional boxes added in a coinflip mechanism, described below.
+When `Kmiab` is added, each [miab area](<https://wiki.ff4fe.com/doku.php?id=treasure_probability_curves#miabs>) gets two of the miab boxes added to the pool, with additional boxes added in a coinflip mechanism, described below. After all miab locations are chosen, the randomizer then adds all but a random three locations to the KI pool.
 
 ### Coinflip Mechanism
 In order to add some randomness to the amount of potential Key Item containing slots, when the randomizer adds additional locations, the algorithm effectively flips a coin and adds an extra location every time it gets a head, until it gets a tails, where it stops.
