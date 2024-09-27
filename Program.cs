@@ -11,7 +11,7 @@ var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
 #if DEBUG
 token = Environment.GetEnvironmentVariable("TestBotToken");
 apiKey = "test";
-httpClient = new HttpClient { BaseAddress = new Uri("https://localhost:5001/api/") };
+httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:5000/api/") };
 #endif
 
 if (token is null) { throw new ArgumentNullException(nameof(token)); }
