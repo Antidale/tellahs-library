@@ -60,7 +60,7 @@ public class TournamentHelper
                 return;
             }
 
-            var createRequest = new CreateTournament(ctx.Guild!.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.HasValue ? role.Value.Key : 0, startRegistration, endRegistration);
+            var createRequest = new CreateTournament(ctx.Guild!.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.HasValue ? role.Value.Key : 0, rulesLink, startRegistration, endRegistration);
 
             var response = await client!.PostAsJsonAsync("tournament", createRequest);
             if (response.IsSuccessStatusCode)
