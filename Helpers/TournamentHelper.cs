@@ -19,7 +19,7 @@ public class TournamentHelper
         return true;
     }
 
-    public static async Task CreateTournament(SlashCommandContext ctx, string tournamentName, string roleName, string startDateTimeOffsetString, string endDateTimeOffsetString, string rulesLink, HttpClient? client)
+    public static async Task CreateTournament(SlashCommandContext ctx, string tournamentName, string roleName, string startDateTimeOffsetString, string endDateTimeOffsetString, string rulesLink, string standingsLink, HttpClient? client)
     {
         try
         {
@@ -60,17 +60,22 @@ public class TournamentHelper
                 return;
             }
 
-            var createRequest = new CreateTournament(ctx.Guild!.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.HasValue ? role.Value.Key : 0, rulesLink, startRegistration, endRegistration);
+            var createRequest = new CreateTournament(ctx.Guild!.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.HasValue ? role.Value.Key : 0, rulesLink, standingsLink, startRegistration, endRegistration);
 
             var response = await client!.PostAsJsonAsync("tournament", createRequest);
             if (response.IsSuccessStatusCode)
             {
-                var tournamentDocString = string.IsNullOrWhiteSpace(rulesLink) || !Uri.IsWellFormedUriString(rulesLink, UriKind.Absolute)
+                var rulesDocString = string.IsNullOrWhiteSpace(rulesLink) || !Uri.IsWellFormedUriString(rulesLink, UriKind.Absolute)
                     ? null
                     : $"([Rules Document](<{rulesLink}>))";
 
+                var standingsSiteString = string.IsNullOrWhiteSpace(standingsLink) || !Uri.IsWellFormedUriString(standingsLink, UriKind.Absolute)
+                    ? null
+                    : $"([Standings](<{standingsLink}>))";
+
                 await message.ModifyAsync(string.Join("\r\n",
-                    string.Join(" ", $"**{tournamentName}**", tournamentDocString),
+                    $"## {tournamentName}",
+                    string.Join(" ", rulesDocString, standingsSiteString),
                     "Registration Opens: " + Formatter.Timestamp(startRegistration, TimestampFormat.LongDateTime),
                     "Registration Closes: " + Formatter.Timestamp(endRegistration, TimestampFormat.LongDateTime)
                 ));
