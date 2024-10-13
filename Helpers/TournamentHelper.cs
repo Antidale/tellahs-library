@@ -67,18 +67,20 @@ public class TournamentHelper
             {
                 var rulesDocString = string.IsNullOrWhiteSpace(rulesLink) || !Uri.IsWellFormedUriString(rulesLink, UriKind.Absolute)
                     ? null
-                    : $"([Rules Document](<{rulesLink}>))";
+                    : $"[Rules Document](<{rulesLink}>)";
 
                 var standingsSiteString = string.IsNullOrWhiteSpace(standingsLink) || !Uri.IsWellFormedUriString(standingsLink, UriKind.Absolute)
                     ? null
-                    : $"([Standings](<{standingsLink}>))";
+                    : $"[Standings](<{standingsLink}>)";
 
-                await message.ModifyAsync(string.Join("\r\n",
-                    $"## {tournamentName}",
-                    string.Join(" ", rulesDocString, standingsSiteString),
-                    "Registration Opens: " + Formatter.Timestamp(startRegistration, TimestampFormat.LongDateTime),
-                    "Registration Closes: " + Formatter.Timestamp(endRegistration, TimestampFormat.LongDateTime)
-                ));
+                await message.ModifyAsync(
+                    string.Join("\r\n",
+                        $"## {tournamentName}",
+                        "Registration Opens: " + Formatter.Timestamp(startRegistration, TimestampFormat.LongDateTime),
+                        "Registration Closes: " + Formatter.Timestamp(endRegistration, TimestampFormat.LongDateTime),
+                        string.Join(" | ", rulesDocString, standingsSiteString)
+                    )
+                );
 
                 await message.PinAsync();
             }
