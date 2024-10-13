@@ -21,10 +21,11 @@ public class TournamentOverrides
         [Parameter("registration_start")][Description("full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
         [Parameter("registration_end")][Description("full registration close time format as YYYY-MM-DD hh:mm:ss -hmm")] string endDateTimeOffsetString,
         [Parameter("role_name")][Description("the name of the role to assign to registrants")] string roleName = "",
-        [Parameter("rules_link")][Description("a link to the rules document")] string rulesLink = ""
+        [Parameter("rules_link")][Description("a link to the rules document")] string rulesLink = "",
+        [Parameter("standings_link")][Description("a link to the standings document")] string standingsLink = ""
     )
     {
-        await TournamentHelper.CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink, HttpClient);
+        await TournamentHelper.CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink, standingsLink, HttpClient);
     }
 
     [Command("OpenRegistrationOverride")]
