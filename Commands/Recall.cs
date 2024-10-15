@@ -182,5 +182,14 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             await ctx.RespondAsync(KeyItemPlacementHelper.GetKeyItemPlacementDescrition());
             await ctx.LogUsageAsync();
         }
+
+        [Command("forks")]
+        [Description("information about forks of the main repository")]
+        [AllowDMUsage]
+        public async Task RecallForksAsync(CommandContext ctx)
+        {
+            await ctx.RespondAsync(ForkHelper.GetForkInformation());
+            await ctx.LogUsageAsync();
+        }
     }
 }
