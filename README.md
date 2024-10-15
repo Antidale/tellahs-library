@@ -11,6 +11,7 @@ Made to help supplement the information in [the wiki](https://wiki.ff4fe.com/dok
 * `recall pitfalls` Provides information about some common pitfalls newer runners fall into.
 * `recall item` Provides information about important consumable items. Info includes flag availability, guarantees, inclusion in starter kits.
 * `recall key-item-placement` Provides information for how Kmain, Kmoon, Ksummon, and Kmiab change the size of the KI pool, and how potential key item locations are chosen when non-main checks are enabled.
+* `recall forks` Provides a link to all public for repositories. Also provides site links and announcement posts for any forks that have had an announcement post in #code-central on the FE Workshop discord.
 * `/SelectPB2JFlagset` selects one of three possible choices for a Push B To Jump flagset. Used by the [Hap B Leap Year](https://docs.google.com/document/d/1uXWiiT6guhWD7DHNrujqH-UUVJVA_jEWY775w25l4qk) side tournament primarily.
 
 ## Tournament commands
