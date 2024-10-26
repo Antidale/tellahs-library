@@ -7,15 +7,13 @@ namespace tellahs_library.Commands;
 [Description("Commands related to tournaments")]
 [RequireGuild]
 [RequirePermissions(DiscordPermissions.ManageRoles, DiscordPermissions.ManageEvents)]
-public class TournamentAdministration
+public class TournamentAdministration(HttpClient client)
 {
-    public TournamentAdministration(HttpClient client) => HttpClient = client;
-
-    public HttpClient? HttpClient { private get; set; }
+    private readonly HttpClient? _httpClient = client;
 
     [Command("CreateTournament"),
-    Description("Create A Tournament"),
-    RequireGuild]
+     Description("Create A Tournament"),
+     RequireGuild]
     public async Task CreateTournamentAsync(SlashCommandContext ctx,
         [Parameter("tournament_name")][Description("The name of your tournament")] string tournamentName,
         [Parameter("registration_start")][Description("full registration open time format as YYYY-MM-DD hh:mm:ss -hmm")] string startDateTimeOffsetString,
@@ -25,7 +23,7 @@ public class TournamentAdministration
         [Parameter("standings_link")][Description("a link to standings sheet/site")] string standingsLink = ""
     )
     {
-        await TournamentHelper.CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink, standingsLink, HttpClient);
+        await TournamentHelper.CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink, standingsLink, _httpClient);
     }
 
     [Command("CloseRegistration")]
@@ -36,7 +34,7 @@ public class TournamentAdministration
         [Parameter("tournament_name")][Description("Only needed if a server has multiple tournaments with open registration")] string tournamentName = ""
     )
     {
-        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Closed, tournamentName, HttpClient);
+        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Closed, tournamentName, _httpClient);
     }
 
     [Command("OpenRegistration")]
@@ -49,7 +47,7 @@ public class TournamentAdministration
         string tournamentName = ""
     )
     {
-        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName, HttpClient);
+        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName, _httpClient);
     }
 
 

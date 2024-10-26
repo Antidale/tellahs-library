@@ -5,7 +5,7 @@ using FeInfo.Common.Responses;
 
 namespace tellahs_library.Helpers;
 
-public class TournamentHelper
+public static class TournamentHelper
 {
     public static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, SlashCommandContext ctx)
     {
@@ -34,33 +34,26 @@ public class TournamentHelper
             if (!await GuardHttpClientAsync(client, ctx)) { return; }
 
             var message = await ctx.EditResponseAsync("Creating Tournament");
-            if (message is null)
-            {
-                await ctx.LogErrorAsync("Something went really poorly, contact Antidale", $"Creating tournament failed for {ctx.Guild!.Name}");
-                return;
-            }
-
-            var user = ctx.Member;
+            
             var role = ctx.Guild?.Roles.FirstOrDefault(x => x.Value.Name.Equals(roleName, StringComparison.InvariantCultureIgnoreCase));
 
             var startParsed = DateTimeOffset.TryParse(startDateTimeOffsetString, out var startRegistration);
             if (!startParsed)
             {
-                var builder = new DiscordMessageBuilder().WithContent("Registration start must be formatted correctly");
                 await message.DeleteAsync();
                 await ctx.FollowupAsync("Registration start must be formatted correctly", ephemeral: true);
                 return;
             }
 
             var endParsed = DateTimeOffset.TryParse(endDateTimeOffsetString, out var endRegistration);
-            if (!startParsed)
+            if (!endParsed)
             {
                 await message.DeleteAsync();
                 await ctx.FollowupAsync("Registration end must be formatted correctly", ephemeral: true);
                 return;
             }
 
-            var createRequest = new CreateTournament(ctx.Guild!.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role.HasValue ? role.Value.Key : 0, rulesLink, standingsLink, startRegistration, endRegistration);
+            var createRequest = new CreateTournament(ctx.Guild!.Id, ctx.Guild.Name, tournamentName, message.ChannelId, message.Id, role?.Key ?? 0, rulesLink, standingsLink, startRegistration, endRegistration);
 
             var response = await client!.PostAsJsonAsync("tournament", createRequest);
             if (response.IsSuccessStatusCode)
@@ -123,24 +116,8 @@ public class TournamentHelper
                 return;
             }
 
-            //TODO: Extract this to handle more cases, and actually handle correctly in this combined method
-            var contents = message.Content.Split("\r\n");
-            for (int i = 0; i < contents.Length; i++)
-            {
-                if (contents[i].StartsWith("Registration Opens:"))
-                {
-                    contents[i] = $"Registration is open!";
-                }
-
-                if (newStatus == RegistrationPeriodStatus.Closed && contents[i].StartsWith("Rgistration Closes:"))
-                {
-                    contents[i] = "Registration Closed";
-                }
-            }
-
-            var newMessage = string.Join("\r\n", [.. contents]);
-            //end extract this
-
+            var newMessage = GetUpdatedRegistrationWindowMessage(message, newStatus);
+            
             await message.ModifyAsync(newMessage);
             await ctx.EditResponseAsync($"Registration {newStatus}");
         }
@@ -149,5 +126,24 @@ public class TournamentHelper
             var errorMessage = await response.Content.ReadAsStringAsync();
             await ctx.LogErrorAsync($"Update failed: {errorMessage}", $"Update failed: {errorMessage}");
         }
+    }
+
+    private static string GetUpdatedRegistrationWindowMessage(DiscordMessage message, RegistrationPeriodStatus newStatus)
+    {
+        var contents = message.Content.Split("\r\n");
+        for (var i = 0; i < contents.Length; i++)
+        {
+            if (contents[i].StartsWith("Registration Opens:"))
+            {
+                contents[i] = $"Registration is open!";
+            }
+
+            if (newStatus == RegistrationPeriodStatus.Closed && contents[i].StartsWith("Rgistration Closes:"))
+            {
+                contents[i] = "Registration Closed";
+            }
+        }
+
+        return string.Join("\r\n", [.. contents]);
     }
 }

@@ -9,7 +9,6 @@ Search
 Sign in
 Sign up
 github
-/
 gitignore
 Public
 Code
@@ -324,10 +323,6 @@ node_modules/
 *.dsw
 *.dsp
 
-# Visual Studio 6 technical files
-*.ncb
-*.aps
-
 # Visual Studio LightSwitch build output
 **/*.HTMLClient/GeneratedArtifacts
 **/*.DesktopClient/GeneratedArtifacts
@@ -424,7 +419,6 @@ Footer
 Footer navigation
 Terms
 Privacy
-Security
 Status
 Docs
 Contact GitHub
@@ -433,3 +427,4 @@ API
 Training
 Blog
 About
+.idea

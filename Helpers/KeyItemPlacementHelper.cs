@@ -3,6 +3,7 @@ using DSharpPlus.Entities;
 
 namespace tellahs_library.Helpers;
 
+// ReSharper disable once ClassNeverInstantiated.Global
 public class KeyItemPlacementHelper
 {
     public static DiscordEmbed GetKeyItemPlacementDescrition()

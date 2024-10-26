@@ -6,11 +6,9 @@ namespace tellahs_library.Commands;
 [Command("TournamentOverrides")]
 [Description("Commands related to tournaments")]
 [RequirePermissions(DiscordPermissions.ManageRoles, DiscordPermissions.ManageMessages)]
-public class TournamentOverrides
+public class TournamentOverrides(HttpClient client)
 {
-    public TournamentOverrides(HttpClient client) => HttpClient = client;
-
-    public HttpClient? HttpClient { private get; set; }
+    private readonly HttpClient? _httpClient = client;
 
     [Command("CreateTournamentOverride")]
     [Description("Create A Tournament")]
@@ -25,7 +23,7 @@ public class TournamentOverrides
         [Parameter("standings_link")][Description("a link to the standings document")] string standingsLink = ""
     )
     {
-        await TournamentHelper.CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink, standingsLink, HttpClient);
+        await TournamentHelper.CreateTournament(ctx, tournamentName, roleName, startDateTimeOffsetString, endDateTimeOffsetString, rulesLink, standingsLink, _httpClient);
     }
 
     [Command("OpenRegistrationOverride")]
@@ -38,7 +36,7 @@ public class TournamentOverrides
                 string tournamentName = ""
             )
     {
-        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName, HttpClient);
+        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Opened, tournamentName, _httpClient);
     }
 
     [Command("CloseRegistrationOverride")]
@@ -51,6 +49,6 @@ public class TournamentOverrides
         string tournamentName = ""
     )
     {
-        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Closed, tournamentName, HttpClient);
+        await TournamentHelper.UpdateRegistrationWindow(ctx, RegistrationPeriodStatus.Closed, tournamentName, _httpClient);
     }
 }

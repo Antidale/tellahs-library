@@ -16,16 +16,12 @@ namespace tellahs_library.Commands
     [Command("recall"), InteractionInstallType(DiscordApplicationIntegrationType.GuildInstall, DiscordApplicationIntegrationType.UserInstall)]
     [AllowDMUsage]
 
-    public partial class Recall
+    public class Recall(HttpClient? httpClient)
     {
-        public Recall(HttpClient? httpClient) => HttpClient = httpClient;
-
-        public HttpClient? HttpClient { private get; set; }
-
         [Command("boss")]
         [Description("Get boss info")]
         [AllowDMUsage]
-        public async Task BossRecallAsync(CommandContext ctx,
+        public static async Task BossRecallAsync(CommandContext ctx,
             [Parameter("BossName")] [Description("the boss you want info on")]
             string bossName)
         {
@@ -42,7 +38,7 @@ namespace tellahs_library.Commands
         [Command("flag_interaction")]
         [Description("provides information about some flag interactions")]
         [AllowDMUsage]
-        public async Task FlagInteractionAsync(CommandContext ctx,
+        public static async Task FlagInteractionAsync(CommandContext ctx,
             [Parameter("interaction")] [Description("flagset interaction to learn more about")]
             FlagInteractionChoices choice
         )
@@ -58,7 +54,7 @@ namespace tellahs_library.Commands
         [Command("item")]
         [Description("provides some information about select consumable items")]
         [AllowDMUsage]
-        public async Task ItemRecallAsync(CommandContext ctx,
+        public static async Task ItemRecallAsync(CommandContext ctx,
                 [Parameter("item")] [Description("get information about important consumable items")]
                 ItemRecallOptions selectedItem
         )
@@ -74,7 +70,7 @@ namespace tellahs_library.Commands
         [Command("racing")]
         [Description("get information about racing Free Enterprise")]
         [AllowDMUsage]
-        public async Task RacingAsync(CommandContext ctx)
+        public static async Task RacingAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(@"
 Non-tournament organized racing of Free Enterprise happens mainly in various Racing Clubs, sometimes called Community Clubs. These clubs are kind of like the FE equivalent of a bowling league. Generally led by community member or two, they're generally open to all to sign up for and have a good time. Players can also jump into individual races without joining the club.
@@ -82,7 +78,7 @@ Non-tournament organized racing of Free Enterprise happens mainly in various Rac
 See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>) page for links and details. Check out [Fleury's site](<https://adaptable-rabbit.surge.sh/events>) to see rankings and seeds of present and past clubs. Some listed clubs on Fleury's site won't be for FE, since DarkPaladin's racebot doesn't lock clubs to a single server.
 ### Racing Guides
 * [A general guide](<https://docs.google.com/document/d/18ab5ejhqr_iwQ0e6m04BB0Nf2dlFaO5mw6fpbWie3Q4/>) to dr-race-bot
-* [Another guide](<http://bit.ly/FF4FE-Bootcamp>) that also has some stream setup help. Normal/non-tournament races don't require stream delay, so skip that part of any instructions
+* [Another guide](<https://bit.ly/FF4FE-Bootcamp>) that also has some stream setup help. Normal/non-tournament races don't require stream delay, so skip that part of any instructions
 * [2v2 Racing](<https://docs.google.com/document/d/102eUr6DBE93AmXrIP7gZHhKHH22RXJz2KBc_aSQDITo>)
 * dr-race-bot [commands](<https://gitlab.com/akw5013/discord-race-bot/blob/master/HELP.md>)
 ### Upcoming Races Links
@@ -102,11 +98,11 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         {
             await ctx.DeferResponseAsync();
 
-            if (!await GuardHttpClientAsync(HttpClient, ctx)) { return; }
+            if (!await GuardHttpClientAsync(httpClient, ctx)) { return; }
 
             try
             {
-                var response = await HttpClient!.GetFromJsonAsync<List<Guide>>($"Guide?searchText={searchValue}&limit=10");
+                var response = await httpClient!.GetFromJsonAsync<List<Guide>>($"Guide?searchText={searchValue}&limit=10");
 
                 var text = response is null || response.Count == 0
                     ? "Sorry, we're unable to find anything that matches your search. If you'd like to suggest something, leave a request in the Library's discord. Here are some general resources [Enemy List](<https://wiki.ff4fe.com/doku.php?id=enemy_list>), [Algorithm FAQ](<https://gamefaqs.gamespot.com/snes/522596-final-fantasy-ii/faqs/54945>), [Magic Guide](<https://gamefaqs.gamespot.com/snes/588330-final-fantasy-iv/faqs/53021>), [FE Wiki](<https://wiki.ff4fe.com/>)"
@@ -119,7 +115,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
                 }
 
                 //If we have only one result, and it's an image, just link to it
-                if (response?.Count == 1 && (response?.All(x => x.LinkType == FeInfo.Common.Enums.LinkType.Image) ?? false))
+                if (response?.Count == 1 && (response.All(x => x.LinkType == LinkType.Image) ))
                 {
                     text = $"[{response.First().Title}]({response.First().Url})";
                 }
@@ -137,7 +133,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         [Command("pitfalls")]
         [Description("learn some of the common pitfalls in playing Free Enterprise")]
         [AllowDMUsage]
-        public async Task PitfallsAsync(CommandContext ctx)
+        public static async Task PitfallsAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(PitfallHelper.GetPitfallsText());
             await ctx.LogUsageAsync();
@@ -153,22 +149,22 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             await ctx.LogUsageAsync();
         }
 
-        internal static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, CommandContext ctx)
+        private static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, CommandContext ctx)
         {
-            if (httpClient == null)
+            if (httpClient != null)
             {
-                await ctx.RespondAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this");
-                await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member?.Username ?? "unknown user"}");
-                return false;
+                return true;
             }
 
-            return true;
+            await ctx.RespondAsync("Unable to communicate with remote. Contact Antidale; you shouldn't see this");
+            await ctx.LogErrorAsync($"HttpClient was null for an action.\r\nGuildId: {ctx.Guild}\r\nUser: {ctx.Member?.Username ?? "unknown user"}");
+            return false;
         }
 
         [Command("suggested-flagsets")]
         [Description("Some suggested flagsets for newer players")]
         [AllowDMUsage]
-        public async Task SuggestedFlagsetsAsync(CommandContext ctx)
+        public static async Task SuggestedFlagsetsAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(FlagsetHelper.GetSuggestedFlagsets());
             await ctx.LogUsageAsync();
