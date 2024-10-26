@@ -83,6 +83,7 @@ namespace tellahs_library.Enums
         Elements,
 
         [Description("CPU")]
+        // ReSharper disable once InconsistentNaming
         CPU,
 
         [Description("Odin")]

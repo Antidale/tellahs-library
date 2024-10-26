@@ -1,6 +1,6 @@
 ﻿using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
 using DSharpPlus.Commands.Trees;
-using tellahs_library.Extensions;
+
 
 namespace tellahs_library.Enums
 {
@@ -18,7 +18,9 @@ namespace tellahs_library.Enums
 
     public class Pb2jFlagsetChoiceProvider : IChoiceProvider
     {
-        private static IReadOnlyDictionary<string, object> Options => (IReadOnlyDictionary<string, object>)Enum.GetValues<Pb2jFlagsetChoices>().ToDictionary(x => x.GetDescription(), x => x);
+        private static IReadOnlyDictionary<string, object> Options => 
+            (IReadOnlyDictionary<string, object>)Enum.GetValues<Pb2jFlagsetChoices>()
+                .ToDictionary(x => x.GetDescription(), x => x);
 
         public ValueTask<IReadOnlyDictionary<string, object>> ProvideAsync(CommandParameter commandParameter) => ValueTask.FromResult(Options);
     }

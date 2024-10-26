@@ -1,5 +1,6 @@
 ﻿namespace tellahs_library.Constants
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class GuildIds
     {
         public const ulong FreeenWorkshop = 411615349579186178;

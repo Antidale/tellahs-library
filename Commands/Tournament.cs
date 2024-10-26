@@ -8,10 +8,9 @@ namespace tellahs_library.Commands
 {
     [Command("Tournament")]
     [Description("Commands related to tournaments")]
-    public class Tournament
+    public class Tournament(HttpClient client)
     {
-        public Tournament(HttpClient client) => HttpClient = client;
-        public HttpClient? HttpClient { private get; set; }
+        private readonly HttpClient? _httpClient = client;
 
         [Command("Register")]
         [Description("Register for a tournament")]
@@ -28,7 +27,7 @@ namespace tellahs_library.Commands
             {
                 await ctx.DeferResponseAsync(ephemeral: true);
 
-                if (!await TournamentHelper.GuardHttpClientAsync(HttpClient, ctx)) { return; }
+                if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
 
                 pronouns = pronouns.Trim();
                 desiredAlias = desiredAlias.Trim();
@@ -40,7 +39,7 @@ namespace tellahs_library.Commands
 
                 var registration = new ChangeRegistration(member!.Id, member.Username, ctx.Guild!.Id, twitchName, tournamentName, desiredAlias, pronouns);
 
-                var response = await HttpClient!.PostAsJsonAsync("Tournament/Register", registration);
+                var response = await _httpClient!.PostAsJsonAsync("Tournament/Register", registration);
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -83,13 +82,13 @@ namespace tellahs_library.Commands
             {
                 await ctx.DeferResponseAsync(ephemeral: true);
 
-                if (!await TournamentHelper.GuardHttpClientAsync(HttpClient, ctx)) { return; }
+                if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
 
                 var user = ctx.User;
 
                 var registration = new ChangeRegistration(user.Id, user.Username, ctx.Guild!.Id, TwitchName: "", TournamentName: tournamentName);
 
-                var response = await HttpClient!.PostAsJsonAsync("Tournament/Drop", registration);
+                var response = await _httpClient!.PostAsJsonAsync("Tournament/Drop", registration);
 
                 if (response.IsSuccessStatusCode)
                 {

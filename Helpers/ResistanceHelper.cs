@@ -1,4 +1,3 @@
-using DSharpPlus.Entities;
 using tellahs_library.Enums;
 
 namespace tellahs_library.Helpers

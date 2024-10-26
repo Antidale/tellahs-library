@@ -1,4 +1,5 @@
-﻿namespace tellahs_library.Enums
+﻿// ReSharper disable InconsistentNaming
+namespace tellahs_library.Enums
 {
     public enum FlagInteractionChoices
     {

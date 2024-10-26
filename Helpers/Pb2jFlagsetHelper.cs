@@ -2,6 +2,7 @@
 
 namespace tellahs_library.Helpers
 {
+    // ReSharper disable once InconsistentNaming
     public static class Pb2jFlagsetHelper
     {
         public static (string flagsetDetails, Pb2jFlagsetChoices flagsetChoice) GetFlagset(Pb2jFlagsetChoices flagsetChoice)

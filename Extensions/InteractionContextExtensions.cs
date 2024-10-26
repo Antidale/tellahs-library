@@ -1,6 +1,4 @@
-﻿using DSharpPlus.Entities;
-using DSharpPlus.Commands;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 using tellahs_library.Constants;
 
@@ -80,7 +78,7 @@ namespace tellahs_library.Extensions
 
             var guildString = invokingGuild is null
                 ? "a DM"
-                : $"{invokingGuild!.Name}";
+                : $"{invokingGuild.Name}";
 
             var message = $"{ctx.Command.Name} was invoked in {guildString}";
 
