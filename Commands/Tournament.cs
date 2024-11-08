@@ -137,13 +137,7 @@ namespace tellahs_library.Commands
 
             if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
 
-            newPronouns = newPronouns.ToLowerInvariant() switch
-            {
-                "none" => "",
-                "n/a" => "",
-                "na" => "",
-                _ => newPronouns
-            };
+            newPronouns = MapNoneEntries(newPronouns);
 
             var request = new UpdatePronouns(ctx.User.Id, newPronouns.Trim());
 
@@ -170,7 +164,7 @@ namespace tellahs_library.Commands
             SlashCommandContext ctx,
 
             [Parameter("alias")]
-            [Description("your new alias. Use a space to clear any alias.")]
+            [Description("your new alias. Use none, n/a, or na to have no alias.")]
             string newAlias,
 
             [Parameter("tournament_name")]
@@ -182,7 +176,7 @@ namespace tellahs_library.Commands
             await ctx.DeferResponseAsync(ephemeral: true);
 
             if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
-
+            newAlias = MapNoneEntries(newAlias);
             var request = new UpdateAlias(ctx.User.Id, newAlias.Trim(), tournamentName);
 
             var response = await _httpClient!.PatchAsJsonAsync("Entrant/updateAlias", request);
@@ -208,12 +202,12 @@ namespace tellahs_library.Commands
             SlashCommandContext ctx,
             [Parameter("twitch_name")]
             [Description("your new Twitch account name.")]
-            string newPronouns
+            string newTwitchHandle
         )
         {
             await ctx.DeferResponseAsync(ephemeral: true);
 
-            if (string.IsNullOrWhiteSpace(newPronouns))
+            if (string.IsNullOrWhiteSpace(newTwitchHandle))
             {
                 await ctx.EditResponseAsync("you must supply a new name");
                 return;
@@ -221,7 +215,7 @@ namespace tellahs_library.Commands
 
             if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
 
-            var request = new UpdateTwitch(ctx.User.Id, newPronouns.Trim());
+            var request = new UpdateTwitch(ctx.User.Id, newTwitchHandle.Trim());
 
             var response = await _httpClient!.PatchAsJsonAsync("Entrant/updatetwitch", request);
 
@@ -267,6 +261,17 @@ namespace tellahs_library.Commands
             {
                 await ctx.LogErrorAsync("Something MegaNuked the library while updated entrant count, many apologies", ex.Message, ex);
             }
+        }
+
+        private string MapNoneEntries(string userInput)
+        {
+            return userInput.ToLower() switch
+            {
+                "none" => "",
+                "n/a" => "",
+                "na" => "",
+                _ => userInput
+            };
         }
     }
 }
