@@ -129,13 +129,21 @@ namespace tellahs_library.Commands
         (
             SlashCommandContext ctx,
             [Parameter("pronouns")]
-            [Description("your new pronouns. Use a space to clear any pronouns.")]
+            [Description("your new pronouns. Use none, n/a, or na to remove pronoun preference")]
             string newPronouns
         )
         {
             await ctx.DeferResponseAsync(ephemeral: true);
 
             if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
+
+            newPronouns = newPronouns.ToLowerInvariant() switch
+            {
+                "none" => "",
+                "n/a" => "",
+                "na" => "",
+                _ => newPronouns
+            };
 
             var request = new UpdatePronouns(ctx.User.Id, newPronouns.Trim());
 
