@@ -73,9 +73,12 @@ namespace tellahs_library.Commands
         [Command("Drop")]
         [Description("Drop from a tournament")]
         [RequireGuild]
-        public async Task DropAsync(
+        public async Task DropAsync
+        (
             SlashCommandContext ctx,
-            [Parameter("tournament_name")][Description("Only needed you're registered in multiple tournaments in this server")] string tournamentName = ""
+            [Parameter("tournament_name")]
+            [Description("Only needed you're registered in multiple tournaments in this server")]
+            string tournamentName = ""
         )
         {
             try
@@ -117,6 +120,114 @@ namespace tellahs_library.Commands
             catch (Exception ex)
             {
                 await ctx.LogErrorAsync("Something MegaNuked the library, many apologies", ex.Message, ex);
+            }
+        }
+
+        [Command("UpdatePronouns")]
+        [Description("Update your pronouns for tournament bookkeeping")]
+        public async Task UpdatePronouns
+        (
+            SlashCommandContext ctx,
+            [Parameter("pronouns")]
+            [Description("your new pronouns. Use a space to clear any pronouns.")]
+            string newPronouns
+        )
+        {
+            await ctx.DeferResponseAsync(ephemeral: true);
+
+            if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
+
+            var request = new UpdatePronouns(ctx.User.Id, newPronouns.Trim());
+
+            var response = await _httpClient!.PatchAsJsonAsync("Entrant/updatepronouns", request);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+                await ctx.EditResponseAsync("pronouns updated!");
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                await ctx.EditResponseAsync($"pronoun update failed; Antidale will follow up with you.");
+                await ctx.LogErrorAsync(errorMessage);
+                await ctx.LogErrorAsync(ex.Message);
+            }
+        }
+
+        [Command("UpdateAlias")]
+        [Description("Update your alias for tournaments, or for a specific tournament")]
+        public async Task UpdateAlias
+        (
+            SlashCommandContext ctx,
+
+            [Parameter("alias")]
+            [Description("your new alias. Use a space to clear any alias.")]
+            string newAlias,
+
+            [Parameter("tournament_name")]
+            [Description("Leave blank to update all registrations")]
+            string tournamentName = ""
+
+        )
+        {
+            await ctx.DeferResponseAsync(ephemeral: true);
+
+            if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
+
+            var request = new UpdateAlias(ctx.User.Id, newAlias.Trim(), tournamentName);
+
+            var response = await _httpClient!.PatchAsJsonAsync("Entrant/updateAlias", request);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+                await ctx.EditResponseAsync("Alias updated!");
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                await ctx.EditResponseAsync($"alias update failed; Antidale will follow up with you.");
+                await ctx.LogErrorAsync(errorMessage);
+                await ctx.LogErrorAsync(ex.Message);
+            }
+        }
+
+        [Command("UpdateTwitchName")]
+        [Description("updates your twitch handle for tournament bookkeeping")]
+        public async Task UpdateTwitchName
+        (
+            SlashCommandContext ctx,
+            [Parameter("twitch_name")]
+            [Description("your new Twitch account name.")]
+            string newPronouns
+        )
+        {
+            await ctx.DeferResponseAsync(ephemeral: true);
+
+            if (string.IsNullOrWhiteSpace(newPronouns))
+            {
+                await ctx.EditResponseAsync("you must supply a new name");
+                return;
+            }
+
+            if (!await TournamentHelper.GuardHttpClientAsync(_httpClient, ctx)) { return; }
+
+            var request = new UpdateTwitch(ctx.User.Id, newPronouns.Trim());
+
+            var response = await _httpClient!.PatchAsJsonAsync("Entrant/updatetwitch", request);
+
+            try
+            {
+                response.EnsureSuccessStatusCode();
+                await ctx.EditResponseAsync("Twitch account updated!");
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                await ctx.EditResponseAsync($"twitch account update failed; Antidale will follow up with you.");
+                await ctx.LogErrorAsync(errorMessage);
+                await ctx.LogErrorAsync(ex.Message);
             }
         }
 
