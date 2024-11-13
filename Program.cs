@@ -17,7 +17,8 @@ httpClient = new HttpClient
 };
 #endif
 
-if (token is null) { throw new ArgumentNullException(nameof(token)); }
+
+if (token is null) { throw new NullReferenceException($"{nameof(token)} is null. Check environment variables"); }
 
 httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
 
@@ -25,30 +26,33 @@ var discord = DiscordClientBuilder
                 .CreateDefault(token: token, intents: DiscordIntents.AllUnprivileged)
                 .ConfigureServices(a => a
                     .AddLogging(log => log.AddConsole())
-                    .AddSingleton(service => httpClient))
-                .Build();
+                    .AddSingleton(service => httpClient));
 
-var commandsExtensions = discord.UseCommands(new CommandsConfiguration
+var commandsConfig = new CommandsConfiguration
 {
     RegisterDefaultCommandProcessors = false
-});
+};
 
-//Register test commands for the specific servers
-await commandsExtensions.AddProcessorAsync(new SlashCommandProcessor());
-
-commandsExtensions.AddCommands(typeof(FlagsetChooser));
-commandsExtensions.AddCommands(typeof(Recall));
+discord.UseCommands((IServiceProvider ServiceProvider, CommandsExtension commands) =>
+    {
+        commands.AddProcessor(new SlashCommandProcessor());
+        commands.AddCommands<FlagsetChooser>();
+        commands.AddCommands<Recall>();
 
 #if DEBUG
-commandsExtensions.AddCommands(typeof(Tournament), GuildIds.AntiServer);
-commandsExtensions.AddCommands(typeof(TournamentAdministration), GuildIds.AntiServer);
-commandsExtensions.AddCommands(typeof(TournamentOverrides), GuildIds.AntiServer);
+        commands.AddCommands<Tournament>(GuildIds.AntiServer);
+        commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer);
+        commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer);
 #else
-commandsExtensions.AddCommands(typeof(Tournament), GuildIds.AntiServer, GuildIds.SideTourneyServer);
-commandsExtensions.AddCommands(typeof(TournamentAdministration), GuildIds.AntiServer, GuildIds.SideTourneyServer);
-commandsExtensions.AddCommands(typeof(TournamentOverrides), GuildIds.AntiServer, GuildIds.SideTourneyServer);
+        commands.AddCommands<Tournament>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
+        commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
+        commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
 #endif
+    },
+    commandsConfig
+);
 
+discord.Build();
 
 await discord.ConnectAsync();
 
