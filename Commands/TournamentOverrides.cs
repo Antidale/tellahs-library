@@ -4,8 +4,13 @@ using tellahs_library.Helpers;
 namespace tellahs_library.Commands;
 
 [Command("TournamentOverrides")]
+[RequireApplicationOwner]
 [Description("Commands related to tournaments")]
-[RequirePermissions(DiscordPermissions.ManageRoles, DiscordPermissions.ManageMessages)]
+[RequirePermissions
+(
+    botPermissions: [DiscordPermission.ManageRoles],
+    userPermissions: [DiscordPermission.ManageMessages]
+)]
 public class TournamentOverrides(HttpClient client)
 {
     private readonly HttpClient? _httpClient = client;

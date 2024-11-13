@@ -58,11 +58,22 @@ namespace tellahs_library.Commands
                 await UpdateEntrantCount(ctx, responseDto.TrackingChannelId, responseDto.TrackingMessageId, responseDto.RegistrantCount);
                 await ctx.EditResponseAsync("registration complete, have fun!");
 
-                var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
-                if (role is not null)
+                if (responseDto.TournamentRoleId > 0)
                 {
-                    await member.GrantRoleAsync(role, $"{member.Username} registered for a tournament");
+                    try
+                    {
+                        var role = await ctx.Guild.GetRoleAsync(responseDto.TournamentRoleId);
+                        if (role is not null)
+                        {
+                            await member.GrantRoleAsync(role, $"{member.Username} registered for a tournament");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await ctx.LogErrorAsync($"Failed to grant role to {member.Username}", ex);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -102,10 +113,20 @@ namespace tellahs_library.Commands
                                                                         ? null
                                                                         : $"in {tournamentName}"));
 
-                    var role = ctx.Guild.GetRole(responseDto.TournamentRoleId);
-                    if (role is not null)
+                    if (responseDto.TournamentRoleId > 0)
                     {
-                        await ctx.Member!.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament {tournamentName}");
+                        try
+                        {
+                            var role = await ctx.Guild.GetRoleAsync(responseDto.TournamentRoleId);
+                            if (role is not null)
+                            {
+                                await ctx.Member!.RevokeRoleAsync(role, $"{ctx.Member.Username} dropped from a tournament {tournamentName}");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            await ctx.LogErrorAsync($"Failed removing role for {user.Username}", ex);
+                        }
                     }
 
                     await UpdateEntrantCount(ctx, responseDto.TrackingChannelId, responseDto.TrackingMessageId, responseDto.RegistrantCount);
@@ -113,7 +134,7 @@ namespace tellahs_library.Commands
                 else
                 {
                     var errorMessage = await response.Content.ReadAsStringAsync();
-                    await ctx.EditResponseAsync($"drop failed");
+                    await ctx.EditResponseAsync($"drop failed: {errorMessage}");
                     await ctx.LogErrorAsync(errorMessage);
                 }
             }
@@ -152,8 +173,7 @@ namespace tellahs_library.Commands
             {
                 var errorMessage = await response.Content.ReadAsStringAsync();
                 await ctx.EditResponseAsync($"pronoun update failed; Antidale will follow up with you.");
-                await ctx.LogErrorAsync(errorMessage);
-                await ctx.LogErrorAsync(ex.Message);
+                await ctx.LogErrorAsync(errorMessage, ex);
             }
         }
 
@@ -190,8 +210,7 @@ namespace tellahs_library.Commands
             {
                 var errorMessage = await response.Content.ReadAsStringAsync();
                 await ctx.EditResponseAsync($"alias update failed; Antidale will follow up with you.");
-                await ctx.LogErrorAsync(errorMessage);
-                await ctx.LogErrorAsync(ex.Message);
+                await ctx.LogErrorAsync(errorMessage, ex);
             }
         }
 

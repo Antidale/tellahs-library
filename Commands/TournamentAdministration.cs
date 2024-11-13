@@ -6,7 +6,11 @@ namespace tellahs_library.Commands;
 [Command("TournamentAdministration")]
 [Description("Commands related to tournaments")]
 [RequireGuild]
-[RequirePermissions(DiscordPermissions.ManageRoles, DiscordPermissions.ManageEvents)]
+[RequirePermissions
+(
+    botPermissions: [DiscordPermission.ManageRoles],
+    userPermissions: [DiscordPermission.ManageEvents]
+)]
 public class TournamentAdministration(HttpClient client)
 {
     private readonly HttpClient? _httpClient = client;
@@ -39,7 +43,7 @@ public class TournamentAdministration(HttpClient client)
 
     [Command("OpenRegistration")]
     [Description("Opens registration for a tournament")]
-    [RequirePermissions(DiscordPermissions.SendMessages, DiscordPermissions.Administrator)]
+    [RequirePermissions(DiscordPermission.SendMessages, DiscordPermission.Administrator)]
     [RequireGuild]
     public async Task OpenRegistrationAsync(
         SlashCommandContext ctx,
