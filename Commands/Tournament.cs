@@ -135,7 +135,7 @@ namespace tellahs_library.Commands
                 {
                     var errorMessage = await response.Content.ReadAsStringAsync();
                     await ctx.EditResponseAsync($"drop failed: {errorMessage}");
-                    await ctx.LogErrorAsync(errorMessage);
+                    await ctx.LogErrorAsync($"{user.Username} failed to drop from a tournament: {errorMessage}");
                 }
             }
             catch (Exception ex)
