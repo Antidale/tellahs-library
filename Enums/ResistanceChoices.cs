@@ -8,7 +8,7 @@ namespace tellahs_library.Enums
         Giant,
         Dragon,
         Robot,
-        Zombie,
+        Undead,
         Slime,
         Spirit
     }
