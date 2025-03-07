@@ -39,8 +39,8 @@ namespace tellahs_library.Helpers
                     .WithDescription(GetRobotTraitInfo())
                     .Build(),
 
-                ResistanceChoices.Zombie => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Zombies")
+                ResistanceChoices.Undead => new DiscordEmbedBuilder()
+                    .WithTitle("Trait: Undead")
                     .WithDescription(GetZombieTraitInfo())
                     .Build(),
 
@@ -77,7 +77,7 @@ Once the algorithm has finished figuring out things from the attacker's side, an
 
 * Attacking your own Adamant-wearing party members: Casting Fire3 on the Adamant wearer hits the immune property, but attacking with a Fire claw, Flame spear, or Fire sword will hit a Fire weakness that the armor has.
 
-Check out Deathlike's [Algorithm FAQ](<https://gamefaqs.gamespot.com/snes/522596-final-fantasy-ii/faqs/54945>) for more detail about the whole process of damage determination, and especially more details about Drain. Also check out the other options for this command using the `choice` parameter for some round-up information about specific traits: Dragon, Giant, Mage, Robot, Slime, Spirit, and Zombie. The Zombie trait has some special handling detailed in that round-up.
+Check out Deathlike's [Algorithm FAQ](<https://gamefaqs.gamespot.com/snes/522596-final-fantasy-ii/faqs/54945>) for more detail about the whole process of damage determination, and especially more details about Drain. Also check out the other options for this command using the `choice` parameter for some round-up information about specific traits: Dragon, Giant, Mage, Robot, Slime, Spirit, and Undead. The Undead trait has some special handling detailed in that round-up.
 ";
         }
 
@@ -164,7 +164,7 @@ Crystal sword, White arrows, Loki lute, Bringer sword, Silver staff
 Crystal defensive gear (but not the Crystal ring), Paladin, Wizard hat, Sorcerer robe, White shirt
 
 **Extra Notes**
-The Zombie trait provides a Darkness element immunity, allows dealing damage with Cure spells/items, and has special processing for the White spell: overriding any Holy element absorbtion. Weapons, spells, and items, with a drain effect do extra 'damage' but have the effect inverted, meaning they take HP or MP from your party member instead of the monster.
+The Undead trait provides a Darkness element immunity, allows dealing damage with Cure spells/items, and has special processing for the White spell: overriding any Holy element absorbtion. Weapons, spells, and items, with a drain effect do extra 'damage' but have the effect inverted, meaning they take HP or MP from your party member instead of the monster.
 [Alt Gauntlet](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>)";
         }
 
@@ -196,7 +196,7 @@ Silver dagger, Silver sword, Silver hammer, Ancient sword, White arrows, White s
 all Silver defensive gear, White shirt
 
 **Extra Notes**
-The Silver staff is strong vs Zombies, not Spirits. All Spirits are part of an [Alt Gauntlet](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>). Most Spirits are weak to Holy damage.";
+The Silver staff is strong vs Undead, not Spirits. All Spirits are part of an [Alt Gauntlet](<https://wiki.ff4fe.com/doku.php?id=alt_gauntlet>). Most Spirits are weak to Holy damage.";
         }
     }
 }
