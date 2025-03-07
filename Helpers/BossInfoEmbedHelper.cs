@@ -195,15 +195,15 @@ At high physical damage spots, tossing an HrGlass to stop the Ghasts, and then f
 @"### Fight Flow
 Milon Z’s only damage comes from Fight, which can proc the Curse status effect.
 ### Strats
-As standard for physical fights, Blink/Illusion/MoonVeil are all great defense options. Milon Z’s Zombie trait means that Cure magic/potions cause harm. At low HP spots, Cure2 pots possibly do better damage than your party's normal attacks, and a Cure3 or two can really speed up the fight. Don't toss Elixirs.
+As standard for physical fights, Blink/Illusion/MoonVeil are all great defense options. Milon Z’s Undead trait means that Cure magic/potions cause harm. At low HP spots, Cure2 pots possibly do better damage than your party's normal attacks, and a Cure3 or two can really speed up the fight. Don't toss Elixirs.
 ### Additional Notes
-Wizard hats, Sorcerer and White robes provide defense against Zombies, as does any part of Cecil’s Paladin or Crystal defensive gear. Generally equipping any of those on a Cecil in the back row lets Cover strats carry the day. Also, the Crystal sword does extra damage against Zombies, as do White arrows.
+Wizard hats, Sorcerer and White robes provide defense against Undead, as does any part of Cecil’s Paladin or Crystal defensive gear. Generally equipping any of those on a Cecil in the back row lets Cover strats carry the day. Also, the Crystal sword does extra damage against Undead, as do White arrows.
 
 ")
                         .AddField("Damage Types", "Physical", inline: true)
                         .AddField("Resist", "Ice Absorb", inline: true)
                         .AddField("Weakness", "Air, Holy, Fire", inline: true)
-                        .AddField("Trait", "Zombie", inline: true)
+                        .AddField("Trait", "Undead", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
 
@@ -553,16 +553,16 @@ The Milon form will Fight on four consecutive turns, and then use Curse. Rubican
 ### Strats
 Generally, this is a straightforward damage trait, with Rubicant’s Fire3 and Glare casts being the main concern. Take advantage of elemental (or racial) weaknesses where you can to speed up the fight and reduce the threat of the encounter.
 
-Often the fastest path through is to reflect spells onto the Milon form and never see any other of the Fiends. Placing the Wall on someone with Zombie protection (a Wizard hat, Sorcerer robe, or a part of Cecil’s Crystal armor set are common ways of getting this) means that Milon’s attacks will deal reduced damage to that character, making healing them often not required. Another quick way through the fight is to target Rubicant's defenses. Edge with Mute knife and a decent katana, or an archer with Ice arrows and an Elven bow can generally skip over the Kainazzo/Valvalis portion of the fight.
+Often the fastest path through is to reflect spells onto the Milon form and never see any other of the Fiends. Placing the Wall on someone with Undead protection (a Wizard hat, Sorcerer robe, or a part of Cecil’s Crystal armor set are common ways of getting this) means that Milon’s attacks will deal reduced damage to that character, making healing them often not required. Another quick way through the fight is to target Rubicant's defenses. Edge with Mute knife and a decent katana, or an archer with Ice arrows and an Elven bow can generally skip over the Kainazzo/Valvalis portion of the fight.
 ### Additional Notes
 Since this fight is actually two separate HP pools (Milon/Rubi in one, Kainazzo/Val in another), if you can kill the first fight without hitting the HP threshold for it to transform into the other, you’ll never face the Kainazzo/Valvalis fight. Typically this happens with using a Wall and bouncing spells onto the Milon form. Since reflected spells don’t trigger reactions, you’ll never see any other shape.
 
-The Milon Z and Kainazzo forms both use a Chain to set their resists/weakness/trait values as their first turns. Milon Z's defenses can be a little confusing because of the combination of a Holy absorb and setting the Zombie trait. The Zombie trait allows dealing damage with Cure spells and White, while Meteo still gets absorbed.
+The Milon Z and Kainazzo forms both use a Chain to set their resists/weakness/trait values as their first turns. Milon Z's defenses can be a little confusing because of the combination of a Holy absorb and setting the Undead trait. The Undead trait allows dealing damage with Cure spells and White, while Meteo still gets absorbed.
 ")
                         .AddField("Damage Types", "Milon: Physical\r\nRubicant: Fire\r\nKainazzo: Physical, Untyped Magic (Big Wave)\r\nValvalis: Physical")
                         .AddField("Resist", "Milon: Absorbs: Ice, Holy*, Dark, Lightning, Air\r\nRubicant: Absorbs: Fire, Holy, Dark, Lightning, Air\r\nKainazzo: Absorbs: Fire, Ice, Dark, Holy, Air\r\nValvalis: None\r\n")
                         .AddField("Weakness", "Milon: Fire (4x)\r\nRubicant: Ice (4x)\r\nKainazzo: Thunder (4x)\r\nValvalis: Thunder (4x), Holy (4x)")
-                        .AddField("Trait", "Milon: Zombie\r\nRubicant: Mage", inline: true)
+                        .AddField("Trait", "Milon: Undead\r\nRubicant: Mage", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true)
                         .AddField("Additional Links", "[Kainazzo/Val](<https://wiki.ff4fe.com/doku.php?id=elements_kainazzo_val>)", inline: true);
                     break;
@@ -757,7 +757,7 @@ Low level parties (and in locations with either high Magic attack, high HP, or b
 
 ")
                         .AddField("Damage Types", "Physical, Fire Magic", inline: true)
-                        .AddField("Trait", "Dragon, Zombie", inline: true)
+                        .AddField("Trait", "Dragon, Undead", inline: true)
                         .AddField("Weakness", "Fire", inline: true)
                         .AddField("Boss Bit", "Yes", inline: true);
                     break;
