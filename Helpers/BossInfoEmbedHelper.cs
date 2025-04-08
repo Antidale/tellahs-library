@@ -58,7 +58,7 @@ Each soldier has roughly 9% of the location's total HP. When `Bnofree` is turned
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Octo.png")
                         .WithDescription(
 @"### Fight Flow
-Octomamm only uses physical attacks. After the third time you deal direct damage to Octo a tentacle is removed. After the first tentacle loss, every other time you deal direct damage another tentacle is lost. Each tentacle loss slows Octomamm's speed.
+Octomamm only uses physical attacks. After the third time you deal direct damage to Octo a tentacle is removed. After the first tentacle loss, every other time you deal direct damage another tentacle is lost until only one tentacle remains. Each tentacle loss slows Octomamm's speed.
 ### Strats
 Overall a pretty basic fight. Berserk status and fast spells are all very helpful in slowing the squid. Once you’ve gotten a few tentacles removed, Mages with Lit3 but not Nuke probably really like switching from Virus to Lit3 when the fight is at a high HP location.
 ### Additional Notes
