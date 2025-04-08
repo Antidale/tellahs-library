@@ -118,9 +118,11 @@ When `Bnofree` is on you can save some time by killing WaterHag with big damage 
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Mombomb.png")
                         .WithDescription(@"
 ### Fight Flow
-MomBomb starts the fight just doing physical damage. When below an HP threshold (see Additional Notes for details), MomBomb begins a sequence where the next turns are an empty turn with a battle message, and then using Explode, dealing damage to the party and being replaced with 3 Bombs and 3 Grey Bombs. After they each attack twice, the baby bombs will explode for their current HP to a targeted party member.
+MomBomb starts the fight just doing physical damage. When below 10,000 HP (see Additional Notes for HP details), MomBomb begins a sequence where the next turns are changing sprites, then an empty turn with a battle message, and finally using Explode, which deals damage to the party and replaces Mombomb with 3 Bombs and 3 Grey Bombs. After they each attack twice, the baby bombs will explode for their current HP to a targeted party member.
 ### Strats
 Deal damage quickly, and when MomBomb starts the explode sequence, either stop dealing damage and set up for killing the baby bombs, or try to push through the extra HP and skip the explode/baby bomb phase of the fight entirely. For lower level strats, you’ll focus on dealing damage and surviving MomBomb’s attacks, then heal up and prep your handling of the baby bombs, which is often an HrGlass or a source of AoE damage.
+
+If you are holding someone's turn for any multi-target action, make to sure wait to see the cursor point at all the baby bombs before fully entering the command, otherwise you'll only target one bomb with it.
 ### Additional Notes
 MomBomb has 64% the spot's HP total, plus an additional 10,000 HP (up to a max of 65,000 HP). 
 Bombs have 4% the spot's HP total.
