@@ -4,6 +4,14 @@ using Microsoft.Extensions.Logging;
 using tellahs_library.Commands;
 using tellahs_library.Constants;
 
+/* TODO:
+ add in httpClient for calling FE Api, probalby as a keyed service
+ make current httpClient usage also a keyed service in DI
+ add in config/environment variable info for FE's api key
+ add in config/environment variable info for various endpoints (main, beta, forks)
+ */
+
+
 var token = Environment.GetEnvironmentVariable("DiscordBotToken");
 var httpClient = new HttpClient { BaseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/") };
 var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
