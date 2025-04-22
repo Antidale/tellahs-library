@@ -1,8 +1,7 @@
 ﻿using DSharpPlus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using tellahs_library.Commands;
-using tellahs_library.Constants;
+using tellahs_library.Helpers;
 
 /* TODO:
  add in httpClient for calling FE Api, probalby as a keyed service
@@ -11,58 +10,20 @@ using tellahs_library.Constants;
  add in config/environment variable info for various endpoints (main, beta, forks)
  */
 
+var token = SetupHelper.GetDiscordBotToken();
 
-var token = Environment.GetEnvironmentVariable("DiscordBotToken");
-var httpClient = new HttpClient { BaseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/") };
-var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
+if (token is null)
+    throw new NullReferenceException($"{nameof(token)} is null. Check environment variables");
 
-#if DEBUG
-token = Environment.GetEnvironmentVariable("TestBotToken");
-apiKey = "test";
-httpClient = new HttpClient
-{
-    BaseAddress = new Uri("https://localhost:5001/api/")
-};
-#endif
-
-
-if (token is null) { throw new NullReferenceException($"{nameof(token)} is null. Check environment variables"); }
-
-httpClient.DefaultRequestHeaders.Add("Api-Key", apiKey);
-
-var discord = DiscordClientBuilder
+var discordClient = DiscordClientBuilder
                 .CreateDefault(token: token, intents: DiscordIntents.AllUnprivileged)
                 .ConfigureServices(a => a
                     .AddLogging(log => log.AddConsole())
-                    .AddSingleton(service => httpClient));
+                    .AddSingleton(service => new HttpClient().ConfigureForFeInfo()))
+                .AddCommands()
+                .Build();
 
-var commandsConfig = new CommandsConfiguration
-{
-    RegisterDefaultCommandProcessors = false
-};
+await discordClient.ConnectAsync();
 
-discord.UseCommands((IServiceProvider ServiceProvider, CommandsExtension commands) =>
-    {
-        commands.AddProcessor(new SlashCommandProcessor());
-        commands.AddCommands<FlagsetChooser>();
-        commands.AddCommands<Recall>();
-
-#if DEBUG
-        commands.AddCommands<Tournament>(GuildIds.AntiServer);
-        commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer);
-        commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer);
-#else
-        commands.AddCommands<Tournament>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
-        commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
-        commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
-#endif
-    },
-    commandsConfig
-);
-
-discord.Build();
-
-await discord.ConnectAsync();
-
-//check csharp fritz's discord bot vod for a better method of this
+//TODO: check csharp fritz's discord bot vod for a better method of this
 await Task.Delay(-1);
