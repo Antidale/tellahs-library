@@ -1,9 +1,9 @@
-﻿using DSharpPlus.Commands.ArgumentModifiers;
+﻿using System.ComponentModel;
+using System.Net.Http.Json;
+using DSharpPlus.Commands.ArgumentModifiers;
 using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
 using FeInfo.Common.DTOs;
-using System.ComponentModel;
-using System.Net.Http.Json;
 using tellahs_library.Enums;
 using tellahs_library.Helpers;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
@@ -115,7 +115,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
                 }
 
                 //If we have only one result, and it's an image, just link to it
-                if (response?.Count == 1 && (response.All(x => x.LinkType == LinkType.Image) ))
+                if (response?.Count == 1 && (response.All(x => x.LinkType == LinkType.Image)))
                 {
                     text = $"[{response.First().Title}]({response.First().Url})";
                 }
