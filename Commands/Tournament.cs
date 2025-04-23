@@ -8,9 +8,9 @@ namespace tellahs_library.Commands
 {
     [Command("Tournament")]
     [Description("Commands related to tournaments")]
-    public class Tournament(HttpClient client)
+    public class Tournament(FeInfoHttpClient client)
     {
-        private readonly HttpClient? _httpClient = client;
+        private readonly FeInfoHttpClient _httpClient = client;
 
         [Command("Register")]
         [Description("Register for a tournament")]

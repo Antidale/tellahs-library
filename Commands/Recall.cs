@@ -4,6 +4,7 @@ using DSharpPlus.Commands.ArgumentModifiers;
 using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
 using FeInfo.Common.DTOs;
+using Microsoft.Extensions.DependencyInjection;
 using tellahs_library.Enums;
 using tellahs_library.Helpers;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
@@ -16,7 +17,7 @@ namespace tellahs_library.Commands
     [Command("recall"), InteractionInstallType(DiscordApplicationIntegrationType.GuildInstall, DiscordApplicationIntegrationType.UserInstall)]
     [AllowDMUsage]
 
-    public class Recall(HttpClient? httpClient)
+    public class Recall(FeInfoHttpClient httpClient)
     {
         [Command("boss")]
         [Description("Get boss info")]

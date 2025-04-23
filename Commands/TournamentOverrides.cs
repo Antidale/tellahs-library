@@ -11,9 +11,9 @@ namespace tellahs_library.Commands;
     botPermissions: [DiscordPermission.ManageRoles],
     userPermissions: [DiscordPermission.ManageMessages]
 )]
-public class TournamentOverrides(HttpClient client)
+public class TournamentOverrides(FeInfoHttpClient client)
 {
-    private readonly HttpClient? _httpClient = client;
+    private readonly FeInfoHttpClient _httpClient = client;
 
     [Command("CreateTournamentOverride")]
     [Description("Create A Tournament")]

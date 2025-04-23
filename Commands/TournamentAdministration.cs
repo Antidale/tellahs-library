@@ -11,9 +11,9 @@ namespace tellahs_library.Commands;
     botPermissions: [DiscordPermission.ManageRoles],
     userPermissions: [DiscordPermission.ManageEvents]
 )]
-public class TournamentAdministration(HttpClient client)
+public class TournamentAdministration(FeInfoHttpClient client)
 {
-    private readonly HttpClient? _httpClient = client;
+    private readonly FeInfoHttpClient _httpClient = client;
 
     [Command("CreateTournament"),
      Description("Create A Tournament"),
