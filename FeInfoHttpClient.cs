@@ -1,9 +1,10 @@
+using System;
 
-namespace tellahs_library.Extensions;
+namespace tellahs_library;
 
-public static class HttpClientExtensions
+public class FeInfoHttpClient : HttpClient
 {
-    public static HttpClient ConfigureForFeInfo(this HttpClient client)
+    public FeInfoHttpClient()
     {
         var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
         var baseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/");
@@ -12,10 +13,9 @@ public static class HttpClientExtensions
         apiKey = "test";
         baseAddress = new Uri("https://localhost:5001/api/");
 #endif
-        client.BaseAddress = baseAddress;
 
-        client.DefaultRequestHeaders.Add("Api-Key", apiKey);
-
-        return client;
+        this.BaseAddress = baseAddress;
+        this.DefaultRequestHeaders.Add("Api-Key", apiKey);
     }
+
 }

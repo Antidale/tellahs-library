@@ -13,7 +13,7 @@ public static class DiscordConfiguration
             RegisterDefaultCommandProcessors = false
         };
 
-        builder.UseCommands((IServiceProvider ServiceProvider, CommandsExtension commands) =>
+        builder.UseCommands((ServiceProvider, commands) =>
         {
             commands.AddProcessor(new SlashCommandProcessor());
             commands.AddCommands<FlagsetChooser>();

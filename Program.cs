@@ -1,6 +1,7 @@
 ﻿using DSharpPlus;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using tellahs_library;
 using tellahs_library.Helpers;
 
 /* TODO:
@@ -19,7 +20,8 @@ var discordClient = DiscordClientBuilder
                 .CreateDefault(token: token, intents: DiscordIntents.AllUnprivileged)
                 .ConfigureServices(a => a
                     .AddLogging(log => log.AddConsole())
-                    .AddSingleton(service => new HttpClient().ConfigureForFeInfo()))
+                    .AddSingleton(service => new FeInfoHttpClient())
+                    .AddSingleton(service => new FeGenerationHttpClient()))
                 .AddCommands()
                 .Build();
 
