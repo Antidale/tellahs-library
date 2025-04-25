@@ -33,7 +33,6 @@ public class SeedRoller(FeGenerationHttpClient client)
         }
 
         await ctx.DeferResponseAsync();
-        await ctx.EditResponseAsync("rolling seed");
 
         var generateRequest = new GenerateRequest
         {
