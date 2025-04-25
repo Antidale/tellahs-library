@@ -1,6 +1,8 @@
 using System.Net.Http.Json;
+using tellahs_library.Constants;
 using tellahs_library.DTOs;
 using tellahs_library.Enums;
+using static tellahs_library.DTOs.FeApiResponse;
 using static tellahs_library.Helpers.EndpointHelper;
 
 namespace tellahs_library.Helpers;
@@ -10,109 +12,89 @@ public static class SeedRollerHelper
     private const int MAX_TRIES = 20;
     public static async Task<SeedResponse> RollSeedAsync(HttpClient client, GenerateRequest generateRequest, FeHostedApi api)
     {
-        var seedResponse = new SeedResponse();
         var apiKey = GetApiKey(api);
         if (string.IsNullOrWhiteSpace(apiKey))
         {
-            seedResponse.Error = $"Configuration incomplete, cannot create seeds for {api}";
-            return seedResponse;
+            return SetError<SeedResponse>($"Configuration incomplete, cannot create seeds for {api}");
         }
 
+        return await GenerateSeedAsync(client, generateRequest, api, apiKey) switch
+        {
+            var error when error.Status == FeStatusConstants.Error => SetError<SeedResponse>(error.Error),
+
+            ProgressResponse pr when pr.seed_id.HasContent()
+                => await GetGeneratedSeedAsync(client, api, apiKey, pr.seed_id),
+
+            ProgressResponse pr when pr.task_id.HasContent()
+                => await PollForSeedAsync(client, api, apiKey, pr.task_id),
+
+            _ => SetError<SeedResponse>("Unknown Issue preventing seed generation")
+        };
+    }
+
+    private static async Task<FeApiResponse> GenerateSeedAsync(HttpClient client, GenerateRequest generateRequest, FeHostedApi api, string apiKey)
+    {
         var postUrl = GenerateUrl(api, apiKey);
         var generateResponse = await client.PostAsJsonAsync(
             postUrl,
             generateRequest);
 
-        if (generateResponse.IsSuccessStatusCode)
+        if (!generateResponse.IsSuccessStatusCode)
         {
-            var progressResponse = await generateResponse.Content.ReadFromJsonAsync<ProgressResponse>();
+            var message = await generateResponse.Content.ReadAsStringAsync();
+            return SetError<ProgressResponse>(message);
+        }
 
-            if (progressResponse is null)
+        return await generateResponse.Content.ReadFromJsonAsync<ProgressResponse>() ?? SetError<ProgressResponse>("Failed to get content");
+    }
+
+    private static async Task<SeedResponse> PollForSeedAsync(HttpClient client, FeHostedApi api, string apiKey, string taskId)
+    {
+        var tries = 0;
+        var status = "";
+        var seedId = "";
+        string error = string.Empty;
+        while (status != FeStatusConstants.Done && tries < MAX_TRIES)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(2) + TimeSpan.FromMilliseconds(tries * 100));
+            var taskResponse = await client.GetAsync(TaskUrl(api, apiKey, taskId));
+
+            if (!taskResponse.IsSuccessStatusCode)
             {
-                seedResponse.Status = "error";
-                seedResponse.Error = "Somehow we're reading nothing from the endpoint";
+                return SetError<SeedResponse>(await taskResponse.Content.ReadAsStringAsync());
             }
-            else if (!string.IsNullOrWhiteSpace(progressResponse.seed_id))
-            {
-                var getSeedResponse = await client.GetAsync(SeedUrl(api, apiKey, progressResponse.seed_id));
 
-                if (getSeedResponse.IsSuccessStatusCode)
-                {
-                    seedResponse = await getSeedResponse.Content.ReadFromJsonAsync<SeedResponse>() ?? seedResponse;
-                }
-                else
-                {
-                    seedResponse.Error = await getSeedResponse.Content.ReadAsStringAsync();
+            (status, seedId, error) = await taskResponse.Content.ReadFromJsonAsync<ProgressResponse>()
+                ?? new ProgressResponse();
+            tries++;
+        }
 
-                    return seedResponse;
-                }
-            }
-            else if (progressResponse.task_id == string.Empty)
-            {
-                seedResponse.Status = "error";
-                seedResponse.Error = "task_id came back wrong. halp";
-            }
-            else
-            {
-                //poll the /Task endpoint until we get a response, or until too much time has elapsed and we just kinda give up
-                var retries = 0;
-                while (progressResponse.seed_id
-                == string.Empty && retries < MAX_TRIES)
-                {
-                    //Retry every second, plus a bit
-                    var taskId = progressResponse.task_id;
-                    await Task.Delay(TimeSpan.FromSeconds(2) + TimeSpan.FromMilliseconds(retries * 100));
-                    var taskResponse = await client.GetAsync(TaskUrl(api, apiKey, progressResponse.task_id));
+        if (error.HasContent())
+        {
+            return SetError<SeedResponse>(error);
+        }
 
-                    if (!taskResponse.IsSuccessStatusCode)
-                    {
-                        seedResponse.Error = await taskResponse.Content.ReadAsStringAsync();
+        if (string.IsNullOrWhiteSpace(seedId))
+        {
+            return SetError<SeedResponse>("API seems to be not responding");
+        }
 
-                        return seedResponse;
-                    }
+        return await GetGeneratedSeedAsync(client, api, apiKey, seedId);
+    }
 
-                    progressResponse = await taskResponse.Content.ReadFromJsonAsync<ProgressResponse>() ?? progressResponse;
-                    retries++;
-                    //put it back.
-                    progressResponse.task_id = taskId;
-                }
+    private static async Task<SeedResponse> GetGeneratedSeedAsync(HttpClient client, FeHostedApi api, string apiKey, string seedId)
+    {
+        var getSeedResponse = await client.GetAsync(SeedUrl(api, apiKey, seedId));
 
-                if (string.IsNullOrWhiteSpace(progressResponse.seed_id))
-                {
-                    seedResponse.Status = "error";
-                    seedResponse.Error = "API seems to be not responding";
-                    return seedResponse;
-                }
-
-                if (!string.IsNullOrWhiteSpace(progressResponse.Error))
-                {
-                    seedResponse.Status = "error";
-                    seedResponse.Error = progressResponse.Error;
-                    return seedResponse;
-                }
-
-                //now get the seed
-                var getSeedResponse = await client.GetAsync(SeedUrl(api, apiKey, progressResponse.seed_id));
-
-                if (getSeedResponse.IsSuccessStatusCode)
-                {
-                    seedResponse = await getSeedResponse.Content.ReadFromJsonAsync<SeedResponse>() ?? seedResponse;
-                }
-                else
-                {
-                    seedResponse.Error = await getSeedResponse.Content.ReadAsStringAsync();
-
-                    return seedResponse;
-                }
-            }
+        if (getSeedResponse.IsSuccessStatusCode)
+        {
+            return await getSeedResponse.Content.ReadFromJsonAsync<SeedResponse>() ?? SetError<SeedResponse>("Failed to get seed content");
         }
         else
         {
-            seedResponse.Status = "error";
-            seedResponse.Error = generateResponse.StatusCode.ToString();
+            var errorMessage = await getSeedResponse.Content.ReadAsStringAsync();
+            return SetError<SeedResponse>(errorMessage);
         }
-
-        return seedResponse;
     }
 
     private static string GetApiKey(FeHostedApi url)
