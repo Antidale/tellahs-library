@@ -4,7 +4,6 @@ using DSharpPlus.Commands.ArgumentModifiers;
 using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
 using FeInfo.Common.DTOs;
-using Microsoft.Extensions.DependencyInjection;
 using tellahs_library.Enums;
 using tellahs_library.Helpers;
 using static tellahs_library.Helpers.BossInfoEmbedHelper;
@@ -55,12 +54,14 @@ namespace tellahs_library.Commands
         [Command("item")]
         [Description("provides some information about select consumable items")]
         [AllowDMUsage]
-        public static async Task ItemRecallAsync(CommandContext ctx,
+        public static async Task ItemRecallAsync(SlashCommandContext ctx,
                 [Parameter("item")] [Description("get information about important consumable items")]
-                ItemRecallOptions selectedItem
+                ItemRecallOptions selectedItem,
+                [Parameter("just_me")] [Description("Only show to me")]
+                bool justMe = false
         )
         {
-            await ctx.DeferResponseAsync();
+            await ctx.DeferResponseAsync(ephemeral: justMe);
 
             var embed = GetItemNotes(selectedItem);
 

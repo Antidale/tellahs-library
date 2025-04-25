@@ -1,6 +1,4 @@
 ﻿using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
-using DSharpPlus.Commands.Trees;
-
 
 namespace tellahs_library.Enums
 {

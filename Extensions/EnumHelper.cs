@@ -14,5 +14,18 @@ namespace tellahs_library.Extensions
             var attributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
             return attributes.Length > 0 ? ((DescriptionAttribute)attributes[0])?.ToString() ?? string.Empty : enumVal?.ToString() ?? string.Empty;
         }
+
+        public static T GetAttribute<T>(this Enum name) where T : Attribute, new()
+        {
+            var field = name.GetType().GetField(name.ToString());
+            if (field == null)
+                return new T();
+
+            var attributes = (T[])field.GetCustomAttributes(typeof(T), false);
+
+            return attributes != null && attributes.Length > 0
+                ? attributes[0]
+                : new T();
+        }
     }
 }
