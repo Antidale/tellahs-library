@@ -4,10 +4,6 @@ using Microsoft.Extensions.Logging;
 using tellahs_library;
 using tellahs_library.Helpers;
 
-/* TODO:
-  add in config/environment variable info for FE's api key
- */
-
 var token = SetupHelper.GetDiscordBotToken();
 
 if (string.IsNullOrWhiteSpace(token))
