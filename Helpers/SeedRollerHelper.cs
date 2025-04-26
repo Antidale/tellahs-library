@@ -54,8 +54,9 @@ public static class SeedRollerHelper
     {
         var tries = 0;
         var progressResponse = new ProgressResponse();
+        List<string> stopProcessingStatuses = [FeStatusConstants.Done, FeStatusConstants.Error];
 
-        while (progressResponse.Status != FeStatusConstants.Done && tries < MAX_TRIES)
+        while (!stopProcessingStatuses.Contains(progressResponse.Status) && tries < MAX_TRIES)
         {
             await Task.Delay(TimeSpan.FromSeconds(STANDARD_DELAY).Add(TimeSpan.FromMilliseconds(tries * 100)));
             var taskResponse = await client.GetAsync(TaskUrl(api, apiKey, taskId));
@@ -67,6 +68,7 @@ public static class SeedRollerHelper
 
             progressResponse = await taskResponse.Content.ReadFromJsonAsync<ProgressResponse>()
                 ?? progressResponse;
+
             tries++;
         }
 

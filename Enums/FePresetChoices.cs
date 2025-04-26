@@ -10,10 +10,10 @@ public enum FePresetChoices
     AdamantCupBracket,
     [ChoiceDisplayName("Supermarket Sweep")]
     SupermarketSweep,
-    [ChoiceDisplayName("Doorway to Tomorrow")]
-    D2T,
     [ChoiceDisplayName("Omnidexterous Memers Guild (OMG)")]
     OmnidexterousMemersGuild,
+    [ChoiceDisplayName("Doorway to Tomorrow")]
+    D2T,
     [ChoiceDisplayName("ZZ4")]
     ZZ4,
     [ChoiceDisplayName("ZZ6")]
@@ -25,5 +25,9 @@ public enum FePresetChoices
     [ChoiceDisplayName("EEL - Moonveil Mixer")]
     EELMoonveilMixer,
     [ChoiceDisplayName("Pro-B-Otics")]
-    ProBotics
+    ProBotics,
+    [ChoiceDisplayName("FuWario")]
+    FuWario,
+    [ChoiceDisplayName("Ladder Push B To Jump")]
+    LadderPB2J,
 }
