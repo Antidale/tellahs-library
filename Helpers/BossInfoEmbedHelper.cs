@@ -23,7 +23,6 @@ While in the attack phase, Mages should prefer casting fast spells (e.g. Virus) 
 Be careful about deciding when to berserk characters. Miscalculating on if you’ll kill in the cycle can be really costly in both time and damage, as each berserked swing will trigger ColdMist.
 ### Additional Notes
 Depending on the level disparity, Cover strats will have some variable utility, but can be a huge help if you have solid defensive gear (Glass hat, Crystal ring, Adamant armor, etc). Spending time using cure spells is often not advised for underleveled fights, since D.Mist might just be one-shotting characters even if they had full health.
-
 ")
                         .AddField("Damage Types", "Physical, Ice (ColdMist)", inline: true)
                         .AddField("Resists", "Holy Absorb", inline: true)

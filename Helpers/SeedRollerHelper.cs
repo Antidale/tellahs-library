@@ -10,6 +10,7 @@ namespace tellahs_library.Helpers;
 public static class SeedRollerHelper
 {
     private const int MAX_TRIES = 20;
+    private const int STANDARD_DELAY = 2;
     public static async Task<SeedResponse> RollSeedAsync(HttpClient client, GenerateRequest generateRequest, FeHostedApi api)
     {
         var apiKey = GetApiKey(api);
@@ -45,18 +46,18 @@ public static class SeedRollerHelper
             return SetError<ProgressResponse>(message);
         }
 
-        return await generateResponse.Content.ReadFromJsonAsync<ProgressResponse>() ?? SetError<ProgressResponse>("Failed to get content");
+        return await generateResponse.Content.ReadFromJsonAsync<ProgressResponse>()
+            ?? SetError<ProgressResponse>("Failed to get content");
     }
 
     private static async Task<SeedResponse> PollForSeedAsync(HttpClient client, FeHostedApi api, string apiKey, string taskId)
     {
         var tries = 0;
-        var status = "";
-        var seedId = "";
-        string error = string.Empty;
-        while (status != FeStatusConstants.Done && tries < MAX_TRIES)
+        var progressResponse = new ProgressResponse();
+
+        while (progressResponse.Status != FeStatusConstants.Done && tries < MAX_TRIES)
         {
-            await Task.Delay(TimeSpan.FromSeconds(2) + TimeSpan.FromMilliseconds(tries * 100));
+            await Task.Delay(TimeSpan.FromSeconds(STANDARD_DELAY).Add(TimeSpan.FromMilliseconds(tries * 100)));
             var taskResponse = await client.GetAsync(TaskUrl(api, apiKey, taskId));
 
             if (!taskResponse.IsSuccessStatusCode)
@@ -64,22 +65,22 @@ public static class SeedRollerHelper
                 return SetError<SeedResponse>(await taskResponse.Content.ReadAsStringAsync());
             }
 
-            (status, seedId, error) = await taskResponse.Content.ReadFromJsonAsync<ProgressResponse>()
-                ?? new ProgressResponse();
+            progressResponse = await taskResponse.Content.ReadFromJsonAsync<ProgressResponse>()
+                ?? progressResponse;
             tries++;
         }
 
-        if (error.HasContent())
+        if (progressResponse.Error.HasContent())
         {
-            return SetError<SeedResponse>(error);
+            return SetError<SeedResponse>(progressResponse.Error);
         }
 
-        if (string.IsNullOrWhiteSpace(seedId))
+        if (string.IsNullOrWhiteSpace(progressResponse.seed_id))
         {
             return SetError<SeedResponse>("API seems to be not responding");
         }
 
-        return await GetGeneratedSeedAsync(client, api, apiKey, seedId);
+        return await GetGeneratedSeedAsync(client, api, apiKey, progressResponse.seed_id);
     }
 
     private static async Task<SeedResponse> GetGeneratedSeedAsync(HttpClient client, FeHostedApi api, string apiKey, string seedId)
