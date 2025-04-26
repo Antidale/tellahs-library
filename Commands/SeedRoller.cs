@@ -48,13 +48,7 @@ public class SeedRoller(FeGenerationHttpClient client)
         }
         else
         {
-            /*
-            TODO: compare returned flags to desired flags, and indicate if there's a mismatch
-                have to handle binary flags in vs full flag string
-            */
-            //TODO: show hash/verification in message
-            //TODO: show flags returned
-            await ctx.EditResponseAsync(response.Url);
+            await ctx.EditResponseAsync(response.ToEmbedList(flags));
             await ctx.LogUsageAsync();
         }
 

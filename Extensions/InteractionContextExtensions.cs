@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.Logging;
 using tellahs_library.Constants;
 
 namespace tellahs_library.Extensions
@@ -10,7 +10,7 @@ namespace tellahs_library.Extensions
         {
             try
             {
-                if(ctx.Guild is not null)
+                if (ctx.Guild is not null)
                 {
                     var channel = await ctx.Guild.GetChannelAsync(channelId);
                     return await channel.GetMessageAsync(messageId);
@@ -19,7 +19,7 @@ namespace tellahs_library.Extensions
                 {
                     return null;
                 }
-                
+
             }
             catch (Exception)
             {
@@ -35,6 +35,13 @@ namespace tellahs_library.Extensions
         public static async Task<DiscordMessage?> EditResponseAsync(this CommandContext ctx, DiscordEmbed embed)
         {
             return await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(embed));
+        }
+
+        public static async Task<DiscordMessage?> EditResponseAsync(this CommandContext ctx, List<DiscordEmbed> embeds)
+        {
+            var builder = new DiscordWebhookBuilder();
+            embeds.ForEach(embed => builder.AddEmbed(embed));
+            return await ctx.EditResponseAsync(builder);
         }
 
         [SuppressMessage("Usage", "CA2254:Template should be a static expression", Justification = "No structured logging use")]
