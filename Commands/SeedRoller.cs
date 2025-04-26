@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using DSharpPlus.Commands.ArgumentModifiers;
+using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
 using tellahs_library.DTOs;
 using tellahs_library.Enums;
 using tellahs_library.Helpers;
@@ -57,23 +58,24 @@ public class SeedRoller(FeGenerationHttpClient client)
 
     [Command("preset")]
     [Description("rolls a seed from a predefined preset")]
-    public async Task RollPresetAsync(CommandContext ctx,
-        [Parameter("preset_choice")]
-        [Description("")]
-        PresetChoices preset,
+    public async Task RollPresetAsync(SlashCommandContext ctx,
+        [Parameter("choice")]
+        [Description("The preset to use for rolling a seed")]
+        [SlashAutoCompleteProvider<PresetsChoiceProvider>]
+        string choice,
         [Description("seed value to use for rolling. if used, use 5 or more characters")]
         [MinMaxLength(0, 10)]
         string? seed = null
         )
     {
-        await ctx.DeferResponseAsync();
-        await ctx.EditResponseAsync("command not finished");
+
+        await ctx.RespondAsync($"{choice} selected");
         return;
 
-        if (seed is not null && seed.Length < 5)
-        {
-            seed = null;
-        }
+        // if (seed is not null && seed.Length < 5)
+        // {
+        //     seed = null;
+        // }
 
         //TODO: get flags and site based on preset choice, then follow same path as above
 
