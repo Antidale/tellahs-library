@@ -189,5 +189,14 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             await ctx.RespondAsync(ForkHelper.GetForkInformation());
             await ctx.LogUsageAsync();
         }
+
+        [Command("learningway")]
+        [Description("information and links about the Learningway project")]
+        [AllowDMUsage]
+        public async Task RecallLearningwayAsync(CommandContext ctx)
+        {
+            await ctx.RespondAsync(LearningwayHelper.GetInfo());
+            await ctx.LogUsageAsync();
+        }
     }
 }
