@@ -2,17 +2,28 @@ using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
 
 namespace tellahs_library.Enums;
 
-public enum PresetChoices
+public enum FePresetChoices
 {
+    [ChoiceDisplayName("Adamant Cup Group")]
+    AdamantCupGroup,
+    [ChoiceDisplayName("Adamant Cup Bracket")]
+    AdamantCupBracket,
+    [ChoiceDisplayName("Supermarket Sweep")]
     SupermarketSweep,
+    [ChoiceDisplayName("Doorway to Tomorrow")]
     D2T,
-    Omnidexterous_Memers_Guild,
+    [ChoiceDisplayName("Omnidexterous Memers Guild (OMG)")]
+    OmnidexterousMemersGuild,
+    [ChoiceDisplayName("ZZ4")]
+    ZZ4,
+    [ChoiceDisplayName("ZZ6")]
     ZZ6,
-    ZZ5_BlueMoon,
-    AdamantCup_Group,
-    AdamantCup_Bracket,
-    EEL_PotionParty,
-    EEL_MoonveilMixer,
-
-
+    [ChoiceDisplayName("Blue Moon (ZZ5)")]
+    ZZ5BlueMoon,
+    [ChoiceDisplayName("EEL - Potion Party")]
+    EELPotionParty,
+    [ChoiceDisplayName("EEL - Moonveil Mixer")]
+    EELMoonveilMixer,
+    [ChoiceDisplayName("Pro-B-Otics")]
+    ProBotics
 }
