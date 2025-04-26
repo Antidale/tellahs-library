@@ -27,12 +27,13 @@ public class SeedRoller(FeGenerationHttpClient client)
         string? seed = null
     )
     {
+        await ctx.DeferResponseAsync();
+
         if (seed is not null && seed.Length < 5)
         {
             seed = null;
         }
 
-        await ctx.DeferResponseAsync();
 
         var generateRequest = new GenerateRequest
         {
@@ -54,16 +55,28 @@ public class SeedRoller(FeGenerationHttpClient client)
 
     }
 
-    // [Command("preset")]
-    // [Description("rolls a seed from a predefined preset")]
-    // public async Task RollPresetAsync(CommandContext ctx,
-    //     [Parameter("preset_choice")]
-    //     [Description("")]
-    //     string flags)
-    // {
-    //     await ctx.DeferResponseAsync();
+    [Command("preset")]
+    [Description("rolls a seed from a predefined preset")]
+    public async Task RollPresetAsync(CommandContext ctx,
+        [Parameter("preset_choice")]
+        [Description("")]
+        PresetChoices preset,
+        [Description("seed value to use for rolling. if used, use 5 or more characters")]
+        [MinMaxLength(0, 10)]
+        string? seed = null
+        )
+    {
+        await ctx.DeferResponseAsync();
+        await ctx.EditResponseAsync("command not finished");
+        return;
 
-    //     await ctx.EditResponseAsync("rolling seed");
-    // }
+        if (seed is not null && seed.Length < 5)
+        {
+            seed = null;
+        }
+
+        //TODO: get flags and site based on preset choice, then follow same path as above
+
+    }
 
 }
