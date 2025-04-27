@@ -29,7 +29,10 @@ public partial class SeedResponse : FeApiResponse
         return new DiscordEmbedBuilder()
             .WithTitle("Requested Seed")
             .WithUrl(Url)
-            .WithDescription(Flags)
+            .WithDescription(
+@$"```
+{Flags}
+```")
             .WithColor(GetDiscordColor())
             .AddField("URL", Url)
             .AddField("Hash", Verification, inline: true)
@@ -54,11 +57,16 @@ public partial class SeedResponse : FeApiResponse
             ? Flags
             : BinaryFlags;
         return $@"The seed above has a flag mismatch between the requested and rolled flags
-### Requested Flags
-{desiredFlags}
 
-### Returned Flags
+**Requested Flags**
+```
+{desiredFlags}
+```
+
+**Returned Flags**
+```
 {comparisonFlags}
+```
 ";
     }
 
