@@ -7,12 +7,15 @@ Made to help supplement the information in [the wiki](https://wiki.ff4fe.com/dok
 * `/recall racing` Provides information and links for common racing questions. It is available globally, as well as in DMs.
 * `/recall search` Search a growing database for links to articles, images, and videos related to Free Enterprise. Available globally as well as in DMs.
 * `/recall flag_interactions` Provides some extra information about a few tricky/subtle flag interactions. Available globally as well as in DMs.
-* `recall resistance` Provides information about weakness/resistance math in FFIV. Has optional parameter to focused information about monster Traits.
-* `recall pitfalls` Provides information about some common pitfalls newer runners fall into.
-* `recall item` Provides information about important consumable items. Info includes flag availability, guarantees, inclusion in starter kits.
-* `recall key-item-placement` Provides information for how Kmain, Kmoon, Ksummon, and Kmiab change the size of the KI pool, and how potential key item locations are chosen when non-main checks are enabled.
-* `recall forks` Provides a link to all public for repositories. Also provides site links and announcement posts for any forks that have had an announcement post in #code-central on the FE Workshop discord.
+* `/recall resistance` Provides information about weakness/resistance math in FFIV. Has optional parameter to focused information about monster Traits.
+* `/recall pitfalls` Provides information about some common pitfalls newer runners fall into.
+* `/recall item` Provides information about important consumable items. Info includes flag availability, guarantees, inclusion in starter kits.
+* `/recall key-item-placement` Provides information for how Kmain, Kmoon, Ksummon, and Kmiab change the size of the KI pool, and how potential key item locations are chosen when non-main checks are enabled.
+* `/recall forks` Provides a link to all public for repositories. Also provides site links and announcement posts for any forks that have had an announcement post in #code-central on the FE Workshop discord.
+* `/recall learningway` Provides some summary information and links for Learningway, a series of seeds and videos to help people learn Free Enterprise
 * `/SelectPB2JFlagset` selects one of three possible choices for a Push B To Jump flagset. Used by the [Hap B Leap Year](https://docs.google.com/document/d/1uXWiiT6guhWD7DHNrujqH-UUVJVA_jEWY775w25l4qk) side tournament primarily.
+* `/roll flags` Allows rolling seeds at the main site [ff4e.com](https://ff4fe.com/) or at [galeswift's](https://ff4fe.galeswift.com) hosted fork. You must select which site to use as the generator, and enter the flag string you want rolled. You may optionally include a seed value, or make the interaction ephemeral.
+* `/roll preset` Allows rolling a selection of presets. There is no option for which site a preset generates at, since flagsets are generally either made for the main site, or have specific fork flags they want to use. You may optionally include a seed value, or make the interaction ephemeral.
 
 ## Tournament commands
 These commands are available for servers that have opted-in to having them on their server. Contact me in the bot's discord if you'd like to have them enabled.
