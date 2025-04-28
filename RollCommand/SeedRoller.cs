@@ -60,7 +60,6 @@ public class SeedRoller(FeGenerationHttpClient client)
         bool justMe = false
         )
     {
-
         await ctx.DeferResponseAsync(ephemeral: justMe);
 
         var presetDetails = PresetHelper.GetPresetDetails(choice);
@@ -87,5 +86,4 @@ public class SeedRoller(FeGenerationHttpClient client)
             await ctx.LogUsageAsync();
         }
     }
-
 }
