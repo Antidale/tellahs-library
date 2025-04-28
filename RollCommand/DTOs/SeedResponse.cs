@@ -13,9 +13,9 @@ public partial class SeedResponse : FeApiResponse
 
     public string BinaryFlags => UrlFlagsRegex().Matches(Url).FirstOrDefault()?.Captures.FirstOrDefault()?.Value ?? "";
 
-    public List<DiscordEmbed> ToEmbedList(string flags)
+    public List<DiscordEmbed> ToEmbedList(string flags, string? seed)
     {
-        var embedList = new List<DiscordEmbed>() { ToEmbed() };
+        var embedList = new List<DiscordEmbed>() { ToEmbed(seed) };
         var verificationEmbed = ToFlagsVerificationEmbed(flags);
         if (verificationEmbed is not null)
         {
@@ -24,9 +24,9 @@ public partial class SeedResponse : FeApiResponse
         return embedList;
     }
 
-    private DiscordEmbed ToEmbed()
+    private DiscordEmbed ToEmbed(string? seed)
     {
-        return new DiscordEmbedBuilder()
+        var builder = new DiscordEmbedBuilder()
             .WithTitle("Requested Seed")
             .WithUrl(Url)
             .WithDescription(
@@ -35,9 +35,18 @@ public partial class SeedResponse : FeApiResponse
 ```")
             .WithColor(GetDiscordColor())
             .AddField("URL", Url)
-            .AddField("Hash", Verification, inline: true)
-            .AddField("Seed", Seed, inline: true)
-            .Build();
+            .AddField("Hash", Verification, inline: true);
+
+        if (seed is not null)
+        {
+            builder.AddField("Provided Seed", seed, inline: true);
+        }
+        else
+        {
+            builder.AddField("Seed", Seed, inline: true);
+        }
+
+        return builder.Build();
     }
 
     private DiscordEmbed? ToFlagsVerificationEmbed(string flags)

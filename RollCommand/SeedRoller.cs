@@ -49,21 +49,19 @@ public class SeedRoller(FeGenerationHttpClient client)
     [Command("preset")]
     [Description("rolls a seed from a predefined preset")]
     public async Task RollPresetAsync(SlashCommandContext ctx,
-        [Parameter("choice")]
+        [Parameter("desired_preset")]
         [Description("The preset to use for rolling a seed")]
         FePresetChoices choice,
         [Description("seed value to use for rolling. if used, use 5 or more characters")]
-        [MinMaxLength(0, 10)]
-        string? seed = null
+        [MinMaxLength(5, 10)]
+        string? seed = null,
+        [Description("For your eyes only")]
+        [Parameter("just_me")]
+        bool justMe = false
         )
     {
 
-        await ctx.DeferResponseAsync();
-
-        if (seed is not null && seed.Length < 5)
-        {
-            seed = null;
-        }
+        await ctx.DeferResponseAsync(ephemeral: justMe);
 
         var presetDetails = PresetHelper.GetPresetDetails(choice);
         var generateRequest = new GenerateRequest
@@ -85,7 +83,7 @@ public class SeedRoller(FeGenerationHttpClient client)
         }
         else
         {
-            await ctx.EditResponseAsync(response.ToEmbedList(generateRequest.flags));
+            await ctx.EditResponseAsync(response.ToEmbedList(generateRequest.flags, generateRequest.seed));
             await ctx.LogUsageAsync();
         }
     }
