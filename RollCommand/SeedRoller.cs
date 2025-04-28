@@ -1,5 +1,7 @@
 using System.ComponentModel;
+using System.Reflection.Metadata;
 using DSharpPlus.Commands.ArgumentModifiers;
+using DSharpPlus.Commands.Trees.Metadata;
 using tellahs_library.DTOs;
 using tellahs_library.RollCommand.Enums;
 using tellahs_library.RollCommand.Helpers;
@@ -8,6 +10,7 @@ namespace tellahs_library.RollCommand;
 
 [Command("roll")]
 [Description("A set of commands for rolling seeds")]
+[AllowDMUsage]
 public class SeedRoller(FeGenerationHttpClient client)
 {
     [Command("flags")]
@@ -33,7 +36,6 @@ public class SeedRoller(FeGenerationHttpClient client)
         {
             seed = null;
         }
-
 
         var generateRequest = new GenerateRequest
         {
