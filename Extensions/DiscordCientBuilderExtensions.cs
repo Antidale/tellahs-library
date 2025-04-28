@@ -20,12 +20,12 @@ public static class DiscordConfiguration
             commands.AddProcessor(new SlashCommandProcessor());
             commands.AddCommands<FlagsetChooser>();
             commands.AddCommands<Recall>();
+            commands.AddCommands<SeedRoller>();
 
 #if DEBUG
             commands.AddCommands<Tournament>(GuildIds.AntiServer);
             commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer);
             commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer);
-            commands.AddCommands<SeedRoller>(GuildIds.AntiServer);
 #else
             commands.AddCommands<Tournament>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
             commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
