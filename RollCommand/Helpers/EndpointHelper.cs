@@ -21,7 +21,9 @@ public static class EndpointHelper
     //but that is a TODO for a future me.
     private static string GetApiUrl(FeHostedApi api) => api switch
     {
+#if DEBUG
         FeHostedApi.Local => "http://127.0.0.1:8080/api/",
+#endif
         FeHostedApi.Main => "http://ff4fe.com/api/",
         FeHostedApi.Galeswift => "https://ff4fe.galeswift.com/api/",
         _ => ""
