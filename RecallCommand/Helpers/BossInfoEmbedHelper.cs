@@ -704,6 +704,8 @@ Wyvern begins the fight with MegaNuke, takes two consecutive empty turns, then c
 Wyvern’s opening MegaNuke often requires agility setups that let you get Wall status up right away. Slowing down the battle speed can allow you the time to input the commands to get Wall going; very practiced runners can substitute Battle Speed adjustments with run buffering. Early in the game you can still often outspeed the MegaNuke with fast characters anchoring the battle, but later on you’ll generally want a slow anchor and fast first actors in order to have a solid setup.
 
 Once you’ve managed to survive the opening salvo, get people back up and let the damage fly. Dragon-killing weapons are greatly desired here to speed up the fight and reduce resource usage. After that first salvo, and assuming you don’t use Call to target Wyvern, Wyvern will only kill one person a turn, so there’s a good opportunity that you can use Life potions or spells to keep on even-ish footing.
+
+If you can't get Wyvern down before the Wall comes out, or fear that you won't, have Black Mages use Quake once Wyvern's self-Wall is about to hit. It can be very important to remember this on `whyburn` and in very high HP spots.
 ### Additional Notes
 Rydia’s Call abilities will cause Wyvern to Counter with MegaNuke (at a reduced spell power from the opening MegaNuke). Sylph is a great fast-casting Call to help reflect more MegaNuke damage back at Wyvern.
 
