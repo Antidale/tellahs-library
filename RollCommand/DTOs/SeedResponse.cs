@@ -87,7 +87,7 @@ public partial class SeedResponse : FeApiResponse
         }
         else
         {
-            var matches = UrlFlagsRegex().Match(flags);
+            var matches = UrlFlagsRegex().Match(Url);
             if (matches.Success)
             {
                 var binaryFlags = matches.Groups[1].Captures.FirstOrDefault()?.Value ?? "";
