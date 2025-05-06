@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace tellahs_library.Helpers;
+namespace tellahs_library.HalpCommand;
 
 [Command("halp")]
 public class Halp
