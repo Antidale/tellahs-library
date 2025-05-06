@@ -17,8 +17,6 @@ public static class EndpointHelper
     private static string FormatKeyParam(string apiKey) => $"?key={apiKey}";
     private static string FormatIdParam(string id) => $"id={id}";
 
-    //TODO: I don't know why having a Description attribute and a .GetDescription call was blowing up so badly
-    //but that is a TODO for a future me.
     private static string GetApiUrl(FeHostedApi api) => api switch
     {
 #if DEBUG
