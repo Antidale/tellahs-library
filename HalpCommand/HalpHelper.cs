@@ -1,4 +1,3 @@
-
 namespace tellahs_library.HalpCommand;
 
 public static class HalpHelper
@@ -21,6 +20,30 @@ If you're in a more restricted situation (think `Chero`, or `-vanilla:agility` w
 And sometimes you just need to slow that battle speed down a notch or five, but without being anchored to give yourself a chance, the slowest battle speed won't help if Wyvern MegaNukes you before any turn could ever pop up.
 
 To further your understanding of agility, and get into some of the details left out of thise, start on the [relative agility](<https://wiki.ff4fe.com/doku.php?id=relative_agility>) page in the wiki. To help clarify your anchor situation, use the `/recall flag_interactions` command and select the `Agility_vs_Hero` option.
+";
+    }
+
+    public static string GetDkcHalp()
+    {
+        /*
+        agility setup
+battle speed
+targeted healing
+Gotta Survive, everyone living is a bonus
+    (permadeath notes?)
+        */
+        return
+@"On seeds without any of `Bunsafe`, `Cpermadeath`, or `Cpermadeader` enabled, your goal for a rough DKC fight (Levi spot, at K/Q on a Hook route) is to just get one person to survive the incoming damage. 
+
+You'll want to
+* slow down the battle speed
+* slow your anchor down
+* speed up the rest of the party (but don't equip an Avenger!)
+* order the party so that you can toss Cures in a way that ensures at least one person survives. 
+
+Sometimes creative party order can make sure you either have time to keep two people alive, get a life potion before DKC begins the speech, or both.
+
+Reference the [Pain Main](<https://docs.google.com/spreadsheets/d/1w938cMyuKb_-MBAUNQG8L1ynIRGBntskT4I4mkuTgF4/edit?gid=0#gid=0>) spreadsheet to know what damage ranges you're looking to survive. For more detail about agility anchoring in this kind of fight, use the `/halp agility` command.
 ";
     }
 }
