@@ -1,5 +1,6 @@
 using DSharpPlus;
 using tellahs_library.Constants;
+using tellahs_library.EventHandlers;
 using tellahs_library.RecallCommand;
 using tellahs_library.RollCommand;
 using tellahs_library.TournamentCommands;
@@ -15,12 +16,14 @@ public static class DiscordConfiguration
             RegisterDefaultCommandProcessors = false
         };
 
-        builder.UseCommands((ServiceProvider, commands) =>
+        var stuff = builder.UseCommands((ServiceProvider, commands) =>
         {
             commands.AddProcessor(new SlashCommandProcessor());
             commands.AddCommands<FlagsetChooser>();
             commands.AddCommands<Recall>();
             commands.AddCommands<SeedRoller>();
+
+            commands.CommandExecuted += CommandsEventHanlders.OnCommandInvokedAsync;
 
 #if DEBUG
             commands.AddCommands<Tournament>(GuildIds.AntiServer);

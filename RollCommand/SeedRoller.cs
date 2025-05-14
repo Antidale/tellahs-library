@@ -83,7 +83,6 @@ public class SeedRoller(FeGenerationHttpClient client)
         else
         {
             await ctx.EditResponseAsync(response.ToEmbedList(generateRequest.flags, generateRequest.seed));
-            await ctx.LogUsageAsync();
         }
     }
 }
