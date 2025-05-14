@@ -32,7 +32,6 @@ namespace tellahs_library.RecallCommand
             var embed = GetBossInfoEmbed(bossEnum);
 
             await ctx.EditResponseAsync(embed);
-            await ctx.LogUsageAsync();
         }
 
         [Command("flag_interaction")]
@@ -48,7 +47,6 @@ namespace tellahs_library.RecallCommand
             var response = GetFlagInteractionAsync(choice);
 
             await ctx.EditResponseAsync(response);
-            await ctx.LogUsageAsync();
         }
 
         [Command("item")]
@@ -66,7 +64,6 @@ namespace tellahs_library.RecallCommand
             var embed = GetItemNotes(selectedItem);
 
             await ctx.EditResponseAsync(embed);
-            await ctx.LogUsageAsync();
         }
 
         [Command("racing")]
@@ -129,7 +126,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
                 await ctx.LogErrorAsync("Sorry, something MegaNuked the library", ex.Message, ex);
             }
 
-            await ctx.LogUsageAsync();
         }
 
         [Command("pitfalls")]
@@ -138,7 +134,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         public static async Task PitfallsAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(PitfallHelper.GetPitfallsText());
-            await ctx.LogUsageAsync();
         }
 
         [Command("resistance")]
@@ -148,7 +143,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         ResistanceChoices resistanceChoice = ResistanceChoices.Overview)
         {
             await ctx.RespondAsync(ResistanceHelper.GetResistanceInfo(resistanceChoice));
-            await ctx.LogUsageAsync();
         }
 
         private static async Task<bool> GuardHttpClientAsync(HttpClient? httpClient, CommandContext ctx)
@@ -169,7 +163,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         public static async Task SuggestedFlagsetsAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(FlagsetHelper.GetSuggestedFlagsets());
-            await ctx.LogUsageAsync();
         }
 
         [Command("key-item-placement")]
@@ -178,7 +171,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         public async Task KeyItemPlacementAcync(CommandContext ctx)
         {
             await ctx.RespondAsync(KeyItemPlacementHelper.GetKeyItemPlacementDescrition());
-            await ctx.LogUsageAsync();
         }
 
         [Command("forks")]
@@ -187,7 +179,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         public async Task RecallForksAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(ForkHelper.GetForkInformation());
-            await ctx.LogUsageAsync();
         }
 
         [Command("learningway")]
@@ -196,7 +187,6 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
         public async Task RecallLearningwayAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(LearningwayHelper.GetInfo());
-            await ctx.LogUsageAsync();
         }
 
         [Command("afc-breakdown")]
