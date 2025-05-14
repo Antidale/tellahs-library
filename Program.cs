@@ -14,7 +14,8 @@ var discordClient = DiscordClientBuilder
                 .ConfigureServices(a => a
                     .AddLogging(log => log.AddConsole())
                     .AddSingleton(service => new FeInfoHttpClient())
-                    .AddSingleton(service => new FeGenerationHttpClient()))
+                    .AddSingleton(service => new FeGenerationHttpClient())
+                    .AddSingleton(service => new RacetimeHttpClient()))
                 .AddCommands()
                 .Build();
 
