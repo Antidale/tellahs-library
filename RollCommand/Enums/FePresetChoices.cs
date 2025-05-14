@@ -4,6 +4,12 @@ namespace tellahs_library.RollCommand.Enums;
 
 public enum FePresetChoices
 {
+    [ChoiceDisplayName("Adamant Cup Experience")]
+    ACE,
+    [ChoiceDisplayName("Firebomb Fiesta")]
+    FBF,
+    [ChoiceDisplayName("Zemus Zone: Anthology")]
+    ZZA,
     [ChoiceDisplayName("Adamant Cup Group")]
     AdamantCupGroup,
     [ChoiceDisplayName("Adamant Cup Bracket")]

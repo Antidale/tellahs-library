@@ -9,7 +9,7 @@ namespace tellahs_library.RollCommand.Helpers;
 
 public static class SeedRollerHelper
 {
-    private const int MAX_TRIES = 20;
+    private const int MAX_TRIES = 100;
     private const int STANDARD_DELAY = 2;
     public static async Task<SeedResponse> RollSeedAsync(HttpClient client, GenerateRequest generateRequest, FeHostedApi api)
     {
@@ -58,7 +58,7 @@ public static class SeedRollerHelper
 
         while (!stopProcessingStatuses.Contains(progressResponse.Status) && tries < MAX_TRIES)
         {
-            await Task.Delay(TimeSpan.FromSeconds(STANDARD_DELAY).Add(TimeSpan.FromMilliseconds(tries * 100)));
+            await Task.Delay(TimeSpan.FromSeconds(STANDARD_DELAY).Add(TimeSpan.FromMilliseconds(tries * 10)));
             var taskResponse = await client.GetAsync(TaskUrl(api, apiKey, taskId));
 
             if (!taskResponse.IsSuccessStatusCode)
