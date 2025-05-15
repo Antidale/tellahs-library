@@ -134,7 +134,7 @@ Warp Glitch! No Cursed ring or Adamants. Bonus XP for KI Checks. Spoon is on and
             ["Kpink"] = "Pink Tail is a Kmain check.",
             ["Knofree:package"] = "The Package takes the place of D.Mist for letting Rydia's Mom give you a KI.",
             ["Salways:damage_items"] = "Damage items are guaranteed to be in shops.",
-            ["Bwhoadin"] = "consumable items adjusted to double their normal value. weapons/armor are not changed.",
+            ["Bwhoadin"] = "Replaces the first two Zanteksuken (Odin) attacks with a random attack. The replacement attack will be single-target (and generally weaker than e.g. Nuke, unless Bunsafe is enabled). Odin will not raise the sword before the random attack.",
             ["Bwhichbez"] = "Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.",
             ["Enogp"] = "No GP for random encounters.",
             ["-exp:kicheckbonus2"] = "Each completed KI check gives 2% extra EXP.",
@@ -245,7 +245,7 @@ To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=for
  * **Sno:vampires,damage_items** - Vampires and Damage Items are removed from shops.
 ### Bosses
  * **Bwhichbez** - Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.
- * **Bwhoadin** - Consumable items adjusted to double their normal value. Weapon and Armor values are unchanged.
+ * **Bwhoadin** - Replaces the first two Zanteksuken (Odin) attacks with a random attack. The replacement attack will be single-target (and generally weaker than e.g. Nuke, unless Bunsafe is enabled). Odin will not raise the sword before the random attack.
  * **Brestrict:giant,package** - Allows the ability to force boss hunt objectives (and D.Mist, if Knofree is enabled) to not be in listed locations.
 ### Fu related
  * **-fusoya:sequential_r** - Instead of learning spells randomly, FuSoYa will learn spells in order based on the levels at which Rydia and Rosa learn their spells. He will not learn spells learned outside of level-ups (Fire1, Fire2/Ice2/Lit2, Exit).
