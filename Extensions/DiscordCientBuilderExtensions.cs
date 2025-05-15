@@ -16,7 +16,7 @@ public static class DiscordConfiguration
             RegisterDefaultCommandProcessors = false
         };
 
-        var stuff = builder.UseCommands((ServiceProvider, commands) =>
+        builder.UseCommands((ServiceProvider, commands) =>
         {
             commands.AddProcessor(new SlashCommandProcessor());
             commands.AddCommands<FlagsetChooser>();
