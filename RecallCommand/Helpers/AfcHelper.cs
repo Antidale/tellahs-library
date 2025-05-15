@@ -75,7 +75,7 @@ You get more XP per objectives you complete. Edward's Heal ability isn't totally
             ["Bwhichbez"] = "Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.",
             ["-fusoya:sequential_r"] = "Instead of learning spells randomly, FuSoYa will learn spells in order based on the levels at which Rydia and Rosa learn their spells. He will not learn spells learned outside of level-ups (Fire1, Fire2/Ice2/Lit2, Exit).",
             ["-exp:objectivebonus25"] = "Each completed objective gives 25% extra EXP.",
-            ["-tweak:edwardheal"] = "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 available."
+            ["-tweak:edwardheal"] = "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 consumables in your inventory."
         };
         #endregion
 
@@ -138,7 +138,7 @@ Warp Glitch! No Cursed ring or Adamants. Bonus XP for KI Checks. Spoon is on and
             ["Bwhichbez"] = "Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.",
             ["Enogp"] = "No GP for random encounters.",
             ["-exp:kicheckbonus2"] = "Each completed KI check gives 2% extra EXP.",
-            ["-tweak:edwardheal"] = "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 available."
+            ["-tweak:edwardheal"] = "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 consumables in your inventory."
         };
         #endregion
     }
@@ -206,7 +206,7 @@ Adamants are OFF. Fu might not learn everything! Edward's Heal isn't totally tra
             ["Bwhichbez"] = "Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.",
             ["-fusoya:maybe"] = "Normally, FuSoYa will eventually learn all possible spells. This flag removes that guarantee; each possible spell will be included independently with an 85% chance. ",
             ["-exp:maxlevelbonus"] = "Normally, level does not play into EXP calculations. Under this flag, if 5 plus twice the largest level in your party is less than the smallest monster level in the encounter, then the encounter awards 20% bonus EXP (and another 20% for each additional deficit of 5). ",
-            ["-tweak:edwardheal"] = "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 available."
+            ["-tweak:edwardheal"] = "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 consumables in your inventory."
         };
         #endregion
 
@@ -228,24 +228,24 @@ To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=for
  * **Knofree:dwarf** -BedCid has a key item, not Bedward.
  * **Knofree:package** -The Package takes the place of D.Mist for letting Rydia's Mom give you a KI
  * **Kpink** -The reward for trading away the Pink Tail is a key item.
- * **Kmiab:above** -Overworld MIABs, Hairdryers, and Last Arm can have Key Items. Underground access still locked to Overworld checks only.
+ * **Kmiab:above** - Overworld MIABs, Hairdryers, and Last Arm can have Key Items. Underground access still locked to Overworld checks only.
  * **Kunweighted** -removes the normal key item placement weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)
  * **Kstart:spoon** -The starting Key Item is a Spoon!
 ### Characters
  * **Cpaladin** - Cecil will start as a Paladin; Ordeals is still good for Tellah and a KI check.
  * **Ctreasure:free,unsafe** - Characters normally found in free locations will now be in any normal treasure chest (no MIABs and no chests possibly having a KI).
- * **Cthrift:3** - Characters start with a full set of gear: weapon(s), possibly a shield, and head/body/arms, all from at most the tier specified. (Duplicate characters will have the same starting gear. Cursed Rings are excluded.) Must select a tier between two and five to limit the gear to at most that tier.
+ * **Cthrift:3** - Characters start with a full set of gear: weapon(s), possibly a shield, and head/body/arms, all from at most the tier specified. Gear will be at most tier 3. Duplicate characters will have the same starting gear.
 ### Treasures
  * **Tsemipro** - Uses location-based weighting, with item quality between that provided by pro and wildish.
  * **Tplayable** - Equipment in chests (including MIABs) will be usable by at least one character that you can acquire in the seed.
 ### Shops
- * **Sprice:200/pricey:items** - consumable items adjusted to double their normal value. weapons/armor are not changed.
+ * **Sprice:200/pricey:items** - Consumable items adjusted to double their normal value. weapons/armor are not changed.
  * **Salways:damage_items** - Damage items are guaranteed to be in shops
  * **Swildish** - A basic randomization, allowing slightly stronger items than the standard randomization to place in shops.
  * **Sno:vampires,damage_items** - Vampires and Damage Items are removed from shops.
 ### Bosses
  * **Bwhichbez** - Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.
- * **Bwhoadin** - consumable items adjusted to double their normal value. weapons/armor are not changed.
+ * **Bwhoadin** - Consumable items adjusted to double their normal value. Weapon and Armor values are unchanged.
  * **Brestrict:giant,package** - Allows the ability to force boss hunt objectives (and D.Mist, if Knofree is enabled) to not be in listed locations.
 ### Fu related
  * **-fusoya:sequential_r** - Instead of learning spells randomly, FuSoYa will learn spells in order based on the levels at which Rydia and Rosa learn their spells. He will not learn spells learned outside of level-ups (Fire1, Fire2/Ice2/Lit2, Exit).
@@ -256,7 +256,7 @@ To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=for
  * **-exp:kicheckbonus2** - Each completed KI check gives 2% extra EXP.
  * **-exp:maxlevelbonus** - Normally, level does not play into EXP calculations. Under this flag, if 5 plus twice the largest level in your party is less than the smallest monster level in the encounter, then the encounter awards 20% bonus EXP (and another 20% for each additional deficit of 5).
 ### Misc
- * **-tweak:edwardheal** - Edward's Heal command will now use the best of Cure3/Cure2/Cure1 available")
+ * **-tweak:edwardheal** - Edward's Heal command will now use the best of Cure3/Cure2/Cure1 consumables in your inventory.")
         .AddField("Signups Close", $"{Formatter.Timestamp(DateTime.Parse("2025-06-07T06:59:00Z"), TimestampFormat.ShortDateTime)}")
            .AddField("Registration Form", "[AFC Registration](<https://docs.google.com/forms/d/e/1FAIpQLSe1tPCmPsLZbDRvCCjZFfDHei20cMcoL4gw_Z8duechwpbaRA/viewform>)")
            .Build();
