@@ -29,9 +29,12 @@ public static class AfcHelper
         ? baseDescription()
         : baseDescription() + summary());
 
-        foreach (var flagField in flagFields())
+        if (detailOptions != AfcDetailOptions.Summary)
         {
-            builder.AddField(flagField.Key, flagField.Value);
+            foreach (var flagField in flagFields())
+            {
+                builder.AddField(flagField.Key, flagField.Value);
+            }
         }
 
         return builder.AddField("Signups Close", $"{Formatter.Timestamp(DateTime.Parse("2025-06-07T06:59:00Z"), TimestampFormat.ShortDateTime)}")
@@ -59,7 +62,7 @@ Twildish for looting goodness. Shops are standard, but consumables are more expe
 
 The Golbez fight gets some randomization.  
 
-You get more XP per objective you finish. Edward's Heal ability isn't totally awful. Adamants are on, Smith is Alt.";
+You get more XP per objectives you complete. Edward's Heal ability isn't totally awful. Adamants are on, Smith is Alt.";
 
         Dictionary<string, string> flagFields() => new()
         {
