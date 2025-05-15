@@ -71,7 +71,7 @@ You get more XP per objectives you complete. Edward's Heal ability isn't totally
             ["Kunweighted"] = "removes the normal key item placement weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)",
             ["Cpaladin"] = "Cecil will start as a Paladin; Ordeals still good for Tellah and a KI check.",
             ["Ctreasure:free,unsafe"] = "Characters normally found in free locations will now be in any normal treasure chest (no MIABs and no chests possibly having a KI).",
-            ["Sprice:200/pricey:items"] = "consumable items adjusted to double their normal value. weapons/armor are not changed.",
+            ["Sprice:200/pricey:items"] = "Consumable items adjusted to double their normal value. weapons/armor are not changed.",
             ["Bwhichbez"] = "Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.",
             ["-fusoya:sequential_r"] = "Instead of learning spells randomly, FuSoYa will learn spells in order based on the levels at which Rydia and Rosa learn their spells. He will not learn spells learned outside of level-ups (Fire1, Fire2/Ice2/Lit2, Exit).",
             ["-exp:objectivebonus25"] = "Each completed objective gives 25% extra EXP.",
@@ -131,9 +131,9 @@ Warp Glitch! No Cursed ring or Adamants. Bonus XP for KI Checks. Spoon is on and
         Dictionary<string, string> flagFields() => new()
         {
             ["Kmiab:above"] = "Overworld MIABs, Hairdryers, and Last Arm can have Key Items. Underground access is still locked to Overworld checks only.",
-            ["Kpink"] = "Pink Tail is a Kmain check",
-            ["Knofree:package"] = "The Package takes the place of D.Mist for letting Rydia's Mom give you a KI",
-            ["Salways:damage_items"] = "Damage items are guaranteed to be in shops",
+            ["Kpink"] = "Pink Tail is a Kmain check.",
+            ["Knofree:package"] = "The Package takes the place of D.Mist for letting Rydia's Mom give you a KI.",
+            ["Salways:damage_items"] = "Damage items are guaranteed to be in shops.",
             ["Bwhoadin"] = "consumable items adjusted to double their normal value. weapons/armor are not changed.",
             ["Bwhichbez"] = "Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.",
             ["Enogp"] = "No GP for random encounters.",
@@ -204,8 +204,8 @@ Adamants are OFF. Fu might not learn everything! Edward's Heal isn't totally tra
             ["Sno:vampires,damage_items"] = "Vampires and Damage Items are removed from shops",
             ["Brestrict:giant,package"] = "Allows the ability to force boss hunt objectives (and D.Mist, if Knofree is enabled) to not be in listed locations.",
             ["Bwhichbez"] = "Golbez and Shadow get new spells! Shadow can sometimes use things that shouldn't be reflected, so maybe don't Reflect up.",
-            ["-fusoya:maybe"] = "Normally, FuSoYa will eventually learn all possible spells. This flag removes that guarantee; each possible spell will be included independently with an 85% chance. ",
-            ["-exp:maxlevelbonus"] = "Normally, level does not play into EXP calculations. Under this flag, if 5 plus twice the largest level in your party is less than the smallest monster level in the encounter, then the encounter awards 20% bonus EXP (and another 20% for each additional deficit of 5). ",
+            ["-fusoya:maybe"] = "Normally, FuSoYa will eventually learn all possible spells. This flag removes that guarantee; each possible spell will be included independently with an 85% chance.",
+            ["-exp:maxlevelbonus"] = "Normally, level does not play into EXP calculations. Under this flag, if 5 plus twice the largest level in your party is less than the smallest monster level in the encounter, then the encounter awards 20% bonus EXP (and another 20% for each additional deficit of 5).",
             ["-tweak:edwardheal"] = "Edward's Heal command will now use the best of Cure3/Cure2/Cure1 consumables in your inventory."
         };
         #endregion
