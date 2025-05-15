@@ -53,7 +53,7 @@ Get 12 Key Items, do two random quests and one random tough quest for the Crysta
 
 Key items are at pretty normal spots, but Cid in Dwarf Castle has the Bedward/D.Mist item. The Pass is in the KI Pool. All KI checks have a (roughly) equal chance of being Key Items.
 
-Cecil and Fu are restricted, and free characters are on, but are hiding on treasure. FuSoYa learns spells (by boss kills) in the order that Rydia and Rosa learn them (via leveling). Cecil starts as a Paladin, no changing required. You only get 4 characters.
+Cecil and Fu are restricted, and free characters are on, but are hiding on treasure. FuSoYa learns spells (by boss kills) in the order that Rydia and Rosa learn them (via leveling). Cecil starts as a Paladin, Ordeals not required. You only get 4 characters.
 
 Twildish for looting goodness. Shops are standard, but consumables are more expensive. 
 
@@ -65,7 +65,7 @@ You get more XP per objective you finish. Edward's Heal ability isn't totally aw
         {
             ["Omode:ki12"] = "Gather any 12 key items to satisfy this objective.",
             ["Knofree:dwarf"] = "BedCid has a key item, not Bedward.",
-            ["Kunweighted"] = "removes the normal key item placment weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)",
+            ["Kunweighted"] = "removes the normal key item placement weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)",
             ["Cpaladin"] = "Cecil will start as a Paladin; Ordeals still good for Tellah and a KI check.",
             ["Ctreasure:free,unsafe"] = "Characters normally found in free locations will now be in any normal treasure chest (no MIABs and no chests possibly having a KI).",
             ["Sprice:200/pricey:items"] = "consumable items adjusted to double their normal value. weapons/armor are not changed.",
@@ -127,7 +127,7 @@ Warp Glitch! No Cursed ring or Adamants. Bonus XP for KI Checks. Spoon is on and
 
         Dictionary<string, string> flagFields() => new()
         {
-            ["Kmiab:above"] = "Overworld MIABs, Hairdryers, and Last Arm can have Key Items. Underground access still locked to Overworld checks only.",
+            ["Kmiab:above"] = "Overworld MIABs, Hairdryers, and Last Arm can have Key Items. Underground access is still locked to Overworld checks only.",
             ["Kpink"] = "Pink Tail is a Kmain check",
             ["Knofree:package"] = "The Package takes the place of D.Mist for letting Rydia's Mom give you a KI",
             ["Salways:damage_items"] = "Damage items are guaranteed to be in shops",
@@ -192,7 +192,7 @@ Adamants are OFF. Fu might not learn everything! Edward's Heal isn't totally tra
         Dictionary<string, string> flagFields() => new()
         {
             ["Kpink"] = "The reward for trading away the Pink Tail is a key item.",
-            ["Kunweighted"] = "removes the normal key item placment weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)",
+            ["Kunweighted"] = "removes the normal key item placement weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)",
             ["Kstart:spoon"] = "The starting Key Item is a Spoon!",
             ["Cthrift:3"] = "Characters start with a full set of gear: weapon(s), possibly a shield, and head/body/arms, all from at most the tier specified. (Duplicate characters will have the same starting gear. Cursed Rings are excluded.) Must select a tier between two and five to limit the gear to at most that tier. ",
             ["Tsemipro"] = "Uses location-based weighting, with item quality between that provided by pro and wildish.",
@@ -215,7 +215,7 @@ Adamants are OFF. Fu might not learn everything! Edward's Heal isn't totally tra
                         .WithUrl("https://wiki.ff4fe.com/doku.php?id=forks")
                         .WithColor(DiscordColor.PhthaloGreen)
                         .WithDescription(
-@"The AFC is a team event for Free Enterprise and uses many flags introduced by the community in forks of the main game. To help people get a sense of all the changes here is a list of each flag that is in use among the three flagsets for the tournamnet, with a brief description.  
+@"The AFC is a team event for Free Enterprise and uses many flags introduced by the community in forks of the main game. To help people get a sense of all the changes, here is a list of each flag that is in use among the three flagsets for the tournament, with a brief description.
 
 To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=forks>
 
@@ -226,10 +226,10 @@ To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=for
  * **Knofree:package** -The Package takes the place of D.Mist for letting Rydia's Mom give you a KI
  * **Kpink** -The reward for trading away the Pink Tail is a key item.
  * **Kmiab:above** -Overworld MIABs, Hairdryers, and Last Arm can have Key Items. Underground access still locked to Overworld checks only.
- * **Kunweighted** -removes the normal key item placment weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)
+ * **Kunweighted** -removes the normal key item placement weighting. [KI distribution](<https://wiki.ff4fe.com/doku.php?id=key_item_randomization#key_item_distribution>)
  * **Kstart:spoon** -The starting Key Item is a Spoon!
 ### Characters
- * **Cpaladin** - Cecil will start as a Paladin; Ordeals still good for Tellah and a KI check.
+ * **Cpaladin** - Cecil will start as a Paladin; Ordeals is still good for Tellah and a KI check.
  * **Ctreasure:free,unsafe** - Characters normally found in free locations will now be in any normal treasure chest (no MIABs and no chests possibly having a KI).
  * **Cthrift:3** - Characters start with a full set of gear: weapon(s), possibly a shield, and head/body/arms, all from at most the tier specified. (Duplicate characters will have the same starting gear. Cursed Rings are excluded.) Must select a tier between two and five to limit the gear to at most that tier.
 ### Treasures
