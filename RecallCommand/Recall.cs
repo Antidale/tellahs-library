@@ -198,5 +198,19 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             await ctx.RespondAsync(LearningwayHelper.GetInfo());
             await ctx.LogUsageAsync();
         }
+
+        [Command("afc-breakdown")]
+        [Description("information about the AFC tournament flagsets")]
+        [AllowDMUsage]
+        public async Task RecallAfcFlagsetsAsync(
+            SlashCommandContext ctx,
+            [Parameter("info"), Description("what info you want")]
+            AfcInfoType infoType,
+            [Parameter("detail_level"), Description("The amount of detail you want")]
+            AfcDetailOptions detailLevel
+        )
+        {
+            await ctx.RespondAsync(AfcHelper.GetAfcEmbeds(infoType, detailLevel));
+        }
     }
 }
