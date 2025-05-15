@@ -1,4 +1,3 @@
-
 using DSharpPlus.Commands.EventArgs;
 
 namespace tellahs_library.EventHandlers
@@ -15,6 +14,4 @@ namespace tellahs_library.EventHandlers
             await eventArgs.Context.LogErrorAsync("Whoops. Not fully implemented yet", eventArgs.Exception);
         }
     }
-
-
 }
