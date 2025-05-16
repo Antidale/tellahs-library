@@ -1,5 +1,4 @@
-
-namespace tellahs_library;
+namespace tellahs_library.RacingCommands;
 
 public class RacetimeHttpClient : HttpClient
 {

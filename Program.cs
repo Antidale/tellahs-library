@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using tellahs_library;
 using tellahs_library.Helpers;
+using tellahs_library.RacingCommands;
 
 var token = SetupHelper.GetDiscordBotToken();
 
