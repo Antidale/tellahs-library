@@ -1,3 +1,7 @@
+using System.Net.Http.Json;
+using System.Text;
+using tellahs_library.RacingCommands.Requests;
+
 namespace tellahs_library.RacingCommands;
 
 public class RacetimeHttpClient : HttpClient
@@ -5,6 +9,7 @@ public class RacetimeHttpClient : HttpClient
     private readonly string ClientId = string.Empty;
     private readonly string ClientSecret = string.Empty;
     private string authToken = string.Empty;
+    private DateTime TokenExpiresAt = DateTime.UtcNow.AddMinutes(-10);
 
     public RacetimeHttpClient()
     {
@@ -18,21 +23,48 @@ public class RacetimeHttpClient : HttpClient
         baseAddress = new Uri("http://localhost:8000/o/");
 #endif
 
-        this.BaseAddress = baseAddress;
+        BaseAddress = baseAddress;
     }
 
-    public async Task StartAuthTimer()
+    private async Task AuthorizeAsync()
     {
+        DefaultRequestHeaders.Remove("Authorization");
+        var stuff = new StringContent($"client_id={ClientId}&client_secret={ClientSecret}&grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
 
+        var response = await this.PostAsync("token", stuff);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Failed authorization");
+            return;
+        }
+
+        var responseDto = await response.Content.ReadFromJsonAsync<AuthResponse>();
+        if (responseDto == null)
+        {
+            Console.WriteLine("We didn't get an auth token from the auth endpoint");
+            return;
+        }
+
+        TokenExpiresAt = DateTime.UtcNow.AddSeconds(responseDto.expires_in - 100);
+
+        authToken = responseDto.access_token;
+
+        DefaultRequestHeaders.Add("Authorization", $"Bearer {authToken}");
     }
 
-    private async Task Authorize()
+    public async Task<HttpResponseMessage?> CreateRaceAsync(CreateRace request)
     {
+        if (!DefaultRequestHeaders.Contains("Authorization") || TokenExpiresAt < DateTime.UtcNow)
+        {
+            await AuthorizeAsync();
+        }
 
+        var content = request.ToStringContent();
+
+        return await this.PostAsync("ff4fe/startrace", content);
     }
 
-    public async Task<bool> CreateRace()
-    {
-        return false;
-    }
+    record AuthResponse(string access_token, int expires_in, string token_type, string scope) { }
+
 }
