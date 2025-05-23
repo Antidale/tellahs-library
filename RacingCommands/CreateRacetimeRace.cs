@@ -1,7 +1,9 @@
 
 using System.ComponentModel;
+using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
 using tellahs_library.Constants;
 using tellahs_library.RacingCommands.Enums;
+using tellahs_library.RacingCommands.Helpers;
 
 namespace tellahs_library.RacingCommands;
 
@@ -17,7 +19,10 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         string description,
         [Parameter("flagset")]
         [Description("flagset")]
-        AfcFlagset flagset
+        AfcFlagset flagset,
+        [Parameter("ping-alert-role")]
+        [Description("include a ping to ping-to-race")]
+        bool includePing = true
     )
     {
         await ctx.DeferResponseAsync(ephemeral: true);
@@ -52,30 +57,25 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         if (response is null || !response.IsSuccessStatusCode)
         {
             await ctx.EditResponseAsync("Race creation failed. Try going directly to racetime: https://racetime.gg/ff4fe/startrace");
+            return;
         }
 
-        var locationHeader = response!.Headers.FirstOrDefault(x => x.Key == "Location");
-        var raceUrl = string.Join(string.Empty, urlBase, locationHeader.Value.First());
-
-        await ctx.EditResponseAsync($"Race created! {raceUrl}");
-
-        //Don't have the workshop's ping-to-race role ID to just hard code so we have to pull it from the context
-        var pingRole = ctx.Guild?.Roles.FirstOrDefault(x => x.Value.Name.Equals("ping-to-race", StringComparison.InvariantCultureIgnoreCase)).Value;
-
-        if (pingRole is null) { return; }
+        var raceUrl = GetRaceLocation(response, urlBase);
+        await ctx.EditResponseAsync($"Race Created: {raceUrl}");
 
         if (!ctx.Guild!.Channels.TryGetValue(alertsChannelId, out var alertsChannel))
         {
             return;
         }
 
-        var messageBuilder = new DiscordMessageBuilder()
-            .EnableV2Components()
-            .AddTextDisplayComponent(new DiscordTextDisplayComponent($"{pingRole.Mention} {description}"))
-            .AddSeparatorComponent(new DiscordSeparatorComponent(divider: true, spacing: DiscordSeparatorSpacing.Small))
-            .AddTextDisplayComponent(new DiscordTextDisplayComponent(raceUrl))
-            .WithAllowedMention(new RoleMention(pingRole));
+        var alertMessage = AlertMessageHelper.CreateAlertMessage(ctx, description, raceUrl, includePing);
 
-        await alertsChannel.SendMessageAsync(messageBuilder);
+        await alertsChannel.SendMessageAsync(alertMessage);
+    }
+
+    private static string GetRaceLocation(HttpResponseMessage response, string urlBase)
+    {
+        var locationHeader = response.Headers.FirstOrDefault(x => x.Key == "Location");
+        return string.Join(string.Empty, urlBase, locationHeader.Value.First());
     }
 }
