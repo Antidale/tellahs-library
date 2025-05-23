@@ -1,5 +1,6 @@
 
 using System.ComponentModel;
+using tellahs_library.Constants;
 using tellahs_library.RacingCommands.Enums;
 
 namespace tellahs_library.RacingCommands;
@@ -21,6 +22,21 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
     {
         await ctx.DeferResponseAsync(ephemeral: true);
 
+        var alertsChannelId = ChannelIds.WorkshopRaceAlertsId;
+        var restrictedGuildId = GuildIds.FreeenWorkshop;
+        var urlBase = "https://racetime.gg";
+#if DEBUG
+        alertsChannelId = ChannelIds.AntiServerRaceAlertsId;
+        restrictedGuildId = GuildIds.AntiServer;
+        urlBase = "http://localhost:8000";
+#endif
+
+        if (ctx.Guild?.Id != restrictedGuildId)
+        {
+            await ctx.EditResponseAsync("Invalid Guild");
+            return;
+        }
+
         var goal = flagset switch
         {
             AfcFlagset.Fbf => "Complete Objectives",
@@ -39,7 +55,27 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         }
 
         var locationHeader = response!.Headers.FirstOrDefault(x => x.Key == "Location");
+        var raceUrl = string.Join(string.Empty, urlBase, locationHeader.Value.First());
 
-        await ctx.EditResponseAsync($"Race created! https://racetime.gg{locationHeader.Value.First()}");
+        await ctx.EditResponseAsync($"Race created! {raceUrl}");
+
+        //Don't have the workshop's ping-to-race role ID to just hard code so we have to pull it from the context
+        var pingRole = ctx.Guild?.Roles.FirstOrDefault(x => x.Value.Name.Equals("ping-to-race", StringComparison.InvariantCultureIgnoreCase)).Value;
+
+        if (pingRole is null) { return; }
+
+        if (!ctx.Guild!.Channels.TryGetValue(alertsChannelId, out var alertsChannel))
+        {
+            return;
+        }
+
+        var messageBuilder = new DiscordMessageBuilder()
+            .EnableV2Components()
+            .AddTextDisplayComponent(new DiscordTextDisplayComponent($"{pingRole.Mention} {description}"))
+            .AddSeparatorComponent(new DiscordSeparatorComponent(divider: true, spacing: DiscordSeparatorSpacing.Small))
+            .AddTextDisplayComponent(new DiscordTextDisplayComponent(raceUrl))
+            .WithAllowedMention(new RoleMention(pingRole));
+
+        await alertsChannel.SendMessageAsync(messageBuilder);
     }
 }
