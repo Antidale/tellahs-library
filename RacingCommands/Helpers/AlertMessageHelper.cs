@@ -7,7 +7,7 @@ public static class AlertMessageHelper
     public static DiscordMessageBuilder CreateAlertMessage(SlashCommandContext ctx, string description, string raceUrl, bool shouldPing)
     {
         //Don't have the workshop's ping-to-race role ID to just hard code so we have to pull it from the context
-        var pingRole = ctx.Guild?.Roles.FirstOrDefault(x => x.Value.Name.Equals("ping-to-race", StringComparison.InvariantCultureIgnoreCase)).Value;
+        var pingRole = ctx.Guild?.Roles.FirstOrDefault(x => x.Value.Name.Equals("ping_to_race", StringComparison.InvariantCultureIgnoreCase)).Value;
 
         if (pingRole is null) { shouldPing = false; }
 
