@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using FeInfo.Common.Requests;
 using tellahs_library.Constants;
 using tellahs_library.DTOs;
 using tellahs_library.RollCommand.Enums;
@@ -78,6 +79,18 @@ public static class SeedRollerHelper
             { seed_id: var seedId } when string.IsNullOrWhiteSpace(seedId) => SetError<SeedResponse>("API seems to be not responding"),
             _ => await GetGeneratedSeedAsync(client, api, apiKey, progressResponse.seed_id)
         };
+    }
+
+    public static async Task LogRolledSeedAsync(FeInfoHttpClient client, LogSeedRoled seedInfo)
+    {
+        try
+        {
+            var response = await client.PostAsJsonAsync("seed", seedInfo);
+        }
+        catch (Exception)
+        {
+            //currently not interested in handling errors here
+        }
     }
 
     private static async Task<SeedResponse> GetGeneratedSeedAsync(HttpClient client, FeHostedApi api, string apiKey, string seedId)
