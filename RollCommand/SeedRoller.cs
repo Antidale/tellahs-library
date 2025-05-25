@@ -2,6 +2,8 @@ using System.ComponentModel;
 using System.Reflection.Metadata;
 using DSharpPlus.Commands.ArgumentModifiers;
 using DSharpPlus.Commands.Trees.Metadata;
+using FeInfo.Common.DTOs;
+using FeInfo.Common.Requests;
 using tellahs_library.DTOs;
 using tellahs_library.RollCommand.Enums;
 using tellahs_library.RollCommand.Helpers;
@@ -11,7 +13,7 @@ namespace tellahs_library.RollCommand;
 [Command("roll")]
 [Description("A set of commands for rolling seeds")]
 [AllowDMUsage]
-public class SeedRoller(FeGenerationHttpClient client)
+public class SeedRoller(FeGenerationHttpClient client, FeInfoHttpClient feInfoHttpClient)
 {
     [Command("flags")]
     [Description("Generate a seed from an arbitrary flag string")]
@@ -83,6 +85,11 @@ public class SeedRoller(FeGenerationHttpClient client)
         else
         {
             await ctx.EditResponseAsync(response.ToEmbedList(generateRequest.flags, generateRequest.seed));
+            var seedInfo = new LogSeedRoled(ctx.User.Id, new SeedInformation(response.Version, response.Seed, response.Flags, response.Verification, response.Url));
+
+            await SeedRollerHelper.LogRolledSeedAsync(feInfoHttpClient, seedInfo);
         }
+
+
     }
 }
