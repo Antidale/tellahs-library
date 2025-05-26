@@ -83,7 +83,7 @@ public partial class SeedResponse : FeApiResponse
     {
         if (flags.Contains(' '))
         {
-            return string.Equals(Flags, flags, StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(Flags.SortFlags(), flags.SortFlags(), StringComparison.InvariantCultureIgnoreCase);
         }
         else
         {
