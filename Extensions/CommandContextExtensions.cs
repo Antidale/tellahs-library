@@ -44,12 +44,11 @@ namespace tellahs_library.Extensions
             return await ctx.EditResponseAsync(builder);
         }
 
-        [SuppressMessage("Usage", "CA2254:Template should be a static expression", Justification = "No structured logging use")]
         public static async Task LogErrorAsync(this CommandContext ctx, string message, Exception? ex = null)
         {
             if (ex != null)
             {
-                ctx.Client.Logger.LogError(message: ex.ToString());
+                ctx.Client.Logger.LogError("Exception: {ex}", ex.ToString());
             }
 
             var guild = ctx.Client.Guilds[GuildIds.BotHome];
