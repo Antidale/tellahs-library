@@ -45,6 +45,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         var goal = flagset switch
         {
             AfcFlagset.Fbf => "Complete Objectives",
+            AfcFlagset.Alpha => "5.0 alpha/beta",
             _ => "Beat Zeromus"
         };
 
