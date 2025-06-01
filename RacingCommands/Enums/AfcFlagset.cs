@@ -10,4 +10,6 @@ public enum AfcFlagset
     Fbf,
     [ChoiceDisplayName("Zemus Zone: Anthology")]
     Zza,
+    [ChoiceDisplayName("Alpha (not AFC)")]
+    Alpha
 }
