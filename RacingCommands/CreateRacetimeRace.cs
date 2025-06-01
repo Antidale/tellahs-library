@@ -52,7 +52,9 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         var response = await client.CreateRaceAsync(new()
         {
             Goal = goal,
-            InfoUser = description
+            InfoUser = description,
+            AllowNonEntrantChat = flagset == AfcFlagset.Alpha,
+            StreamingRequired = !(flagset == AfcFlagset.Alpha)
         });
 
         if (response is null || !response.IsSuccessStatusCode)
