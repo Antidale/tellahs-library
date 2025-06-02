@@ -1,5 +1,7 @@
 
+using System.Runtime.InteropServices;
 using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
+using tellahs_library.Attributes;
 using tellahs_library.RacingCommands.Enums;
 
 namespace tellahs_library.RacingCommands.Helpers;
@@ -20,7 +22,7 @@ public static class AlertMessageHelper
                     new DiscordTextDisplayComponent($"### {description}"),
                     new DiscordTextDisplayComponent(raceDetailsText)
                 ],
-                color: DiscordColor.Grayple
+                color: goal.GetAttribute<DiscordColorAttribute>()?.Color
             ));
 
         AddRolePing(ctx, messageBuilder, shouldPing);
@@ -33,14 +35,6 @@ public static class AlertMessageHelper
         var mentions = string.Join(" ", pingUsers.Select(x => x.Mention));
 
         var flagsetName = flagset.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? flagset.GetDescription();
-
-        var color = flagset switch
-        {
-            AfcFlagset.Ace => new DiscordColor(0x125740),
-            AfcFlagset.Fbf => new DiscordColor(0x002C5F),
-            AfcFlagset.Zza => new DiscordColor(0xA71930),
-            _ => DiscordColor.Brown
-        };
 
         var raceDescriptionText = $"### {description}";
         var receDetailText = @$"**URL**: {raceUrl}
@@ -57,7 +51,7 @@ public static class AlertMessageHelper
                     new DiscordTextDisplayComponent(raceDescriptionText),
                     new DiscordTextDisplayComponent(receDetailText)
                 ],
-                color: color)
+                color: flagset.GetAttribute<DiscordColorAttribute>()?.Color)
             );
 
         pingUsers.ForEach(user =>
