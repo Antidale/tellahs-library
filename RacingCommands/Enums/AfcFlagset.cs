@@ -9,7 +9,5 @@ public enum AfcFlagset
     [ChoiceDisplayName("Firebomb Fiesta")]
     Fbf,
     [ChoiceDisplayName("Zemus Zone: Anthology")]
-    Zza,
-    [ChoiceDisplayName("Alpha (not AFC)")]
-    Alpha
+    Zza
 }
