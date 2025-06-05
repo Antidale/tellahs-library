@@ -70,7 +70,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
     [Command("create_afc_race")]
     [Description("Creates a race at racetime.gg")]
     [RequireGuild]
-    public async Task CreateRaceAsync(
+    public async Task CreateAfcRaceAsync(
         SlashCommandContext ctx,
         [Parameter("description")]
         [Description("a brief description of the race")]
@@ -103,11 +103,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
             return;
         }
 
-        var goal = flagset switch
-        {
-            AfcFlagset.Fbf => "Complete Objectives",
-            _ => "Beat Zeromus"
-        };
+        var goal = "All Forked Cup team tournament";
 
         var response = await client.CreateRaceAsync(new()
         {
