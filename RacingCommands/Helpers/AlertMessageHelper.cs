@@ -8,10 +8,11 @@ namespace tellahs_library.RacingCommands.Helpers;
 
 public static class AlertMessageHelper
 {
-    public static DiscordMessageBuilder CreateAlertMessage(SlashCommandContext ctx, string description, string raceUrl, bool shouldPing, RtggGoal goal)
+    public static DiscordMessageBuilder CreateAlertMessage(SlashCommandContext ctx, string description, string raceUrl, bool shouldPing, RtggGoal goal, RaceSettings raceSettings)
     {
         var raceDetailsText =
 @$"**Goal**: {goal.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? goal.ToString()}
+**Settings**: {raceSettings.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? raceSettings.ToString()}
 **URL**: {raceUrl}
 -# **Created by**: {ctx.Member!.DisplayName}";
 
