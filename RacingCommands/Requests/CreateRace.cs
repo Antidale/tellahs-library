@@ -24,7 +24,7 @@ public class CreateRace
     public bool HideComments { get; set; } = true;
     public bool AllowPreraceChat { get; set; } = true;
     public bool AllowMidraceChat { get; set; } = true;
-    public bool AllowNonEntrantChat { get; set; } = false;
+    public bool AllowNonEntrantChat { get; set; } = true;
     public int ChatMessageDelay { get; set; } = 0;
 
     public StringContent ToStringContent() =>
