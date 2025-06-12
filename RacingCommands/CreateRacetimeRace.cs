@@ -161,6 +161,11 @@ public class CreateRacetimeRace(RacetimeHttpClient client, FeInfoHttpClient feIn
                 ["Description"] = description
             };
 
+            if (shortRaceName.StartsWith("/"))
+            {
+                shortRaceName = string.Join("", shortRaceName.Skip(1));
+            }
+
             var logCreatedRace = new CreateRaceRoom(ctx.User.Id.ToString(), shortRaceName, "FFA", "Racetime.gg", metadataDict);
 
             var apiResponse = await feInfoHttpClient.PostAsJsonAsync("races", logCreatedRace);
