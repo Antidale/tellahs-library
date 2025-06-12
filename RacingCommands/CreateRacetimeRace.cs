@@ -1,13 +1,15 @@
 
 using System.ComponentModel;
+using System.Net.Http.Json;
 using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
+using FeInfo.Common.Requests;
 using tellahs_library.Constants;
 using tellahs_library.RacingCommands.Enums;
 using tellahs_library.RacingCommands.Helpers;
 
 namespace tellahs_library.RacingCommands;
 
-public class CreateRacetimeRace(RacetimeHttpClient client)
+public class CreateRacetimeRace(RacetimeHttpClient client, FeInfoHttpClient feInfoHttpClient)
 {
     [Command("CreateRace")]
     [Description("Creates a race at racetime.gg")]
@@ -58,7 +60,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
             return;
         }
 
-        var raceUrl = GetRaceLocation(response, urlBase);
+        var raceUrl = GetFullRaceUrl(response, urlBase);
         await ctx.EditResponseAsync($"Race Created: {raceUrl}");
 
         if (!ctx.Guild!.Channels.TryGetValue(alertsChannelId, out var alertsChannel))
@@ -69,6 +71,8 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         var alertMessage = AlertMessageHelper.CreateAlertMessage(ctx, description, raceUrl, includePing, goal, settings);
 
         await alertsChannel.SendMessageAsync(alertMessage);
+        var goalString = goal.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? goal.ToString();
+        await LogRaceCreated(response, goalString, description, ctx);
     }
 
     [Command("create_afc_race")]
@@ -121,7 +125,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
             return;
         }
 
-        var raceUrl = GetRaceLocation(response, urlBase);
+        var raceUrl = GetFullRaceUrl(response, urlBase);
         await ctx.EditResponseAsync($"Race Created: {raceUrl}");
 
         if (!ctx.Guild!.Channels.TryGetValue(alertsChannelId, out var alertsChannel))
@@ -132,11 +136,39 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         var alertMessage = AlertMessageHelper.Create1v1AlertMessage(ctx, description, raceUrl, [racerOne, racerTwo], flagset);
 
         await alertsChannel.SendMessageAsync(alertMessage);
+        await LogRaceCreated(response, goal, description, ctx);
     }
 
-    private static string GetRaceLocation(HttpResponseMessage response, string urlBase)
+    private static string GetRaceLocation(HttpResponseMessage response)
+    {
+        return response.Headers.FirstOrDefault(x => x.Key == "Location").Value.First() ?? "";
+    }
+
+    private static string GetFullRaceUrl(HttpResponseMessage response, string urlBase)
     {
         var locationHeader = response.Headers.FirstOrDefault(x => x.Key == "Location");
         return string.Join(string.Empty, urlBase, locationHeader.Value.First());
+    }
+
+    private async Task LogRaceCreated(HttpResponseMessage response, string goal, string description, SlashCommandContext ctx)
+    {
+        try
+        {
+            var shortRaceName = GetRaceLocation(response);
+            var metadataDict = new Dictionary<string, string>
+            {
+                ["Goal"] = goal,
+                ["Description"] = description
+            };
+
+            var logCreatedRace = new CreateRaceRoom(ctx.User.Id.ToString(), shortRaceName, "FFA", "Racetime.gg", metadataDict);
+
+            var apiResponse = await feInfoHttpClient.PostAsJsonAsync("races", logCreatedRace);
+
+        }
+        catch (Exception)
+        {
+            //don't care currently
+        }
     }
 }
