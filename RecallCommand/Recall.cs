@@ -200,7 +200,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             AfcDetailOptions detailLevel
         )
         {
-            await ctx.RespondAsync(AfcHelper.GetAfcEmbeds(infoType, detailLevel));
+            await ctx.RespondAsync(AfcHelper.GetAfcMessages(infoType, detailLevel));
         }
     }
 }
