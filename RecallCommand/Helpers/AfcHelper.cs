@@ -1,11 +1,10 @@
-using DSharpPlus;
 using tellahs_library.RecallCommand.Enums;
 
 namespace tellahs_library.RecallCommand.Helpers;
 
 public static class AfcHelper
 {
-    public static DiscordMessageBuilder GetAfcEmbeds(AfcInfoType infoType, AfcDetailOptions detailOptions)
+    public static DiscordMessageBuilder GetAfcMessages(AfcInfoType infoType, AfcDetailOptions detailOptions)
     {
         return infoType switch
         {
