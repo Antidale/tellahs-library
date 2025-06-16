@@ -61,9 +61,9 @@ namespace tellahs_library.RecallCommand
         {
             await ctx.DeferResponseAsync(ephemeral: justMe);
 
-            var embed = GetItemNotes(selectedItem);
+            var messageBuilder = GetItemNotes(selectedItem);
 
-            await ctx.EditResponseAsync(embed);
+            await ctx.EditResponseAsync(messageBuilder);
         }
 
         [Command("racing")]
