@@ -1,4 +1,3 @@
-using System;
 using DSharpPlus;
 using tellahs_library.RecallCommand.Enums;
 
@@ -6,7 +5,7 @@ namespace tellahs_library.RecallCommand.Helpers;
 
 public static class AfcHelper
 {
-    public static DiscordEmbed GetAfcEmbeds(AfcInfoType infoType, AfcDetailOptions detailOptions)
+    public static DiscordMessageBuilder GetAfcEmbeds(AfcInfoType infoType, AfcDetailOptions detailOptions)
     {
         return infoType switch
         {
@@ -18,28 +17,31 @@ public static class AfcHelper
         };
     }
 
-    private static DiscordEmbed GetAceFlagsetInfo(AfcDetailOptions detailOptions)
+    private static DiscordMessageBuilder GetAceFlagsetInfo(AfcDetailOptions detailOptions)
     {
-        var builder = new DiscordEmbedBuilder()
-                    .WithTitle("Adamant Cup Experience")
-                    .WithUrl("https://ff4fe.galeswift.com/make/bBAYBAAYAAAAAAAAAkAgBAAAAAIAAAAB4gBBQAQAAAAAAAAIQjkBhABkAIAAAAJAAFACcAACIIAAAAAAAAAAAACA")
-                    .WithColor(DiscordColor.HotPink);
-
-        builder.WithDescription(detailOptions == AfcDetailOptions.Flags
+        var description = detailOptions == AfcDetailOptions.Flags
         ? baseDescription()
-        : baseDescription() + summary());
+        : baseDescription() + summary();
 
         if (detailOptions != AfcDetailOptions.Summary)
         {
-            foreach (var flagField in flagFields())
-            {
-                builder.AddField(flagField.Key, flagField.Value);
-            }
+            description += "\r\n";
+            description += string.Join("\r\n", flagFields().Select(x =>
+                $"\r\n**{x.Key}**:\r\n{x.Value}"));
         }
 
-        return builder.AddField("Signups Close", $"{Formatter.Timestamp(DateTime.Parse("2025-06-07T06:59:00Z"), TimestampFormat.ShortDateTime)}")
-           .AddField("Registration Form", "[AFC Registration](<https://docs.google.com/forms/d/e/1FAIpQLSe1tPCmPsLZbDRvCCjZFfDHei20cMcoL4gw_Z8duechwpbaRA/viewform>)")
-           .Build();
+        var builder = new DiscordMessageBuilder().EnableV2Components()
+            .AddContainerComponent
+            (
+                new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent($"### [Adamant Cup Experience](<https://ff4fe.galeswift.com/make/bBAYBAAYAAAAAAAAAkAgBAAAAAIAAAAB4gBBQAQAAAAAAAAIQjkBhABkAIAAAAJAAFACcAACIIAAAAAAAAAAAACA>)"),
+                    new DiscordTextDisplayComponent(description)
+                ],
+                color: DiscordColor.HotPink)
+            );
+
+        return builder;
 
         #region ACE Local Methods
         string baseDescription() => @"### Flagset:
@@ -80,53 +82,57 @@ You get more XP per objectives you complete. Edward's Heal ability isn't totally
 
     }
 
-    private static DiscordEmbed GetFbfFlagsetInfo(AfcDetailOptions detailOptions)
+    private static DiscordMessageBuilder GetFbfFlagsetInfo(AfcDetailOptions detailOptions)
     {
-        var builder = new DiscordEmbedBuilder()
-                    .WithTitle("Firebomb Fiesta")
-                    .WithUrl("https://ff4fe.galeswift.com/make/bBAYBAACQCn--IwAAGAEAAAAAAIADAAAU4QRAcQAAAQEAAAMAGhBgAACARABAAfAAHQxeVeEAAAMAAAAAAAAAACA")
-                    .WithColor(DiscordColor.Orange);
 
-        builder.WithDescription(detailOptions == AfcDetailOptions.Flags
-            ? baseDescription()
-            : baseDescription() + summary());
+        var description = detailOptions == AfcDetailOptions.Flags
+        ? baseDescription()
+        : baseDescription() + summary();
 
         if (detailOptions != AfcDetailOptions.Summary)
         {
-            foreach (var flagField in flagFields())
-            {
-                builder.AddField(flagField.Key, flagField.Value);
-            }
+            description += "\r\n";
+            description += string.Join("\r\n", flagFields().Select(x =>
+                $"\r\n**{x.Key}**:\r\n{x.Value}"));
         }
 
-        return builder.AddField("Signups Close", $"{Formatter.Timestamp(DateTime.Parse("2025-06-07T06:59:00Z"), TimestampFormat.ShortDateTime)}")
-           .AddField("Registration Form", "[AFC Registration](<https://docs.google.com/forms/d/e/1FAIpQLSe1tPCmPsLZbDRvCCjZFfDHei20cMcoL4gw_Z8duechwpbaRA/viewform>)")
-           .Build();
+        var builder = new DiscordMessageBuilder().EnableV2Components()
+            .AddContainerComponent
+            (
+                new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent($"### [Firebomb Fiesta](<https://ff4fe.galeswift.com/make/bBAYBAACQCn--IwAAGAEAAAAAAIADAAAU4QRAcQAAAQEAAAMAGhBgAACARABAAfAAHQxeVeEAAAMAAAAAAAAAACA>)"),
+                    new DiscordTextDisplayComponent(description)
+                ],
+                color: DiscordColor.Orange)
+            );
+
+        return builder;
 
         #region Fbf Local Methods
         string baseDescription() => @"### Flagset
-```
-O1:quest_forge/2:quest_cavebahamut/3:quest_monsterking/4:quest_monsterqueen/5:quest_masamunealtar/random:3,tough_quest/req:6/win:game Kmain/miab:above/pink/nofree:package/force:magma Pnone Cstandard/nofree/distinct:7/start:not_tellah,not_fusoya/no:fusoya/restrict:cecil/j:abilities/nekkie/nodupes/hero Twildish/mintier:2/money Swild/always:damage_items/no:j Bstandard/nofree/unsafe/alt:gauntlet/whichburn/whichbez/woahdin Etoggle/noexp/nogp Gwarp/life/sylph/backrow -kit:dwarf -kit2:miab -kit3:basic -noadamants -nocursed -spoon -exp:kicheckbonus2 -tweak:edwardheal
-```
-To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=forks>";
+    ```
+    O1:quest_forge/2:quest_cavebahamut/3:quest_monsterking/4:quest_monsterqueen/5:quest_masamunealtar/random:3,tough_quest/req:6/win:game Kmain/miab:above/pink/nofree:package/force:magma Pnone Cstandard/nofree/distinct:7/start:not_tellah,not_fusoya/no:fusoya/restrict:cecil/j:abilities/nekkie/nodupes/hero Twildish/mintier:2/money Swild/always:damage_items/no:j Bstandard/nofree/unsafe/alt:gauntlet/whichburn/whichbez/woahdin Etoggle/noexp/nogp Gwarp/life/sylph/backrow -kit:dwarf -kit2:miab -kit3:basic -noadamants -nocursed -spoon -exp:kicheckbonus2 -tweak:edwardheal
+    ```
+    To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=forks>";
 
         string summary() => @"
-### Quick summary
-Summaries are **rough approximations**! Check the actual details on the [rules doc](<https://docs.google.com/document/d/1O3Kr5gB0niU2KCArtXzjmnCmFFEBwgVA7Nas7FIGANM/edit?tab=t.0#heading=h.12ukq9gc26q8>) and the wiki.
+    ### Quick summary
+    Summaries are **rough approximations**! Check the actual details on the [rules doc](<https://docs.google.com/document/d/1O3Kr5gB0niU2KCArtXzjmnCmFFEBwgVA7Nas7FIGANM/edit?tab=t.0#heading=h.12ukq9gc26q8>) and the wiki.
 
-Do six of Forge, Feymarch (king and queen), Value, Masa, and 3 other tough quests to win. That's 6 of 8, win:game.
+    Do six of Forge, Feymarch (king and queen), Value, Masa, and 3 other tough quests to win. That's 6 of 8, win:game.
 
-Key Items can be at Main spots and in Above MIABs (Overworld, Hairdryers, Last Arm). Pink Tail is a Main check, and the burning Mist with the Package replaces D.Mist for setting up Rydia's Mom. Magma is Forced. No Pass.
+    Key Items can be at Main spots and in Above MIABs (Overworld, Hairdryers, Last Arm). Pink Tail is a Main check, and the burning Mist with the Package replaces D.Mist for setting up Rydia's Mom. Magma is Forced. No Pass.
 
-Cstandard, but: there are only 7 different people, never Fu. Can't start with Tellah. Cecil is restricted, no dupes. Hero is ON.
+    Cstandard, but: there are only 7 different people, never Fu. Can't start with Tellah. Cecil is restricted, no dupes. Hero is ON.
 
-Twildish for $$$ only. Shopping's wild, but no J-items unless they're for damage.
+    Twildish for $$$ only. Shopping's wild, but no J-items unless they're for damage.
 
-Bstandard but neither free nor safe. Wyvern, Golbez, and Odin all have some spell randomization.
+    Bstandard but neither free nor safe. Wyvern, Golbez, and Odin all have some spell randomization.
 
-Random encounters take time, give nothing. Do MIABs and Bosses for xp/gold.
+    Random encounters take time, give nothing. Do MIABs and Bosses for xp/gold.
 
-Warp Glitch! No Cursed ring or Adamants. Bonus XP for KI Checks. Spoon is on and Edward's Heal isn't totally awful.";
+    Warp Glitch! No Cursed ring or Adamants. Bonus XP for KI Checks. Spoon is on and Edward's Heal isn't totally awful.";
 
         Dictionary<string, string> flagFields() => new()
         {
@@ -143,53 +149,56 @@ Warp Glitch! No Cursed ring or Adamants. Bonus XP for KI Checks. Spoon is on and
         #endregion
     }
 
-    private static DiscordEmbed GetZzaFlagsetInfo(AfcDetailOptions detailOptions)
+    private static DiscordMessageBuilder GetZzaFlagsetInfo(AfcDetailOptions detailOptions)
     {
-        var builder = new DiscordEmbedBuilder()
-                            .WithTitle("Zemus Zone: Anthology")
-                            .WithUrl("https://ff4fe.galeswift.com/make/bBAYBAACQAgAAAAAAAAAAAAAAAIAAAABYYBCUgQAAAAAAAABAEhBAgAAAWAAACBRQFQB8ASAAAQACAAAAAAAAACA")
-                            .WithColor(DiscordColor.Blue);
-
-        builder.WithDescription(detailOptions == AfcDetailOptions.Flags
-            ? baseDescription()
-            : baseDescription() + summary());
+        var description = detailOptions == AfcDetailOptions.Flags
+        ? baseDescription()
+        : baseDescription() + summary();
 
         if (detailOptions != AfcDetailOptions.Summary)
         {
-            foreach (var flagField in flagFields())
-            {
-                builder.AddField(flagField.Key, flagField.Value);
-            }
+            description += "\r\n";
+            description += string.Join("\r\n", flagFields().Select(x =>
+                $"\r\n**{x.Key}**:\r\n{x.Value}"));
         }
 
-        return builder.AddField("Signups Close", $"{Formatter.Timestamp(DateTime.Parse("2025-06-07T06:59:00Z"), TimestampFormat.ShortDateTime)}")
-           .AddField("Registration Form", "[AFC Registration](<https://docs.google.com/forms/d/e/1FAIpQLSe1tPCmPsLZbDRvCCjZFfDHei20cMcoL4gw_Z8duechwpbaRA/viewform>)")
-           .Build();
+        var builder = new DiscordMessageBuilder().EnableV2Components()
+            .AddContainerComponent
+            (
+                new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent($"### [Zemus Zone: Anthology](<https://ff4fe.galeswift.com/make/bBAYBAACQAgAAAAAAAAAAAAAAAIAAAABYYBCUgQAAAAAAAABAEhBAgAAAWAAACBRQFQB8ASAAAQACAAAAAAAAACA>)"),
+                    new DiscordTextDisplayComponent(description)
+                ],
+                color: DiscordColor.Blue)
+            );
+
+        return builder;
 
         #region ZZA Local Methods
         string baseDescription() =>
 @"### Flagset
-```
-O1:quest_forge/req:all/win:crystal Kmain/moon/pink/nofree/unweighted/start:spoon Pkey Crelaxed/nofree/distinct:8/thrift:3/j:abilities/nodupes/hero Tsemipro/playable/junk Swildish/no:vampires,damage_items Bstandard/restrict:giant,package/whichburn/whichbez Etoggle Glife/sylph/backrow/64 -kit:freedom -noadamants -fusoya:maybe -exp:maxlevelbonus -tweak:edwardheal
-```
-To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=forks>
-";
+    ```
+    O1:quest_forge/req:all/win:crystal Kmain/moon/pink/nofree/unweighted/start:spoon Pkey Crelaxed/nofree/distinct:8/thrift:3/j:abilities/nodupes/hero Tsemipro/playable/junk Swildish/no:vampires,damage_items Bstandard/restrict:giant,package/whichburn/whichbez Etoggle Glife/sylph/backrow/64 -kit:freedom -noadamants -fusoya:maybe -exp:maxlevelbonus -tweak:edwardheal
+    ```
+    To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=forks>
+    ";
 
         string summary() => @"### Quick Summary
-Summaries are **rough approximations**! Check the actual details on the [rules doc](<https://docs.google.com/document/d/1O3Kr5gB0niU2KCArtXzjmnCmFFEBwgVA7Nas7FIGANM/edit?tab=t.0#heading=h.12ukq9gc26q8>) and the wiki.
+    Summaries are **rough approximations**! Check the actual details on the [rules doc](<https://docs.google.com/document/d/1O3Kr5gB0niU2KCArtXzjmnCmFFEBwgVA7Nas7FIGANM/edit?tab=t.0#heading=h.12ukq9gc26q8>) and the wiki.
 
-Forge to get a Crystal. Key items are Main, Moon, Pink and D.Mist. All KI checks have a (roughly) equal chance of being Key Items. You start with a Spoon! The Pass is in the KI pool.
+    Forge to get a Crystal. Key items are Main, Moon, Pink and D.Mist. All KI checks have a (roughly) equal chance of being Key Items. You start with a Spoon! The Pass is in the KI pool.
 
-Characters are relaxed, there are 8 of them, none are free, no dupes, and they start with decent gear. Hero is On. Fu might not learn all the spells!
+    Characters are relaxed, there are 8 of them, none are free, no dupes, and they start with decent gear. Hero is On. Fu might not learn all the spells!
 
-Treasure is between pro and wildish, and for people in the seed; junk items are not auto-cash. Swildish, but no damage items.
+    Treasure is between pro and wildish, and for people in the seed; junk items are not auto-cash. Swildish, but no damage items.
 
-Bosses are standard, but D.Mist shouldn't be at the Giant or the Package spots. Wyvern (opening MegaNuke) and Golbez get some spell randomization.
+    Bosses are standard, but D.Mist shouldn't be at the Giant or the Package spots. Wyvern (opening MegaNuke) and Golbez get some spell randomization.
 
-64 floor glitch is ON. Here's some extra detail in the [wiki](<https://wiki.ff4fe.com/doku.php?id=glitches&s[]=64#performing_the_64_floor_glitch_in_fe>).
+    64 floor glitch is ON. Here's some extra detail in the [wiki](<https://wiki.ff4fe.com/doku.php?id=glitches&s[]=64#performing_the_64_floor_glitch_in_fe>).
 
-Adamants are OFF. Edward's Heal isn't totally trash! Level differences matter for XP gains.
-";
+    Adamants are OFF. Edward's Heal isn't totally trash! Level differences matter for XP gains.
+    ";
 
         Dictionary<string, string> flagFields() => new()
         {
@@ -211,13 +220,16 @@ Adamants are OFF. Edward's Heal isn't totally trash! Level differences matter fo
 
     }
 
-    private static DiscordEmbed GetForkFlagsInfo(AfcDetailOptions detailOptions)
+    private static DiscordMessageBuilder GetForkFlagsInfo(AfcDetailOptions detailOptions)
     {
-        return new DiscordEmbedBuilder().WithTitle("Fork Flags")
-                        .WithUrl("https://wiki.ff4fe.com/doku.php?id=forks")
-                        .WithColor(DiscordColor.PhthaloGreen)
-                        .WithDescription(
-@"The AFC is a team event for Free Enterprise and uses many flags introduced by the community in forks of the main game. To help people get a sense of all the changes, here is a list of each flag that is in use among the three flagsets for the tournament, with a brief description.
+        return new DiscordMessageBuilder().EnableV2Components()
+            .AddContainerComponent
+            (
+                new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent(
+@$"### [ForkFlags](<https://wiki.ff4fe.com/doku.php?id=forks>)
+The AFC is a team event for Free Enterprise and uses many flags introduced by the community in forks of the main game. To help people get a sense of all the changes, here is a list of each flag that is in use among the three flagsets for the tournament, with a brief description.
 
 To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=forks>
 
@@ -256,8 +268,9 @@ To see a full listing of the fork flags: <https://wiki.ff4fe.com/doku.php?id=for
  * **-exp:maxlevelbonus** - Normally, level does not play into EXP calculations. Under this flag, if 5 plus twice the largest level in your party is less than the smallest monster level in the encounter, then the encounter awards 20% bonus EXP (and another 20% for each additional deficit of 5).
 ### Misc
  * **-tweak:edwardheal** - Edward's Heal command will now use the best of Cure3/Cure2/Cure1 consumables in your inventory.")
-        .AddField("Signups Close", $"{Formatter.Timestamp(DateTime.Parse("2025-06-07T06:59:00Z"), TimestampFormat.ShortDateTime)}")
-           .AddField("Registration Form", "[AFC Registration](<https://docs.google.com/forms/d/e/1FAIpQLSe1tPCmPsLZbDRvCCjZFfDHei20cMcoL4gw_Z8duechwpbaRA/viewform>)")
-           .Build();
+                ]
+            , color: DiscordColor.PhthaloGreen
+        ));
+
     }
 }
