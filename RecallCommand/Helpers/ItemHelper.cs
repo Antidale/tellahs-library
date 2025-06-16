@@ -77,6 +77,8 @@ SilkWebs apply two instances of the Slow spell on all enemies. They can appear i
 
 The `Loaded` kit can have up to three SilkWebs.
 
+Centepedes, Arachne, and Talantla all have SilkWeb as an item that can be obtained with the `Steal` command. A common place Centepedes can be summoned using a Siren is outside Kokkol's shop. Enabling `Eno:jdrops` will prevent this.
+
 **Tier**: 3
 **Price**: 3000
 ",
@@ -86,6 +88,8 @@ The `Loaded` kit can have up to three SilkWebs.
 Sirens summon the rarest encounter in an area for you to fight, and they can appear in a Gated item shop with `Sstandard` acive, and might be found in the Smithy shop in `Spro`. There are no availability guarantees unless `Swild` is enabled, and both `Sno:j` and `Sno:sirens` each remove any chance of them being in a shop regardless of other flags.
 
 The `Freedom` kit comes with one to two Sirens, and the `Better` kit can have up to three of them.
+
+Sirens can also be obtained via the `Steal` command from Alerts, Searchers, and Last Arm. Enabling either `Eno:sirens` or `Eno:jdrops` prevents this.
 **Tier**: 5
 **Price**: 4000
 ",
@@ -114,6 +118,7 @@ The `Freedom` kit contains ten ThorRages, and the `Better` kit can have up to th
 Vampires are a solid damage alternative early on, and can appear in any item shop with `Sstandard`. Under `Spro` only Gated item shops might have them. There are no availability guarantees unless `Swild` is enabled. `Sno:j` removes any possibility of finding them in shops.
 
 The `Better` and `Loaded` kits each can have up to two Vampires contained within.
+
 **Tier**: 4
 **Price**: 4000
 ",
