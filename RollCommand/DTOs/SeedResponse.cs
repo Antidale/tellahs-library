@@ -1,4 +1,3 @@
-using System;
 using System.Text.RegularExpressions;
 
 namespace tellahs_library.DTOs;
@@ -13,9 +12,9 @@ public partial class SeedResponse : FeApiResponse
 
     public string BinaryFlags => UrlFlagsRegex().Matches(Url).FirstOrDefault()?.Captures.FirstOrDefault()?.Value ?? "";
 
-    public List<DiscordEmbed> ToEmbedList(string flags, string? seed)
+    public List<DiscordMessageBuilder> ToMessageBuilders(string flags, string? seed)
     {
-        var embedList = new List<DiscordEmbed>() { ToEmbed(seed) };
+        var embedList = new List<DiscordMessageBuilder>() { ToEmbed(seed) };
         var verificationEmbed = ToFlagsVerificationEmbed(flags);
         if (verificationEmbed is not null)
         {
@@ -24,40 +23,40 @@ public partial class SeedResponse : FeApiResponse
         return embedList;
     }
 
-    private DiscordEmbed ToEmbed(string? seed)
+    private DiscordMessageBuilder ToEmbed(string? seed)
     {
-        var builder = new DiscordEmbedBuilder()
-            .WithTitle("Requested Seed")
-            .WithUrl(Url)
-            .WithDescription(
-@$"```
-{Flags}
-```")
-            .WithColor(GetDiscordColor())
-            .AddField("URL", Url)
-            .AddField("Hash", Verification, inline: true);
+        var seedLabel = seed is null ? "Seed" : "Provided Seed";
 
-        if (seed is not null)
-        {
-            builder.AddField("Provided Seed", seed, inline: true);
-        }
-        else
-        {
-            builder.AddField("Seed", Seed, inline: true);
-        }
-
-        return builder.Build();
+        return new DiscordMessageBuilder().EnableV2Components().AddContainerComponent
+        (
+            new DiscordContainerComponent(
+            components:
+            [
+                new DiscordTextDisplayComponent($"### [Requested Seed](<{Url}>)"),
+                new DiscordTextDisplayComponent($"```\r\n{Flags}\r\n```"),
+                new DiscordTextDisplayComponent($"**URL**: {Url}"),
+                new DiscordTextDisplayComponent($"**Hash**: {Verification}"),
+                new DiscordTextDisplayComponent($"**{seedLabel}**: {(seed is null ? Seed : seed)}")
+            ],
+            color: GetDiscordColor())
+        );
     }
 
-    private DiscordEmbed? ToFlagsVerificationEmbed(string flags)
+    private DiscordMessageBuilder? ToFlagsVerificationEmbed(string flags)
     {
         return VerifyFlags(flags)
         ? null
-        : new DiscordEmbedBuilder()
-            .WithTitle("Flags Mismatch")
-            .WithDescription(FlagsVerificationEmbedDescription(flags))
-            .WithColor(DiscordColor.Red)
-            .Build();
+        : new DiscordMessageBuilder().EnableV2Components().AddContainerComponent
+        (
+            new DiscordContainerComponent
+            (
+                components:
+                [
+                    new DiscordTextDisplayComponent($"### Flags Mismatch\r\n{FlagsVerificationEmbedDescription(flags)}")
+                ],
+                color: DiscordColor.Red
+            )
+        );
     }
 
     private string FlagsVerificationEmbedDescription(string desiredFlags)
@@ -75,8 +74,7 @@ public partial class SeedResponse : FeApiResponse
 **Returned Flags**
 ```
 {comparisonFlags}
-```
-";
+```";
     }
 
     private bool VerifyFlags(string flags)
@@ -85,19 +83,15 @@ public partial class SeedResponse : FeApiResponse
         {
             return string.Equals(Flags.SortFlags(), flags.SortFlags(), StringComparison.InvariantCultureIgnoreCase);
         }
-        else
+
+        var matches = UrlFlagsRegex().Match(Url);
+        if (!matches.Success)
         {
-            var matches = UrlFlagsRegex().Match(Url);
-            if (matches.Success)
-            {
-                var binaryFlags = matches.Groups[1].Captures.FirstOrDefault()?.Value ?? "";
-                return binaryFlags.Equals(flags, StringComparison.InvariantCultureIgnoreCase);
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
+
+        var binaryFlags = matches.Groups[1].Captures.FirstOrDefault()?.Value ?? "";
+        return binaryFlags.Equals(flags, StringComparison.InvariantCultureIgnoreCase);
     }
 
     private DiscordColor GetDiscordColor()
@@ -105,6 +99,7 @@ public partial class SeedResponse : FeApiResponse
         return Url switch
         {
             var galeswift when galeswift.Contains("galeswift") => DiscordColor.CornflowerBlue,
+            var alpha when alpha.Contains("alpha") => DiscordColor.Purple,
             _ => DiscordColor.DarkBlue
         };
     }
