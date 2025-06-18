@@ -132,7 +132,7 @@ Ribbon, Rune ring, Aegis shield
         static string GetDragonTraitInfo()
         {
             return @"**Key Enemies**
-            [D.Machin](<https://wiki.ff4fe.com/doku.php?id=d.machin>), [D.Fossil](<https://wiki.ff4fe.com/doku.php?id=d.fossil>), [D.Bone](<https://wiki.ff4fe.com/doku.php?id=d.bone>), [Blue D.](<https://wiki.ff4fe.com/doku.php?id=blue_d>), [Green D.](<https://wiki.ff4fe.com/doku.php?id=Green_d>), [Red D.](<https://wiki.ff4fe.com/doku.php?id=red_d>), [Yellow D](<https://wiki.ff4fe.com/doku.php?id=yellow_d>), [King Ryu](<https://wiki.ff4fe.com/doku.php?id=king-ryu>), [Ging Ryu](<https://wiki.ff4fe.com/doku.php?id=ging-ryu>), [D. Lunar](<https://wiki.ff4fe.com/doku.php?id=d._lunar>), [Wyvern](<https://wiki.ff4fe.com/doku.php?id=wyvern>), [Pale Dim](<https://wiki.ff4fe.com/doku.php?id=pale_dim>), [Clapper](<https://wiki.ff4fe.com/doku.php?id=clapper>)
+[D.Machin](<https://wiki.ff4fe.com/doku.php?id=d.machin>), [D.Fossil](<https://wiki.ff4fe.com/doku.php?id=d.fossil>), [D.Bone](<https://wiki.ff4fe.com/doku.php?id=d.bone>), [Blue D.](<https://wiki.ff4fe.com/doku.php?id=blue_d>), [Green D.](<https://wiki.ff4fe.com/doku.php?id=Green_d>), [Red D.](<https://wiki.ff4fe.com/doku.php?id=red_d>), [Yellow D](<https://wiki.ff4fe.com/doku.php?id=yellow_d>), [King Ryu](<https://wiki.ff4fe.com/doku.php?id=king-ryu>), [Ging Ryu](<https://wiki.ff4fe.com/doku.php?id=ging-ryu>), [D. Lunar](<https://wiki.ff4fe.com/doku.php?id=d._lunar>), [Wyvern](<https://wiki.ff4fe.com/doku.php?id=wyvern>), [Pale Dim](<https://wiki.ff4fe.com/doku.php?id=pale_dim>), [Clapper](<https://wiki.ff4fe.com/doku.php?id=clapper>)
 
 **Weapons**
 Dragoon spear, Artemis arrows, Dragon whip, Apollo harp, Loki lute, Dragon claw
@@ -148,7 +148,7 @@ D.Mist and Bahamut are not Dragons. [Blue D.](<https://wiki.ff4fe.com/doku.php?i
         static string GetGiantTraitInfo()
         {
             return @"**Key Enemies**
-            [Ogre](<https://wiki.ff4fe.com/doku.php?id=ogre>), [Mad Ogre](<https://wiki.ff4fe.com/doku.php?id=mad_ogre>), [MacGiant](<https://wiki.ff4fe.com/doku.php?id=MacGiant>), [RedGiant](<https://wiki.ff4fe.com/doku.php?id=RedGiant>), [Staleman](<https://wiki.ff4fe.com/doku.php?id=staleman>), [Stoneman](<https://wiki.ff4fe.com/doku.php?id=stoneman>)
+[Ogre](<https://wiki.ff4fe.com/doku.php?id=ogre>), [Mad Ogre](<https://wiki.ff4fe.com/doku.php?id=mad_ogre>), [MacGiant](<https://wiki.ff4fe.com/doku.php?id=MacGiant>), [RedGiant](<https://wiki.ff4fe.com/doku.php?id=RedGiant>), [Staleman](<https://wiki.ff4fe.com/doku.php?id=staleman>), [Stoneman](<https://wiki.ff4fe.com/doku.php?id=stoneman>)
 
 **Weapons**
 Poison axe, Ogre axe, Charm arrows, Charm claw, Drain sword, Drain spear, Perseus arrows, Loki lute
@@ -164,7 +164,7 @@ The poor accuracy and stat debuffs on the Drain weapons make notably poor choice
         static string GetRobotTraitInfo()
         {
             return @"**Key Enemies**
-            [MacGiant](<https://wiki.ff4fe.com/doku.php?id=MacGiant>), [EvilMask](<https://wiki.ff4fe.com/doku.php?id=EvilMask>), [Alert](<https://wiki.ff4fe.com/doku.php?id=Alert>), [Searcher](<https://wiki.ff4fe.com/doku.php?id=Searcher>), [Balnab](<https://wiki.ff4fe.com/doku.php?id=Balnab>), [Dr. Lugae (second form)](<https://wiki.ff4fe.com/doku.php?id=dr.lugae_second>), [Beamer](<https://wiki.ff4fe.com/doku.php?id=beamer>), [Last Arm](<https://wiki.ff4fe.com/doku.php?id=last_arm>)
+[MacGiant](<https://wiki.ff4fe.com/doku.php?id=MacGiant>), [EvilMask](<https://wiki.ff4fe.com/doku.php?id=EvilMask>), [Alert](<https://wiki.ff4fe.com/doku.php?id=Alert>), [Searcher](<https://wiki.ff4fe.com/doku.php?id=Searcher>), [Balnab](<https://wiki.ff4fe.com/doku.php?id=Balnab>), [Dr. Lugae (second form)](<https://wiki.ff4fe.com/doku.php?id=dr.lugae_second>), [Beamer](<https://wiki.ff4fe.com/doku.php?id=beamer>), [Last Arm](<https://wiki.ff4fe.com/doku.php?id=last_arm>)
 
 **Weapons**
 Earth hammer, Silver hammer, Wooden hammer, Thunder claw, Lit arrows, Loki lute, Thor hammer, Fiery hammer
@@ -180,7 +180,7 @@ None
         static string GetZombieTraitInfo()
         {
             return @"**Key Enemies**
-            [Milon Z](<https://wiki.ff4fe.com/doku.php?id=milon_z>), [Milon Z (Elements)](<https://wiki.ff4fe.com/doku.php?id=elements_milon_rubi>), [D. Lunar](<https://wiki.ff4fe.com/doku.php?id=d._lunar>), [D.Fossil](<https://wiki.ff4fe.com/doku.php?id=d.fossil>), [D.Bone](<https://wiki.ff4fe.com/doku.php?id=d.bone>)
+[Milon Z](<https://wiki.ff4fe.com/doku.php?id=milon_z>), [Milon Z (Elements)](<https://wiki.ff4fe.com/doku.php?id=elements_milon_rubi>), [D. Lunar](<https://wiki.ff4fe.com/doku.php?id=d._lunar>), [D.Fossil](<https://wiki.ff4fe.com/doku.php?id=d.fossil>), [D.Bone](<https://wiki.ff4fe.com/doku.php?id=d.bone>)
 
 **Weapons**
 Crystal sword, White arrows, Loki lute, Bringer sword, Silver staff
@@ -196,7 +196,7 @@ The Undead trait provides a Darkness element immunity, allows dealing damage wit
         static string GetSlimeTraitInfo()
         {
             return @"**Key Enemies**
-            [Cream](<https://wiki.ff4fe.com/doku.php?id=cream>), [Jelly](<https://wiki.ff4fe.com/doku.php?id=Jelly>), [Slime](<https://wiki.ff4fe.com/doku.php?id=slime>), [Tofu](<https://wiki.ff4fe.com/doku.php?id=Tofu>), [Pink Puff](<https://wiki.ff4fe.com/doku.php?id=pinkpuff>)
+[Cream](<https://wiki.ff4fe.com/doku.php?id=cream>), [Jelly](<https://wiki.ff4fe.com/doku.php?id=Jelly>), [Slime](<https://wiki.ff4fe.com/doku.php?id=slime>), [Tofu](<https://wiki.ff4fe.com/doku.php?id=Tofu>), [Pink Puff](<https://wiki.ff4fe.com/doku.php?id=pinkpuff>)
 
 **Weapons**
 Drain spear, Drain sword, Loki lute, Flan sword
@@ -212,7 +212,7 @@ All Slimes, except for Pink Puffs, have 254 Defense. That high defense means you
         static string GetSpiritTraitInfo()
         {
             return @"**Key Enemies**
-            [BladeMan](<https://wiki.ff4fe.com/doku.php?id=BladeMan>), [Hooligan](<https://wiki.ff4fe.com/doku.php?id=Hooligan>), [Soul](<https://wiki.ff4fe.com/doku.php?id=soul>), [Spirit](<https://wiki.ff4fe.com/doku.php?id=spirit>), [Weeper](<https://wiki.ff4fe.com/doku.php?id=Weeper>)
+[BladeMan](<https://wiki.ff4fe.com/doku.php?id=BladeMan>), [Hooligan](<https://wiki.ff4fe.com/doku.php?id=Hooligan>), [Soul](<https://wiki.ff4fe.com/doku.php?id=soul>), [Spirit](<https://wiki.ff4fe.com/doku.php?id=spirit>), [Weeper](<https://wiki.ff4fe.com/doku.php?id=Weeper>)
 
 **Weapons**
 Silver dagger, Silver sword, Silver hammer, Ancient sword, White arrows, White spear, Bringer sword, Loki lute
