@@ -4,57 +4,73 @@ namespace tellahs_library.RecallCommand.Helpers
 {
     public static class ResistanceHelper
     {
-        public static DiscordEmbed GetResistanceInfo(ResistanceChoices resistanceChoice)
+        public static DiscordMessageBuilder GetResistanceInfo(ResistanceChoices resistanceChoice)
         {
             return resistanceChoice switch
             {
-                ResistanceChoices.Overview => new DiscordEmbedBuilder()
-                    .WithTitle("Know Your Resistances - Overview")
-                    .WithDescription(GetOverviewDescription())
-                    .AddField("Links", GetResistanceLinks())
-                    .Build(),
+                ResistanceChoices.Overview => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Know Your Resistances - Overview"),
+                    new DiscordTextDisplayComponent(GetOverviewDescription()),
+                    new DiscordTextDisplayComponent(GetResistanceLinks())
+                ])),
 
-                ResistanceChoices.LinksOnly => new DiscordEmbedBuilder()
-                    .WithTitle("Resistance Links")
-                    .WithDescription(GetResistanceLinks())
-                    .Build(),
+                ResistanceChoices.LinksOnly => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent
+                (new DiscordContainerComponent(
+                [
+                    new DiscordTextDisplayComponent("### Resistance Links"),
+                    new DiscordTextDisplayComponent(GetResistanceLinks())
 
-                ResistanceChoices.Mage => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Mages")
-                    .WithDescription(GetMageTraitInfo())
-                    .Build(),
+                ])),
 
-                ResistanceChoices.Giant => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Giants")
-                    .WithDescription(GetGiantTraitInfo())
-                    .Build(),
 
-                ResistanceChoices.Dragon => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Dragons")
-                    .WithDescription(GetDragonTraitInfo())
-                    .Build(),
+                ResistanceChoices.Mage => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Trait: Mages"),
+                    new DiscordTextDisplayComponent(GetMageTraitInfo())
+                ])),
 
-                ResistanceChoices.Robot => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Robots")
-                    .WithDescription(GetRobotTraitInfo())
-                    .Build(),
 
-                ResistanceChoices.Undead => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Undead")
-                    .WithDescription(GetZombieTraitInfo())
-                    .Build(),
+                ResistanceChoices.Giant => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Trait: Giants"),
+                    new DiscordTextDisplayComponent(GetGiantTraitInfo())
+                ])),
 
-                ResistanceChoices.Slime => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Slimes")
-                    .WithDescription(GetSlimeTraitInfo())
-                    .Build(),
+                ResistanceChoices.Dragon => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Trait: Dragons"),
+                    new DiscordTextDisplayComponent(GetDragonTraitInfo())
+                ])),
 
-                ResistanceChoices.Spirit => new DiscordEmbedBuilder()
-                    .WithTitle("Trait: Spirits")
-                    .WithDescription(GetSpiritTraitInfo())
-                    .Build(),
+                ResistanceChoices.Robot => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Trait: Robots"),
+                    new DiscordTextDisplayComponent(GetRobotTraitInfo())
+                ])),
 
-                _ => new DiscordEmbedBuilder().WithDescription("currently unimplemented choice")
+                ResistanceChoices.Undead => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Trait: Undead"),
+                    new DiscordTextDisplayComponent(GetZombieTraitInfo())
+                ])),
+
+                ResistanceChoices.Slime => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Trait: Slimes"),
+                    new DiscordTextDisplayComponent(GetSlimeTraitInfo())
+                ])),
+
+                ResistanceChoices.Spirit => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent("### Trait: Spirits"),
+                    new DiscordTextDisplayComponent(GetSpiritTraitInfo())
+                ])),
+
+                _ => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
+                [
+                    new DiscordTextDisplayComponent($"### Reference Material Missing\r\nYou've requested information not contained within the Library. Many apologies.")
+                ]))
 
             };
         }
