@@ -13,7 +13,8 @@ namespace tellahs_library.RecallCommand.Helpers
                     new DiscordTextDisplayComponent("### Know Your Resistances - Overview"),
                     new DiscordTextDisplayComponent(GetOverviewDescription()),
                     new DiscordTextDisplayComponent(GetResistanceLinks())
-                ])),
+                ],
+                color: DiscordColor.Cyan)),
 
                 ResistanceChoices.LinksOnly => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent
                 (new DiscordContainerComponent(
@@ -21,51 +22,59 @@ namespace tellahs_library.RecallCommand.Helpers
                     new DiscordTextDisplayComponent("### Resistance Links"),
                     new DiscordTextDisplayComponent(GetResistanceLinks())
 
-                ])),
+                ],
+                color: DiscordColor.Cyan)),
 
 
                 ResistanceChoices.Mage => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
                     new DiscordTextDisplayComponent("### Trait: Mages"),
                     new DiscordTextDisplayComponent(GetMageTraitInfo())
-                ])),
+                ],
+                color: DiscordColor.Blurple)),
 
 
                 ResistanceChoices.Giant => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
                     new DiscordTextDisplayComponent("### Trait: Giants"),
                     new DiscordTextDisplayComponent(GetGiantTraitInfo())
-                ])),
+                ],
+                color: DiscordColor.Orange)),
 
                 ResistanceChoices.Dragon => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
                     new DiscordTextDisplayComponent("### Trait: Dragons"),
                     new DiscordTextDisplayComponent(GetDragonTraitInfo())
-                ])),
+                ],
+                color: DiscordColor.DarkRed)),
 
                 ResistanceChoices.Robot => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
                     new DiscordTextDisplayComponent("### Trait: Robots"),
                     new DiscordTextDisplayComponent(GetRobotTraitInfo())
-                ])),
+                ],
+                color: DiscordColor.Grayple)),
 
                 ResistanceChoices.Undead => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
                     new DiscordTextDisplayComponent("### Trait: Undead"),
                     new DiscordTextDisplayComponent(GetZombieTraitInfo())
-                ])),
+                ],
+                color: DiscordColor.Black)),
 
                 ResistanceChoices.Slime => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
                     new DiscordTextDisplayComponent("### Trait: Slimes"),
                     new DiscordTextDisplayComponent(GetSlimeTraitInfo())
-                ])),
+                ],
+                color: DiscordColor.HotPink)),
 
                 ResistanceChoices.Spirit => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
                     new DiscordTextDisplayComponent("### Trait: Spirits"),
                     new DiscordTextDisplayComponent(GetSpiritTraitInfo())
-                ])),
+                ],
+                color: DiscordColor.White)),
 
                 _ => new DiscordMessageBuilder().EnableV2Components().AddContainerComponent(new DiscordContainerComponent(components:
                 [
