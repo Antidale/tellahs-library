@@ -406,7 +406,7 @@ Each Cal has just under 12% of the spot’s HP, each Brena has just under 4%, an
                         .WithThumbnail("https://ff4-fe-info.s3.us-west-2.amazonaws.com/schalaSprites/Golbez.png")
                         .WithDescription(
 @"### Fight Flow
-The fight opens with Golbez casting HoldGas on the party, then summoning Shadow. Shadow will use Demolish either three times, or until the party is down to two on-screen characters, whichever happens first. Golbez then dismisses Shadow, releases the HoldGas, and becomes vulnerable. Then Golbez will cycle through single targets of Virus, Lit3, and Fire2.
+The fight opens with Golbez casting HoldGas on the party, paralyzing them, then summoning Shadow. Shadow will use Demolish either three times, or until the party is down to two on-screen characters, whichever happens first. Golbez then dismisses Shadow, becomes vulnerable, and removes the HoldGas. Then Golbez will cycle through single-target casts of Virus, Lit3, and Fire2.
 
 Dealing direct damage when Golbez has 19,000 HP or fewer will cause him to react with a plaintive “Why?” and then Vanish.
 ### Strats
