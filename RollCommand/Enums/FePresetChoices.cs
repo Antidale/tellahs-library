@@ -33,6 +33,8 @@ public enum FePresetChoices
     AdamantCupBracket,
     [ChoiceDisplayName("Supermarket Sweep")]
     SupermarketSweep,
+    [ChoiceDisplayName("Sumomo")]
+    Sumomo,
     [ChoiceDisplayName("Omnidexterous Memers Guild (OMG)")]
     OmnidexterousMemersGuild,
     [ChoiceDisplayName("Doorway to Tomorrow")]
