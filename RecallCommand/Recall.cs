@@ -103,6 +103,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
             {
                 var response = await httpClient!.GetFromJsonAsync<List<Guide>>($"Guide?searchText={searchValue}&limit=10");
 
+                //TODO: figure out the best way to handle this in a switch expression, or similar.
                 var text = response is null || response.Count == 0
                     ? "Sorry, we're unable to find anything that matches your search. If you'd like to suggest something, leave a request in the Library's discord. Here are some general resources [Enemy List](<https://wiki.ff4fe.com/doku.php?id=enemy_list>), [Algorithm FAQ](<https://gamefaqs.gamespot.com/snes/522596-final-fantasy-ii/faqs/54945>), [Magic Guide](<https://gamefaqs.gamespot.com/snes/588330-final-fantasy-iv/faqs/53021>), [FE Wiki](<https://wiki.ff4fe.com/>)"
                     : string.Join("\r\n", response.Select(x => $"[{x.Title}](<{x.Url}>) - {x.Description}"));
@@ -114,9 +115,9 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
                 }
 
                 //If we have only one result, and it's an image, just link to it
-                if (response?.Count == 1 && (response.All(x => x.LinkType == LinkType.Image)))
+                if (response?.Count == 1 && (response.All(x => x.LinkType == LinkType.Image || x.LinkType == LinkType.Video)))
                 {
-                    text = $"[{response.First().Title}]({response.First().Url})";
+                    text = $"[{response.First().Title}]({response.First().Url}) - {response.First().Description}";
                 }
 
                 await ctx.EditResponseAsync(text);
