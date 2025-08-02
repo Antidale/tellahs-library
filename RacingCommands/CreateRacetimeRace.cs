@@ -1,8 +1,6 @@
 
 using System.ComponentModel;
-using System.Net.Http.Json;
 using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
-using FeInfo.Common.Requests;
 using tellahs_library.Constants;
 using tellahs_library.RacingCommands.Enums;
 using tellahs_library.RacingCommands.Helpers;
@@ -72,7 +70,6 @@ public class CreateRacetimeRace(RacetimeHttpClient client, FeInfoHttpClient feIn
 
         await alertsChannel.SendMessageAsync(alertMessage);
         var goalString = goal.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? goal.ToString();
-        await LogRaceCreated(response, goalString, description, ctx);
     }
 
     [Command("create_afc_race")]
@@ -136,44 +133,11 @@ public class CreateRacetimeRace(RacetimeHttpClient client, FeInfoHttpClient feIn
         var alertMessage = AlertMessageHelper.Create1v1AlertMessage(ctx, description, raceUrl, [racerOne, racerTwo], flagset);
 
         await alertsChannel.SendMessageAsync(alertMessage);
-        await LogRaceCreated(response, goal, description, ctx);
-    }
-
-    private static string GetRaceLocation(HttpResponseMessage response)
-    {
-        return response.Headers.FirstOrDefault(x => x.Key == "Location").Value.First() ?? "";
     }
 
     private static string GetFullRaceUrl(HttpResponseMessage response, string urlBase)
     {
         var locationHeader = response.Headers.FirstOrDefault(x => x.Key == "Location");
         return string.Join(string.Empty, urlBase, locationHeader.Value.First());
-    }
-
-    private async Task LogRaceCreated(HttpResponseMessage response, string goal, string description, SlashCommandContext ctx)
-    {
-        try
-        {
-            var shortRaceName = GetRaceLocation(response);
-            var metadataDict = new Dictionary<string, string>
-            {
-                ["Goal"] = goal,
-                ["Description"] = description
-            };
-
-            if (shortRaceName.StartsWith("/"))
-            {
-                shortRaceName = string.Join("", shortRaceName.Skip(1));
-            }
-
-            var logCreatedRace = new CreateRaceRoom(ctx.User.Id.ToString(), shortRaceName, "FFA", "Racetime.gg", metadataDict);
-
-            var apiResponse = await feInfoHttpClient.PostAsJsonAsync("races", logCreatedRace);
-
-        }
-        catch (Exception)
-        {
-            //don't care currently
-        }
     }
 }
