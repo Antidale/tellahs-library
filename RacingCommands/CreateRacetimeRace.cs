@@ -7,7 +7,7 @@ using tellahs_library.RacingCommands.Helpers;
 
 namespace tellahs_library.RacingCommands;
 
-public class CreateRacetimeRace(RacetimeHttpClient client, FeInfoHttpClient feInfoHttpClient)
+public class CreateRacetimeRace(RacetimeHttpClient client)
 {
     [Command("CreateRace")]
     [Description("Creates a race at racetime.gg")]
