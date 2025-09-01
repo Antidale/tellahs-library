@@ -1,26 +1,32 @@
 ﻿using DSharpPlus;
+using DSharpPlus.Extensions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using tellahs_library;
-using tellahs_library.Helpers;
+using tellahs_library.Constants;
 using tellahs_library.RacingCommands;
+using tellahs_library.Services;
 
-var token = SetupHelper.GetDiscordBotToken();
+var hostBuilder = Host.CreateApplicationBuilder()
+                      .ConfigureEnvironmentVariables();
 
-if (string.IsNullOrWhiteSpace(token))
-    throw new NullReferenceException($"{nameof(token)} is invalid. Check environment variables");
+hostBuilder.Logging.AddConsole();
 
-var discordClient = DiscordClientBuilder
-                .CreateDefault(token: token, intents: DiscordIntents.AllUnprivileged)
-                .ConfigureServices(a => a
-                    .AddLogging(log => log.AddConsole())
-                    .AddSingleton(service => new FeInfoHttpClient())
+hostBuilder.Configuration.GetValueOrExit(ConfigKeys.FeInfoApiKey, out var apiKey)
+                         .GetValueOrExit(ConfigKeys.FeInfoUrl, out var baseAddress)
+#if DEBUG
+                         .GetValueOrExit(ConfigKeys.DiscordDebugToken, out var discordToken);
+#else
+                         .GetValueOrExit(ConfigKeys.DiscordToken, out var discordToken);
+#endif
+
+hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient())
                     .AddSingleton(service => new FeGenerationHttpClient())
-                    .AddSingleton(service => new RacetimeHttpClient()))
-                .AddCommands()
-                .Build();
+                    .AddSingleton(service => new RacetimeHttpClient())
+                    .AddHostedService<DiscordBotService>()
+                    .AddDiscordClient(token: discordToken, intents: DiscordIntents.AllUnprivileged)
+                    .AddCommands();
 
-await discordClient.ConnectAsync();
-
-//TODO: check csharp fritz's discord bot vod for a better method of this
-await Task.Delay(-1);
+var stuff = hostBuilder.Build();
+await stuff.RunAsync();
