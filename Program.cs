@@ -13,14 +13,11 @@ var hostBuilder = Host.CreateApplicationBuilder()
 
 hostBuilder.Logging.AddConsole();
 
-hostBuilder.Configuration
-#if DEBUG
-                         .GetValueOrExit(ConfigKeys.DiscordDebugToken, out var discordToken);
-#else
+hostBuilder.Configuration.GetValueOrExit(ConfigKeys.FeInfoApiKey, out var apiKey)
+                         .GetValueOrExit(ConfigKeys.FeInfoUrl, out var baseAddress)
                          .GetValueOrExit(ConfigKeys.DiscordToken, out var discordToken);
-#endif
 
-hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient())
+hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient(apiKey, new Uri(baseAddress)))
                     .AddSingleton(service => new FeGenerationHttpClient())
                     .AddSingleton(service => new RacetimeHttpClient())
                     .AddHostedService<DiscordBotService>()
