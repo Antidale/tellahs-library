@@ -27,5 +27,5 @@ hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient())
                     .AddDiscordClient(token: discordToken, intents: DiscordIntents.AllUnprivileged)
                     .AddCommands();
 
-var stuff = hostBuilder.Build();
-await stuff.RunAsync();
+var app = hostBuilder.Build();
+await app.RunAsync();
