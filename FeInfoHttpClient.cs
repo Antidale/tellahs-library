@@ -1,33 +1,16 @@
-
 namespace tellahs_library;
 
 public class FeInfoHttpClient : HttpClient
 {
-    public FeInfoHttpClient()
+    public FeInfoHttpClient(string apiKey, Uri baseAddress)
     {
-        var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
-        var baseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/");
-
-#if DEBUG
-        apiKey = Environment.GetEnvironmentVariable("FE_Info_Local_Key");
-        baseAddress = new Uri("https://localhost:5001/api/");
-#endif
-
-        this.BaseAddress = baseAddress;
-        this.DefaultRequestHeaders.Add("Api-Key", apiKey);
+        BaseAddress = baseAddress;
+        DefaultRequestHeaders.Add("Api-Key", apiKey);
     }
 
-    public FeInfoHttpClient(SocketsHttpHandler handler) : base(handler)
+    public FeInfoHttpClient(SocketsHttpHandler handler, string apiKey, Uri baseAddress) : base(handler)
     {
-        var apiKey = Environment.GetEnvironmentVariable("FE_Info_Api_Key");
-        var baseAddress = new Uri("https://free-enterprise-info-api.herokuapp.com/api/");
-
-#if DEBUG
-        apiKey = Environment.GetEnvironmentVariable("FE_Info_Local_Key");
-        baseAddress = new Uri("https://localhost:5001/api/");
-#endif
-
-        this.BaseAddress = baseAddress;
-        this.DefaultRequestHeaders.Add("Api-Key", apiKey);
+        BaseAddress = baseAddress;
+        DefaultRequestHeaders.Add("Api-Key", apiKey);
     }
 }
