@@ -13,8 +13,7 @@ var hostBuilder = Host.CreateApplicationBuilder()
 
 hostBuilder.Logging.AddConsole();
 
-hostBuilder.Configuration.GetValueOrExit(ConfigKeys.FeInfoApiKey, out var apiKey)
-                         .GetValueOrExit(ConfigKeys.FeInfoUrl, out var baseAddress)
+hostBuilder.Configuration
 #if DEBUG
                          .GetValueOrExit(ConfigKeys.DiscordDebugToken, out var discordToken);
 #else
