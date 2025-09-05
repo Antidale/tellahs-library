@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SQLite;
 using tellahs_library.Constants;
+using tellahs_library.Helpers;
 
 namespace tellahs_library.Extensions;
 
@@ -27,10 +28,10 @@ public static class HostApplicationBuilderExtensions
         }
     }
 
-    public static async Task<HostApplicationBuilder> SetupSqlite(this HostApplicationBuilder builder)
+    public static HostApplicationBuilder SetupSqlite(this HostApplicationBuilder builder)
     {
-        var db = new SQLiteAsyncConnection(SqliteDbConstants.DbPath);
-        await db.CreateTableAsync<Entities.ActiveRace>();
+        var db = SqliteHelper.GetSqlConnection();
+        db.CreateTable<Entities.ActiveRace>();
 
         return builder;
     }

@@ -11,7 +11,10 @@ using tellahs_library.Services;
 BoundUrlSettings boundUrlSettings = new();
 
 var hostBuilder = Host.CreateApplicationBuilder()
-                      .ConfigureEnvironmentVariables(boundUrlSettings);
+                      .ConfigureEnvironmentVariables(boundUrlSettings)
+                      .SetupSqlite();
+
+
 
 var ActiveRaces = new ActiveRaces();
 
