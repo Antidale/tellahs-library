@@ -1,4 +1,3 @@
-
 using System.ComponentModel;
 using DSharpPlus.Commands.Processors.SlashCommands.ArgumentModifiers;
 using tellahs_library.Constants;
@@ -68,7 +67,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
 
         var alertMessage = AlertMessageHelper.CreateAlertMessage(ctx, description, raceUrl, includePing, goal, settings);
 
-        await alertsChannel.SendMessageAsync(alertMessage);
+        var message = await alertsChannel.SendMessageAsync(alertMessage);
         var goalString = goal.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? goal.ToString();
     }
 
@@ -132,7 +131,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
 
         var alertMessage = AlertMessageHelper.Create1v1AlertMessage(ctx, description, raceUrl, [racerOne, racerTwo], flagset);
 
-        await alertsChannel.SendMessageAsync(alertMessage);
+        var message = await alertsChannel.SendMessageAsync(alertMessage);
     }
 
     private static string GetFullRaceUrl(HttpResponseMessage response, string urlBase)
