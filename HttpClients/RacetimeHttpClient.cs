@@ -2,7 +2,7 @@ using System.Net.Http.Json;
 using System.Text;
 using tellahs_library.RacingCommands.Requests;
 
-namespace tellahs_library.RacingCommands;
+namespace tellahs_library.HttpClients;
 
 public class RacetimeHttpClient : HttpClient
 {
@@ -20,7 +20,7 @@ public class RacetimeHttpClient : HttpClient
 #if DEBUG
         ClientId = Environment.GetEnvironmentVariable("Local_RTGG_Client_ID") ?? ClientId;
         ClientSecret = Environment.GetEnvironmentVariable("Local_RTGG_Client_Secret") ?? ClientSecret;
-        baseAddress = new Uri("http://localhost:8000/o/");
+        baseAddress = new Uri("http://localhost:8000/");
 #endif
 
         BaseAddress = baseAddress;
@@ -31,7 +31,7 @@ public class RacetimeHttpClient : HttpClient
         DefaultRequestHeaders.Remove("Authorization");
         var stuff = new StringContent($"client_id={ClientId}&client_secret={ClientSecret}&grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
 
-        var response = await this.PostAsync("token", stuff);
+        var response = await this.PostAsync("o/token", stuff);
 
         if (!response.IsSuccessStatusCode)
         {
@@ -62,7 +62,13 @@ public class RacetimeHttpClient : HttpClient
 
         var content = request.ToStringContent();
 
-        return await this.PostAsync("ff4fe/startrace", content);
+        return await this.PostAsync("o/ff4fe/startrace", content);
+    }
+
+    public async Task<string> GetActiveRaces()
+    {
+        await Task.Delay(5);
+        return "stuff";
     }
 
     record AuthResponse(string access_token, int expires_in, string token_type, string scope) { }

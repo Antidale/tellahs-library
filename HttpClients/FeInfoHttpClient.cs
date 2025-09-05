@@ -1,4 +1,4 @@
-namespace tellahs_library;
+namespace tellahs_library.HttpClients;
 
 public class FeInfoHttpClient : HttpClient
 {

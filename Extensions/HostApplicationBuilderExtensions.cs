@@ -1,6 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SQLite;
+using tellahs_library.Constants;
 
 namespace tellahs_library.Extensions;
 
@@ -21,5 +25,13 @@ public static class HostApplicationBuilderExtensions
             builder.Configuration.Bind(urlSettings);
             return builder;
         }
+    }
+
+    public static async Task<HostApplicationBuilder> SetupSqlite(this HostApplicationBuilder builder)
+    {
+        var db = new SQLiteAsyncConnection(SqliteDbConstants.DbPath);
+        await db.CreateTableAsync<Entities.ActiveRace>();
+
+        return builder;
     }
 }

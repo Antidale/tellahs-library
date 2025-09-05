@@ -6,13 +6,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using tellahs_library;
 using tellahs_library.Constants;
-using tellahs_library.RacingCommands;
 using tellahs_library.Services;
 
 BoundUrlSettings boundUrlSettings = new();
 
 var hostBuilder = Host.CreateApplicationBuilder()
                       .ConfigureEnvironmentVariables(boundUrlSettings);
+
+var ActiveRaces = new ActiveRaces();
+
+//fetch from local database/file to populate current idea of active races
 
 hostBuilder.Logging.AddConsole();
 
@@ -24,6 +27,7 @@ hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient(apiKey, new Ur
                     .AddSingleton(service => new FeGenerationHttpClient())
                     .AddSingleton(service => new RacetimeHttpClient())
                     .AddSingleton(service => boundUrlSettings.ToUrlSettings())
+                    .AddSingleton(service => new ActiveRaces())
                     .AddHostedService<DiscordBotService>()
                     .AddDiscordClient(token: discordToken, intents: DiscordIntents.AllUnprivileged)
                     .AddInteractivityExtension(new DSharpPlus.Interactivity.InteractivityConfiguration
