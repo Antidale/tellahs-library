@@ -82,12 +82,8 @@ public class SeedRoller(FeGenerationHttpClient client, FeInfoHttpClient feInfoHt
         }
 
         var messages = response.ToMessageBuilders(generateRequest.flags, generateRequest.seed);
-        await ctx.EditResponseAsync(messages.First());
-        messages.RemoveAt(0);
-        foreach (var message in messages)
-        {
-            await ctx.FollowupAsync(message);
-        }
+
+        await ctx.EditResponseAsync(messages);
 
         var seedInfo = new LogSeedRoled(ctx.User.Id, new SeedInformation(response.Version, response.Seed, response.Flags, response.Verification, response.Url));
 

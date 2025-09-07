@@ -13,7 +13,7 @@ namespace tellahs_library.Extensions
 
             var attributes = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
             return attributes.Length > 0
-                ? ((DescriptionAttribute)attributes[0])?.ToString() ?? string.Empty
+                ? ((DescriptionAttribute)attributes[0])?.Description ?? string.Empty
                 : enumVal?.ToString() ?? string.Empty;
         }
 
