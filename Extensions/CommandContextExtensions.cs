@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using tellahs_library.Constants;
 
 namespace tellahs_library.Extensions
@@ -42,6 +41,28 @@ namespace tellahs_library.Extensions
             var builder = new DiscordWebhookBuilder();
             embeds.ForEach(embed => builder.AddEmbed(embed));
             return await ctx.EditResponseAsync(builder);
+        }
+
+        public static async Task<List<DiscordMessage>> EditResponseAsync(this CommandContext ctx, List<DiscordMessageBuilder> messages)
+        {
+            //Maybe should not hide this, to prevent the person feeling like the application is hanging in case we generate no messages.
+            if (messages.Count == 0)
+            {
+                return [];
+            }
+
+            var returnMessages = new List<DiscordMessage>(capacity: messages.Count);
+
+            var firstResponse = await ctx.EditResponseAsync(messages.First());
+            returnMessages.Add(firstResponse);
+            messages.RemoveAt(0);
+            foreach (var message in messages)
+            {
+                var followup = await ctx.FollowupAsync(message);
+                returnMessages.Add(followup);
+            }
+
+            return returnMessages;
         }
 
         public static async Task LogErrorAsync(this CommandContext ctx, string message, Exception? ex = null)

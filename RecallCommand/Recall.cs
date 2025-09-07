@@ -16,22 +16,37 @@ namespace tellahs_library.RecallCommand
     [Command("recall"), InteractionInstallType(DiscordApplicationIntegrationType.GuildInstall, DiscordApplicationIntegrationType.UserInstall)]
     [AllowDMUsage]
 
-    public class Recall(FeInfoHttpClient httpClient)
+    public class Recall(FeInfoHttpClient httpClient, UrlSettings urlSettings)
     {
         [Command("boss")]
         [Description("Get boss info")]
         [AllowDMUsage]
-        public static async Task BossRecallAsync(CommandContext ctx,
+        public async Task BossRecallAsync(CommandContext ctx,
             [Parameter("BossName")] [Description("the boss you want info on")]
             string bossName)
         {
-
             await ctx.DeferResponseAsync();
 
-            var bossEnum = GetBossName(bossName);
-            var embed = GetBossInfoEmbed(bossEnum);
+            if (!await GuardHttpClientAsync(httpClient, ctx)) { return; }
 
-            await ctx.EditResponseAsync(embed);
+            var boss = GetBossName(bossName);
+            try
+            {
+                var bossStrategy = await httpClient!.GetFromJsonAsync<BossStrategy>($"Guide/boss-strategies/{(int)boss}");
+                if (bossStrategy is null)
+                {
+                    await ctx.EditResponseAsync("Sorry, something MegaNuked the library");
+                    return;
+                }
+                var embed = GetBossInfoEmbed(bossStrategy, urlSettings.ThumbnailHost);
+
+                await ctx.EditResponseAsync(embed);
+            }
+            catch (Exception ex)
+            {
+                await ctx.LogErrorAsync("Sorry, something MegaNuked the library", ex.Message, ex);
+            }
+
         }
 
         [Command("flag_interaction")]
@@ -115,7 +130,7 @@ See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>)
                 }
 
                 //If we have only one result, and it's an image, just link to it
-                if (response?.Count == 1 && (response.All(x => x.LinkType == LinkType.Image || x.LinkType == LinkType.Video)))
+                if (response?.Count == 1 && response.All(x => x.LinkType == LinkType.Image || x.LinkType == LinkType.Video))
                 {
                     text = $"[{response.First().Title}]({response.First().Url}) - {response.First().Description}";
                 }
