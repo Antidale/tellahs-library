@@ -14,8 +14,6 @@ var hostBuilder = Host.CreateApplicationBuilder()
                       .ConfigureEnvironmentVariables(boundUrlSettings)
                       .SetupSqlite();
 
-
-
 var ActiveRaces = new ActiveRaces();
 
 //fetch from local database/file to populate current idea of active races
