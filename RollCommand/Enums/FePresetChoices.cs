@@ -13,6 +13,8 @@ public enum FePresetChoices
     ZZA,
 
     //Temporarily put the 5.0 presets high up in the list
+    [ChoiceDisplayName("Sample Standard")]
+    SampleStandard,
     [ChoiceDisplayName("Intro to Kchar (5.0)")]
     KcharIntro,
     [ChoiceDisplayName("Plink Pony Club (5.0)")]
