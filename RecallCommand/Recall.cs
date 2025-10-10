@@ -87,14 +87,14 @@ namespace tellahs_library.RecallCommand
         public static async Task RacingAsync(CommandContext ctx)
         {
             await ctx.RespondAsync(@"
-Non-tournament organized racing of Free Enterprise happens mainly in various Racing Clubs, sometimes called Community Clubs. These clubs are kind of like the FE equivalent of a bowling league. Generally led by community member or two, they're generally open to all to sign up for and have a good time. Players can also jump into individual races without joining the club.
+Non-tournament organized racing of Free Enterprise happens mainly in various, Community Races, Racing Clubs, sometimes called Community Clubs, or pickup races. The Community races happen every Friday, with the race room opening at around 8pm Eastern, and the race starting at 9pm Eastern. The races are hosted on [racetime.gg](<https://racetime.gg/>) (see their [help and support page](<https://racetime.gg/about/help>) for some basic instructions for creating accounts and using the site).
 
-See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>) page for links and details. Check out [Fleury's site](<https://adaptable-rabbit.surge.sh/events>) to see rankings and seeds of present and past clubs. Some listed clubs on Fleury's site won't be for FE, since DarkPaladin's racebot doesn't lock clubs to a single server.
+The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. Generally led by community member or two, they're generally open to all to sign up for and have a good time. Players can also jump into individual races without joining the club. See the wiki's [Racing Clubs](<https://wiki.ff4fe.com/doku.php?id=racing_clubs>) page for links and details.
 ### Racing Guides
-* [A general guide](<https://docs.google.com/document/d/18ab5ejhqr_iwQ0e6m04BB0Nf2dlFaO5mw6fpbWie3Q4/>) to dr-race-bot
-* [Another guide](<https://bit.ly/FF4FE-Bootcamp>) that also has some stream setup help. Normal/non-tournament races don't require stream delay, so skip that part of any instructions
+* [A general guide](<https://docs.google.com/document/d/18ab5ejhqr_iwQ0e6m04BB0Nf2dlFaO5mw6fpbWie3Q4/>) to prof-race-bot
+* [Another guide](<https://bit.ly/FF4FE-Bootcamp>) that also has stream setup help. Normal/non-tournament races don't require stream delay, so skip that part of any instructions since that has been part of past tournament requirements.
 * [2v2 Racing](<https://docs.google.com/document/d/102eUr6DBE93AmXrIP7gZHhKHH22RXJz2KBc_aSQDITo>)
-* dr-race-bot [commands](<https://gitlab.com/akw5013/discord-race-bot/blob/master/HELP.md>)
+* prof-race-bot [commands](<https://gitlab.com/wylem/discord-race-bot/blob/master/HELP.md>)
 ### Upcoming Races Links
 * [Upcoming Restreams](<https://docs.google.com/spreadsheets/d/1dTekGBPUl0Y_eEGtIj3Is_X5rBQpy8QcxDhoHCcRVf0>) spreadsheet - also includes information on non-tournament restreamed races
 ");
