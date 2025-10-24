@@ -40,7 +40,6 @@ public static class DiscordConfiguration
         },
         commandsConfig);
 
-
         return builder;
     }
 

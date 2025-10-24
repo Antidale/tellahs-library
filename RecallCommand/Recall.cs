@@ -1,8 +1,12 @@
 ﻿using System.ComponentModel;
+using System.IO.Pipelines;
 using System.Net.Http.Json;
+using System.Text;
 using DSharpPlus.Commands.ArgumentModifiers;
 using DSharpPlus.Commands.Processors.SlashCommands.Metadata;
 using DSharpPlus.Commands.Trees.Metadata;
+using DSharpPlus.EventArgs;
+using DSharpPlus.Interactivity;
 using FeInfo.Common.DTOs;
 using tellahs_library.RecallCommand.Enums;
 using tellahs_library.RecallCommand.Helpers;
@@ -16,7 +20,7 @@ namespace tellahs_library.RecallCommand
     [Command("recall"), InteractionInstallType(DiscordApplicationIntegrationType.GuildInstall, DiscordApplicationIntegrationType.UserInstall)]
     [AllowDMUsage]
 
-    public class Recall(FeInfoHttpClient httpClient, UrlSettings urlSettings)
+    public class Recall(FeInfoHttpClient httpClient, UrlSettings urlSettings, InteractivityExtension interactivity, IHttpClientFactory httpClientFactory)
     {
         [Command("boss")]
         [Description("Get boss info")]
@@ -217,6 +221,130 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
         )
         {
             await ctx.RespondAsync(AfcHelper.GetAfcMessages(infoType, detailLevel));
+        }
+
+        [Command("metadata")]
+        [Description("get a seed's metadata")]
+        [AllowDMUsage]
+        public async Task RecallMetadata(SlashCommandContext ctx)
+        {
+            var componentId = Guid.NewGuid().ToString();
+            var modalId = Guid.NewGuid().ToString();
+            var modalSubmission = await WaitForUploadModalAsync(modalId, componentId, ctx);
+
+            if (modalSubmission.TimedOut)
+            {
+                await modalSubmission.Result.Interaction.DeferAsync(ephemeral: true);
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("must supply a SNES rom"));
+                return;
+            }
+
+            modalSubmission.Result.Values.TryGetValue(componentId, out var submittedFile);
+            await modalSubmission.Result.Interaction.DeferAsync(ephemeral: true);
+
+            var fileStream = await GetFileStreamAsync(submittedFile);
+            if (fileStream.stream is null)
+            {
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("must supply a valid patched FE ROM."));
+                return;
+            }
+
+            if (MetadataHelper.TryGetSeedMetadata(fileStream.stream, out var metadata))
+            {
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder(metadata.ToMessageBuilder()));
+            }
+            else
+            {
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("could not parse metadata. Must use an FE ROM from version 0.3.0 to 5.0").AsEphemeral());
+                return;
+            }
+
+        }
+
+        [Command("patch")]
+        [Description("generate a patch page from an FE seed")]
+        [AllowDMUsage]
+        public async Task RecallPatchPage(SlashCommandContext ctx)
+        {
+            var componentId = Guid.NewGuid().ToString();
+            var modalId = Guid.NewGuid().ToString();
+            var modalSubmission = await WaitForUploadModalAsync(modalId, componentId, ctx);
+
+            if (modalSubmission.TimedOut)
+            {
+                await modalSubmission.Result.Interaction.DeferAsync(ephemeral: true);
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("must supply a SNES rom"));
+                return;
+            }
+
+            modalSubmission.Result.Values.TryGetValue(componentId, out var submittedFile);
+            await modalSubmission.Result.Interaction.DeferAsync();
+
+            var fileStream = await GetFileStreamAsync(submittedFile);
+            if (fileStream.stream is null)
+            {
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("must supply a valid patched FE ROM."));
+                return;
+            }
+
+            using var file = File.Create(fileStream.fileName);
+            await fileStream.stream.CopyToAsync(file);
+            file.Close();
+
+            if (MetadataHelper.TryGetSeedMetadata(fileStream.fileName, out var metadata))
+            {
+                var patchFile = await FlipsHelper.CreateBpsPatchAsync(fileStream.fileName);
+                var patchData = await File.ReadAllBytesAsync(patchFile);
+                var patchString = Convert.ToBase64String(patchData);
+                var patchPage = HtmlTemplate.BaseTemplate(metadata, patchString);
+
+                using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(patchPage));
+
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder(metadata.ToMessageBuilder()));
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("patch page").AddFile($"{fileStream.fileName}.html", memoryStream, AddFileOptions.CloseStream));
+                File.Delete(fileStream.fileName);
+                File.Delete(patchFile);
+            }
+            else
+            {
+                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("could not parse metadata. Must use an FE ROM from version 0.3.0 to 5.0"));
+                return;
+            }
+        }
+
+        private async Task<InteractivityResult<ModalSubmittedEventArgs>> WaitForUploadModalAsync(string modalId, string uploadComponentId, SlashCommandContext ctx)
+        {
+            var modal = new DiscordModalBuilder()
+                .WithCustomId(modalId)
+                .WithTitle("File Upload")
+                .AddFileUpload(new DiscordFileUploadComponent(uploadComponentId, isRequired: true), "Upload your seed here.");
+            await ctx.RespondWithModalAsync(modal);
+
+            return await interactivity.WaitForModalAsync(modalId, TimeSpan.FromMinutes(2));
+        }
+
+        private async Task<(Stream? stream, string fileName)> GetFileStreamAsync(IModalSubmission? modalSubmission)
+        {
+            if (modalSubmission is null) return (null, string.Empty);
+            if (modalSubmission is not FileUploadModalSubmission fileSubmission || !fileSubmission.UploadedFiles.Any())
+                return (null, string.Empty);
+
+            var attachment = fileSubmission?.UploadedFiles[0];
+            if (attachment is null) { return (null, string.Empty); }
+            if (!attachment.FileName?.IsSnesRom() ?? false) { return (null, string.Empty); }
+            var url = attachment.Url;
+            var client = httpClientFactory.CreateClient();
+            var getResponse = await client.GetAsync(url);
+            try
+            {
+                getResponse.EnsureSuccessStatusCode();
+                var stream = await getResponse.Content.ReadAsStreamAsync();
+                return (stream, attachment.FileName!);
+            }
+            catch (Exception)
+            {
+                return (null, string.Empty);
+            }
         }
     }
 }

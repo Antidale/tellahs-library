@@ -1,5 +1,6 @@
 ﻿using DSharpPlus;
 using DSharpPlus.Extensions;
+using DSharpPlus.Interactivity.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -25,7 +26,13 @@ hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient(apiKey, new Ur
                     .AddSingleton(service => boundUrlSettings.ToUrlSettings())
                     .AddHostedService<DiscordBotService>()
                     .AddDiscordClient(token: discordToken, intents: DiscordIntents.AllUnprivileged)
-                    .AddCommands();
+                    .AddInteractivityExtension(new DSharpPlus.Interactivity.InteractivityConfiguration
+                    {
+                        PollBehaviour = DSharpPlus.Interactivity.Enums.PollBehaviour.KeepEmojis,
+                        Timeout = TimeSpan.FromMinutes(2)
+                    })
+                    .AddCommands()
+                    .AddHttpClient();
 
 var app = hostBuilder.Build();
 await app.RunAsync();
