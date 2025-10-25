@@ -8,6 +8,7 @@ using DSharpPlus.Commands.Trees.Metadata;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
 using FeInfo.Common.DTOs;
+using tellahs_library.Constants;
 using tellahs_library.RecallCommand.Enums;
 using tellahs_library.RecallCommand.Helpers;
 using static tellahs_library.RecallCommand.Helpers.BossInfoEmbedHelper;
@@ -242,14 +243,14 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
             modalSubmission.Result.Values.TryGetValue(componentId, out var submittedFile);
             await modalSubmission.Result.Interaction.DeferAsync(ephemeral: true);
 
-            var fileStream = await GetFileStreamAsync(submittedFile);
-            if (fileStream.stream is null)
+            var (stream, fileName) = await GetFileStreamAsync(submittedFile);
+            if (stream is null)
             {
                 await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("must supply a valid patched FE ROM."));
                 return;
             }
 
-            if (MetadataHelper.TryGetSeedMetadata(fileStream.stream, out var metadata))
+            if (MetadataHelper.TryGetSeedMetadata(stream, out var metadata))
             {
                 await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder(metadata.ToMessageBuilder()));
             }
@@ -280,22 +281,22 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
             modalSubmission.Result.Values.TryGetValue(componentId, out var submittedFile);
             await modalSubmission.Result.Interaction.DeferAsync();
 
-            var fileStream = await GetFileStreamAsync(submittedFile);
-            if (fileStream.stream is null)
+            var (stream, fileName) = await GetFileStreamAsync(submittedFile);
+            if (stream is null)
             {
                 await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("must supply a valid patched FE ROM."));
                 return;
             }
 
-            using var file = File.Create(fileStream.fileName);
-            await fileStream.stream.CopyToAsync(file);
+            using var file = File.Create(fileName);
+            await stream.CopyToAsync(file);
             file.Close();
 
-            if (MetadataHelper.TryGetSeedMetadata(fileStream.fileName, out var metadata))
+            if (MetadataHelper.TryGetSeedMetadata(fileName, out var metadata))
             {
                 try
                 {
-                    var patchFile = await FlipsHelper.CreateBpsPatchAsync(fileStream.fileName, ctx);
+                    var patchFile = await FlipsHelper.CreateBpsPatchAsync(fileName, ctx);
                     var patchData = await File.ReadAllBytesAsync(patchFile);
                     var patchString = Convert.ToBase64String(patchData);
                     var patchPage = HtmlTemplate.BaseTemplate(metadata, patchString);
@@ -303,8 +304,8 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
                     using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(patchPage));
 
                     await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder(metadata.ToMessageBuilder()));
-                    await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("patch page").AddFile($"{fileStream.fileName}.html", memoryStream, AddFileOptions.CloseStream));
-                    File.Delete(fileStream.fileName);
+                    await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("patch page").AddFile($"{fileName}.html", memoryStream, AddFileOptions.CloseStream));
+                    File.Delete(fileName);
                     File.Delete(patchFile);
                 }
                 catch (Exception ex)
@@ -326,7 +327,7 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
             var modal = new DiscordModalBuilder()
                 .WithCustomId(modalId)
                 .WithTitle("File Upload")
-                .AddFileUpload(new DiscordFileUploadComponent(uploadComponentId, isRequired: true), "Upload your seed here.");
+                .AddFileUpload(new DiscordFileUploadComponent(uploadComponentId, isRequired: true, maxValues: 1), "Upload your seed here.");
             await ctx.RespondWithModalAsync(modal);
 
             return await interactivity.WaitForModalAsync(modalId, TimeSpan.FromMinutes(2));
@@ -341,6 +342,7 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
             var attachment = fileSubmission?.UploadedFiles[0];
             if (attachment is null) { return (null, string.Empty); }
             if (!attachment.FileName?.IsSnesRom() ?? false) { return (null, string.Empty); }
+            if (attachment.FileSize > NumberConstants.EXPECTED_FE_ROM_SIZE) { return (null, string.Empty); }
             var url = attachment.Url;
             var client = httpClientFactory.CreateClient();
             var getResponse = await client.GetAsync(url);
