@@ -293,17 +293,26 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
 
             if (MetadataHelper.TryGetSeedMetadata(fileStream.fileName, out var metadata))
             {
-                var patchFile = await FlipsHelper.CreateBpsPatchAsync(fileStream.fileName);
-                var patchData = await File.ReadAllBytesAsync(patchFile);
-                var patchString = Convert.ToBase64String(patchData);
-                var patchPage = HtmlTemplate.BaseTemplate(metadata, patchString);
+                try
+                {
+                    var patchFile = await FlipsHelper.CreateBpsPatchAsync(fileStream.fileName, ctx);
+                    var patchData = await File.ReadAllBytesAsync(patchFile);
+                    var patchString = Convert.ToBase64String(patchData);
+                    var patchPage = HtmlTemplate.BaseTemplate(metadata, patchString);
 
-                using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(patchPage));
+                    using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(patchPage));
 
-                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder(metadata.ToMessageBuilder()));
-                await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("patch page").AddFile($"{fileStream.fileName}.html", memoryStream, AddFileOptions.CloseStream));
-                File.Delete(fileStream.fileName);
-                File.Delete(patchFile);
+                    await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder(metadata.ToMessageBuilder()));
+                    await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("patch page").AddFile($"{fileStream.fileName}.html", memoryStream, AddFileOptions.CloseStream));
+                    File.Delete(fileStream.fileName);
+                    File.Delete(patchFile);
+                }
+                catch (Exception ex)
+                {
+                    await modalSubmission.Result.Interaction.CreateFollowupMessageAsync(new DiscordFollowupMessageBuilder().WithContent("Something Meganuked the library"));
+                    await ctx.LogErrorAsync("track this down", ex);
+                }
+
             }
             else
             {
