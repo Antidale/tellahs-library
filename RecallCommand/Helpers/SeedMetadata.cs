@@ -23,12 +23,6 @@ public class SeedMetadata
 
     public string VerificationString => string.Join(", ", Verification);
 
-    /// <summary>
-    /// will be empty for seeds before 5.0. In theory I should do better for 5.0, but also not a thing for this project.
-    /// </summary>
-    [JsonPropertyName("objectives")]
-    public List<JsonObject> Objectives { get; init; } = [];
-
     public override string ToString()
     {
         return @$"version: {Version}
