@@ -6,17 +6,20 @@ namespace tellahs_library.Extensions;
 
 public static class HostApplicationBuilderExtensions
 {
-    public static HostApplicationBuilder ConfigureEnvironmentVariables(this HostApplicationBuilder builder, BoundUrlSettings urlSettings)
+    extension(HostApplicationBuilder builder)
     {
+        public HostApplicationBuilder ConfigureEnvironmentVariables(BoundUrlSettings urlSettings)
+        {
 
 #if DEBUG
-        builder.Configuration.AddEnvironmentVariables(prefix: "SL_");
+            builder.Configuration.AddEnvironmentVariables(prefix: "SL_");
 #else
-        builder.Configuration.AddEnvironmentVariables(prefix: "TL_");
+            builder.Configuration.AddEnvironmentVariables(prefix: "TL_");
 #endif
 
-        builder.Configuration.AddEnvironmentVariables(prefix: "FE_GEN_");
-        builder.Configuration.Bind(urlSettings);
-        return builder;
+            builder.Configuration.AddEnvironmentVariables(prefix: "FE_GEN_");
+            builder.Configuration.Bind(urlSettings);
+            return builder;
+        }
     }
 }
