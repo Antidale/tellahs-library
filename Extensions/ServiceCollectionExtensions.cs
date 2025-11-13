@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Extensions.DependencyInjection;
 using tellahs_library.Constants;
 using tellahs_library.EventHandlers;
@@ -11,37 +10,41 @@ namespace tellahs_library.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddCommands(this IServiceCollection collection)
+    extension(IServiceCollection collection)
     {
-        var commandsConfig = new CommandsConfiguration
+        public IServiceCollection AddCommands()
         {
-            RegisterDefaultCommandProcessors = false
-        };
+            var commandsConfig = new CommandsConfiguration
+            {
+                RegisterDefaultCommandProcessors = false
+            };
 
-        collection.AddCommandsExtension((ServiceProvider, commands) =>
-        {
-            commands.AddProcessor(new SlashCommandProcessor());
-            commands.AddCommands<FlagsetChooser>();
-            commands.AddCommands<Recall>();
-            commands.AddCommands<SeedRoller>();
+            collection.AddCommandsExtension((ServiceProvider, commands) =>
+            {
+                commands.AddProcessor(new SlashCommandProcessor());
+                commands.AddCommands<FlagsetChooser>();
+                commands.AddCommands<Recall>();
+                commands.AddCommands<SeedRoller>();
 
-            commands.CommandExecuted += CommandsEventHanlders.OnCommandInvokedAsync;
+                commands.CommandExecuted += CommandsEventHanlders.OnCommandInvokedAsync;
 
 #if DEBUG
-            commands.AddCommands<Tournament>(GuildIds.AntiServer);
-            commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer);
-            commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer);
-            commands.AddCommands<CreateRacetimeRace>(GuildIds.AntiServer);
+                commands.AddCommands<Tournament>(GuildIds.AntiServer);
+                commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer);
+                commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer);
+                commands.AddCommands<CreateRacetimeRace>(GuildIds.AntiServer);
 #else
-            commands.AddCommands<Tournament>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
-            commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
-            commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
-            commands.AddCommands<CreateRacetimeRace>(GuildIds.FreeenWorkshop);
+                commands.AddCommands<Tournament>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
+                commands.AddCommands<TournamentAdministration>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
+                commands.AddCommands<TournamentOverrides>(GuildIds.AntiServer, GuildIds.SideTourneyServer);
+                commands.AddCommands<CreateRacetimeRace>(GuildIds.FreeenWorkshop);
 #endif
-        },
-        commandsConfig);
+            },
+            commandsConfig);
 
 
-        return collection;
+            return collection;
+        }
     }
+
 }

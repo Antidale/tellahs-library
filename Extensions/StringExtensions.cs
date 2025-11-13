@@ -1,19 +1,21 @@
-using System;
 
 namespace tellahs_library.Extensions;
 
 public static class StringExtensions
 {
-    public static void ExitIfEmpty(this string value, string propertyName = "value")
+    extension(string value)
     {
-        if (string.IsNullOrWhiteSpace(value))
+        public void ExitIfEmpty(string propertyName = "value")
         {
-            Console.WriteLine($"{propertyName} not found. Check environment variables");
-            Environment.Exit(exitCode: 1);
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                Console.WriteLine($"{propertyName} not found. Check environment variables");
+                Environment.Exit(exitCode: 1);
+            }
         }
-    }
-    public static bool HasContent(this string value) => !string.IsNullOrWhiteSpace(value);
-    public static string SortFlags(this string value) => string.Join(' ', value.Split(' ').OrderBy(x => x)).Trim();
+        public string SortFlags() => string.Join(' ', value.Split(' ').OrderBy(x => x)).Trim();
 
-    public static bool IsSnesRom(this string fileName) => fileName.EndsWith(".smc") || fileName.EndsWith(".sfc");
+        public bool IsSnesRom() => value.EndsWith(".smc") || value.EndsWith(".sfc");
+        public bool HasContent() => !string.IsNullOrWhiteSpace(value);
+    }
 }
