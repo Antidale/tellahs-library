@@ -105,6 +105,6 @@ public partial class SeedResponse : FeApiResponse
     }
 
 
-    [GeneratedRegex(@"=(\w+)\.", RegexOptions.IgnoreCase, "en-US")]
+    [GeneratedRegex(@"=([\w\-]+)\.", RegexOptions.IgnoreCase, "en-US")]
     private static partial Regex UrlFlagsRegex();
 }
