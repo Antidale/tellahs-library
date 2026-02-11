@@ -12,7 +12,13 @@ public class RacetimeRacesService(RacetimeHttpClient racetimeHttpClient, Logger<
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        using PeriodicTimer timer = new(TimeSpan.FromSeconds(5 * 60));
+        if (stoppingToken.IsCancellationRequested)
+        {
+            //store data about races
+            return;
+        }
+
+        using PeriodicTimer timer = new(TimeSpan.FromMinutes(5));
         try
         {
             while (await timer.WaitForNextTickAsync(stoppingToken))

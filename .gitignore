@@ -27,6 +27,8 @@ gitignore/VisualStudio.gitignore
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+tl-data-db
+
 # User-specific files
 *.rsuser
 *.suo
