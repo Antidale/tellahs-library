@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using tellahs_library.Helpers;
 
 namespace tellahs_library.Services;
 
@@ -36,7 +37,8 @@ public class RacetimeRacesService(RacetimeHttpClient racetimeHttpClient, Logger<
     {
         if (!hasStarted)
         {
-            //go to the db to track what races we knew about before the system shut down.
+            var db = SqliteHelper.GetAsyncSqlConnection();
+            var data = db.Table<ActiveRaces>().ToListAsync();
         }
 
         var racedata = await client.GetActiveRaces();
