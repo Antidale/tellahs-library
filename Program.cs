@@ -16,8 +16,6 @@ var hostBuilder = Host.CreateApplicationBuilder()
 
 var ActiveRaces = new ActiveRaces();
 
-//fetch from local database/file to populate current idea of active races
-
 hostBuilder.Logging.AddConsole();
 
 hostBuilder.Configuration.GetValueOrExit(ConfigKeys.FeInfoApiKey, out var apiKey)
