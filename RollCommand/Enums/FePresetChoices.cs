@@ -4,14 +4,23 @@ namespace tellahs_library.RollCommand.Enums;
 
 public enum FePresetChoices
 {
-    [ChoiceDisplayName("50 CC")]
+    [ChoiceDisplayName("50 CC.A")]
     CC50,
 
-    [ChoiceDisplayName("100 CC")]
+    [ChoiceDisplayName("100 CC.A")]
     CC100,
 
-    [ChoiceDisplayName("150 CC")]
+    [ChoiceDisplayName("150 CC.A")]
     CC150,
+
+    [ChoiceDisplayName("50 CC.B")]
+    CC50B,
+
+    [ChoiceDisplayName("100 CC.B")]
+    CC100B,
+
+    [ChoiceDisplayName("150 CC.B")]
+    CC150B,
 
     //While the AFC tournament is going on, these stay up top
     [ChoiceDisplayName("Adamant Cup Experience")]
