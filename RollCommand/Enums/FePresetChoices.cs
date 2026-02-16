@@ -4,22 +4,22 @@ namespace tellahs_library.RollCommand.Enums;
 
 public enum FePresetChoices
 {
-    [ChoiceDisplayName("50 CC.A")]
+    [ChoiceDisplayName("50 CC (initial)")]
     CC50,
 
-    [ChoiceDisplayName("100 CC.A")]
+    [ChoiceDisplayName("100 CC (initial)")]
     CC100,
 
-    [ChoiceDisplayName("150 CC.A")]
+    [ChoiceDisplayName("150 CC (initial)")]
     CC150,
 
-    [ChoiceDisplayName("50 CC.B")]
+    [ChoiceDisplayName("50 CC (2026-02-15)")]
     CC50B,
 
-    [ChoiceDisplayName("100 CC.B")]
+    [ChoiceDisplayName("100 CC (2026-02-15)")]
     CC100B,
 
-    [ChoiceDisplayName("150 CC.B")]
+    [ChoiceDisplayName("150 CC (2026-02-15)")]
     CC150B,
 
     //While the AFC tournament is going on, these stay up top
