@@ -12,7 +12,9 @@ public class ActiveRaces
     /// </summary>
     public Dictionary<string, Race> GetRaces => RaceList.ToDictionary();
 
-    public void AddOrUpdateRace(string something, Race race) => RaceList.AddOrUpdate(something, race, (key, oldValue) => race);
+    public void AddOrUpdateRace(string raceUrl, Race race) => RaceList.AddOrUpdate(raceUrl, race, (key, oldValue) => race);
+
+    public bool RemoveRace(string raceUrl) => RaceList.Remove(raceUrl, out var race);
 
     /// <summary>
     /// A method to get the race details given the dictionary's key
