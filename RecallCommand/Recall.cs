@@ -210,20 +210,6 @@ The Racing Clubs clubs are kind of like the FE equivalent of a bowling league. G
             await ctx.RespondAsync(LearningwayHelper.GetInfo());
         }
 
-        [Command("afc-breakdown")]
-        [Description("information about the AFC tournament flagsets")]
-        [AllowDMUsage]
-        public async Task RecallAfcFlagsetsAsync(
-            SlashCommandContext ctx,
-            [Parameter("info"), Description("what info you want")]
-            AfcInfoType infoType,
-            [Parameter("detail_level"), Description("The amount of detail you want")]
-            AfcDetailOptions detailLevel
-        )
-        {
-            await ctx.RespondAsync(AfcHelper.GetAfcMessages(infoType, detailLevel));
-        }
-
         [Command("metadata")]
         [Description("get a seed's metadata")]
         [AllowDMUsage]
