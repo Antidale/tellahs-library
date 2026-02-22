@@ -109,7 +109,7 @@ public class CreateRacetimeRace(RacetimeHttpClient client, ActiveRaces activeRac
             return;
         }
 
-        var goal = "All Forked Cup team tournament";
+        var goal = "5.0 alpha/beta";
 
         var description = $"EEGP: {racerOne.DisplayName} vs {racerTwo.DisplayName} ({flagset.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? ""})";
 
