@@ -76,23 +76,20 @@ public class CreateRacetimeRace(RacetimeHttpClient client, ActiveRaces activeRac
         var goalString = goal.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? goal.ToString();
     }
 
-    [Command("create_afc_race")]
-    [Description("Creates a race at racetime.gg")]
+    [Command("create_eegp_race")]
+    [Description("Creates a race at racetime.gg for the EEGP tournament")]
     [RequireGuild]
-    public async Task CreateAfcRaceAsync(
+    public async Task CreateTournamentRaceAsync(
         SlashCommandContext ctx,
-        [Parameter("description")]
-        [Description("a brief description of the race")]
-        string description,
         [Parameter("flagset")]
         [Description("flagset")]
         AfcFlagset flagset,
         [Parameter("racer-one")]
         [Description("pings racer")]
-        DiscordUser racerOne,
+        DiscordMember racerOne,
         [Parameter("racer-two")]
         [Description("pings racer")]
-        DiscordUser racerTwo
+        DiscordMember racerTwo
     )
     {
         await ctx.DeferResponseAsync(ephemeral: true);
@@ -113,6 +110,8 @@ public class CreateRacetimeRace(RacetimeHttpClient client, ActiveRaces activeRac
         }
 
         var goal = "All Forked Cup team tournament";
+
+        var description = $"EEGP: {racerOne.DisplayName} vs {racerTwo.DisplayName} ({flagset.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? ""})";
 
         var response = await client.CreateRaceAsync(new()
         {
