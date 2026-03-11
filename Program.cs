@@ -26,6 +26,7 @@ hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient(apiKey, new Ur
                     .AddSingleton(service => boundUrlSettings.ToUrlSettings())
                     .AddSingleton(service => new ActiveRaces())
                     .AddHostedService<DiscordBotService>()
+                    .AddHostedService<RaceAnnouncerService>()
                     .AddDiscordClient(token: discordToken, intents: DiscordIntents.AllUnprivileged)
                     .AddInteractivityExtension(new DSharpPlus.Interactivity.InteractivityConfiguration
                     {

@@ -65,7 +65,7 @@ public class RacetimeHttpClient : HttpClient
         return await this.PostAsync("o/ff4fe/startrace", content);
     }
 
-    public async Task<string> GetActiveRaces()
+    public async Task<string> GetRaces()
     {
         await Task.Delay(5);
         return "stuff";

@@ -2,13 +2,12 @@ using System.Collections.Concurrent;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using tellahs_library.Helpers;
+using tellahs_library.Services.RacetimeModels;
 
 namespace tellahs_library.Services;
 
-public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, Logger<RaceAnnouncerService> logger) : BackgroundService
+public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger<RaceAnnouncerService> logger, ActiveRaces activeRaces) : BackgroundService
 {
-    private readonly RacetimeHttpClient client = racetimeHttpClient;
-    private readonly ConcurrentDictionary<string, string> races = new();
     private bool hasStarted = false;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -19,7 +18,7 @@ public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, Logger<
             return;
         }
 
-        using PeriodicTimer timer = new(TimeSpan.FromMinutes(5));
+        using PeriodicTimer timer = new(TimeSpan.FromSeconds(15));
         try
         {
             while (await timer.WaitForNextTickAsync(stoppingToken))
@@ -38,10 +37,16 @@ public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, Logger<
         if (!hasStarted)
         {
             var db = SqliteHelper.GetAsyncSqlConnection();
-            var data = db.Table<ActiveRaces>().ToListAsync();
+            var data = await db.Table<Entities.ActiveRace>().ToListAsync();
+            foreach (var race in data)
+            {
+                activeRaces.AddOrUpdateRace(race.Url, race);
+            }
+
+            hasStarted = true;
         }
 
-        var racedata = await client.GetActiveRaces();
+        var racedata = await racetimeHttpClient.GetRaces();
         //get the active races for FE
         //iterate through the urls
         //add missing urls
