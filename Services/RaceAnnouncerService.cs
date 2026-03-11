@@ -5,7 +5,7 @@ using tellahs_library.Helpers;
 
 namespace tellahs_library.Services;
 
-public class RacetimeRacesService(RacetimeHttpClient racetimeHttpClient, Logger<RacetimeRacesService> logger) : BackgroundService
+public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, Logger<RaceAnnouncerService> logger) : BackgroundService
 {
     private readonly RacetimeHttpClient client = racetimeHttpClient;
     private readonly ConcurrentDictionary<string, string> races = new();

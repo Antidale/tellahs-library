@@ -14,8 +14,6 @@ var hostBuilder = Host.CreateApplicationBuilder()
                       .ConfigureEnvironmentVariables(boundUrlSettings)
                       .SetupSqlite();
 
-var ActiveRaces = new ActiveRaces();
-
 hostBuilder.Logging.AddConsole();
 
 hostBuilder.Configuration.GetValueOrExit(ConfigKeys.FeInfoApiKey, out var apiKey)
