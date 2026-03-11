@@ -1,12 +1,11 @@
-using System.Collections.Concurrent;
+using DSharpPlus;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using tellahs_library.Helpers;
-using tellahs_library.Services.RacetimeModels;
 
 namespace tellahs_library.Services;
 
-public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger<RaceAnnouncerService> logger, ActiveRaces activeRaces) : BackgroundService
+public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger<RaceAnnouncerService> logger, ActiveRaces activeRaces, DiscordClient discordClient) : BackgroundService
 {
     private bool hasStarted = false;
 
@@ -14,7 +13,8 @@ public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger
     {
         if (stoppingToken.IsCancellationRequested)
         {
-            //store data about races
+            //clear existing data and then
+            //store data about currently active races to pull back when the bot restarts
             return;
         }
 
@@ -46,12 +46,16 @@ public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger
             hasStarted = true;
         }
 
-        var racedata = await racetimeHttpClient.GetRaces();
         //get the active races for FE
-        //iterate through the urls
-        //add missing urls
-        //update existing ones (if needed due to status change [opened vs running])
-        //delete ones no longer on the list
+        var racedata = await racetimeHttpClient.GetRaces();
+        //compare urls in raceData and in activeRaces
+        //if in raceData, but not active races, create a message in the #race-alerts channel
+
+        //If in activeRaces but not in raceData, delete the message currently posted in #race-alerts
+        // var channel = await discordClient.GetChannelAsync(Constants.ChannelIds.WorkshopRaceAlertsId);
+        // var message = await junk.GetMessageAsync();
+        // await message.DeleteAsync();
+        //TODO later: don't just add or remove, but allow a mechanism for updating race data
     }
 
 }

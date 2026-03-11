@@ -14,15 +14,14 @@ var hostBuilder = Host.CreateApplicationBuilder()
                       .ConfigureEnvironmentVariables(boundUrlSettings)
                       .SetupSqlite();
 
-hostBuilder.Logging.AddConsole();
+hostBuilder.Logging.AddConsole()
+                   .AddFilter("System.Net.Http", LogLevel.Error);
 
 hostBuilder.Configuration.GetValueOrExit(ConfigKeys.FeInfoApiKey, out var apiKey)
                          .GetValueOrExit(ConfigKeys.FeInfoUrl, out var baseAddress)
                          .GetValueOrExit(ConfigKeys.DiscordToken, out var discordToken);
 
-hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient(apiKey, new Uri(baseAddress)))
-                    .AddSingleton(service => new FeGenerationHttpClient())
-                    .AddSingleton(service => new RacetimeHttpClient())
+hostBuilder.Services.AddHttpClients(apiKey, new Uri(baseAddress))
                     .AddSingleton(service => boundUrlSettings.ToUrlSettings())
                     .AddSingleton(service => new ActiveRaces())
                     .AddHostedService<DiscordBotService>()
@@ -33,8 +32,7 @@ hostBuilder.Services.AddSingleton(service => new FeInfoHttpClient(apiKey, new Ur
                         PollBehaviour = DSharpPlus.Interactivity.Enums.PollBehaviour.KeepEmojis,
                         Timeout = TimeSpan.FromMinutes(2)
                     })
-                    .AddCommands()
-                    .AddHttpClient();
+                    .AddCommands();
 
 var app = hostBuilder.Build();
 await app.RunAsync();
