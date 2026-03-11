@@ -45,6 +45,15 @@ public static class ServiceCollectionExtensions
 
             return collection;
         }
-    }
 
+        public IServiceCollection AddHttpClients(string feInfoApiKey, Uri feInfoUrlBase)
+        {
+            collection.AddSingleton(service => new FeInfoHttpClient(feInfoApiKey, feInfoUrlBase))
+                        .AddSingleton(service => new FeGenerationHttpClient())
+                        .AddSingleton(service => new RacetimeHttpClient())
+                        .AddHttpClient();
+
+            return collection;
+        }
+    }
 }
