@@ -10,7 +10,7 @@ public partial class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient,
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        using PeriodicTimer timer = new(TimeSpan.FromMinutes(1));
+        using PeriodicTimer timer = new(TimeSpan.FromMinutes(10));
         try
         {
             while (await timer.WaitForNextTickAsync(stoppingToken))
