@@ -10,7 +10,7 @@ public partial class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient,
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        using PeriodicTimer timer = new(TimeSpan.FromMinutes(10));
+        using PeriodicTimer timer = new(TimeSpan.FromMinutes(1));
         try
         {
             while (await timer.WaitForNextTickAsync(stoppingToken))
@@ -28,27 +28,24 @@ public partial class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient,
     {
         try
         {
-            //get the active races for FE
-            var rtRaces = await racetimeHttpClient.GetRaceUrls();
+            var closedRaceUrls = await GetClosedRacesAsync();
+            var recentMessages = GetRecentMessages();
 
-            //remove cancelled/finished races from ActiveRaces
-            var trackingUrls = activeRaces.Races.Select(x => x.Url);
-            var closedRaces = trackingUrls.Except(rtRaces);
-            var recentMessages = await GetRecentMessages();
-
-            foreach (var race in closedRaces)
+            foreach (var url in closedRaceUrls)
             {
-                var raceInfo = activeRaces.GetRace(race);
-                await activeRaces.RemoveRaceAsync(race);
+                var raceInfo = activeRaces.GetRace(url);
+                await activeRaces.RemoveRaceAsync(url);
 
                 if (raceInfo is not null &&
                     ulong.TryParse(raceInfo.MessageIdString,
                     out var messageId))
                 {
-                    var message = recentMessages.FirstOrDefault(x => x.Id == messageId);
-                    message?.DeleteAsync("Race is no longer active");
+                    var message = await recentMessages.FirstOrDefaultAsync(x => x.Id == messageId);
+                    if (message is not null)
+                    {
+                        await message.DeleteAsync("Race is no longer active");
+                    }
                 }
-
             }
         }
         catch (Exception ex)
@@ -61,18 +58,25 @@ public partial class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient,
         //TODO later: don't just add or remove, but allow a mechanism for updating race data
     }
 
-    private async Task<List<DiscordMessage>> GetRecentMessages()
+    private async IAsyncEnumerable<DiscordMessage> GetRecentMessages()
     {
         var channelId = Constants.ChannelIds.WorkshopRaceAlertsId;
 #if DEBUG
         channelId = Constants.ChannelIds.AntiServerRaceAlertsId;
 #endif
         var channel = await discordClient.GetChannelAsync(channelId);
-        var messages = channel.GetMessagesAsync(50);
-        List<DiscordMessage> messageIds = new(await messages.CountAsync());
-        await foreach (var item in messages) messageIds.Add(item);
+        var discordMessages = channel.GetMessagesAsync(50);
+        await foreach (var message in discordMessages) yield return message;
+    }
 
-        return messageIds;
+    private async Task<IEnumerable<string>> GetClosedRacesAsync()
+    {
+        //get the active races for FE
+        var rtRaces = await racetimeHttpClient.GetRaceUrls();
+
+        //remove cancelled/finished races from ActiveRaces
+        var trackingUrls = activeRaces.Races.Select(x => x.Url);
+        return trackingUrls.Except(rtRaces);
     }
 
     [LoggerMessage(Level = LogLevel.Error, Message = "RaceAnnouncerService: {messageDetail}")]
