@@ -1,24 +1,16 @@
 using DSharpPlus;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using tellahs_library.Helpers;
 
 namespace tellahs_library.Services;
 
-public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger<RaceAnnouncerService> logger, ActiveRaces activeRaces, DiscordClient discordClient) : BackgroundService
+public partial class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger<RaceAnnouncerService> logger, ActiveRaces activeRaces, DiscordClient discordClient) : BackgroundService
 {
-    private bool hasStarted = false;
+    ILogger Logger = logger;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        if (stoppingToken.IsCancellationRequested)
-        {
-            //clear existing data and then
-            //store data about currently active races to pull back when the bot restarts
-            return;
-        }
-
-        using PeriodicTimer timer = new(TimeSpan.FromSeconds(15));
+        using PeriodicTimer timer = new(TimeSpan.FromMinutes(10));
         try
         {
             while (await timer.WaitForNextTickAsync(stoppingToken))
@@ -28,34 +20,62 @@ public class RaceAnnouncerService(RacetimeHttpClient racetimeHttpClient, ILogger
         }
         catch (Exception ex)
         {
-            logger.LogError("error: {ex}", ex.Message);
+            LogError(ex.Message);
         }
     }
 
     private async Task DoWork()
     {
-        if (!hasStarted)
+        try
         {
-            var db = SqliteHelper.GetAsyncSqlConnection();
-            var data = await db.Table<Entities.ActiveRace>().ToListAsync();
-            foreach (var race in data)
+            //get the active races for FE
+            var rtRaces = await racetimeHttpClient.GetRaceUrls();
+
+            //remove cancelled/finished races from ActiveRaces
+            var trackingUrls = activeRaces.Races.Select(x => x.Url);
+            var closedRaces = trackingUrls.Except(rtRaces);
+            var recentMessages = await GetRecentMessages();
+
+            foreach (var race in closedRaces)
             {
-                activeRaces.AddOrUpdateRace(race.Url, race);
+                var raceInfo = activeRaces.GetRace(race);
+                await activeRaces.RemoveRaceAsync(race);
+
+                if (raceInfo is not null &&
+                    ulong.TryParse(raceInfo.MessageIdString,
+                    out var messageId))
+                {
+                    var message = recentMessages.FirstOrDefault(x => x.Id == messageId);
+                    message?.DeleteAsync("Race is no longer active");
+                }
+
             }
-
-            hasStarted = true;
         }
+        catch (Exception ex)
+        {
+            LogError(ex.Message);
+        }
+        //TODO - when tracking new races created on rt.gg
+        //Add racealert message and store race data in activeRaces
 
-        //get the active races for FE
-        var racedata = await racetimeHttpClient.GetRaces();
-        //compare urls in raceData and in activeRaces
-        //if in raceData, but not active races, create a message in the #race-alerts channel
-
-        //If in activeRaces but not in raceData, delete the message currently posted in #race-alerts
-        // var channel = await discordClient.GetChannelAsync(Constants.ChannelIds.WorkshopRaceAlertsId);
-        // var message = await junk.GetMessageAsync();
-        // await message.DeleteAsync();
         //TODO later: don't just add or remove, but allow a mechanism for updating race data
     }
+
+    private async Task<List<DiscordMessage>> GetRecentMessages()
+    {
+        var channelId = Constants.ChannelIds.WorkshopRaceAlertsId;
+#if DEBUG
+        channelId = Constants.ChannelIds.AntiServerRaceAlertsId;
+#endif
+        var channel = await discordClient.GetChannelAsync(channelId);
+        var messages = channel.GetMessagesAsync(50);
+        List<DiscordMessage> messageIds = new(await messages.CountAsync());
+        await foreach (var item in messages) messageIds.Add(item);
+
+        return messageIds;
+    }
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "RaceAnnouncerService: {messageDetail}")]
+    private partial void LogError(string messageDetail);
 
 }
