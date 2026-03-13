@@ -26,7 +26,7 @@ public static class HostApplicationBuilderExtensions
 
     public static HostApplicationBuilder SetupSqlite(this HostApplicationBuilder builder)
     {
-        var db = SqliteHelper.GetSqlConnection();
+        using var db = new SqliteHelper().GetSqlConnection();
         db.CreateTable<Entities.ActiveRace>();
 
         return builder;

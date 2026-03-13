@@ -6,7 +6,7 @@ using tellahs_library.RacingCommands.Helpers;
 
 namespace tellahs_library.RacingCommands;
 
-public class CreateRacetimeRace(RacetimeHttpClient client)
+public class CreateRacetimeRace(RacetimeHttpClient client, ActiveRaces activeRaces)
 {
     [Command("CreateRace")]
     [Description("Creates a race at racetime.gg")]
@@ -68,6 +68,11 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         var alertMessage = AlertMessageHelper.CreateAlertMessage(ctx, description, raceUrl, includePing, goal, settings);
 
         var message = await alertsChannel.SendMessageAsync(alertMessage);
+        if (message is not null)
+        {
+            await AddActiveRaceAsync(message, raceUrl);
+        }
+
         var goalString = goal.GetAttribute<ChoiceDisplayNameAttribute>()?.DisplayName ?? goal.ToString();
     }
 
@@ -132,11 +137,26 @@ public class CreateRacetimeRace(RacetimeHttpClient client)
         var alertMessage = AlertMessageHelper.Create1v1AlertMessage(ctx, description, raceUrl, [racerOne, racerTwo], flagset);
 
         var message = await alertsChannel.SendMessageAsync(alertMessage);
+        if (message is not null)
+        {
+            await AddActiveRaceAsync(message, raceUrl);
+        }
     }
 
     private static string GetFullRaceUrl(HttpResponseMessage response, string urlBase)
     {
         var locationHeader = response.Headers.FirstOrDefault(x => x.Key == "Location");
         return string.Join(string.Empty, urlBase, locationHeader.Value.First());
+    }
+
+    private async Task AddActiveRaceAsync(DiscordMessage message, string raceUrl)
+    {
+        var entity = new Entities.ActiveRace
+        {
+            MessageIdString = message.Id.ToString(),
+            Url = raceUrl
+        };
+
+        await activeRaces.AddOrUpdateRace(raceUrl, entity);
     }
 }

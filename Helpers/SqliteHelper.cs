@@ -3,8 +3,19 @@ using tellahs_library.Constants;
 
 namespace tellahs_library.Helpers;
 
-public static class SqliteHelper
+public interface ISqliteHelper
 {
-    public static SQLiteAsyncConnection GetAsyncSqlConnection() => new(SqliteDbConstants.DbPath);
-    public static SQLiteConnection GetSqlConnection() => new(SqliteDbConstants.DbPath);
+    public ISQLiteAsyncConnection GetAsyncSqlConnection();
+    public SQLiteConnection GetSqlConnection();
+}
+
+
+public class SqliteHelper : ISqliteHelper
+{
+    private SQLiteAsyncConnection GetAsyncConnection() => new(SqliteDbConstants.DbPath);
+    private SQLiteConnection GetConnection() => new(SqliteDbConstants.DbPath);
+
+    public ISQLiteAsyncConnection GetAsyncSqlConnection() => GetAsyncConnection();
+
+    public SQLiteConnection GetSqlConnection() => GetConnection();
 }

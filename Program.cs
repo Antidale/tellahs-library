@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using tellahs_library;
 using tellahs_library.Constants;
+using tellahs_library.Helpers;
 using tellahs_library.Services;
 
 BoundUrlSettings boundUrlSettings = new();
@@ -22,8 +23,9 @@ hostBuilder.Configuration.GetValueOrExit(ConfigKeys.FeInfoApiKey, out var apiKey
                          .GetValueOrExit(ConfigKeys.DiscordToken, out var discordToken);
 
 hostBuilder.Services.AddHttpClients(apiKey, new Uri(baseAddress))
+                    .AddSingleton<ISqliteHelper, SqliteHelper>()
                     .AddSingleton(service => boundUrlSettings.ToUrlSettings())
-                    .AddSingleton(service => new ActiveRaces())
+                    .AddSingleton<ActiveRaces>()
                     .AddHostedService<DiscordBotService>()
                     .AddHostedService<RaceAnnouncerService>()
                     .AddDiscordClient(token: discordToken, intents: DiscordIntents.AllUnprivileged)
@@ -34,5 +36,7 @@ hostBuilder.Services.AddHttpClients(apiKey, new Uri(baseAddress))
                     })
                     .AddCommands();
 
+using var cts = new CancellationTokenSource();
+var token = cts.Token;
 var app = hostBuilder.Build();
-await app.RunAsync();
+await app.RunAsync(token);

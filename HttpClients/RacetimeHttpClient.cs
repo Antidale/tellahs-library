@@ -1,29 +1,38 @@
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
+using Microsoft.Extensions.Logging;
 using tellahs_library.RacingCommands.Requests;
+using tellahs_library.Services.RacetimeModels;
 
 namespace tellahs_library.HttpClients;
 
-public class RacetimeHttpClient : HttpClient
+public partial class RacetimeHttpClient : HttpClient
 {
     private readonly string ClientId = string.Empty;
     private readonly string ClientSecret = string.Empty;
     private string authToken = string.Empty;
+    private readonly ILogger Logger;
     private DateTime TokenExpiresAt = DateTime.UtcNow.AddMinutes(-10);
+    private readonly JsonSerializerOptions serializerOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+    };
 
-    public RacetimeHttpClient()
+    public RacetimeHttpClient(ILogger<RacetimeHttpClient> logger)
     {
         ClientId = Environment.GetEnvironmentVariable("Racetime_Client_Id") ?? ClientId;
         ClientSecret = Environment.GetEnvironmentVariable("Racetime_Client_Secret") ?? ClientSecret;
-        var baseAddress = new Uri("https://racetime.gg/o/");
+        var baseAddress = new Uri("https://racetime.gg");
 
 #if DEBUG
         ClientId = Environment.GetEnvironmentVariable("Local_RTGG_Client_ID") ?? ClientId;
         ClientSecret = Environment.GetEnvironmentVariable("Local_RTGG_Client_Secret") ?? ClientSecret;
-        baseAddress = new Uri("http://localhost:8000/");
+        baseAddress = new Uri("http://localhost:8000");
 #endif
 
         BaseAddress = baseAddress;
+        Logger = logger;
     }
 
     private async Task AuthorizeAsync()
@@ -31,24 +40,24 @@ public class RacetimeHttpClient : HttpClient
         DefaultRequestHeaders.Remove("Authorization");
         var stuff = new StringContent($"client_id={ClientId}&client_secret={ClientSecret}&grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
 
-        var response = await this.PostAsync("o/token", stuff);
+        var response = await this.PostAsync("/o/token", stuff);
 
         if (!response.IsSuccessStatusCode)
         {
-            Console.WriteLine("Failed authorization");
+            LogAuthError("unsuccessful status code");
             return;
         }
 
-        var responseDto = await response.Content.ReadFromJsonAsync<AuthResponse>();
+        var responseDto = await response.Content.ReadFromJsonAsync<AuthResponse>(serializerOptions);
         if (responseDto == null)
         {
-            Console.WriteLine("We didn't get an auth token from the auth endpoint");
+            LogAuthError("null auth response dto");
             return;
         }
 
-        TokenExpiresAt = DateTime.UtcNow.AddSeconds(responseDto.expires_in - 100);
+        TokenExpiresAt = DateTime.UtcNow.AddSeconds(responseDto.ExpiresIn - 100);
 
-        authToken = responseDto.access_token;
+        authToken = responseDto.AccessToken;
 
         DefaultRequestHeaders.Add("Authorization", $"Bearer {authToken}");
     }
@@ -62,15 +71,35 @@ public class RacetimeHttpClient : HttpClient
 
         var content = request.ToStringContent();
 
-        return await this.PostAsync("o/ff4fe/startrace", content);
+        return await this.PostAsync("/o/ff4fe/startrace", content);
     }
 
-    public async Task<string> GetRaces()
+    public async Task<List<string>> GetRaceUrls()
     {
-        await Task.Delay(5);
-        return "stuff";
+        var response = await this.GetAsync("/ff4fe/data");
+        try
+        {
+            var racesData = await response.Content.ReadFromJsonAsync<RacesResponse>(serializerOptions);
+
+            if (racesData is null)
+            { return []; }
+
+            return [.. racesData.CurrentRaces.Select(x => string.Concat(BaseAddress!.AbsoluteUri, x.Url[1..]))];
+        }
+        catch (Exception ex)
+        {
+            LogFetchRacesError(ex.Message);
+            return [];
+        }
     }
 
-    record AuthResponse(string access_token, int expires_in, string token_type, string scope) { }
+    [LoggerMessage(Level = LogLevel.Error, Message = "Error fetcing races from rtgg: {ex}")]
+    private partial void LogFetchRacesError(string ex);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Failed to authorize with rt.gg {messageDetail}")]
+    private partial void LogAuthError(string messageDetail);
+
+
+    record AuthResponse(string AccessToken, int ExpiresIn, string TokenType, string Scope) { }
 
 }
