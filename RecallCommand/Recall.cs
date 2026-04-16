@@ -49,6 +49,12 @@ namespace tellahs_library.RecallCommand
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("404"))
+                {
+                    await ctx.RespondAsync($"No boss data found for {bossName}");
+                    return;
+                }
+
                 await ctx.LogErrorAsync("Sorry, something MegaNuked the library", ex.Message, ex);
             }
 
