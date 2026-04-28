@@ -4,6 +4,8 @@ namespace tellahs_library.RollCommand.Enums;
 
 public enum FePresetChoices
 {
+    [ChoiceDisplayName("Paladin Cup")]
+    PC,
     [ChoiceDisplayName("Megaflare Rally")]
     CC50,
     [ChoiceDisplayName("Tsunami Open")]
