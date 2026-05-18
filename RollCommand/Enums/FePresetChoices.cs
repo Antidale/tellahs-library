@@ -6,6 +6,11 @@ public enum FePresetChoices
 {
     [ChoiceDisplayName("Paladin Cup")]
     PC,
+    [ChoiceDisplayName("Kokkol Express")]
+    KokkolExpress,
+    [ChoiceDisplayName("Push B To Baron")]
+    pb2b,
+
     [ChoiceDisplayName("Megaflare Rally")]
     CC50,
     [ChoiceDisplayName("Tsunami Open")]
@@ -67,11 +72,10 @@ public enum FePresetChoices
     EELPotionParty,
     [ChoiceDisplayName("EEL - Moonveil Mixer")]
     EELMoonveilMixer,
-    [ChoiceDisplayName("Pro-B-Otics")]
-    ProBotics,
     [ChoiceDisplayName("FuWario")]
     FuWario,
     [ChoiceDisplayName("Ladder Push B To Jump")]
     LadderPB2J,
-
+    [ChoiceDisplayName("Pro-B-Otics")]
+    ProBotics,
 }
