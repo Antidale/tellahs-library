@@ -10,7 +10,7 @@ public static class PresetHelper
         return choice switch
         {
             FePresetChoices.PC => (FeHostedApi.Galeswift,
-            "O1:quest_monsterking/2:quest_ordeals/random:5,tough_quest/random2:1,quest/req:6/hardreq:1,2/win:crystal Kmain/moon/nofree:dwarf/latedark/start:legend Pkey Crelaxed/noearned/distinct:7/start:any/no:fusoya/abilities:j/nekkie/nodupes Twildish/playable/buffweights/mintier:3 Sstandard/no:apples Bstandard/alt:gauntlet/whichburn/newscriptstats Etoggle Hrandom Gwarp/life/sylph/backrow Fweighted Aagnostic Zvanilla -kit:better -kit2:freedom -kit3:cid -spoon -smith:super,playable -vanilla:zot"),
+            "O1:quest_monsterking/2:quest_ordeals/random:5,tough_quest/random2:2,quest,boss/req:7/hardreq:1,2/win:crystal Kmain/moon/nofree:dwarf/unreliabledark/start:legend Pkey Crelaxed/noearned/distinct:7/start:any/no:fusoya/abilities:j/nekkie/nodupes Twildish/playable/maxtier:7/mintier:3 Sstandard/playable/always:sirens,hrglass,bacchus,starveil,cure3,illusion,coffin Bstandard/alt:gauntlet/whichburn/newscriptstats Etoggle Hrandom Gwarp/life/backrow Fweighted Aagnostic Xzonkbonus:10 Zvanilla -kit:better -kit2:freedom -kit3:hero -noadamants -spoon -smith:super,good,spoilsuper -vanilla:zot,miabs -tweak:yanghp"),
 
             FePresetChoices.KokkolExpress => (FeHostedApi.Galeswift, "O1:quest_murasamealtar/2:quest_forge/3:quest_tradepink/random:2,tough_quest/req:all/win:game Kmain/force:magma Pnone Crelaxed/noearned/distinct:7/start:not_fusoya/no:fusoya/abilities:j/nekkie Twildish/maxtier:7 Scabins/free Bstandard/alt:gauntlet/whichburn Etoggle/noexp Hrandom Glife/sylph/backrow -kit:better -kit2:freedom -noadamants -spoon -smith:super,playable -vanilla:miabs"),
 
