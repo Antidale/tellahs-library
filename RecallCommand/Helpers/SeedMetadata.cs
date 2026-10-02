@@ -1,6 +1,7 @@
 using System;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using tellahs_library.Converters;
 
 namespace tellahs_library.RecallCommand.Helpers;
 
@@ -20,6 +21,14 @@ public class SeedMetadata
 
     [JsonPropertyName("verification")]
     public List<string> Verification { get; set; } = [];
+
+    [JsonPropertyName("metadata_addr")]
+    [JsonConverter(typeof(HexStringToUintConverter))]
+    public uint MetadataAddress { get; init; } = 0;
+
+    [JsonPropertyName("metadata_len")]
+    [JsonConverter(typeof(HexStringToIntConverter))]
+    public int MedataLength { get; init; } = 0;
 
     public string VerificationString => string.Join(", ", Verification);
 

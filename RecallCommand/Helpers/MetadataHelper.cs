@@ -1,3 +1,4 @@
+using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
 
@@ -16,11 +17,27 @@ public class MetadataHelper
 
         try
         {
-            using var br = new BinaryReader(File.Open(filePath, FileMode.Open));
+            using var fileStream = File.Open(filePath, FileMode.Open);
+            return TryGetSeedMetadata(fileStream, out seedMetadata);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.StackTrace);
+            return false;
+        }
+    }
+
+    public static bool TryGetSeedMetadata(Stream romFile, out SeedMetadata seedMetadata, string filePath = "")
+    {
+        seedMetadata = new();
+
+        try
+        {
+            using var br = new BinaryReader(romFile);
             var (version, seed) = CheckVersion(br);
 
-            br.BaseStream.Seek(0x1FF000, SeekOrigin.Begin);
-            var docLength = BitConverter.ToInt32(br.ReadBytes(4));
+            br.BaseStream.Seek(MetadataDocLengthStart, SeekOrigin.Begin);
+            var docLength = BitConverter.ToInt32(br.ReadBytes(MetadataDocLengthByteSize));
 
             if (version.StartsWith("v0.1") || version.StartsWith("v0.2"))
             {
@@ -41,67 +58,6 @@ public class MetadataHelper
 
                 return true;
             }
-            else
-            {
-                var jsonbDocBytes = br.ReadBytes(docLength);
-                var jsonDocString = Encoding.UTF8.GetString(jsonbDocBytes);
-
-                try
-                {
-                    seedMetadata = JsonSerializer.Deserialize<SeedMetadata>(jsonDocString) ?? seedMetadata;
-                }
-                catch (Exception)
-                {
-                    seedMetadata = JsonSerializer.Deserialize<LegacySeedMetadata>(jsonDocString)?.ToSeedMetadata() ?? seedMetadata;
-                }
-
-                if (seedMetadata.Flags == string.Empty)
-                {
-                    return false;
-                }
-
-                if (seedMetadata.Verification.Count == 0)
-                {
-                    br.BaseStream.Seek(0x007FDE, SeekOrigin.Begin);
-                    var first = br.ReadByte();
-                    var second = br.ReadByte();
-                    var byteArray = new List<ushort>(capacity: (int)br.BaseStream.Length);
-
-                    var romChecksum = first | (second << 8);
-
-                    var iconNames = Enumerable.Range(0, 4)
-                                         .Select(iterator => (romChecksum >> (iterator * 4)) & 0xf)
-                                         .Select(nibble => Data.ChecksumTiles[nibble])
-                                         .ToList();
-
-                    if (!iconNames.Any(x => string.IsNullOrWhiteSpace(x)))
-                    {
-                        seedMetadata.Verification = iconNames;
-                    }
-                }
-            }
-
-            return seedMetadata.ToString() != new SeedMetadata().ToString();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.StackTrace);
-            return false;
-        }
-    }
-
-    public static bool TryGetSeedMetadata(Stream romFile, out SeedMetadata seedMetadata)
-    {
-        seedMetadata = new();
-
-        try
-        {
-            using var br = new BinaryReader(romFile);
-
-            br.BaseStream.Seek(0x1FF000, SeekOrigin.Begin);
-            var docLength = BitConverter.ToInt32(br.ReadBytes(4));
-
-            if (docLength <= 0) { return false; }
 
             var jsonbDocBytes = br.ReadBytes(docLength);
             var jsonDocString = Encoding.UTF8.GetString(jsonbDocBytes);
@@ -109,10 +65,25 @@ public class MetadataHelper
             try
             {
                 seedMetadata = JsonSerializer.Deserialize<SeedMetadata>(jsonDocString) ?? seedMetadata;
+
+                if (seedMetadata.MetadataAddress > 0)
+                {
+                    br.BaseStream.Seek(seedMetadata.MetadataAddress, SeekOrigin.Begin);
+
+                    var compressedDoc = br.ReadBytes((int)seedMetadata.MedataLength);
+                    var payload = Encoding.UTF8.GetString(GetUncompressedPayload(compressedDoc));
+                    var decompressedMetadata = JsonSerializer.Deserialize<SeedMetadata>(payload) ?? new();
+                    seedMetadata = new SeedMetadata
+                    {
+                        BinaryFlags = decompressedMetadata.BinaryFlags,
+                        Flags = decompressedMetadata.Flags,
+                        Seed = seedMetadata.Seed,
+                        Version = seedMetadata.Version,
+                    };
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
                 seedMetadata = JsonSerializer.Deserialize<LegacySeedMetadata>(jsonDocString)?.ToSeedMetadata() ?? seedMetadata;
             }
 
@@ -123,7 +94,7 @@ public class MetadataHelper
 
             if (seedMetadata.Verification.Count == 0)
             {
-                br.BaseStream.Seek(0x007FDE, SeekOrigin.Begin);
+                br.BaseStream.Seek(ChecksumStart, SeekOrigin.Begin);
                 var first = br.ReadByte();
                 var second = br.ReadByte();
                 var byteArray = new List<ushort>(capacity: (int)br.BaseStream.Length);
@@ -219,6 +190,17 @@ public class MetadataHelper
         var version = results.Skip(4).First();
         var seed = results.Skip(6).First();
         return (version, seed);
+    }
+
+    private static byte[] GetUncompressedPayload(byte[] data)
+    {
+        using var outputStream = new MemoryStream();
+        using var inputStream = new MemoryStream(data);
+        using var zipInputStream = new ZipArchive(inputStream, ZipArchiveMode.Read);
+        using var entryStream = zipInputStream.Entries[0].Open();
+        entryStream.CopyTo(outputStream);
+
+        return outputStream.ToArray();
     }
 
 }
